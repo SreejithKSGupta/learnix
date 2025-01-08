@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './headerlinks.component.css'
 })
 export class HeaderlinksComponent {
+link: any;
+label: any;
 
 }

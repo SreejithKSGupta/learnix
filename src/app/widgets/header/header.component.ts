@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
-}
+    title = `LVC`;
+      homeLink = { path: '/home', label: 'Home' };
+      aboutLink = { path: '/about', label: 'About' };
+      contactLink = { path: '/contact', label: 'Contact' };
+    }
