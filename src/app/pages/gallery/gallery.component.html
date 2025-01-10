@@ -1,5 +1,12 @@
-<div>
-    <div *ngFor="let img of galleryimgs">
-        <img [src]="img" alt="altimgg">
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let img of galleryimgs">
+            <div class="card">
+                <img [src]="img" class="card-img-top img-fluid" alt="altimgg">
+                <!-- <div class="card-body">
+                    <p class="card-text">Image description here</p>
+                </div> -->
+            </div>
+        </div>
     </div>
 </div>
