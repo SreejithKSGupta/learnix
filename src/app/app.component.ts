@@ -7,8 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'welcome-project';
-  homeLink = { path: '/home', label: 'Home' };
-  aboutLink = { path: '/about', label: 'About' };
-  contactLink = { path: '/contact', label: 'Contact' };
+  title = 'e-Learn';
 }

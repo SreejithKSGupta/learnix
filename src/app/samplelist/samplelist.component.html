@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <h3>People by Country</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of people" [ngSwitch]="person.country">
+          <td *ngSwitchCase="'UK'" class="text-success">{{ person.name }}</td>
+          <td *ngSwitchCase="'UK'" class="text-success">{{ person.age }}</td>
+          <td *ngSwitchCase="'UK'" class="text-success">{{ person.country }}</td>
+          
+  
+          <td *ngSwitchCase="'USA'" class="text-primary">{{ person.name }}</td>
+          <td *ngSwitchCase="'USA'" class="text-primary">{{ person.age }}</td>
+          <td *ngSwitchCase="'USA'" class="text-primary">{{ person.country }}</td>
+          
+  
+          <td *ngSwitchCase="'HK'" class="text-danger">{{ person.name }}</td>
+          <td *ngSwitchCase="'HK'" class="text-danger">{{ person.age }}</td>
+          <td *ngSwitchCase="'HK'" class="text-danger">{{ person.country }}</td>
+  
+          <td *ngSwitchDefault class="text-warning">{{ person.name }}</td>
+          <td *ngSwitchDefault class="text-warning">{{ person.age }}</td>
+          <td *ngSwitchDefault class="text-warning">{{ person.country }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

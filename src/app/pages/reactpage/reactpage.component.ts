@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './reactpage.component.css'
 })
 export class ReactpageComponent {
-
+title = "reactpage";
 }

@@ -1,10 +1,9 @@
-<header>
-    <h1>{{ title }}</h1>
-    <nav>
-      <app-headerlinks link="react" label="react" ></app-headerlinks>
-      <app-headerlinks link="angular" label="angular" ></app-headerlinks>
-      <app-headerlinks link="home" label="home" ></app-headerlinks>
-      <app-headerlinks link="contact" label="contact" ></app-headerlinks>
-
-    </nav>
-  </header>
+<header class="w-100">
+    <div class="col-4">
+        <h1>{{ title }}</h1>
+    </div>
+    
+    <div class="col-8 d-flex justify-content-end">
+        <app-navbar></app-navbar>
+    </div>
+</header>
