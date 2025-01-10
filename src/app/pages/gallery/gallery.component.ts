@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Lightbox } from 'ngx-lightbox';
 @Component({
   selector: 'app-gallery',
   standalone: false,
@@ -22,5 +22,26 @@ export class GalleryComponent {
 
 ];
   
+private _albums: any[] = [];
 
+constructor(private _lightbox: Lightbox) {
+  this.galleryimgs.forEach((img) => {
+    const album = {
+      src: img,
+      thumb: img
+    };
+    this._albums.push(album);
+  });
 }
+
+openLightbox(index: number): void {
+  console.log("clicked on index number :", index)
+  this._lightbox.open(this._albums, index,{ wrapAround: true, showImageNumberLabel: true , centerVertically:true, fitImageInViewPort:true});
+}
+
+closeLightbox(): void {
+  this._lightbox.close();
+}
+}
+
+

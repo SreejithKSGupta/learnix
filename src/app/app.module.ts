@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { LightboxModule } from 'ngx-lightbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
@@ -24,6 +24,7 @@ import { SamplelistComponent } from './samplelist/samplelist.component';
   ],
   imports: [
     BrowserModule,
+     LightboxModule,
     AppRoutingModule
   ],
   providers: [],
