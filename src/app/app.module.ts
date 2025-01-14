@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
+import { AppRoutingModule, router } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { LightboxModule } from 'ngx-lightbox';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
 import { FooterComponent } from './widgets/footer/footer.component';
@@ -9,7 +9,9 @@ import { ReactpageComponent } from './pages/reactpage/reactpage.component';
 import { AngularpageComponent } from './pages/angularpage/angularpage.component';
 import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
-import { SamplelistComponent } from './samplelist/samplelist.component';
+import { SamplelistComponent } from './pages/samplelist/samplelist.component';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { SamplelistComponent } from './samplelist/samplelist.component';
     NavbarComponent,
     GalleryComponent,
     AngularpageComponent,
-    SamplelistComponent
+    SamplelistComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
      LightboxModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
