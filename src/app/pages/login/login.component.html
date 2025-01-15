@@ -1,16 +1,90 @@
-<div class="loginbox">
-    <!-- <input type="text" [(ngModel)]="name">
-    <h1>Hello {{name}}!</h1> -->
-
-    <input type="number" [(ngModel)]="n1">
-    <input type="number" [(ngModel)]="n2">
-    <input type="number" [(ngModel)]="n3">
-    <button (click)="add()">Add</button>
-    <div>
-        <h1 [(ngModel)]="sum">
-            {{sum}}
-        </h1>
+<form #f="ngForm" class="loginbox" novalidate (ngSubmit)="save(f.value, f.form.valid)">
+    <div class="row">
+        <label class="fw-bold">Name</label>
+        <div class="col">
+            <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" required minlength="5" class="form-control">
+            <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+                Name is required (minimum 5 characters).
+            </small>
+        </div>
     </div>
 
+    <div class="row">
+        <label class="fw-bold">Email</label>
+        <div class="col">
+            <input type="email" name="email" [(ngModel)]="user.email" #email="ngModel" required  class="form-control">
+            <small [hidden]="email.valid || (email.pristine && !f.submitted)">
+                Email is required.
+            </small>
+        </div>
+    </div>
 
+    <div class="row">
+        <label class="fw-bold">Phone</label>
+        <div class="col">
+            <input type="number" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required min=1000000000 max="10000000000" class="form-control">
+            <small [hidden]="phone.valid || (phone.pristine && !f.submitted)">
+                Phone is required (10 digit)
+            </small>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="fw-bold">Gender</label>
+        <div class="col">
+            <div>
+                <input type="radio" name="gender" [(ngModel)]="user.gender" #gender="ngModel" value="male" required> Male
+            </div>
+            <div>
+                <input type="radio" name="gender" [(ngModel)]="user.gender" #gender="ngModel" value="female" required> Female
+            </div>
+            <small [hidden]="gender.valid || (gender.pristine && !f.submitted)">
+                Select a gender.
+            </small>
+        </div>
+    </div>
+    
+    <div class="row">
+        <label class="fw-bold">Course</label>
+        <div class="col">
+            <div>
+                <input type="checkbox" name="course" [(ngModel)]="user.courses[0]" #courses="ngModel"  value="english"> English
+            </div>
+            <div>
+                <input type="checkbox" name="course" [(ngModel)]="user.courses[1]" #courses="ngModel"  value="maths"> Maths
+            </div>
+            <div>
+                <input type="checkbox" name="course" [(ngModel)]="user.courses[2]" #courses="ngModel" value="science"> Science
+            </div>
+            <div>
+                <input type="checkbox" name="course" [(ngModel)]="user.courses[3]" #courses="ngModel" value="social"> Social
+            </div>
+            <small [hidden]="courses.valid || (courses.pristine && !f.submitted)">
+                Select at least one course.
+            </small>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="fw-bold">Remarks</label>
+        <div class="col">
+            <textarea type="text" name="remarks" [(ngModel)]="user.remarks" #remarks="ngModel" required minlength="5" class="form-control"></textarea>
+            <small [hidden]="remarks.valid || (remarks.pristine && !f.submitted)">
+                Remarks are required (minimum 5 characters).
+            </small>
+        </div>
+    </div>
+
+    <button class="btn btn-success" type="submit">Submit</button>
+</form>
+
+<div class="container">
+    <h4 class="text-success">Your Details</h4>
+    <h5>Name: {{f.value.name}}</h5>
+    <h5>email: {{f.value.email}}</h5>
+    <h5>phone: {{f.value.phone}}</h5>
+    <h5>gender: {{f.value.gender}}</h5>
+    <h5>courses: {{f.value.courses}}</h5>
+    <h5>remarks: {{f.value.remarks}}</h5>
+    <h5>{{f.value | json}}</h5>
 </div>
