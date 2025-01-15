@@ -11,7 +11,8 @@ import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { SamplelistComponent } from './pages/samplelist/samplelist.component';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoginComponent } from './login/login.component';
      LightboxModule,
     AppRoutingModule,
     RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,15 +5,18 @@ import {ReactpageComponent} from './pages/reactpage/reactpage.component';
 import {GalleryComponent} from './pages/gallery/gallery.component';
 import {ContactpageComponent} from './pages/contactpage/contactpage.component';
 import {HomeComponent} from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 export const router: Routes = [
-  { path: '', redirectTo: 'Home', pathMatch: 'full' }, 
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, 
   { path: 'contact', component: ContactpageComponent },
   { path: 'angular', component: AngularpageComponent },
   { path: 'react', component: ReactpageComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'gallery', component: GalleryComponent }
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'login', component: LoginComponent }
+
 ];
 
 @NgModule({
