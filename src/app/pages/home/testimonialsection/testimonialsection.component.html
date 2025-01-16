@@ -1,0 +1,23 @@
+<div
+  id="testimonial-carousel"
+  (mouseover)="stopAutoplay()"
+  (mouseout)="startAutoplay()"
+>
+  <div
+    class="testimonial-content"
+    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+  >
+    <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+      <div class="test-header">
+        <div class="test-author">{{ testimonial.name }}</div>
+        <div class="test-position">{{ testimonial.position }}</div>
+      </div>
+      <div class="test-body">
+        <div class="test-text">{{ testimonial.Test }}</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-btn prev" (click)="prevTestimonial()">❮</button>
+  <button class="carousel-btn next" (click)="nextTestimonial()">❯</button>
+</div>

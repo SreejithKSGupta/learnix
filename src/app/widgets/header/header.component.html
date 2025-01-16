@@ -1,9 +1,17 @@
-<header class="w-100" style="height: 10vh;">
-    <div class="col-4">
-        <h1>{{ title }}</h1>
-    </div>
-    
-    <div class="col-8 d-flex justify-content-end">
+<header class="w-100" style="height:7vh;">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <div class="col-4">
+        <a routerLink="/" class="nav-link d-flex align-items-center">
+            <img id="logo" src={{logo}} alt="logo">
+        <h1 class="mb-0" id="logotxt" >{{ title }}</h1>
+    </a>
+      </div>
+      
+      <div class="col-8 d-flex justify-content-end">
         <app-navbar></app-navbar>
+   
+      </div>
     </div>
-</header>
+  </header>
+  

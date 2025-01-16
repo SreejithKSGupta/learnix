@@ -1,0 +1,124 @@
+#testimonial-carousel {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 5vh;
+    background-color: #0060ce;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .testimonial-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonial-card {
+    min-width: 100%;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .test-header {
+    margin-bottom: 5px;
+  }
+  
+  .test-author {
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: bold;
+    color: #00ff00;
+    transition: color 0.3s ease;
+  }
+  
+  .test-author:hover {
+    color: #ffffff;
+  }
+  
+  .test-position {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #7d8b99;
+  }
+  
+  .test-body {
+    margin-top: 20px;
+  }
+  
+  .test-text {
+    font-size: 1.7rem;
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1.5;
+    padding: 0px 100px;
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    aspect-ratio: 1/1;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .carousel-btn.prev {
+    left: 20px;
+  }
+  
+  .carousel-btn.next {
+    right: 20px;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    #testimonial-carousel {
+      padding: 20px;
+    }
+  
+    .test-author {
+      font-size: 1.3rem;
+    }
+  
+    .test-position {
+      font-size: 1rem;
+    }
+  
+    .test-text {
+      font-size: 1rem;
+    }
+  
+    .carousel-btn {
+      padding: 12px;
+      font-size: 1.8rem;
+    }
+  }
+  

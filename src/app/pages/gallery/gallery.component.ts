@@ -8,7 +8,6 @@ import { Lightbox } from 'ngx-lightbox';
   styleUrl: './gallery.component.css'
 })
 export class GalleryComponent {
-
   galleryimgs: string[] = [
     "assets/gallery/aunty.webp",
     "assets/gallery/boy1.webp",
@@ -19,7 +18,6 @@ export class GalleryComponent {
     "assets/gallery/hero.webp",
     "assets/gallery/image.webp",
     "assets/gallery/team1.webp",
-
 ];
   
 private _albums: any[] = [];

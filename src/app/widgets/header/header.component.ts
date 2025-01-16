@@ -8,8 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-    title = `e-Learn`;
-      homeLink = { path: '/home', label: 'Home' };
-      aboutLink = { path: '/about', label: 'About' };
-      contactLink = { path: '/contact', label: 'Contact' };
+    title = `Learnix`;
+    logo = '/learnixtplogo.webp'
+  
     }

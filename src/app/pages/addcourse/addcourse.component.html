@@ -1,0 +1,101 @@
+<div class="addcourse">
+  <h1>
+    {{title}}
+  </h1>
+
+  <form [formGroup]="angForm" novalidate>
+    <div class="form-group">
+      <label>Name:</label>
+      <input class="form-control" formControlName="name" type="text">
+      <div
+        *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"
+        class="alert alert-danger">
+        <small *ngIf="angForm.controls['name'].errors?.['required']">
+          Name is required.
+        </small>
+        <small *ngIf="angForm.controls['name'].errors?.['pattern']">
+          course name should start with a letter.
+        </small>
+        <small *ngIf="angForm.controls['name'].errors?.['minlength']">
+          course name should be atleast 3 letters
+        </small>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Author:</label>
+      <input class="form-control" formControlName="author" type="text">
+      <div
+        *ngIf="angForm.controls['author'].invalid && (angForm.controls['author'].dirty || angForm.controls['author'].touched)"
+        class="alert alert-danger">
+        <small *ngIf="angForm.controls['author'].errors?.['required']">
+          Author is required.
+        </small>
+        <small *ngIf="angForm.controls['author'].errors?.['pattern']">
+          author name should only have letters.
+        </small>
+        <small *ngIf="angForm.controls['author'].errors?.['minlength']">
+          author name should be longer
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Duration:</label>
+      <input class="form-control" formControlName="duration" type="text">
+      <div
+        *ngIf="angForm.controls['duration'].invalid && (angForm.controls['duration'].dirty || angForm.controls['duration'].touched)"
+        class="alert alert-danger">
+        <small *ngIf="angForm.controls['duration'].errors?.['required']">
+          Duration is required.
+        </small>
+        <small *ngIf="angForm.controls['duration'].errors?.['pattern']">
+          duration [weeks] should be a number
+        </small>
+        <small *ngIf="angForm.controls['duration'].errors?.['min']">
+          credits should be a equal to or greater than 4 weeks
+        </small>
+        <small *ngIf="angForm.controls['duration'].errors?.['max']">
+          credits should be less than or equal to 12
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Credits:</label>
+      <input class="form-control" formControlName="credits" type="text">
+      <div
+        *ngIf="angForm.controls['credits'].invalid && (angForm.controls['credits'].dirty || angForm.controls['credits'].touched)"
+        class="alert alert-danger">
+        <small *ngIf="angForm.controls['credits'].errors?.['required']">
+          Credits are required.
+        </small>
+        <small *ngIf="angForm.controls['credits'].errors?.['pattern']">
+          credits should be a number
+        </small>
+        <small *ngIf="angForm.controls['credits'].errors?.['min']">
+          credits should be a equal to or greater than 1
+        </small>
+        <small *ngIf="angForm.controls['credits'].errors?.['max']">
+          credits should be less than or equal to 5
+        </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea class="form-control" formControlName="description"></textarea>
+      <div
+        *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)"
+        class="alert alert-danger">
+        <small *ngIf="angForm.controls['description'].errors?.['required']">
+          Description is required.
+        </small>
+        <small *ngIf="angForm.controls['description'].errors?.['minlength']">
+          Description should be longer.
+        </small>
+      </div>
+    </div>
+    <button type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">Save</button>
+  </form>
+  <br />
+  <p>Form value: {{ angForm.value | json }}</p>
+  <p>Form status: {{ angForm.status | json }}</p>
+</div>
