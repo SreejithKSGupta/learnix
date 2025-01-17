@@ -1,33 +1,38 @@
+footer {
+  font-size: 0.9rem;
+}
 
-mat-icon {
-    /* font-size: 32px; */
-    transition: transform 0.3s;
-  }
-  
-  mat-icon:hover {
-    transform: scale(1.2);
-  }
-  
-  footer {
-    background-color: #333;
-    color: white;
-  }
-  
-  footer a {
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    color: #f1f1f1;
-  }
-  
-  #logo{
-    height: 10vh;
-    width: 10vh;
-  }
+p{
+  margin-bottom: 5px;
+}
 
-  .socialicon{
-    color: white;
-     width:24px;
-     height:4px;
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.input-group input[type="email"] {
+  border-radius: 0;
+}
+
+button[mat-icon-button] img {
+  vertical-align: middle;
+}
+
+button[mat-raised-button] {
+  margin-left: 0.5rem;
+}
+
+.socialcion{
+   border-radius: 50%;
+   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+@media (max-width: 768px) {
+  .social-icons {
+    justify-content: center;
   }
+}

@@ -1,7 +1,4 @@
 header {
-  position: fixed;
-  top: 0px;
-  z-index: 19;
   background-color: #00000049;
   color: white;
   display: flex;
@@ -9,10 +6,6 @@ header {
   height: clamp(50px, 10vh, 100px);
 }
 
-#hdpadding{
-  height: clamp(50px, 10vh, 100px);
-
-}
 
 #logo {
   height: clamp(40px, 8vh, 80px);
