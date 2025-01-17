@@ -20,9 +20,11 @@ export class HerosectionComponent implements OnInit {
     
     if (parallax) {
       parallax.style.transform = `translate(${scrollPosition * -0.3}px, ${scrollPosition * -0.1}px)`;
+      parallax.style.scale = `(${scrollPosition * 1.1}`;
+
     }
     if (parallaxImg) {
-      parallaxImg.style.transform = `translate(${scrollPosition * 0.3}px, ${scrollPosition * -0.1}px)`; 
+      parallaxImg.style.transform = `translate(${scrollPosition * 0.1}px, ${scrollPosition * -0.1}px)`; 
     }
   }
 }

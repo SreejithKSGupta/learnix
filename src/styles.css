@@ -2,10 +2,18 @@
 
 
 ::-webkit-scrollbar {
-    width: 0px;
-  }
+  width: 0px;
+}
 
 
- 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: linear-gradient(60deg, rgba(203,255,232,1) 0%, rgb(248, 201, 230) 50%, rgb(179, 227, 247) 100%);
+}

@@ -23,6 +23,7 @@ import { StatisticssectionComponent } from './pages/home/statisticssection/stati
 import { CoursesectionComponent } from './pages/home/coursesection/coursesection.component';
 import { TestimonialsectionComponent } from './pages/home/testimonialsection/testimonialsection.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

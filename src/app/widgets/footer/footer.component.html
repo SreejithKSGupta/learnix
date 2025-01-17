@@ -1,7 +1,39 @@
-<footer>
-    <div id="footerlinks">
-      <h2 class="p-1 px-2">{{footertitle}}</h2> 
-    </div>
-    <app-navbar></app-navbar>
-</footer>
+<footer class="bg-dark text-white py-1">
+  <div class="container pt-2" >
+    <div class="row">
+      <!-- Footer Title and Description -->
+      
+      <div class="col-md-4">
+        <img id="logo" src={{logo}} alt="logo">
+        <h4>{{ footertitle }}</h4>
+        <p>{{ footerDescription }}</p>
+      </div>
 
+      <!-- Address and Contact -->
+      <div class="col-md-4">
+        <h5>Contact Us</h5>
+        <p><strong>Address:</strong> {{ contactDetails.address }}</p>
+        <p><strong>Email:</strong> <a href="mailto:{{ contactDetails.email }}" class="text-white">{{ contactDetails.email }}</a></p>
+        <p><strong>Phone:</strong> {{ contactDetails.phone }}</p>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="col-md-4">
+        <h5>Follow Us</h5>
+        <div class="d-flex flex-column">
+          <a *ngFor="let link of socialLinks" [href]="link.url" class="text-white me-3">
+            <img [src]="link.icon" alt="{{ link.platform }} icon" class="socialicon col-1" width="24" height="24">
+          </a>
+        </div>
+        
+      </div>
+    </div>
+
+    <hr class="my-1">
+
+    <!-- Footer Bottom -->
+    <div class="text-center">
+      <p>&copy; 2025 {{ footertitle }}. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
