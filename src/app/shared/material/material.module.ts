@@ -10,7 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatBadgeModule} from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -18,10 +24,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
 
   exports: [
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatChipsModule,
     MatButtonModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
     CommonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
     MatButtonModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -32,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCheckboxModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }

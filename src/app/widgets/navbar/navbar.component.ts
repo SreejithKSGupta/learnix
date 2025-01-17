@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
 }
