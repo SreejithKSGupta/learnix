@@ -1,90 +1,111 @@
-<form #f="ngForm" class="loginbox" novalidate (ngSubmit)="save(f.value, f.form.valid)">
-    <div class="row">
-        <label class="fw-bold">Name</label>
-        <div class="col">
-            <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" required minlength="5" class="form-control">
-            <small [hidden]="name.valid || (name.pristine && !f.submitted)">
-                Name is required (minimum 5 characters).
-            </small>
-        </div>
+<div id="loginform" class="stepper-container">
+    <div class="stepper-left">
+      <img id="herofrontimg" src="./res/heroimgpersonwithlap.webp" alt="Learning" class="img-fluid">
     </div>
-
-    <div class="row">
-        <label class="fw-bold">Email</label>
-        <div class="col">
-            <input type="email" name="email" [(ngModel)]="user.email" #email="ngModel" required  class="form-control">
-            <small [hidden]="email.valid || (email.pristine && !f.submitted)">
-                Email is required.
-            </small>
-        </div>
+    <div class="stepper-right col">
+        <h1>Sign Up</h1>
+      <mat-horizontal-stepper [formGroup]="signupForm" linear>
+        
+        <!-- Step 1: Personal Information -->
+        <mat-step label="Personal Information" [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required>
+              <mat-error *ngIf="firstFormGroup.get('name')?.hasError('required')">Name is required</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" required email>
+              <mat-error *ngIf="firstFormGroup.get('email')?.hasError('required')">Email is required</mat-error>
+              <mat-error *ngIf="firstFormGroup.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+            </mat-form-field>
+  
+            <mat-radio-group formControlName="userType" required>
+              <mat-radio-button value="student">Student</mat-radio-button>
+              <mat-radio-button value="tutor">Tutor</mat-radio-button>
+            </mat-radio-group>
+            <div class="row">
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+  
+        <!-- Step 2: Details -->
+        <mat-step label="Details" [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" required>
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+                <mat-option value="other">Other</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field *ngIf="firstFormGroup.get('userType')?.value === 'tutor'">
+              <mat-label>Expertise</mat-label>
+              <mat-select formControlName="expertise" multiple required>
+                <mat-option value="math">Math</mat-option>
+                <mat-option value="science">Science</mat-option>
+                <mat-option value="literature">Literature</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field *ngIf="firstFormGroup.get('userType')?.value === 'student'">
+              <mat-label>Area of Interests</mat-label>
+              <mat-select formControlName="areaOfInterest" multiple required>
+                <mat-option value="coding">Coding</mat-option>
+                <mat-option value="sports">Sports</mat-option>
+                <mat-option value="art">Art</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Years of Experience</mat-label>
+              <input matInput formControlName="experience" type="number" required>
+            </mat-form-field>
+            <div class="row">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+  
+        <!-- Step 3: Set Password -->
+        <mat-step label="Set Password" [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password" required autocomplete="new-password">
+              <mat-error *ngIf="thirdFormGroup.get('password')?.hasError('required')">Password is required</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Confirm Password</mat-label>
+              <input matInput type="password" formControlName="confirmPassword" required autocomplete="new-password">
+              <mat-error *ngIf="thirdFormGroup.get('confirmPassword')?.hasError('required')">Confirmation is required</mat-error>
+              <mat-error *ngIf="thirdFormGroup.hasError('passwordMismatch')">Passwords do not match</mat-error>
+            </mat-form-field>
+            <div class="row">
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+  
+        <!-- Step 4: Done -->
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+          <div>
+            <div class="completed">
+              Continue to profile page
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
     </div>
-
-    <div class="row">
-        <label class="fw-bold">Phone</label>
-        <div class="col">
-            <input type="number" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required min=1000000000 max="10000000000" class="form-control">
-            <small [hidden]="phone.valid || (phone.pristine && !f.submitted)">
-                Phone is required (10 digit)
-            </small>
-        </div>
-    </div>
-
-    <div class="row">
-        <label class="fw-bold">Gender</label>
-        <div class="col">
-            <div>
-                <input type="radio" name="gender" [(ngModel)]="user.gender" #gender="ngModel" value="male" required> Male
-            </div>
-            <div>
-                <input type="radio" name="gender" [(ngModel)]="user.gender" #gender="ngModel" value="female" required> Female
-            </div>
-            <small [hidden]="gender.valid || (gender.pristine && !f.submitted)">
-                Select a gender.
-            </small>
-        </div>
-    </div>
-    
-    <div class="row">
-        <label class="fw-bold">Course</label>
-        <div class="col">
-            <div>
-                <input type="checkbox" name="course" [(ngModel)]="user.courses[0]" #courses="ngModel"  value="english"> English
-            </div>
-            <div>
-                <input type="checkbox" name="course" [(ngModel)]="user.courses[1]" #courses="ngModel"  value="maths"> Maths
-            </div>
-            <div>
-                <input type="checkbox" name="course" [(ngModel)]="user.courses[2]" #courses="ngModel" value="science"> Science
-            </div>
-            <div>
-                <input type="checkbox" name="course" [(ngModel)]="user.courses[3]" #courses="ngModel" value="social"> Social
-            </div>
-            <small [hidden]="courses.valid || (courses.pristine && !f.submitted)">
-                Select at least one course.
-            </small>
-        </div>
-    </div>
-
-    <div class="row">
-        <label class="fw-bold">Remarks</label>
-        <div class="col">
-            <textarea type="text" name="remarks" [(ngModel)]="user.remarks" #remarks="ngModel" required minlength="5" class="form-control"></textarea>
-            <small [hidden]="remarks.valid || (remarks.pristine && !f.submitted)">
-                Remarks are required (minimum 5 characters).
-            </small>
-        </div>
-    </div>
-
-    <button class="btn btn-success" type="submit">Submit</button>
-</form>
-
-<div class="container">
-    <h4 class="text-success">Your Details</h4>
-    <h5>Name: {{f.value.name}}</h5>
-    <h5>email: {{f.value.email}}</h5>
-    <h5>phone: {{f.value.phone}}</h5>
-    <h5>gender: {{f.value.gender}}</h5>
-    <h5>courses: {{f.value.courses}}</h5>
-    <h5>remarks: {{f.value.remarks}}</h5>
-    <h5>{{f.value | json}}</h5>
-</div>
+  </div>
+  

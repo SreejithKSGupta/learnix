@@ -1,53 +1,107 @@
-.loginbox {
+/* Style for the stepper container */
+#loginform {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Left side container for the image */
+  .stepper-left {
+    flex: 1;
+    max-width: 40%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #herofrontimg {
+    width: clamp(250px,80%,400px);
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Right side container for the stepper */
+  .stepper-right {
+    flex: 1;
+    max-width: 50%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    width: 60vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 12px;
-    
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 10px;
-    /* height: 12vh; */
-}
-
-
-label {
-    width: 15vw;
-    vertical-align: middle;
-}
-
-
-input,textarea {
-    width: 40vw;
-    font-size: 130%;
-    border: none;
-    background-color: rgb(196, 196, 196);
-}
-
-input :active{
-    outline: none;
-    border: none;
-}
-
-button {
-    padding: 5px 10px;
-    font-size: 20px;
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    background-color: green;
-}
-
-small {
-    text-align: center;
-    font-size: 80%;
-    color: red;
-}
+  }
+  
+  /* Mat Horizontal Stepper */
+  mat-horizontal-stepper {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+  }
+  
+  /* Step form field styling */
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for stepper header labels */
+  mat-step-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Styling for error messages */
+  mat-error {
+    color: #d32f2f;
+    font-size: 14px;
+  }
+  
+  /* Next/Back button styling */
+  button.mat-button {
+    background-color: #1976d2;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  button.mat-button:hover {
+    background-color: #1565c0;
+  }
+  
+  button.mat-button:disabled {
+    background-color: #e0e0e0;
+    color: #9e9e9e;
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 900px) {
+    #loginform {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .stepper-left,
+    .stepper-right {
+      max-width: 100%;
+    }
+  }
+  
+  
+  /* Vertical stepper specific styles */
+mat-vertical-stepper {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  /* Adjust button sizes in vertical layout for better spacing */
+  mat-stepper-footer button {
+    width: 100%;
+    margin-top: 10px;
+  }
+  

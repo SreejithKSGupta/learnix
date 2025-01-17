@@ -1,17 +1,20 @@
 header {
-    background-color: #333;
-    color: white;
-    display: flex;
-    gap: 1rem;
-  }
+  position: fixed;
+  top: 0px;
+  z-index: 19;
+  background-color: #00000049;
+  color: white;
+  display: flex;
+  gap: 1rem;
+  height: clamp(50px, 10vh, 100px);
+}
 
- #logo {
-  height: 5vh;
+#logo {
+  height: clamp(40px, 8vh, 80px);
   aspect-ratio: 1/1;
-  
- }
+  margin-right: 10px;
+}
 
- #logotxt{
-  font-family: pacifico,'cursive'  ;
- }
-  
+#logotxt {
+  font-family: pacifico, 'cursive';
+}

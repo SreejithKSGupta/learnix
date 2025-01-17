@@ -1,67 +1,83 @@
-#herofrontimg{
- height: 40vh;
+#herofrontimg {
+  height: 40vh;
 
 }
 
+h1 {
+  font-size: 5rem;
+  font-weight: bolder;
+  font-family: 'Oswald', 'Jersey', 'Times New Roman', Times, serif;
+  color: transparent;
+  background: linear-gradient(to right, #d0ff00, #7bf5fe);
+  text-align: center;
+  background-clip: text;
+}
+
+
 .hero-right {
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .hero {
-    background-image: url('/res/hero.svg'); /* Background image */
-    background-size: cover;
-    background-position: center;
-    height: 60vh; /* Full height */
-    position: relative;
-    color: white;
+  background-image: url('/res/hero.svg');
+  /* Background image */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  /* Full height */
+  position: relative;
+  color: white;
+}
+
+.hero-left {
+  z-index: 2;
+  /* Ensures the left content stays on top of the overlay */
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.hero-right img {
+  z-index: 2;
+  max-width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Overlay to improve text visibility */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Dark overlay for contrast */
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    height: 80vh;
+    /* Adjust height on small screens */
   }
-  
+
   .hero-left {
-    z-index: 2; /* Ensures the left content stays on top of the overlay */
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 20px;
+    text-align: center;
   }
-  
-  .cta-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
+
+  .hero-right {
+    display: none;
+    /* Hide right image on mobile */
   }
-  
-  .hero-right img {
-    z-index: 2;
-    max-width: 100%;
-    object-fit: cover;
-    height: 100%;
-  }
-  
-  /* Overlay to improve text visibility */
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
-    z-index: 1;
-  }
-  
-  @media (max-width: 767px) {
-    .hero {
-      height: 80vh; /* Adjust height on small screens */
-    }
-  
-    .hero-left {
-      padding: 20px;
-      text-align: center;
-    }
-  
-    .hero-right {
-      display: none; /* Hide right image on mobile */
-    }
-  }
-  
+}
