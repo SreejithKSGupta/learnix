@@ -3,29 +3,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 
 @Component({
+  standalone:false,
   selector: 'app-testimonials-section',
-  standalone: false,
   templateUrl: './testimonialsection.component.html',
-  styleUrls: ['./testimonialsection.component.css']
+  styleUrl: './testimonialsection.component.css',
 })
 export class TestimonialsectionComponent implements OnInit, OnDestroy {
   testimonials = [
     {
       name: 'James L.',
       Test: 'As a retiree, I wanted to continue learning, and this platform made it easy to stay engaged and learn at my own pace.',
-      position: 'Retired'
-    }
+      position: 'Retired',
+    },
   ];
   currentIndex = 0;
   autoplayInterval: any = null;
   apiUrl = 'https://api.jsonbin.io/v3/b/6788a954e41b4d34e4783023/latest';
   private subscription: Subscription | null = null;
 
-  // Master key and Access key for API authentication
   private masterKey = '$2a$10$x1xZJYdkDcwurCkY31PvD.wpYb37N5OswPY9WeOQ/HnWvvQ9YZNtC';
   private accessKey = '$2a$10$IMKd0tQnu.oX8gqp3I7tg.OpV4mKVIzh2KjKXwPE3n2rCMCYQZrlO';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getTestimonials();
@@ -33,18 +32,14 @@ export class TestimonialsectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.autoplayInterval) {
-      clearInterval(this.autoplayInterval);
-    }
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    if (this.autoplayInterval) clearInterval(this.autoplayInterval);
+    if (this.subscription) this.subscription.unsubscribe();
   }
 
   getTestimonials(): void {
     const headers = new HttpHeaders({
       'X-Master-Key': this.masterKey,
-      'X-Access-Key': this.accessKey
+      'X-Access-Key': this.accessKey,
     });
 
     this.subscription = this.http
@@ -60,13 +55,13 @@ export class TestimonialsectionComponent implements OnInit, OnDestroy {
   }
 
   startAutoplay(): void {
-    this.autoplayInterval = setInterval(() => this.nextTestimonial(), 5000);
+    this.autoplayInterval = setInterval(() => {
+      this.nextTestimonial();
+    }, 5000);
   }
 
   stopAutoplay(): void {
-    if (this.autoplayInterval) {
-      clearInterval(this.autoplayInterval);
-    }
+    if (this.autoplayInterval) clearInterval(this.autoplayInterval);
   }
 
   nextTestimonial(): void {

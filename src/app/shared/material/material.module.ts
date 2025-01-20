@@ -18,8 +18,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatBadgeModule} from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -29,6 +28,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
   exports: [
     MatCardModule,
+    MatProgressBarModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatChipsModule,
