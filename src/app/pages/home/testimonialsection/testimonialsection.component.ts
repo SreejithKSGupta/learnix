@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-testimonials-section',
-  standalone:false,
+  standalone: false,
   templateUrl: './testimonialsection.component.html',
   styleUrls: ['./testimonialsection.component.css']
 })
@@ -25,7 +25,7 @@ export class TestimonialsectionComponent implements OnInit, OnDestroy {
   private masterKey = '$2a$10$x1xZJYdkDcwurCkY31PvD.wpYb37N5OswPY9WeOQ/HnWvvQ9YZNtC';
   private accessKey = '$2a$10$IMKd0tQnu.oX8gqp3I7tg.OpV4mKVIzh2KjKXwPE3n2rCMCYQZrlO';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getTestimonials();
