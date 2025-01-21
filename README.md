@@ -28,3 +28,12 @@
   - tutor section
   - student section
   - Quizzing section
+
+## fonts 
+  - Anton
+  - Dancing Script
+  - Jersey
+  - Kanit
+  - Lora
+  - Oswald
+  - Pacifico

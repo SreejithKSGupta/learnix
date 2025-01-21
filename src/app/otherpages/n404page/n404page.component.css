@@ -1,0 +1,28 @@
+h1 {
+    font-family: 'Anton','Courier New', Courier, monospace;
+}
+
+p{
+    font-family: 'Jersey','Courier New', Courier, monospace;
+}
+
+.mat-raised-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.mat-raised-button:hover {
+    transform: scale(1.1);
+    background-color: #ff4081; /* Example accent color */
+}
+
+.mat-raised-button mat-icon {
+    margin-right: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* .mat-raised-button:hover mat-icon {
+  scale: 1.1;
+} */
