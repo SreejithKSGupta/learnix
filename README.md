@@ -20,6 +20,7 @@
   - About us
   - Privacy policy
   - Profile [login in/sign out]
+  - 404 
 
 
 ## Modules
