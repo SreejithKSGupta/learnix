@@ -22,8 +22,12 @@ import { StatisticssectionComponent } from './pages/home/statisticssection/stati
 import { CoursesectionComponent } from './pages/home/coursesection/coursesection.component';
 import { TestimonialsectionComponent } from './pages/home/testimonialsection/testimonialsection.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FaqpageComponent } from './otherpages/faqpage/faqpage.component';
+import { N404pageComponent } from './otherpages/n404page/n404page.component';
+import { PrivacypageComponent } from './otherpages/privacypage/privacypage.component';
+import { AboutpageComponent } from './otherpages/aboutpage/aboutpage.component';
 
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +45,10 @@ import { HttpClientModule } from '@angular/common/http';
     StatisticssectionComponent,
     CoursesectionComponent,
     TestimonialsectionComponent,
+    FaqpageComponent,
+    N404pageComponent,
+    PrivacypageComponent,
+    AboutpageComponent,
   ],
   imports: [
     BrowserModule,

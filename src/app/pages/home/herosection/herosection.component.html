@@ -1,14 +1,41 @@
-<!-- hero.component.html -->
 <section class="hero d-flex justify-content-evenly align-items-center">
-  <div class="hero-left col-md-4 d-flex flex-column align-items-center justify-content-center text-white">
-    <h1 class="display-3 font-weight-bold">Start Your Learning Journey Today</h1>
-    <div class="cta-buttons">
-      <button mat-flat-button color="primary" routerLink="/Courses" class="btn btn-lg">All Courses</button>
-      <button mat-flat-button color="accent"  routerLink="/contact" class="btn btn-lg"> Contact Us</button>
+  <!-- Left Content -->
+  <div class="hero-left col-md-5 d-flex flex-column align-items-center justify-content-center text-white px-4">
+    <h1 class="hero-title">
+      Start Your <div class="highlighted-text">Learning Journey</div> Today
+    </h1>
+    <!-- <p class="hero-subtitle mt-3">
+      Unlock a world of knowledge with expert-led courses designed to help you achieve your goals.
+    </p> -->
+    <div class="cta-buttons mt-4">
+      <button
+        mat-raised-button
+        color="primary"
+        class="btn btn-lg px-4"
+        routerLink="/Courses"
+      >
+        Explore Courses
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        class="btn btn-lg px-4"
+        routerLink="/contact"
+      >
+        Contact Us
+      </button>
     </div>
   </div>
 
-  <div class="hero-right col-md-4">
-    <img id="herofrontimg" src="./res/heroimgpersonwithlap.webp" alt="Learning"  class="img-fluid">
+  <!-- Right Content -->
+  <div class="hero-right col-md-4 d-flex align-items-center justify-content-center">
+    <mat-card class="hero-card mat-elevation-z8">
+      <img
+        mat-card-image
+        id="herofrontimg"
+        src="./res/heroimgpersonwithlap.webp"
+        alt="Learning"
+      />
+    </mat-card>
   </div>
 </section>

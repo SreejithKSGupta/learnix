@@ -60,6 +60,19 @@
     color: #d32f2f;
     font-size: 14px;
   }
+
+  .extraoptionsrow{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+  } 
+
+  .extraoptionsrow span {
+    padding: 0px 10px;
+    font-weight: bold; 
+    color: #007c7f;
+    font-family: 'Kanit', sans-serif;
+  }
   
   /* Next/Back button styling */
   button.mat-button {
