@@ -5,11 +5,7 @@ import { LightboxModule } from 'ngx-lightbox';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
 import { FooterComponent } from './widgets/footer/footer.component';
-import { ReactpageComponent } from './pages/reactpage/reactpage.component';
-import { AngularpageComponent } from './pages/angularpage/angularpage.component';
 import { NavbarComponent } from './widgets/navbar/navbar.component';
-import { GalleryComponent } from './pages/gallery/gallery.component';
-import { SamplelistComponent } from './pages/samplelist/samplelist.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -26,6 +22,9 @@ import { FaqpageComponent } from './otherpages/faqpage/faqpage.component';
 import { N404pageComponent } from './otherpages/n404page/n404page.component';
 import { PrivacypageComponent } from './otherpages/privacypage/privacypage.component';
 import { AboutpageComponent } from './otherpages/aboutpage/aboutpage.component';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { BlogsComponent } from './pages/blogs/blogs.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
  
 @NgModule({
@@ -33,11 +32,7 @@ import { AboutpageComponent } from './otherpages/aboutpage/aboutpage.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ReactpageComponent,
     NavbarComponent,
-    GalleryComponent,
-    AngularpageComponent,
-    SamplelistComponent,
     LoginComponent,
     AddcourseComponent,
     HerosectionComponent,
@@ -49,6 +44,9 @@ import { AboutpageComponent } from './otherpages/aboutpage/aboutpage.component';
     N404pageComponent,
     PrivacypageComponent,
     AboutpageComponent,
+    CoursesComponent,
+    BlogsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
