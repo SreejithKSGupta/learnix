@@ -9,12 +9,17 @@ import {Course} from '../../interfaces/course';
   styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
-  courses: Course[] = []; // Initialized courses array
+removecourseitem(item:any) {
+   console.log("removing course", item);
+    this.dataService.removecourse(item).subscribe((res) => {
+      console.log("Course removed", res);
+    });
+}
+  courses: Course[] = [];
 
   constructor(private dataService: DataService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    // Fetch courses from the service
     this.dataService.getcourses().subscribe((res: Course[]) => {
       this.courses = res;
     });

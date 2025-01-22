@@ -79,6 +79,7 @@
         <i class="material-icons text-dark me-2">code</i>
         <strong>Technologies:</strong> {{ data.importantTechnologiesUsed.join(', ') }}
       </p>
+      <button mat-button (click)="removecourseitem(data.id)">delete</button>
     </mat-dialog-content>
     <mat-dialog-actions align="end" class="px-3">
       <button mat-button mat-dialog-close color="warn">Close</button>

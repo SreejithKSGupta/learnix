@@ -1,35 +1,7 @@
 {
   "courses": [
     {
-      "id": 1,
-      "courseName": "Introduction to Python",
-      "tutor": "John Doe",
-      "duration": "6 weeks",
-      "description": "Learn the basics of Python programming, including syntax, data structures, and basic algorithms.",
-      "importantTechnologiesUsed": [
-        "Python",
-        "Jupyter Notebook"
-      ],
-      "courseFee": "150",
-      "credits": "3"
-    },
-    {
-      "id": 2,
-      "courseName": "Web Development with React",
-      "tutor": "Jane Smith",
-      "duration": "8 weeks",
-      "description": "Build modern web applications using React, covering components, state management, and hooks.",
-      "importantTechnologiesUsed": [
-        "React",
-        "JavaScript",
-        "HTML",
-        "CSS"
-      ],
-      "courseFee": "200",
-      "credits": "3"
-    },
-    {
-      "id": 3,
+      "id": "3",
       "courseName": "Data Science with R",
       "tutor": "Alice Johnson",
       "duration": "10 weeks",
@@ -43,7 +15,7 @@
       "credits": "3"
     },
     {
-      "id": 4,
+      "id": "4",
       "courseName": "Machine Learning with TensorFlow",
       "tutor": "Bob Brown",
       "duration": "12 weeks",
@@ -57,7 +29,7 @@
       "credits": "3"
     },
     {
-      "id": 5,
+      "id": "5",
       "courseName": "Full-Stack Web Development",
       "tutor": "Emily Davis",
       "duration": "14 weeks",

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Observable,of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,14 @@ export class DataService {
 
            addcourse(item: any): Observable<any> {
             return this.http.post<any>(this.courseurl, item);
+          }
+
+          removecourse(id: string): Observable<any> {
+            const url = `${this.courseurl}/${id}`;
+            return this.http.delete<any>(url).pipe(
+              catchError(error => {
+                return of(null);
+              })
+            );
           }
 }
