@@ -81,6 +81,36 @@
       "importantTechnologiesUsed": [],
       "courseFee": "350",
       "credits": "4"
+    },
+    {
+      "id": "1a0d",
+      "courseName": "front end web development",
+      "tutor": "sreejith ks pro max",
+      "duration": "5",
+      "description": "this is to check if the custom input is working.",
+      "importantTechnologiesUsed": [
+        "svelte",
+        "react",
+        "angular"
+      ],
+      "courseFee": "450",
+      "credits": "5"
+    },
+    {
+      "id": "4087",
+      "courseName": "web development basics",
+      "tutor": "Sreejith KS",
+      "duration": 5,
+      "description": "in this course, you will learn how to create basic websites, and a little bit about how items work.",
+      "importantTechnologiesUsed": [
+        "HTML",
+        "CSS",
+        "JS",
+        "NODE",
+        "EXPRESS"
+      ],
+      "courseFee": 0,
+      "credits": 4
     }
   ]
 }

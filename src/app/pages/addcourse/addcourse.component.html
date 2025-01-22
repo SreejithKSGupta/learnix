@@ -1,73 +1,78 @@
 <div class="addcourse">
   <h1>{{ title }}</h1>
 
-  <form [formGroup]="angForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="form-group">
-      <label>Name:</label>
-      <input class="form-control" formControlName="name" type="text">
-      <div *ngIf="angForm.get('name')?.invalid && (angForm.get('name')?.dirty || angForm.get('name')?.touched)" class="alert alert-danger">
-        <small *ngIf="angForm.get('name')?.errors?.['required']">Name is required.</small>
-        <small *ngIf="angForm.get('name')?.errors?.['pattern']">Course name should start with a letter.</small>
-        <small *ngIf="angForm.get('name')?.errors?.['minlength']">Course name should be at least 3 letters long.</small>
-      </div>
-    </div>
+  <form [formGroup]="angForm" (ngSubmit)="onSubmit()" class="rowbox" novalidate>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" />
+      <mat-error *ngIf="angForm.get('name')?.hasError('required')">Name is required.</mat-error>
+      <mat-error *ngIf="angForm.get('name')?.hasError('pattern')">Course name should start with a letter.</mat-error>
+      <mat-error *ngIf="angForm.get('name')?.hasError('minlength')">Course name should be at least 3 letters long.</mat-error>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label>Author:</label>
-      <input class="form-control" formControlName="author" type="text">
-      <div *ngIf="angForm.get('author')?.invalid && (angForm.get('author')?.dirty || angForm.get('author')?.touched)" class="alert alert-danger">
-        <small *ngIf="angForm.get('author')?.errors?.['required']">Author is required.</small>
-        <small *ngIf="angForm.get('author')?.errors?.['pattern']">Author name should only contain letters.</small>
-        <small *ngIf="angForm.get('author')?.errors?.['minlength']">Author name should be at least 3 letters long.</small>
-      </div>
-    </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" type="text" />
+      <mat-error *ngIf="angForm.get('author')?.hasError('required')">Author is required.</mat-error>
+      <mat-error *ngIf="angForm.get('author')?.hasError('pattern')">Author name should only contain letters.</mat-error>
+      <mat-error *ngIf="angForm.get('author')?.hasError('minlength')">Author name should be at least 3 letters long.</mat-error>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label>Duration:</label>
-      <input class="form-control" formControlName="duration" type="text">
-      <div *ngIf="angForm.get('duration')?.invalid && (angForm.get('duration')?.dirty || angForm.get('duration')?.touched)" class="alert alert-danger">
-        <small *ngIf="angForm.get('duration')?.errors?.['required']">Duration is required.</small>
-        <small *ngIf="angForm.get('duration')?.errors?.['pattern']">Duration should be a number.</small>
-        <small *ngIf="angForm.get('duration')?.errors?.['min']">Duration should be at least 4 weeks.</small>
-        <small *ngIf="angForm.get('duration')?.errors?.['max']">Duration should not exceed 12 weeks.</small>
-      </div>
-    </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Duration (weeks)</mat-label>
+      <input matInput formControlName="duration" type="number" />
+      <mat-error *ngIf="angForm.get('duration')?.hasError('required')">Duration is required.</mat-error>
+      <mat-error *ngIf="angForm.get('duration')?.hasError('pattern')">Duration should be a number.</mat-error>
+      <mat-error *ngIf="angForm.get('duration')?.hasError('min')">Duration should be at least 4 weeks.</mat-error>
+      <mat-error *ngIf="angForm.get('duration')?.hasError('max')">Duration should not exceed 12 weeks.</mat-error>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label>Credits:</label>
-      <input class="form-control" formControlName="credits" type="text">
-      <div *ngIf="angForm.get('credits')?.invalid && (angForm.get('credits')?.dirty || angForm.get('credits')?.touched)" class="alert alert-danger">
-        <small *ngIf="angForm.get('credits')?.errors?.['required']">Credits are required.</small>
-        <small *ngIf="angForm.get('credits')?.errors?.['pattern']">Credits should be a number.</small>
-        <small *ngIf="angForm.get('credits')?.errors?.['min']">Credits should be at least 1.</small>
-        <small *ngIf="angForm.get('credits')?.errors?.['max']">Credits should not exceed 5.</small>
-      </div>
-    </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Credits</mat-label>
+      <input matInput formControlName="credits" type="number" />
+      <mat-error *ngIf="angForm.get('credits')?.hasError('required')">Credits are required.</mat-error>
+      <mat-error *ngIf="angForm.get('credits')?.hasError('pattern')">Credits should be a number.</mat-error>
+      <mat-error *ngIf="angForm.get('credits')?.hasError('min')">Credits should be at least 1.</mat-error>
+      <mat-error *ngIf="angForm.get('credits')?.hasError('max')">Credits should not exceed 5.</mat-error>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label>Fees:</label>
-      <input class="form-control" formControlName="coursefee" type="text">
-      <div *ngIf="angForm.get('coursefee')?.invalid && (angForm.get('coursefee')?.dirty || angForm.get('coursefee')?.touched)" class="alert alert-danger">
-        <small *ngIf="angForm.get('coursefee')?.errors?.['required']">Fees are required.</small>
-        <small *ngIf="angForm.get('coursefee')?.errors?.['pattern']">Fees should be a number.</small>
-        <small *ngIf="angForm.get('coursefee')?.errors?.['min']">Fees should be at least 1.</small>
-        <small *ngIf="angForm.get('coursefee')?.errors?.['max']">Fees should not exceed 5000.</small>
-      </div>
-    </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Fees</mat-label>
+      <input matInput formControlName="coursefee" type="number" />
+      <mat-error *ngIf="angForm.get('coursefee')?.hasError('required')">Fees are required.</mat-error>
+      <mat-error *ngIf="angForm.get('coursefee')?.hasError('pattern')">Fees should be a number.</mat-error>
+      <mat-error *ngIf="angForm.get('coursefee')?.hasError('min')">Fees should be at least 0.</mat-error>
+      <mat-error *ngIf="angForm.get('coursefee')?.hasError('max')">Fees should not exceed 5000.</mat-error>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label>Description:</label>
-      <textarea class="form-control" formControlName="description"></textarea>
-      <div *ngIf="angForm.get('description')?.invalid && (angForm.get('description')?.dirty || angForm.get('description')?.touched)" class="alert alert-danger">
-        <small *ngIf="angForm.get('description')?.errors?.['required']">Description is required.</small>
-        <small *ngIf="angForm.get('description')?.errors?.['minlength']">Description should be at least 10 characters long.</small>
-      </div>
-    </div>
+    <mat-form-field class="techusedlist full-width" appearance="fill">
+      <mat-label>Technologies Used</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Enter technologies">
+        <mat-chip-row *ngFor="let tech of angForm.get('importantTechnologiesUsed')?.value"
+                      (removed)="remove(tech)"
+                      [editable]="true"
+                      (edited)="edit(tech, $event)"
+                      [aria-description]="'Press enter to edit ' + tech">
+          {{tech}}
+          <button matChipRemove [attr.aria-label]="'Remove ' + tech">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input placeholder="Add technology..."
+               [matChipInputFor]="chipGrid"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)" />
+      </mat-chip-grid>
+    </mat-form-field>
 
-    <button type="submit" [disabled]="angForm.invalid" class="btn btn-success">Save</button>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="angForm.get('description')?.hasError('required')">Description is required.</mat-error>
+      <mat-error *ngIf="angForm.get('description')?.hasError('minlength')">Description should be at least 10 characters long.</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="angForm.invalid">Add</button>
   </form>
-
-  <br />
-  <p>Form value: {{ angForm.value | json }}</p>
-  <p>Form status: {{ angForm.status | json }}</p>
 </div>
