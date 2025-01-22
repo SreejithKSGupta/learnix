@@ -6,6 +6,7 @@
    - Join/create courses [students/tutors]
    - attend courses
    - Student/tutor statistics [number of hours learned,performance, number of courses enrolled,made]
+   - currency change according to user country
 ## External components
 
 ## Pages

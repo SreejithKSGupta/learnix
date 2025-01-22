@@ -1,0 +1,40 @@
+
+.course-bg-image {
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 5px 5px 0 0;
+}
+
+.course-card:hover .overlay {
+  opacity: 1;
+}
+
+.course-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.course-tutor {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.mat-card {
+  border-radius: 5px;
+}
+
+.mat-dialog-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.mat-dialog-content p {
+  margin-bottom: 8px;
+}

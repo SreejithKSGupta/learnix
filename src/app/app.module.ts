@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { DataService } from './services/data.service';
 import { LightboxModule } from 'ngx-lightbox';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
@@ -26,7 +27,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
- 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

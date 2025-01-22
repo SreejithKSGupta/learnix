@@ -19,6 +19,7 @@ import { MatBadgeModule} from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatButtonModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     CommonModule,
     MatSidenavModule,
     MatListModule,
