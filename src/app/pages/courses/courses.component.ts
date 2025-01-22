@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { MatDialog } from '@angular/material/dialog';
-
-interface Course {
-  courseName: string;
-  tutor: string;
-  duration: string;
-  description: string;
-  importantTechnologiesUsed: string[];
-  courseFee: string;
-}
-
+import {Course} from '../../interfaces/course';
 @Component({
   selector: 'app-courses',
   standalone: false,

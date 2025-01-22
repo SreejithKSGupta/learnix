@@ -9,6 +9,7 @@
           <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
             <h5 class="text-white course-title mb-1">{{ course.courseName }}</h5>
             <p class="text-light course-tutor small">{{ course.tutor }}</p>
+
           </div>
         </div>
 
@@ -18,6 +19,10 @@
             <div class="d-flex align-items-center">
               <i class="material-icons text-primary me-2">schedule</i>
               <span class="text-muted small">{{ course.duration }}</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="material-icons text-primary me-2">plus_one</i>
+              <span class="text-muted small">{{ course.credits }}</span>
             </div>
             <div class="d-flex align-items-center">
               <i class="material-icons text-success me-2">attach_money</i>

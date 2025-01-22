@@ -1,100 +1,72 @@
 <div class="addcourse">
-  <h1>
-    {{title}}
-  </h1>
+  <h1>{{ title }}</h1>
 
-  <form [formGroup]="angForm" novalidate>
+  <form [formGroup]="angForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
       <label>Name:</label>
       <input class="form-control" formControlName="name" type="text">
-      <div
-        *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"
-        class="alert alert-danger">
-        <small *ngIf="angForm.controls['name'].errors?.['required']">
-          Name is required.
-        </small>
-        <small *ngIf="angForm.controls['name'].errors?.['pattern']">
-          course name should start with a letter.
-        </small>
-        <small *ngIf="angForm.controls['name'].errors?.['minlength']">
-          course name should be atleast 3 letters
-        </small>
-
+      <div *ngIf="angForm.get('name')?.invalid && (angForm.get('name')?.dirty || angForm.get('name')?.touched)" class="alert alert-danger">
+        <small *ngIf="angForm.get('name')?.errors?.['required']">Name is required.</small>
+        <small *ngIf="angForm.get('name')?.errors?.['pattern']">Course name should start with a letter.</small>
+        <small *ngIf="angForm.get('name')?.errors?.['minlength']">Course name should be at least 3 letters long.</small>
       </div>
     </div>
+
     <div class="form-group">
       <label>Author:</label>
       <input class="form-control" formControlName="author" type="text">
-      <div
-        *ngIf="angForm.controls['author'].invalid && (angForm.controls['author'].dirty || angForm.controls['author'].touched)"
-        class="alert alert-danger">
-        <small *ngIf="angForm.controls['author'].errors?.['required']">
-          Author is required.
-        </small>
-        <small *ngIf="angForm.controls['author'].errors?.['pattern']">
-          author name should only have letters.
-        </small>
-        <small *ngIf="angForm.controls['author'].errors?.['minlength']">
-          author name should be longer
-        </small>
+      <div *ngIf="angForm.get('author')?.invalid && (angForm.get('author')?.dirty || angForm.get('author')?.touched)" class="alert alert-danger">
+        <small *ngIf="angForm.get('author')?.errors?.['required']">Author is required.</small>
+        <small *ngIf="angForm.get('author')?.errors?.['pattern']">Author name should only contain letters.</small>
+        <small *ngIf="angForm.get('author')?.errors?.['minlength']">Author name should be at least 3 letters long.</small>
       </div>
     </div>
+
     <div class="form-group">
       <label>Duration:</label>
       <input class="form-control" formControlName="duration" type="text">
-      <div
-        *ngIf="angForm.controls['duration'].invalid && (angForm.controls['duration'].dirty || angForm.controls['duration'].touched)"
-        class="alert alert-danger">
-        <small *ngIf="angForm.controls['duration'].errors?.['required']">
-          Duration is required.
-        </small>
-        <small *ngIf="angForm.controls['duration'].errors?.['pattern']">
-          duration [weeks] should be a number
-        </small>
-        <small *ngIf="angForm.controls['duration'].errors?.['min']">
-          credits should be a equal to or greater than 4 weeks
-        </small>
-        <small *ngIf="angForm.controls['duration'].errors?.['max']">
-          credits should be less than or equal to 12
-        </small>
+      <div *ngIf="angForm.get('duration')?.invalid && (angForm.get('duration')?.dirty || angForm.get('duration')?.touched)" class="alert alert-danger">
+        <small *ngIf="angForm.get('duration')?.errors?.['required']">Duration is required.</small>
+        <small *ngIf="angForm.get('duration')?.errors?.['pattern']">Duration should be a number.</small>
+        <small *ngIf="angForm.get('duration')?.errors?.['min']">Duration should be at least 4 weeks.</small>
+        <small *ngIf="angForm.get('duration')?.errors?.['max']">Duration should not exceed 12 weeks.</small>
       </div>
     </div>
+
     <div class="form-group">
       <label>Credits:</label>
       <input class="form-control" formControlName="credits" type="text">
-      <div
-        *ngIf="angForm.controls['credits'].invalid && (angForm.controls['credits'].dirty || angForm.controls['credits'].touched)"
-        class="alert alert-danger">
-        <small *ngIf="angForm.controls['credits'].errors?.['required']">
-          Credits are required.
-        </small>
-        <small *ngIf="angForm.controls['credits'].errors?.['pattern']">
-          credits should be a number
-        </small>
-        <small *ngIf="angForm.controls['credits'].errors?.['min']">
-          credits should be a equal to or greater than 1
-        </small>
-        <small *ngIf="angForm.controls['credits'].errors?.['max']">
-          credits should be less than or equal to 5
-        </small>
+      <div *ngIf="angForm.get('credits')?.invalid && (angForm.get('credits')?.dirty || angForm.get('credits')?.touched)" class="alert alert-danger">
+        <small *ngIf="angForm.get('credits')?.errors?.['required']">Credits are required.</small>
+        <small *ngIf="angForm.get('credits')?.errors?.['pattern']">Credits should be a number.</small>
+        <small *ngIf="angForm.get('credits')?.errors?.['min']">Credits should be at least 1.</small>
+        <small *ngIf="angForm.get('credits')?.errors?.['max']">Credits should not exceed 5.</small>
       </div>
     </div>
+
+    <div class="form-group">
+      <label>Fees:</label>
+      <input class="form-control" formControlName="coursefee" type="text">
+      <div *ngIf="angForm.get('coursefee')?.invalid && (angForm.get('coursefee')?.dirty || angForm.get('coursefee')?.touched)" class="alert alert-danger">
+        <small *ngIf="angForm.get('coursefee')?.errors?.['required']">Fees are required.</small>
+        <small *ngIf="angForm.get('coursefee')?.errors?.['pattern']">Fees should be a number.</small>
+        <small *ngIf="angForm.get('coursefee')?.errors?.['min']">Fees should be at least 1.</small>
+        <small *ngIf="angForm.get('coursefee')?.errors?.['max']">Fees should not exceed 5000.</small>
+      </div>
+    </div>
+
     <div class="form-group">
       <label>Description:</label>
       <textarea class="form-control" formControlName="description"></textarea>
-      <div
-        *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)"
-        class="alert alert-danger">
-        <small *ngIf="angForm.controls['description'].errors?.['required']">
-          Description is required.
-        </small>
-        <small *ngIf="angForm.controls['description'].errors?.['minlength']">
-          Description should be longer.
-        </small>
+      <div *ngIf="angForm.get('description')?.invalid && (angForm.get('description')?.dirty || angForm.get('description')?.touched)" class="alert alert-danger">
+        <small *ngIf="angForm.get('description')?.errors?.['required']">Description is required.</small>
+        <small *ngIf="angForm.get('description')?.errors?.['minlength']">Description should be at least 10 characters long.</small>
       </div>
     </div>
-    <button type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">Save</button>
+
+    <button type="submit" [disabled]="angForm.invalid" class="btn btn-success">Save</button>
   </form>
+
   <br />
   <p>Form value: {{ angForm.value | json }}</p>
   <p>Form status: {{ angForm.status | json }}</p>

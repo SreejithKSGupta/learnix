@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
   constructor(private http: HttpClient) { }
-  // protected url = 'http://localhost:000';
+  courseurl = 'http://localhost:3000/courses';
+  testurl = "https://jsonplaceholder.typicode.com/users";
 
    getUsers(): Observable<any> {
      return this
              .http
-               .get("https://jsonplaceholder.typicode.com/users")
+               .get(this.testurl)
              .pipe(
                map(res => res)
            );
@@ -22,9 +23,13 @@ export class DataService {
        getcourses(): Observable<any> {
          return this
                  .http
-                   .get("http://localhost:3000/courses")
+                   .get(this.courseurl)
                  .pipe(
                    map(res => res)
                );
            }
+
+           addcourse(item: any): Observable<any> {
+            return this.http.post<any>(this.courseurl, item);
+          }
 }
