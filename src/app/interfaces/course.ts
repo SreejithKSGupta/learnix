@@ -2,7 +2,7 @@ export interface Course {
   id: string;
   courseName: string;
   tutor: string;
-  duration: string;
+  duration: number;
   description: string;
   importantTechnologiesUsed: string[];
   courseFee: string;

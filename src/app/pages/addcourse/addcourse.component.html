@@ -73,6 +73,6 @@
       <mat-error *ngIf="angForm.get('description')?.hasError('minlength')">Description should be at least 10 characters long.</mat-error>
     </mat-form-field>
 
-    <button mat-flat-button color="primary" type="submit" [disabled]="angForm.invalid">Add</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="angForm.invalid">{{isEditMode?"Update":"Add"}}</button>
   </form>
 </div>

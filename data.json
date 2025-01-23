@@ -4,7 +4,7 @@
       "id": "3",
       "courseName": "Data Science with R",
       "tutor": "Alice Johnson",
-      "duration": "10 weeks",
+      "duration": "10",
       "description": "Explore data science concepts and techniques using R, including data manipulation, visualization, and machine learning.",
       "importantTechnologiesUsed": [
         "R",
@@ -18,7 +18,7 @@
       "id": "4",
       "courseName": "Machine Learning with TensorFlow",
       "tutor": "Bob Brown",
-      "duration": "12 weeks",
+      "duration": "12",
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
       "importantTechnologiesUsed": [
         "TensorFlow",
@@ -30,9 +30,9 @@
     },
     {
       "id": "5",
-      "courseName": "Full-Stack Web Development",
-      "tutor": "Emily Davis",
-      "duration": "14 weeks",
+      "courseName": "Full Stack Web Development",
+      "tutor": "Sreejith ks gupta",
+      "duration": 12,
       "description": "Learn to build full-stack web applications using Node.js, Express, and MongoDB, along with front-end technologies.",
       "importantTechnologiesUsed": [
         "Node.js",
@@ -45,44 +45,19 @@
       "credits": "3"
     },
     {
-      "id": "7578",
-      "courseName": "html",
-      "tutor": "sreejith ks",
-      "duration": "4",
-      "description": "this is a good course, please join",
-      "importantTechnologiesUsed": [],
-      "courseFee": "350",
-      "credits": "4"
-    },
-    {
-      "id": "1a0d",
-      "courseName": "front end web development",
-      "tutor": "sreejith ks pro max",
-      "duration": "5",
-      "description": "this is to check if the custom input is working.",
-      "importantTechnologiesUsed": [
-        "svelte",
-        "react",
-        "angular"
-      ],
-      "courseFee": "450",
-      "credits": "5"
-    },
-    {
-      "id": "4087",
-      "courseName": "web development basics",
+      "id": "5b8c",
+      "courseName": "new html course 2",
       "tutor": "Sreejith KS",
       "duration": 5,
-      "description": "in this course, you will learn how to create basic websites, and a little bit about how items work.",
+      "description": "this is a good course",
       "importantTechnologiesUsed": [
-        "HTML",
-        "CSS",
-        "JS",
-        "NODE",
-        "EXPRESS"
+        "html",
+        "css",
+        "js",
+        "node"
       ],
-      "courseFee": 0,
-      "credits": 4
+      "courseFee": 766,
+      "credits": 5
     }
   ]
 }

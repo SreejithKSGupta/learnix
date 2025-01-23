@@ -37,7 +37,7 @@
 
         <!-- Call-to-Action Buttons -->
         <mat-card-actions class="d-flex justify-content-evenly p-3">
-          <button mat-flat-button color="primary" class="px-3">Enroll Now</button>
+          <button mat-flat-button color="primary" (click)="enrolltocourse(course.id)" class="px-3">Enroll Now</button>
           <button
             mat-flat-button
             color="accent"
@@ -51,7 +51,6 @@
     </div>
   </div>
 
-  <!-- Dialog Template -->
   <ng-template #detailsTemplate let-data>
     <h2 mat-dialog-title class="text-center">Course Details</h2>
     <mat-dialog-content class="px-3">
@@ -79,7 +78,9 @@
         <i class="material-icons text-dark me-2">code</i>
         <strong>Technologies:</strong> {{ data.importantTechnologiesUsed.join(', ') }}
       </p>
-      <button mat-button (click)="removecourseitem(data.id)">delete</button>
+      <button mat-flat-button (click)="editcourseitem(data.id)">edit</button>
+
+      <button mat-flat-button (click)="removecourseitem(data.id)">delete</button>
     </mat-dialog-content>
     <mat-dialog-actions align="end" class="px-3">
       <button mat-button mat-dialog-close color="warn">Close</button>

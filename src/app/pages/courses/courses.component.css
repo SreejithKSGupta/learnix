@@ -7,17 +7,13 @@
 
 .overlay {
   background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
   transition: opacity 0.3s;
   border-radius: 5px 5px 0 0;
 }
 
-.course-card:hover .overlay {
-  opacity: 1;
-}
 
 .course-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 

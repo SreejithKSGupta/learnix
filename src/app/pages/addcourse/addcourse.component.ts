@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Course } from './../../interfaces/course';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DataService } from '../../services/data.service'; // Adjust the path if needed
-import { Router } from '@angular/router';
+import { DataService } from '../../services/data.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
 
@@ -11,14 +12,37 @@ import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
   templateUrl: './addcourse.component.html',
   styleUrls: ['./addcourse.component.css']
 })
-export class AddcourseComponent {
+
+
+
+
+export class AddcourseComponent implements OnInit {
   title = 'Add New Courses';
   angForm!: FormGroup;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   addOnBlur = true;
+  isEditMode = false;
+  updatableid: any;
+  ischanged = false;
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      const courseId = params['id'];
+      if (courseId) {
+        this.isEditMode = true;
+        this.updatableid= courseId;
+        this.populateForm(courseId);
+      }
+    });
   }
 
   createForm() {
@@ -29,8 +53,28 @@ export class AddcourseComponent {
       credits: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(5), Validators.min(1)]],
       coursefee: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(5000), Validators.min(0)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      importantTechnologiesUsed: [[]] // Initialize as an empty array
+      importantTechnologiesUsed: [[]]
     });
+  }
+
+  populateForm(courseId: string): void {
+    this.dataService.getcoursebyid(courseId).subscribe(
+      (course) => {
+        this.angForm.patchValue({
+          name: course.courseName,
+          author: course.tutor,
+          duration: course.duration,
+          credits: course.credits,
+          coursefee: course.courseFee,
+          description: course.description,
+          importantTechnologiesUsed: course.importantTechnologiesUsed || []
+        });
+      },
+      (error) => {
+        console.error('Error fetching course:', error);
+        alert('Failed to fetch course details. Please try again.');
+      }
+    );
   }
 
   add(event: MatChipInputEvent): void {
@@ -67,27 +111,52 @@ export class AddcourseComponent {
 
   onSubmit() {
     if (this.angForm.valid) {
-      const courseData = {
-        courseName: this.angForm.value.name,
-        tutor: this.angForm.value.author,
-        duration: this.angForm.value.duration,
-        description: this.angForm.value.description,
-        importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
-        courseFee: this.angForm.value.coursefee,
-        credits: this.angForm.value.credits
-      };
 
-      this.dataService.addcourse(courseData).subscribe(
-        (response) => {
-          console.log('Course added successfully:', response);
-          alert('Course added successfully!');
-          this.router.navigate(['/courses']);
-        },
-        (error) => {
-          console.error('Error adding course:', error);
-          alert('Failed to add course. Please try again.');
-        }
-      );
+
+      if (this.isEditMode) {
+        const courseData = {
+          id: this.updatableid,
+          courseName: this.angForm.value.name,
+          tutor: this.angForm.value.author,
+          duration: this.angForm.value.duration,
+          description: this.angForm.value.description,
+          importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
+          courseFee: this.angForm.value.coursefee,
+          credits: this.angForm.value.credits
+        };
+        this.dataService.updateCourse(courseData).subscribe(
+          (response) => {
+            console.log('Course updated successfully:', response);
+            alert('Course updated successfully!');
+            this.router.navigate(['/courses']);
+          },
+          (error) => {
+            console.error('Error updating course:', error);
+            alert('Failed to update course. Please try again.');
+          }
+        );
+      } else {
+        const courseData = {
+          courseName: this.angForm.value.name,
+          tutor: this.angForm.value.author,
+          duration: this.angForm.value.duration,
+          description: this.angForm.value.description,
+          importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
+          courseFee: this.angForm.value.coursefee,
+          credits: this.angForm.value.credits
+        };
+        this.dataService.addcourse(courseData).subscribe(
+          (response) => {
+            console.log('Course added successfully:', response);
+            alert('Course added successfully!');
+            this.router.navigate(['/courses']);
+          },
+          (error) => {
+            console.error('Error adding course:', error);
+            alert('Failed to add course. Please try again.');
+          }
+        );
+      }
     } else {
       alert('Please fill in all required fields correctly.');
     }
