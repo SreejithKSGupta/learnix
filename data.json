@@ -59,5 +59,19 @@
       "courseFee": 766,
       "credits": 5
     }
+  ],
+  "users": [
+    {
+      "id": 1737626478483,
+      "name": "sreejith ks",
+      "usertype": "student",
+      "gender": "male",
+      "email": "sre@g.c",
+      "areaOfInterest": [
+        "coding"
+      ],
+      "experience": 4,
+      "password": "Hari*5559"
+    }
   ]
 }

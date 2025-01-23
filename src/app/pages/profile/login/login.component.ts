@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Users } from '../../interfaces/users';
+import { Users } from '../../../interfaces/users';
+import { Userservice } from '../../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   secondFormGroup!: FormGroup; // Step 2 form group
   thirdFormGroup!: FormGroup; // Step 3 form group
 
-  constructor(private _formBuilder: FormBuilder, private router: Router) {} // Injected Router for navigation
+  constructor(private _formBuilder: FormBuilder, private router: Router, private userservice:Userservice) {} // Injected Router for navigation
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -86,6 +87,9 @@ export class LoginComponent implements OnInit {
 
       // Log the user object to the console
       console.log('User data submitted successfully:', user);
+      this.userservice.adduser(user).subscribe((res)=>{
+        console.log(res);
+      });
 
       // Optionally navigate to a different page or display a success message
       // For this case, skip the last page and directly log success
