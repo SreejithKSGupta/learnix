@@ -8,13 +8,13 @@ import { Userservice } from '../../../services/user.service';
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'], // Corrected property name from `styleUrl` to `styleUrls`
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  signupForm!: FormGroup; // Parent form group for the stepper
-  firstFormGroup!: FormGroup; // Step 1 form group
-  secondFormGroup!: FormGroup; // Step 2 form group
-  thirdFormGroup!: FormGroup; // Step 3 form group
+  signupForm!: FormGroup;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private userservice:Userservice) {} // Injected Router for navigation
 
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
     this.secondFormGroup = this._formBuilder.group({
       gender: ['', Validators.required],
-      expertise: [''], // Conditional validation
-      areaOfInterest: [''], // Conditional validation
+      expertise: [''],
+      areaOfInterest: [''],
       experience: ['', [Validators.required, Validators.min(0)]],
     });
 
@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
       thirdFormGroup: this.thirdFormGroup,
     });
 
-    // Set dynamic validation for expertise and areaOfInterest
     this.firstFormGroup.get('userType')?.valueChanges.subscribe((userType) => {
       if (userType === 'tutor') {
         this.secondFormGroup.get('expertise')?.setValidators([Validators.required]);
@@ -63,7 +62,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // Custom Validator for Password Matching
   passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -71,11 +69,9 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    // Check if the signupForm is valid
     if (this.signupForm.valid) {
-      // Create a `Users` object by extracting values from the form groups
       const user: Users = {
-        id: Date.now(), // Example: Use timestamp as a unique ID
+        id: Date.now(),
         name: this.firstFormGroup.get('name')?.value,
         usertype: this.firstFormGroup.get('userType')?.value,
         gender: this.secondFormGroup.get('gender')?.value,
@@ -85,37 +81,28 @@ export class LoginComponent implements OnInit {
         password: this.thirdFormGroup.get('password')?.value,
       };
 
-      // Log the user object to the console
-      console.log('User data submitted successfully:', user);
+
       this.userservice.adduser(user).subscribe((res)=>{
-        console.log(res);
+        console.log('User data submitted successfully:',res);
+        localStorage.setItem('user', JSON.stringify(user));
       });
 
-      // Optionally navigate to a different page or display a success message
-      // For this case, skip the last page and directly log success
       alert('Sign-up successful! Check the console for user data.');
 
-      // Uncomment this to navigate to another page if needed
-      // this.router.navigate(['/profile']);
     } else {
       console.log('Form is invalid. Please fill all required fields.');
       alert('Form is invalid. Please fill all required fields.');
     }
   }
 
-
-  // Navigation function
   navigateToProfile() {
     console.log('Navigating to profile page...');
-    this.router.navigate(['/profile']); // Adjust the route based on your application
+    this.router.navigate(['/profile']);
   }
 
-  // Utility function to dynamically check if the user is a tutor
   get isTutor(): boolean {
     return this.firstFormGroup.get('userType')?.value === 'tutor';
   }
-
-  // Utility function to dynamically check if the user is a student
   get isStudent(): boolean {
     return this.firstFormGroup.get('userType')?.value === 'student';
   }

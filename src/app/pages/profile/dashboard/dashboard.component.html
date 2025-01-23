@@ -1,1 +1,46 @@
-<p>dashboard works!</p>
+<!-- print the user data -->
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">User Profile</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="avatar">
+              <img src="/assets/404.webp" alt="user image" class="img-thumbnail">
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="user-info">
+              <h4>{{ user?.name }}</h4>
+              <p>{{ user?.email }}</p>
+              <p>{{ user?.usertype }}</p>
+              <p>{{ user?.gender }}</p>
+              <p>{{ user?.areaofInterest }}</p>
+              <p>{{ user?.experience }}</p>
+            </div>
+            <button
+            mat-flat-button
+            color="accent"
+            class="px-3"
+            (click)="goto('editprofile')"
+          >
+           edit profile
+          </button>
+          <button
+          mat-flat-button
+          color="accent"
+          class="px-3"
+          (click)="logout()"
+        >
+        logout
+        </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

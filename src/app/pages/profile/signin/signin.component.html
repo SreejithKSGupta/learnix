@@ -1,1 +1,46 @@
-<p>signin works!</p>
+<div class="signin-container">
+  <h1>Sign In</h1>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Name or Email</mat-label>
+        <input matInput formControlName="nameOrEmail" type="text" />
+        <mat-error *ngIf="signinForm.get('nameOrEmail')?.hasError('required')">
+          Name or Email is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" />
+        <mat-error *ngIf="signinForm.get('password')?.hasError('required')">
+          Password is required.
+        </mat-error>
+        <mat-error *ngIf="signinForm.get('password')?.hasError('minlength')">
+          Password must be at least 6 characters long.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit">
+      Sign In
+    </button>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>
+<!-- forgot password and new user buttons -->
+
+<div class="d-flex justify-content-between m-3 col-3 mx-auto">
+  <button mat-flat-button >
+    <a [routerLink]="['/forgot-password']">Forgot Password</a>
+
+  </button>
+  <button mat-flat-button >
+    <a [routerLink]="['/login']">New User</a>
+  </button>
+</div>

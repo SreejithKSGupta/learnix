@@ -62,16 +62,120 @@
   ],
   "users": [
     {
-      "id": 1737626478483,
-      "name": "sreejith ks",
+      "id": 1737631633699,
+      "name": "Srejith",
       "usertype": "student",
       "gender": "male",
-      "email": "sre@g.c",
+      "email": "sreejith.ks@gmail.com",
+      "areaOfInterest": [
+        "coding"
+      ],
+      "experience": 3,
+      "password": "Hari*5559"
+    },
+    {
+      "id": 1737632110429,
+      "name": "Sreejith KS",
+      "usertype": "student",
+      "gender": "male",
+      "email": "sreejithksgupta2255@gmail.com",
       "areaOfInterest": [
         "coding"
       ],
       "experience": 4,
       "password": "Hari*5559"
+    },
+    {
+      "id": 1737633178543,
+      "name": "John Doe",
+      "usertype": "student",
+      "gender": "male",
+      "email": "johndoe@example.com",
+      "areaOfInterest": [
+        "web development"
+      ],
+      "experience": 2,
+      "password": "JohnDoe*1234"
+    },
+    {
+      "id": 1737634215786,
+      "name": "Jane Smith",
+      "usertype": "student",
+      "gender": "female",
+      "email": "janesmith@example.com",
+      "areaOfInterest": [
+        "data science"
+      ],
+      "experience": 3,
+      "password": "JaneSmith*2345"
+    },
+    {
+      "id": 1737635287945,
+      "name": "Emily Johnson",
+      "usertype": "student",
+      "gender": "female",
+      "email": "emilyjohnson@example.com",
+      "areaOfInterest": [
+        "machine learning"
+      ],
+      "experience": 2,
+      "password": "EmilyJohnson*3456"
+    },
+    {
+      "id": 1737636349897,
+      "name": "Michael Williams",
+      "usertype": "student",
+      "gender": "male",
+      "email": "michaelwilliams@example.com",
+      "areaOfInterest": [
+        "cloud computing"
+      ],
+      "experience": 4,
+      "password": "MichaelWilliams*4567"
+    },
+    {
+      "id": 1737637412543,
+      "name": "Sarah Brown",
+      "usertype": "student",
+      "gender": "female",
+      "email": "sarahbrown@example.com",
+      "areaOfInterest": [
+        "ai and robotics"
+      ],
+      "experience": 5,
+      "password": "SarahBrown*5678"
+    },
+    {
+      "id": 1737638475649,
+      "name": "David Wilson",
+      "usertype": "student",
+      "gender": "male",
+      "email": "davidwilson@example.com",
+      "areaOfInterest": [
+        "cybersecurity"
+      ],
+      "experience": 3,
+      "password": "DavidWilson*6789"
+    },
+    {
+      "id": 1737633219272,
+      "name": "ambika",
+      "usertype": "tutor",
+      "gender": "female",
+      "email": "ambikavs@gmail.com",
+      "areaOfInterest": [],
+      "experience": 5,
+      "password": "Amma@5559"
+    },
+    {
+      "id": 1737633271901,
+      "name": "Anjithja J",
+      "usertype": "tutor",
+      "gender": "female",
+      "email": "anjitha@gmail.com",
+      "areaOfInterest": [],
+      "experience": 5,
+      "password": "Anju*5559"
     }
   ]
 }

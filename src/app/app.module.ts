@@ -28,6 +28,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SigninComponent } from './pages/profile/signin/signin.component';
+import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { SigninComponent } from './pages/profile/signin/signin.component';
     BlogsComponent,
     DashboardComponent,
     SigninComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserModule,

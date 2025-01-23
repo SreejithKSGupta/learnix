@@ -12,7 +12,7 @@ import { N404pageComponent } from './otherpages/n404page/n404page.component';
 import { PrivacypageComponent } from './otherpages/privacypage/privacypage.component';
 import { SigninComponent } from './pages/profile/signin/signin.component';
 import { DashboardComponent } from './pages/profile/dashboard/dashboard.component';
-
+import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
 export const router: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'contact', component: ContactpageComponent },
@@ -26,6 +26,7 @@ export const router: Routes = [
   { path: 'about', component: AboutpageComponent },
   { path: 'privacy', component: PrivacypageComponent },
   { path: 'dashboard', component: DashboardComponent },
+  {path:  'forgot-password', component: ForgotpasswordComponent},
   { path: '**', component: N404pageComponent } // 404 route
 ];
 
