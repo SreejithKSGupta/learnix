@@ -1,46 +1,39 @@
-<!-- print the user data -->
-
-<div class="row">
+<div class=" d-flex justify-content-center align-items-center mt-5">
   <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">User Profile</h4>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="avatar">
-              <img src="/assets/404.webp" alt="user image" class="img-thumbnail">
+    <mat-card class="profile-card shadow-sm">
+      <mat-card-header class="text-center">
+        <mat-card-title class="mt-3">{{ user?.name }}</mat-card-title>
+        <mat-card-subtitle class="text-muted">{{ user?.email }}</mat-card-subtitle>
+
+        <div class="avatar">
+          <img src="/assets/404.webp" alt="user image" class="img-fluid rounded-circle">
+        </div>
+         </mat-card-header>
+
+      <mat-card-content>
+        <div class="user-info">
+          <div class="info-item">
+            <strong>User Type:</strong> <span>{{ user?.usertype }}</span>
+          </div>
+          <div class="info-item">
+            <strong>Gender:</strong> <span>{{ user?.gender }}</span>
+          </div>
+          <div class="info-item">
+            <strong>Area of Interest:</strong>
+            <div class="interest-chips">
+              <mat-chip *ngFor="let interest of user?.areaOfInterest">{{ interest }}</mat-chip>
             </div>
           </div>
-          <div class="col-md-9">
-            <div class="user-info">
-              <h4>{{ user?.name }}</h4>
-              <p>{{ user?.email }}</p>
-              <p>{{ user?.usertype }}</p>
-              <p>{{ user?.gender }}</p>
-              <p>{{ user?.areaofInterest }}</p>
-              <p>{{ user?.experience }}</p>
-            </div>
-            <button
-            mat-flat-button
-            color="accent"
-            class="px-3"
-            (click)="goto('editprofile')"
-          >
-           edit profile
-          </button>
-          <button
-          mat-flat-button
-          color="accent"
-          class="px-3"
-          (click)="logout()"
-        >
-        logout
-        </button>
+          <div class="info-item">
+            <strong>Experience:</strong> <span>{{ user?.experience }} years</span>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </mat-card-content>
 
+      <mat-card-actions class="text-center d-flex justify-content-center">
+        <button mat-flat-button color="primary" class="mx-2" (click)="goto('editprofile')">Edit Profile</button>
+        <button mat-flat-button color="warn" class="mx-2" (click)="logout()">Logout</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -67,9 +67,8 @@
       "usertype": "student",
       "gender": "male",
       "email": "sreejith.ks@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
+      "areaOfInterest": ["react","ai and robotics","cybersecurity"],
+
       "experience": 3,
       "password": "Hari*5559"
     },
@@ -79,9 +78,7 @@
       "usertype": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
+      "areaOfInterest": ["react","ai and robotics","cybersecurity"],
       "experience": 4,
       "password": "Hari*5559"
     },
@@ -163,7 +160,7 @@
       "usertype": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": [],
+      "areaOfInterest": ["react","ai and robotics","cybersecurity"],
       "experience": 5,
       "password": "Amma@5559"
     },

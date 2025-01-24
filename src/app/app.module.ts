@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/profile/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule } from '@angular/forms';
+import {DashboardComponent} from './pages/profile/dashboard/dashboard.component';
 import { MaterialModule } from './shared/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddcourseComponent } from './pages/addcourse/addcourse.component';
@@ -34,6 +35,7 @@ import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpa
   declarations: [
     AppComponent,
     HeaderComponent,
+    DashboardComponent,
     FooterComponent,
     NavbarComponent,
     LoginComponent,
