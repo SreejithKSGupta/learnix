@@ -1,46 +1,50 @@
 <div class="signin-container">
-  <h1>Sign In</h1>
-  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Name or Email</mat-label>
-        <input matInput formControlName="nameOrEmail" type="text" />
-        <mat-error *ngIf="signinForm.get('nameOrEmail')?.hasError('required')">
-          Name or Email is required.
-        </mat-error>
-      </mat-form-field>
-    </div>
+  <mat-card class="signin-card">
+    <mat-card-header>
+      <h1 class="text-center">Sign In</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <div class="form-group">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput formControlName="password" type="password" />
-        <mat-error *ngIf="signinForm.get('password')?.hasError('required')">
-          Password is required.
-        </mat-error>
-        <mat-error *ngIf="signinForm.get('password')?.hasError('minlength')">
-          Password must be at least 6 characters long.
-        </mat-error>
-      </mat-form-field>
-    </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Name or Email</mat-label>
+            <input matInput formControlName="nameOrEmail" type="text" />
+            <mat-error *ngIf="signinForm.get('nameOrEmail')?.hasError('required')">
+              Name or Email is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-    <button mat-flat-button color="primary" type="submit">
-      Sign In
-    </button>
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" />
+            <mat-error *ngIf="signinForm.get('password')?.hasError('required')">
+              Password is required.
+            </mat-error>
+            <mat-error *ngIf="signinForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters long.
+            </mat-error>
+          </mat-form-field>
+        </div>
 
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-  </form>
-</div>
-<!-- forgot password and new user buttons -->
+        <button mat-flat-button color="primary" type="submit" class="full-width">
+          Sign In
+        </button>
 
-<div class="d-flex justify-content-between m-3 col-3 mx-auto">
-  <button mat-flat-button >
-    <a [routerLink]="['/forgot-password']">Forgot Password</a>
+        <div *ngIf="errorMessage" class="error-message mt-2">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </mat-card-content>
 
-  </button>
-  <button mat-flat-button >
-    <a [routerLink]="['/login']">New User</a>
-  </button>
+    <!-- Forgot Password & New User buttons -->
+    <mat-card-actions class="text-center">
+      <div class="button-group">
+        <button mat-button [routerLink]="'/forgot-password'">Forgot Password?</button>
+        <button mat-button [routerLink]="'/login'">New User</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>
