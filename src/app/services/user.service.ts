@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Userservice {
+  private authStateSubject = new BehaviorSubject<boolean>(this.isauthenticated()); // Default value is based on localStorage
+  public authState$ = this.authStateSubject.asObservable(); // Observable to subscribe to
+
   constructor(private http: HttpClient) {}
+
   userurl = 'http://localhost:3000/users';
 
   getusers(): Observable<any> {
@@ -43,10 +47,20 @@ export class Userservice {
     return user !== null;
   }
 
+  signout() {
+    console.log('Signing out from services');
+    localStorage.removeItem('user');
+    this.authStateSubject.next(false); // Notify subscribers that user is signed out
+  }
+
+  signin(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authStateSubject.next(true); // Notify subscribers that user is signed in
+  }
+
   userrole(): string {
     const userl = localStorage.getItem('user') || 'null';
     const user = JSON.parse(userl);
-    return user.usertype;
+    return user?.usertype || ''; // Optional chaining for safety
   }
 }
-

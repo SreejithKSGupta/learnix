@@ -40,7 +40,7 @@ export class SigninComponent implements OnInit {
             u.password === this.signinForm.value.password
         );
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
+          this.userService.signin(user);
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'Invalid name/email or password';

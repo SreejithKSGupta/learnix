@@ -84,7 +84,8 @@ export class LoginComponent implements OnInit {
 
       this.userservice.adduser(user).subscribe((res)=>{
         console.log('User data submitted successfully:',res);
-        localStorage.setItem('user', JSON.stringify(user));
+        this.userservice.signin(user);
+        // this.navigateToProfile(); now, we agive a button to navigate to profile
       });
 
       alert('Sign-up successful! Check the console for user data.');
@@ -97,7 +98,7 @@ export class LoginComponent implements OnInit {
 
   navigateToProfile() {
     console.log('Navigating to profile page...');
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/dashboard']);
   }
 
   get isTutor(): boolean {
