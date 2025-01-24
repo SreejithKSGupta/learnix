@@ -26,7 +26,6 @@ import { PrivacypageComponent } from './otherpages/privacypage/privacypage.compo
 import { AboutpageComponent } from './otherpages/aboutpage/aboutpage.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SigninComponent } from './pages/profile/signin/signin.component';
 import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
 
@@ -50,7 +49,6 @@ import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpa
     AboutpageComponent,
     CoursesComponent,
     BlogsComponent,
-    DashboardComponent,
     SigninComponent,
     ForgotpasswordComponent,
   ],

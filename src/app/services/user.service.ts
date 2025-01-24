@@ -42,5 +42,11 @@ export class Userservice {
     const user = JSON.parse(userl);
     return user !== null;
   }
+
+  userrole(): string {
+    const userl = localStorage.getItem('user') || 'null';
+    const user = JSON.parse(userl);
+    return user.usertype;
+  }
 }
 

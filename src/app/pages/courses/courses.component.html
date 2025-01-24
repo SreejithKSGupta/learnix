@@ -5,11 +5,18 @@
       <mat-card class="course-card shadow-sm h-100">
         <!-- Course Image and Overlay -->
         <div class="course-image-wrapper position-relative">
-          <img src="assets/gallery/designer.webp" alt="Course Image" class="course-bg-image w-100">
-          <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-            <h5 class="text-white course-title mb-1">{{ course.courseName }}</h5>
+          <img
+            src="assets/gallery/designer.webp"
+            alt="Course Image"
+            class="course-bg-image w-100"
+          />
+          <div
+            class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
+          >
+            <h5 class="text-white course-title mb-1">
+              {{ course.courseName }}
+            </h5>
             <p class="text-light course-tutor small">{{ course.tutor }}</p>
-
           </div>
         </div>
 
@@ -31,13 +38,25 @@
           </div>
           <div class="d-flex align-items-center">
             <i class="material-icons text-warning me-2">code</i>
-            <span class="text-muted small">{{ course.importantTechnologiesUsed.join(', ') }}</span>
+            <span class="text-muted small">{{
+              course.importantTechnologiesUsed.join(", ")
+            }}</span>
           </div>
         </mat-card-content>
 
         <!-- Call-to-Action Buttons -->
         <mat-card-actions class="d-flex justify-content-evenly p-3">
-          <button mat-flat-button color="primary" (click)="enrolltocourse(course.id)" class="px-3">Enroll Now</button>
+          <button
+            mat-flat-button
+            color="primary"
+            *ngIf="userrole === 'student'"
+            (click)="enrolltocourse(course.id)"
+            class="px-3"
+          >
+            Enroll Now
+          </button>
+          <button mat-flat-button *ngIf="userrole==='tutor'" (click)="editcourseitem(course.id)">edit</button>
+
           <button
             mat-flat-button
             color="accent"
@@ -76,11 +95,14 @@
       </p>
       <p>
         <i class="material-icons text-dark me-2">code</i>
-        <strong>Technologies:</strong> {{ data.importantTechnologiesUsed.join(', ') }}
+        <strong>Technologies:</strong>
+        {{ data.importantTechnologiesUsed.join(", ") }}
       </p>
       <button mat-flat-button (click)="editcourseitem(data.id)">edit</button>
 
-      <button mat-flat-button (click)="removecourseitem(data.id)">delete</button>
+      <button mat-flat-button (click)="removecourseitem(data.id)">
+        delete
+      </button>
     </mat-dialog-content>
     <mat-dialog-actions align="end" class="px-3">
       <button mat-button mat-dialog-close color="warn">Close</button>

@@ -14,9 +14,13 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private userservice: Userservice) {}
 
   ngOnInit(): void {
+    console.log(this.userservice.isauthenticated());
     if (this.userservice.isauthenticated()) {
       const userl = localStorage.getItem('user') || 'null';
       this.user = JSON.parse(userl);
+    }
+    else {
+      this.router.navigate(['/signin']);
     }
   }
 
