@@ -11,7 +11,7 @@ export class N404pageComponent implements OnInit {
   errorMessage: string = "Oops! The page you are looking for doesn't exist.";
   errorCodes: { [key: string]: string } = {
     '18': 'The requested course is not found',
-    '500': 'Internal server error',
+    '21': 'Knock, knock.. FBI , Identify yourself',
     '401': 'Unauthorized access',
     '403': 'Forbidden access',
     '5558': 'Be careful, curiosity kills the cat',

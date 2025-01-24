@@ -27,7 +27,10 @@ export class CoursesComponent implements OnInit {
     this.isauthenticated = this.userservice.isauthenticated();
     if (this.isauthenticated) {
       this.userrole = this.userservice.userrole();
+      if(this.userrole!=='tutor'||'student'||'admin'){
+        this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
     }
+  }
 
   }
   removecourseitem(item: any) {

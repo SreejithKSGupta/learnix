@@ -6,8 +6,7 @@
    - Join/create courses [students/tutors]
    - attend courses
    - Student/tutor statistics [number of hours learned,performance, number of courses enrolled,made]
-   - currency change according to user country
-   - error message passing to 404 page
+   - Admin can see the subscriber email as well as contact messages in dashboard
 ## External components
 
 ## Pages
@@ -15,7 +14,6 @@
   - Courses
   - tutors/Students Portal
   - Help and support
-  - Blog ?
   - Course details
   - student details
   - tutor details
