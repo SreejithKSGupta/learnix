@@ -22,7 +22,6 @@
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
       "importantTechnologiesUsed": [
         "TensorFlow",
-        "Python",
         "Keras"
       ],
       "courseFee": "300",
@@ -32,7 +31,7 @@
       "id": "5",
       "courseName": "Full Stack Web Development",
       "tutor": "Sreejith ks gupta",
-      "duration": 12,
+      "duration": "12",
       "description": "Learn to build full-stack web applications using Node.js, Express, and MongoDB, along with front-end technologies.",
       "importantTechnologiesUsed": [
         "Node.js",
@@ -48,7 +47,7 @@
       "id": "5b8c",
       "courseName": "new html course 2",
       "tutor": "Sreejith KS",
-      "duration": 5,
+      "duration": "5",
       "description": "this is a good course",
       "importantTechnologiesUsed": [
         "html",
@@ -56,34 +55,41 @@
         "js",
         "node"
       ],
-      "courseFee": 766,
-      "credits": 5
+      "courseFee": "766",
+      "credits": "5"
     }
   ],
   "users": [
     {
-      "id": 1737631633699,
+      "id": "1737631633699",
       "name": "Srejith",
       "usertype": "student",
       "gender": "male",
       "email": "sreejith.ks@gmail.com",
-      "areaOfInterest": ["react","ai and robotics","cybersecurity"],
-
-      "experience": 3,
+      "areaOfInterest": [
+        "react",
+        "ai and robotics",
+        "cybersecurity"
+      ],
+      "experience": "3",
       "password": "Hari*5559"
     },
     {
-      "id": 1737632110429,
+      "id": "1737632110429",
       "name": "Sreejith KS",
       "usertype": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": ["react","ai and robotics","cybersecurity"],
-      "experience": 4,
+      "areaOfInterest": [
+        "react",
+        "ai and robotics",
+        "cybersecurity"
+      ],
+      "experience": "4",
       "password": "Hari*5559"
     },
     {
-      "id": 1737633178543,
+      "id": "1737633178543",
       "name": "John Doe",
       "usertype": "student",
       "gender": "male",
@@ -91,11 +97,11 @@
       "areaOfInterest": [
         "web development"
       ],
-      "experience": 2,
+      "experience": "2",
       "password": "JohnDoe*1234"
     },
     {
-      "id": 1737634215786,
+      "id": "1737634215786",
       "name": "Jane Smith",
       "usertype": "student",
       "gender": "female",
@@ -103,11 +109,11 @@
       "areaOfInterest": [
         "data science"
       ],
-      "experience": 3,
+      "experience": "3",
       "password": "JaneSmith*2345"
     },
     {
-      "id": 1737635287945,
+      "id": "1737635287945",
       "name": "Emily Johnson",
       "usertype": "student",
       "gender": "female",
@@ -115,11 +121,11 @@
       "areaOfInterest": [
         "machine learning"
       ],
-      "experience": 2,
+      "experience": "2",
       "password": "EmilyJohnson*3456"
     },
     {
-      "id": 1737636349897,
+      "id": "1737636349897",
       "name": "Michael Williams",
       "usertype": "student",
       "gender": "male",
@@ -127,11 +133,11 @@
       "areaOfInterest": [
         "cloud computing"
       ],
-      "experience": 4,
+      "experience": "4",
       "password": "MichaelWilliams*4567"
     },
     {
-      "id": 1737637412543,
+      "id": "1737637412543",
       "name": "Sarah Brown",
       "usertype": "student",
       "gender": "female",
@@ -139,11 +145,11 @@
       "areaOfInterest": [
         "ai and robotics"
       ],
-      "experience": 5,
+      "experience": "5",
       "password": "SarahBrown*5678"
     },
     {
-      "id": 1737638475649,
+      "id": "1737638475649",
       "name": "David Wilson",
       "usertype": "student",
       "gender": "male",
@@ -151,27 +157,35 @@
       "areaOfInterest": [
         "cybersecurity"
       ],
-      "experience": 3,
+      "experience": "3",
       "password": "DavidWilson*6789"
     },
     {
-      "id": 1737633219272,
+      "id": "1737633219272",
       "name": "ambika",
       "usertype": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": ["react","ai and robotics","cybersecurity"],
-      "experience": 5,
+      "areaOfInterest": [
+        "react",
+        "ai and robotics",
+        "cybersecurity"
+      ],
+      "experience": "5",
       "password": "Amma@5559"
     },
     {
-      "id": 1737633271901,
+      "id": "1737633271901",
       "name": "Anjithja J",
       "usertype": "tutor",
       "gender": "female",
       "email": "anjitha@gmail.com",
-      "areaOfInterest": ["svelte","bun","vs code"],
-      "experience": 5,
+      "areaOfInterest": [
+        "svelte",
+        "bun",
+        "vs code"
+      ],
+      "experience": "5",
       "password": "Anju*5559"
     }
   ]

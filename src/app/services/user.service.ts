@@ -34,7 +34,7 @@ export class Userservice {
 
   updateuser(userData: any) {
     const url = `${this.userurl}/${userData.id}`;
-    return this.http.put<any>(url, userData);
+    return this.http.put(`${url}`, userData);
   }
 
   isauthenticated(): boolean {
