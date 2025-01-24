@@ -72,7 +72,7 @@ export class AddcourseComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching course:', error);
-        alert('Failed to fetch course details. Please try again.');
+        this.router.navigate(['/404'], { queryParams: { errorCode: '18' } });
       }
     );
   }
