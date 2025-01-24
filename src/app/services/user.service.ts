@@ -36,5 +36,11 @@ export class Userservice {
     const url = `${this.userurl}/${userData.id}`;
     return this.http.put<any>(url, userData);
   }
+
+  isauthenticated(): boolean {
+    const userl = localStorage.getItem('user') || 'null';
+    const user = JSON.parse(userl);
+    return user !== null;
+  }
 }
 
