@@ -188,5 +188,25 @@
       "experience": "5",
       "password": "Anju*5559"
     }
+  ],
+  "contactmessages": [
+    {
+      "id": "d222",
+      "name": "sreejith KS",
+      "phone": "7025692254",
+      "message": "this is a very good site",
+      "severity": "Low",
+      "type": "Feedback",
+      "email": "sreejithksgupta2255@gmail.com"
+    },
+    {
+      "id": "50f4",
+      "name": "anjitha J",
+      "phone": "9447400037",
+      "message": "this is again a very good message",
+      "severity": "Low",
+      "type": "General Inquiry",
+      "email": "anjithaj@gmail.com"
+    }
   ]
 }

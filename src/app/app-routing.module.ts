@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactpageComponent } from './pages/contactpage/contactpage.component';
+import { ContactUsComponent } from './otherpages/contactpage/contactpage.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/profile/login/login.component';
 import { AddcourseComponent } from './pages/addcourse/addcourse.component';
@@ -15,7 +15,7 @@ import { DashboardComponent } from './pages/profile/dashboard/dashboard.componen
 import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
 export const router: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'contact', component: ContactpageComponent },
+  { path: 'contact', component: ContactUsComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   {path:  'signin', component: SigninComponent},

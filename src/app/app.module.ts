@@ -29,10 +29,13 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { SigninComponent } from './pages/profile/signin/signin.component';
 import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
+import { OtherServices } from './services/otherservices.service';
+import { ContactUsComponent } from './otherpages/contactpage/contactpage.component';
 
 
 @NgModule({
   declarations: [
+    ContactUsComponent,
     AppComponent,
     HeaderComponent,
     DashboardComponent,
@@ -65,7 +68,7 @@ import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpa
     HttpClientModule,
 
   ],
-  providers: [DataService,Userservice],
+  providers: [DataService,Userservice,OtherServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
