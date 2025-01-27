@@ -9,6 +9,14 @@
       <mat-error *ngIf="angForm.get('name')?.hasError('pattern')">Course name should start with a letter.</mat-error>
       <mat-error *ngIf="angForm.get('name')?.hasError('minlength')">Course name should be at least 3 letters long.</mat-error>
     </mat-form-field>
+    <app-imagebox (fileSelected)="onFileSelected($event)"></app-imagebox>
+
+    <div *ngIf="selectedFile">
+      <h3>Selected File</h3>
+      <p><strong>Name:</strong> {{ selectedFile.name }}</p>
+      <p><strong>Size:</strong> {{ selectedFile.size }} bytes</p>
+      <p><strong>Type:</strong> {{ selectedFile.type }}</p>
+    </div>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Author</mat-label>

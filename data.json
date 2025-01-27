@@ -1,21 +1,23 @@
 {
   "courses": [
     {
-      "id": "3",
-      "courseName": "Data Science with R",
-      "tutor": "Alice Johnson",
+      "courseName": "Data Science with python and Google cloud",
+      "tutor": "Anjitha J",
       "duration": "10",
       "description": "Explore data science concepts and techniques using R, including data manipulation, visualization, and machine learning.",
       "importantTechnologiesUsed": [
         "R",
         "ggplot2",
-        "dplyr"
+        "dplyr",
+        "python",
+        "google cloud"
       ],
       "courseFee": "250",
-      "credits": "3"
+      "credits": "3",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737978418/yw2bpfiqnu8jbkwacglg.jpg",
+      "id": "3"
     },
     {
-      "id": "4",
       "courseName": "Machine Learning with TensorFlow",
       "tutor": "Bob Brown",
       "duration": "12",
@@ -25,10 +27,11 @@
         "Keras"
       ],
       "courseFee": "300",
-      "credits": "3"
+      "credits": "3",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
+      "id": "4"
     },
     {
-      "id": "5",
       "courseName": "Full Stack Web Development",
       "tutor": "Sreejith ks gupta",
       "duration": "12",
@@ -41,7 +44,9 @@
         "JavaScript"
       ],
       "courseFee": "350",
-      "credits": "3"
+      "credits": "3",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp",
+      "id": "5"
     },
     {
       "id": "5b8c",
@@ -57,6 +62,32 @@
       ],
       "courseFee": "766",
       "credits": "5"
+    },
+    {
+      "id": "1c67",
+      "courseName": "svelte basics course",
+      "tutor": "sreejith ksw",
+      "duration": 5,
+      "description": "this is a course from jan 27",
+      "importantTechnologiesUsed": [
+        "html"
+      ],
+      "courseFee": 5,
+      "credits": 5,
+      "imageUrl": ""
+    },
+    {
+      "id": "98f0",
+      "courseName": "kbkjkjbkj",
+      "tutor": "kjbkjb",
+      "duration": 9,
+      "description": "good course",
+      "importantTechnologiesUsed": [
+        "html"
+      ],
+      "courseFee": 5,
+      "credits": 5,
+      "imageUrl": ""
     }
   ],
   "users": [

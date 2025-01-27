@@ -5,10 +5,10 @@
       <mat-card class="course-card shadow-sm h-100">
         <div class="course-image-wrapper position-relative">
           <img
-            src="assets/gallery/designer.webp"
-            alt="Course Image"
-            class="course-bg-image w-100"
-          />
+          src="{{ course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp' }}"
+          alt="Course Image"
+          class="course-bg-image w-100"
+        />
           <div
             class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
           >

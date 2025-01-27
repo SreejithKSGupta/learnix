@@ -1,5 +1,5 @@
 export interface Course {
-  id: string;
+  id?: string;
   courseName: string;
   tutor: string;
   duration: number;
@@ -7,4 +7,5 @@ export interface Course {
   importantTechnologiesUsed: string[];
   courseFee: string;
   credits: number;
+  imageUrl?:String;
 }

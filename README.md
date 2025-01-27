@@ -1,6 +1,11 @@
 # Learnix 
 - Online Learning Management system where your Learning is super charged. 
-- Connects Learners to tutors of their choice
+
+-sharable courses,
+- upload profile images, course images and issue images
+- wirte and display blog for admin
+- show all users for admin
+
 
 ## Features
    - Join/create courses [students/tutors]

@@ -31,6 +31,8 @@ import { SigninComponent } from './pages/profile/signin/signin.component';
 import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
 import { OtherServices } from './services/otherservices.service';
 import { ContactUsComponent } from './otherpages/contactpage/contactpage.component';
+import { ServicesModule } from './shared/services/services.module';
+import { ImageboxComponent } from './components/imagebox/imagebox.component';
 
 
 @NgModule({
@@ -56,10 +58,12 @@ import { ContactUsComponent } from './otherpages/contactpage/contactpage.compone
     BlogsComponent,
     SigninComponent,
     ForgotpasswordComponent,
+    ImageboxComponent,
   ],
   imports: [
     BrowserModule,
     MaterialModule,
+    ServicesModule,
     LightboxModule,
     AppRoutingModule,
     RouterModule,

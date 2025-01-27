@@ -5,17 +5,14 @@ import { DataService } from '../../services/data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
+import { CloudinarymanagerService } from '../../services/cloudinarymanager.service';
 
 @Component({
   selector: 'app-addcourse',
   standalone: false,
   templateUrl: './addcourse.component.html',
-  styleUrls: ['./addcourse.component.css']
+  styleUrls: ['./addcourse.component.css'],
 })
-
-
-
-
 export class AddcourseComponent implements OnInit {
   title = 'Add New Courses';
   angForm!: FormGroup;
@@ -24,12 +21,22 @@ export class AddcourseComponent implements OnInit {
   isEditMode = false;
   updatableid: any;
   ischanged = false;
+  selectedFile: File | null = null;
+  receivedImagePreview: string | null = null;
+
+  onFileSelected(file: File | null): void {
+    this.selectedFile = file;
+
+    // Perform any additional logic with the file, such as uploading it to a server
+    console.log('File received:', file);
+  }
 
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cloudinaryService: CloudinarymanagerService
   ) {
     this.createForm();
   }
@@ -39,7 +46,7 @@ export class AddcourseComponent implements OnInit {
       const courseId = params['id'];
       if (courseId) {
         this.isEditMode = true;
-        this.updatableid= courseId;
+        this.updatableid = courseId;
         this.populateForm(courseId);
       }
     });
@@ -47,13 +54,51 @@ export class AddcourseComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[A-Z,a-z ]+[A-Z,a-z,0-9 ]*$')]],
-      author: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[A-Z,a-z ]*$')]],
-      duration: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(12), Validators.min(4)]],
-      credits: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(5), Validators.min(1)]],
-      coursefee: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.max(5000), Validators.min(0)]],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern('^[A-Z,a-z ]+[A-Z,a-z,0-9 ]*$'),
+        ],
+      ],
+      author: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern('^[A-Z,a-z ]*$'),
+        ],
+      ],
+      duration: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.max(12),
+          Validators.min(4),
+        ],
+      ],
+      credits: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.max(5),
+          Validators.min(1),
+        ],
+      ],
+      coursefee: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]*$'),
+          Validators.max(5000),
+          Validators.min(0),
+        ],
+      ],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      importantTechnologiesUsed: [[]]
+      importantTechnologiesUsed: [[]],
     });
   }
 
@@ -67,7 +112,7 @@ export class AddcourseComponent implements OnInit {
           credits: course.credits,
           coursefee: course.courseFee,
           description: course.description,
-          importantTechnologiesUsed: course.importantTechnologiesUsed || []
+          importantTechnologiesUsed: course.importantTechnologiesUsed || [],
         });
       },
       (error) => {
@@ -111,54 +156,61 @@ export class AddcourseComponent implements OnInit {
 
   onSubmit() {
     if (this.angForm.valid) {
-
-
-      if (this.isEditMode) {
-        const courseData = {
-          id: this.updatableid,
-          courseName: this.angForm.value.name,
-          tutor: this.angForm.value.author,
-          duration: this.angForm.value.duration,
-          description: this.angForm.value.description,
-          importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
-          courseFee: this.angForm.value.coursefee,
-          credits: this.angForm.value.credits
-        };
-        this.dataService.updateCourse(courseData).subscribe(
-          (response) => {
-            console.log('Course updated successfully:', response);
-            alert('Course updated successfully!');
-            this.router.navigate(['/courses']);
+      if (this.selectedFile) {
+        this.cloudinaryService.uploadImage(this.selectedFile).subscribe(
+          (url) => {
+            this.submitForm(url);
           },
           (error) => {
-            console.error('Error updating course:', error);
-            alert('Failed to update course. Please try again.');
+            console.error('Error uploading image:', error);
+            alert('Failed to upload image. Please try again.');
           }
         );
       } else {
-        const courseData = {
-          courseName: this.angForm.value.name,
-          tutor: this.angForm.value.author,
-          duration: this.angForm.value.duration,
-          description: this.angForm.value.description,
-          importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
-          courseFee: this.angForm.value.coursefee,
-          credits: this.angForm.value.credits
-        };
-        this.dataService.addcourse(courseData).subscribe(
-          (response) => {
-            console.log('Course added successfully:', response);
-            alert('Course added successfully!');
-            this.router.navigate(['/courses']);
-          },
-          (error) => {
-            console.error('Error adding course:', error);
-            alert('Failed to add course. Please try again.');
-          }
-        );
+        this.submitForm();
       }
     } else {
       alert('Please fill in all required fields correctly.');
+    }
+  }
+
+  submitForm(imageUrl?: string) {
+    const courseData: Course = {
+      courseName: this.angForm.value.name,
+      tutor: this.angForm.value.author,
+      duration: this.angForm.value.duration,
+      description: this.angForm.value.description,
+      importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
+      courseFee: this.angForm.value.coursefee,
+      credits: this.angForm.value.credits,
+      imageUrl: imageUrl || '',
+    };
+
+    if (this.isEditMode) {
+      courseData.id = this.updatableid;
+      this.dataService.updateCourse(courseData).subscribe(
+        (response) => {
+          console.log('Course updated successfully:', response);
+          alert('Course updated successfully!');
+          this.router.navigate(['/courses']);
+        },
+        (error) => {
+          console.error('Error updating course:', error);
+          alert('Failed to update course. Please try again.');
+        }
+      );
+    } else {
+      this.dataService.addcourse(courseData).subscribe(
+        (response) => {
+          console.log('Course added successfully:', response);
+          alert('Course added successfully!');
+          this.router.navigate(['/courses']);
+        },
+        (error) => {
+          console.error('Error adding course:', error);
+          alert('Failed to add course. Please try again.');
+        }
+      );
     }
   }
 }
