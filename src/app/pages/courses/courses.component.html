@@ -5,10 +5,12 @@
       <mat-card class="course-card shadow-sm h-100">
         <div class="course-image-wrapper position-relative">
           <img
-          src="{{ course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp' }}"
-          alt="Course Image"
-          class="course-bg-image w-100"
-        />
+            src="{{
+              course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp'
+            }}"
+            alt="Course Image"
+            class="course-bg-image w-100"
+          />
           <div
             class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
           >
@@ -53,7 +55,13 @@
           >
             Enroll Now
           </button>
-          <button mat-flat-button *ngIf="userrole==='tutor'" (click)="editcourseitem(course.id)">edit</button>
+          <button
+            mat-flat-button
+            *ngIf="userrole === 'tutor'"
+            (click)="editcourseitem(course.id)"
+          >
+            edit
+          </button>
 
           <button
             mat-flat-button
@@ -96,11 +104,33 @@
         <strong>Technologies:</strong>
         {{ data.importantTechnologiesUsed.join(", ") }}
       </p>
-      <button mat-flat-button (click)="editcourseitem(data.id)">edit</button>
+      <mat-card-actions class="d-flex justify-content-evenly p-3">
+        <button
+          mat-flat-button
+          color="primary"
+          *ngIf="userrole === 'student'"
+          (click)="enrolltocourse(data.id)"
+          class="px-3"
+        >
+          Enroll Now
+        </button>
+        <button
+          mat-flat-button
+          *ngIf="userrole === 'tutor'"
+          (click)="editcourseitem(data.id)"
+        >
+          edit
+        </button>
 
-      <button mat-flat-button (click)="removecourseitem(data.id)">
-        delete
-      </button>
+        <button
+          mat-flat-button
+          color="accent"
+          class="px-3"
+          (click)="openCourseDetails(data, detailsTemplate)"
+        >
+          View Details
+        </button>
+      </mat-card-actions>
     </mat-dialog-content>
     <mat-dialog-actions align="end" class="px-3">
       <button mat-button mat-dialog-close color="warn">Close</button>

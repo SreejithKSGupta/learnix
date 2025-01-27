@@ -9,12 +9,20 @@
   background: rgba(0, 0, 0, 0.6);
   transition: opacity 0.3s;
   border-radius: 5px 5px 0 0;
+  transition-duration: 200ms
+}
+
+.overlay:hover {
+  background: rgba(0, 0, 0, 0.95);
+
 }
 
 
 .course-title {
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
+  padding: 10px;
 }
 
 .course-tutor {
