@@ -69,6 +69,13 @@ export class DashboardComponent implements OnInit {
     console.log('Viewing course:', courseId);
   }
   getUserCourseDetail(courseId: string, detail: string): any {
+    console.log(this.courses);
+
+    if (this.courses && this.courses.length === 0) {
+      console.error('Courses are not loaded yet.');
+      return null;
+    }
+
     const userCourse = this.user?.courses?.find((course: { id: string; }) => course.id === courseId);
     return userCourse ? userCourse[detail] : null;
   }

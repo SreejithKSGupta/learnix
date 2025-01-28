@@ -1,95 +1,110 @@
-
 .course-card {
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  margin: 16px;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
   background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.headercontent {
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.course-info-overlay {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 16px;
   text-align: center;
-  background-color: #18181874;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.course-card:hover .course-info-overlay {
+  opacity: 1;
 }
 
 .course-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: bold;
+  margin-bottom: 4px;
 }
 
 .course-tutor {
   font-size: 1.1rem;
-  color: #757575;
-  text-align: center;
+  color: #ccc;
 }
 
 .course-image {
   width: 100%;
-  aspect-ratio: 1/1;
-  height: auto;
-  border-radius: 8px;
+  height: 200px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
-.course-info {
-  margin: 16px 0;
+.course-details {
+  padding: 16px;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .info-item mat-icon {
-  margin-right: 8px;
+  margin-right: 12px;
   color: #1976d2;
 }
 
 .info-item strong {
-  font-weight: bold;
+  font-weight: 600;
+  color: #333;
 }
 
 .info-item span {
-  color: #333333;
+  color: #555;
 }
 
-.actions {
-  display: flex;
-  justify-content: space-between;
+mat-card-actions {
+  padding: 12px;
+  border-top: 1px solid #ddd;
 }
 
-.remove-btn,
-.view-btn {
-  padding: 8px 16px;
+button {
+  padding: 8px 20px;
   font-size: 1rem;
-  display: flex;
-  align-items: center;
 }
 
-.remove-btn mat-icon,
-.view-btn mat-icon {
+button mat-icon {
   margin-right: 8px;
 }
 
-.remove-btn:hover {
-  background-color: #d32f2f;
+button:hover {
+  opacity: 0.85;
+}
+
+button[mat-flat-button] {
+  width: 48%;
+}
+
+button[mat-flat-button]:first-child {
+  background-color: #f44336;
   color: white;
 }
 
-.view-btn:hover {
-  background-color: #1976d2;
-  color: white;
-}
-
-.remove-btn {
-  background-color: #ff5722;
-}
-
-.view-btn {
+button[mat-flat-button]:last-child {
   background-color: #2196f3;
+  color: white;
 }

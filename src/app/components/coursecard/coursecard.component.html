@@ -1,50 +1,45 @@
 <mat-card class="course-card">
-  <mat-card-header>
+  <mat-card-header class="position-relative">
 
     <img mat-card-image [src]="course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp'" alt="{{ course.courseName }}" class="course-image">
-    <div class="headercontent">
+    <div class="course-info-overlay">
       <mat-card-title class="course-title">{{ course.courseName }}</mat-card-title>
       <mat-card-subtitle class="course-tutor">{{ course.tutor }}</mat-card-subtitle>
     </div>
   </mat-card-header>
 
-
   <mat-card-content>
-    <div class="course-info">
+    <div class="course-details">
       <div class="info-item">
         <mat-icon>access_time</mat-icon>
         <strong>Duration:</strong> <span>{{ course.duration }} hours</span>
       </div>
       <div class="info-item">
         <mat-icon>attach_money</mat-icon>
-        <strong>Course Fee:</strong> <span>{{ course.courseFee }}</span>
+        <strong>Fee:</strong> <span>{{ course.courseFee | currency }}</span>
       </div>
       <div class="info-item">
         <mat-icon>calendar_today</mat-icon>
-        <strong>Date Joined:</strong> <span>{{ getUserCourseDetail(course.id!, 'date') | date }}</span>
+        <strong>Joined:</strong> <span>{{ getUserCourseDetail(course.id!, 'date') | date }}</span>
       </div>
       <div class="info-item">
         <mat-icon>alarm</mat-icon>
-        <strong>Expiry Date:</strong> <span>{{ getUserCourseDetail(course.id!, 'expiry') | date }}</span>
+        <strong>Expiry:</strong> <span>{{ getUserCourseDetail(course.id!, 'expiry') | date }}</span>
       </div>
       <div class="info-item">
         <mat-icon>people</mat-icon>
-        <strong>Enrolled People:</strong> <span>{{ course.numberOfEnrolledPeople ? course.numberOfEnrolledPeople : 0 }}</span>
+        <strong>Enrolled:</strong> <span>{{ course.numberOfEnrolledPeople || 0 }}</span>
       </div>
       <div class="info-item">
         <mat-icon>star_rate</mat-icon>
-        <strong>Rating:</strong> <span>{{ course.totalStars ? course.totalStars : 0 }} / 5</span>
+        <strong>Rating:</strong> <span>{{ course.totalStars || 0 }} / 5</span>
       </div>
     </div>
   </mat-card-content>
 
-  <mat-card-actions class="actions">
-    <button mat-flat-button color="warn" class="remove-btn" (click)="removeCourse(course.id!)">
-      <mat-icon>delete</mat-icon> Remove Course
-    </button>
-    <button mat-flat-button color="primary" class="view-btn" (click)="viewCourse(course.id!)">
-      <mat-icon>visibility</mat-icon> View Course
+  <mat-card-actions class="d-flex justify-content-center">
+    <button mat-flat-button color="warn" (click)="removeCourse(course.id!)">
+      <mat-icon>delete</mat-icon> unenroll
     </button>
   </mat-card-actions>
 </mat-card>
-
