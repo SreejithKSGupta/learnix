@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Userservice } from '../../services/user.service';
 import { User } from '../profile/login/user.interface';
 import { forkJoin } from 'rxjs';
+import { ModelwindowComponent } from '../../components/modelwindow/modelwindow.component';
 
 @Component({
   selector: 'app-courses',
@@ -57,18 +58,15 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  removecourseitem(item: any) {
-    console.log('removing course', item);
-    this.dataService.removecourse(item).subscribe((res) => {
-      console.log('Course removed', res);
+  openCourseDetails(course: Course): void {
+    this.dialog.open(ModelwindowComponent, {
+      data: { course,
+        isEnrolled: this.subscriptionStatuses[course.id!],
+        isTutor: this.userrole === 'tutor',
+        enroll: this.enrollToCourse.bind(this),
+        editCourse: this.editcourseitem.bind(this), },
+      width: '400px',
     });
-    window.location.reload();
-  }
-
-  editcourseitem(item: any) {
-    console.log('editing course', item);
-    this.closecoursedetails();
-    this.router.navigate(['/addcourse'], { queryParams: { id: item } });
   }
 
   enrollToCourse(id: string) {
@@ -81,22 +79,10 @@ export class CoursesComponent implements OnInit {
         date: Date.now(),
         completion: 0,
       };
-      this.userservice.enrollToCourse(userid, coursedata).subscribe((res) => {
-        console.log('res');
-        this.subscriptionStatuses[id] = true; // Update the subscription status
+      this.userservice.enrollToCourse(userid, coursedata).subscribe(() => {
+        this.subscriptionStatuses[id] = true;
       });
     }
-  }
-
-  openCourseDetails(course: Course, templateRef: any): void {
-    this.dialog.open(templateRef, {
-        data: course,
-        width: '400px',
-    });
-  }
-
-  closecoursedetails() {
-    this.dialog.closeAll();
   }
 
   isUserEnrolledToCourse(courseId: string): void {
@@ -109,13 +95,18 @@ export class CoursesComponent implements OnInit {
 
   checkForCourseId(): void {
     this.route.queryParams.subscribe(params => {
-      const courseId = params['courseId'];
+      const courseId = params['cid'];
       if (courseId) {
         const course = this.courses.find(c => c.id === courseId);
         if (course) {
-          this.openCourseDetails(course, '#detailsTemplate');
+          this.openCourseDetails(course);
         }
       }
     });
+  }
+  editcourseitem(item: any) {
+    console.log('editing course', item);
+    // this.closecoursedetails();
+    this.router.navigate(['/addcourse'], { queryParams: { id: item } });
   }
 }

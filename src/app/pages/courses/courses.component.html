@@ -66,19 +66,19 @@
           </button>
 
           <button
-            mat-flat-button
-            color="accent"
-            class="px-3"
-            (click)="openCourseDetails(course, detailsTemplate)"
-          >
-            View Details
-          </button>
+          mat-flat-button
+          color="accent"
+          class="px-3"
+          (click)="openCourseDetails(course)"
+        >
+          View Details
+        </button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
 
-  <ng-template #detailsTemplate let-data>
+  <!-- <ng-template #detailsTemplate let-data>
     <h2 mat-dialog-title class="text-center">Course Details</h2>
     <mat-dialog-content class="px-3">
       <p>
@@ -146,5 +146,5 @@
     <mat-dialog-actions align="end" class="px-3">
       <button mat-button mat-dialog-close color="warn">Close</button>
     </mat-dialog-actions>
-  </ng-template>
+  </ng-template> -->
 </div>

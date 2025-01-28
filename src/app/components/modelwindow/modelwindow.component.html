@@ -1,1 +1,65 @@
-<p>modelwindow works!</p>
+<h2 mat-dialog-title class="text-center">Course Details</h2>
+<mat-dialog-content class="px-3">
+  <p>
+    <i class="material-icons text-primary me-2">school</i>
+    <strong>Course Name:</strong> {{ data.course.courseName }}
+  </p>
+  <p>
+    <i class="material-icons text-info me-2">person</i>
+    <strong>Tutor:</strong> {{ data.course.tutor }}
+  </p>
+  <p>
+    <i class="material-icons text-secondary me-2">schedule</i>
+    <strong>Duration:</strong> {{ data.course.duration }}
+  </p>
+  <p>
+    <i class="material-icons text-success me-2">attach_money</i>
+    <strong>Fee:</strong> {{ data.course.courseFee }}
+  </p>
+  <p>
+    <i class="material-icons text-warning me-2">description</i>
+    <strong>Description:</strong> {{ data.course.description }}
+  </p>
+  <p>
+    <i class="material-icons text-dark me-2">code</i>
+    <strong>Technologies:</strong> {{ data.course.importantTechnologiesUsed.join(", ") }}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex justify-content-evenly p-3">
+  <button
+    mat-flat-button
+    color="primary"
+    *ngIf="!data.isEnrolled"
+    (click)="enroll()"
+    class="px-3"
+  >
+    Enroll
+  </button>
+  <button
+    mat-flat-button
+    disabled
+    color="disabled"
+    *ngIf="data.isEnrolled"
+    class="px-3"
+  >
+    Enrolled
+  </button>
+
+  <button
+    mat-flat-button
+    *ngIf="data.isTutor"
+    (click)="editCourse()"
+  >
+    Edit
+  </button>
+
+  <button
+    mat-flat-button
+    color="accent"
+    class="px-3"
+    (click)="closeDialog()"
+  >
+    Close
+  </button>
+</mat-dialog-actions>
