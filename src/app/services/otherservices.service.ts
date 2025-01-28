@@ -8,16 +8,50 @@ import { Observable, of } from 'rxjs';
 })
 export class OtherServices {
 
-  courseurl = 'http://localhost:3000/contactmessages';
+  private courseurl = 'http://localhost:3000/contactmessages';
 
   constructor(private http: HttpClient) {}
-
-  /**
-   * Submits the contact form data to the JSON server
-   * @param contactData - The contact form data
-   * @returns Observable<any> - The observable of the HTTP POST request
-   */
   submitContactForm(contactData: any): Observable<any> {
-    return this.http.post<any>(this.courseurl, contactData);
+    return this.http.post<any>(this.courseurl, contactData).pipe(
+      catchError(this.handleError('submitContactForm'))
+    );
+  }
+
+
+  getAllContactMessages(): Observable<any[]> {
+    return this.http.get<any[]>(this.courseurl).pipe(
+      catchError(this.handleError('getAllContactMessages', []))
+    );
+  }
+
+
+  getContactMessageById(id: string): Observable<any> {
+    const url = `${this.courseurl}/${id}`;
+    return this.http.get<any>(url).pipe(
+      catchError(this.handleError('getContactMessageById'))
+    );
+  }
+
+
+  deleteContactMessage(id: string): Observable<any> {
+    const url = `${this.courseurl}/${id}`;
+    return this.http.delete<any>(url).pipe(
+      catchError(this.handleError('deleteContactMessage'))
+    );
+  }
+
+
+  updateContactMessage(id: string, updatedData: any): Observable<any> {
+    const url = `${this.courseurl}/${id}`;
+    return this.http.put<any>(url, updatedData).pipe(
+      catchError(this.handleError('updateContactMessage'))
+    );
+  }
+
+  private handleError(operation = 'operation', result?: any) {
+    return (error: any): Observable<any> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return of(result as any);
+    };
   }
 }

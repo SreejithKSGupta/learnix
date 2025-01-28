@@ -1,5 +1,6 @@
 export interface Users {
-  id: number;
+  id: String;
+  disabled?:String;
   name: string;
   usertype: string;
   gender: string;

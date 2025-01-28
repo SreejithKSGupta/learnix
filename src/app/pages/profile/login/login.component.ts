@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.signupForm.valid) {
       const user: Users = {
-        id: Date.now(),
+        id: String(Date.now()),
         name: this.firstFormGroup.get('name')?.value,
         usertype: this.firstFormGroup.get('userType')?.value,
         gender: this.secondFormGroup.get('gender')?.value,

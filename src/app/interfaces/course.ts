@@ -12,7 +12,7 @@ export interface Course {
   totalStars?: number;
   feedback?:feedback[];
   comments?:Comments[];
-  disabled?:boolean;
+  disabled?:String;
   datecreated?:Date;
 }
 

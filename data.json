@@ -87,7 +87,8 @@
       ],
       "courseFee": 5,
       "credits": 5,
-      "imageUrl": ""
+      "imageUrl": "",
+      "disabled": "true"
     }
   ],
   "users": [
@@ -228,7 +229,7 @@
     {
       "id": "1737633271901",
       "name": "Anjithja J",
-      "usertype": "tutoor",
+      "usertype": "admin",
       "gender": "female",
       "email": "anjitha@gmail.com",
       "areaOfInterest": [
@@ -237,7 +238,8 @@
         "vs code"
       ],
       "experience": "5",
-      "password": "Anju*5559"
+      "password": "Anju*5559",
+      "disabled": "true"
     }
   ],
   "contactmessages": [

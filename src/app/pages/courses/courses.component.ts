@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Course } from '../../interfaces/course';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Userservice } from '../../services/user.service';
-import { User } from '../profile/login/user.interface';
+import { Users } from '../../interfaces/users';
 import { forkJoin } from 'rxjs';
 import { ModelwindowComponent } from '../../components/modelwindow/modelwindow.component';
 
@@ -18,7 +18,7 @@ export class CoursesComponent implements OnInit {
   isauthenticated: boolean = false;
   userrole: string = '';
   courses: Course[] = [];
-  signeduser: User | undefined;
+  signeduser: Users | undefined;
   subscriptionStatuses: { [courseId: string]: boolean } = {};
 
   constructor(

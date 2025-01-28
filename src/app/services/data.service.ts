@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -41,5 +41,19 @@ export class DataService {
     const url = `${this.courseurl}/${courseData.id}`;
     return this.http.put<any>(url, courseData);
   }
+  disableCourse(id: string): Observable<any> {
+    const url = `${this.courseurl}/${id}`;
+    return this.http.get<any>(url).pipe(
+      switchMap((course) => {
+        course.disabled = 'true'; // Mark the course as disabled
+        return this.http.put<any>(url, course); // Update the course with the new status
+      }),
+      catchError((error) => {
+        console.error('Error disabling course:', error);
+        return of(null); // Return null on error
+      })
+    );
+  }
+
 
 }

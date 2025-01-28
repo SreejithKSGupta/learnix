@@ -2,9 +2,8 @@ import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Userservice } from '../../../services/user.service';
-import { User } from '../login/user.interface';
 import { Course } from '../../../interfaces/course';
-
+import { Users } from '../../../interfaces/users';
 @Component({
   selector: 'app-dashboard',
   standalone: false,
@@ -31,6 +30,9 @@ export class DashboardComponent implements OnInit {
         this.userservice.getuserbyid(userId).subscribe({
           next: (userData) => {
             this.user = userData;
+            if(this.user.usertype=='admin'){
+            this.router.navigate(['/adminipanel']);
+            }
             let usercourses = this.user?.courses;
             if (usercourses) {
               for (let item of usercourses) {

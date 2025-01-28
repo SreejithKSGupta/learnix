@@ -1,5 +1,5 @@
 import { Course } from './../interfaces/course';
-import { User } from './../pages/profile/login/user.interface';
+import { Users } from '../interfaces/users';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -79,6 +79,21 @@ export class Userservice {
       })
     );
   }
+
+  disableUser(id: String): Observable<any> {
+    const url = `${this.userurl}/${id}`;
+    return this.http.get<any>(url).pipe(
+      switchMap((user) => {
+        user.disabled = 'true'; // Mark the user as disabled
+        return this.http.put<any>(url, user); // Update the user with the new status
+      }),
+      catchError((error) => {
+        console.error('Error disabling user:', error);
+        return of(null); // Return null on error
+      })
+    );
+  }
+
   removeFromCourse(userID: string, courseID: String): Observable<any> {
     console.log(`Removing course: ${courseID} from user ${userID}`);
     const url = `${this.userurl}/${userID}`;
