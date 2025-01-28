@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-footer',
-  standalone: false,
+  standalone:false,
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
   footertitle = 'Learnix';
@@ -32,11 +33,20 @@ export class FooterComponent {
   ];
   email = '';
 
+  constructor(private emailService: EmailService) {}
+
   subscribeToNewsletter() {
     if (this.email) {
-      console.log(`Subscribed with email: ${this.email}`);
-      alert('Thank you for subscribing!');
-      this.email = ''; // Clear the input field
+      this.emailService.sendEmail(this.email)
+        .then(response => {
+          console.log('Email sent successfully:', response);
+          alert('Thank you for subscribing! A welcome email has been sent.');
+          this.email = '';
+        })
+        .catch(error => {
+          console.error('Failed to send email:', error);
+          alert('An error occurred while sending the email. Please try again.');
+        });
     }
   }
 }
