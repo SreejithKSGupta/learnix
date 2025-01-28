@@ -55,7 +55,7 @@ mat-chip {
   width: 50%;
 }
 
-.info-item span{
+.info-item span,.interest-chips{
   width: 50%;
   color: #000000;
   font-style: italic;
