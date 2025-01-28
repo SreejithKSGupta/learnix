@@ -5,15 +5,17 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { UserCourses } from '../interfaces/users';
-
+import { DataService } from './data.service';
 @Injectable({
   providedIn: 'root',
 })
 export class Userservice {
-  private authStateSubject = new BehaviorSubject<boolean>(this.isauthenticated()); // Default value is based on localStorage
+  private authStateSubject = new BehaviorSubject<boolean>(
+    this.isauthenticated()
+  ); // Default value is based on localStorage
   public authState$ = this.authStateSubject.asObservable(); // Observable to subscribe to
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dataservice: DataService) {}
 
   userurl = 'http://localhost:3000/users';
 
@@ -71,10 +73,28 @@ export class Userservice {
     console.log(`Adding course: ${courseData.id} to user ${UserId}`);
     const url = `${this.userurl}/${UserId}`;
     return this.http.get<any>(url).pipe(
-        switchMap(user => {
-            user.courses.push(courseData);
-            return this.http.put<any>(url, user);
-        })
+      switchMap((user) => {
+        user.courses.push(courseData);
+        return this.http.put<any>(url, user);
+      })
     );
-}
+  }
+  removeFromCourse(userID: string, courseID: String): Observable<any> {
+    console.log(`Removing course: ${courseID} from user ${userID}`);
+    const url = `${this.userurl}/${userID}`;
+
+    return this.http.get<any>(url).pipe(
+      switchMap((user) => {
+        const courseIndex = user.courses.findIndex((course: UserCourses) => course.id === courseID);
+
+        if (courseIndex !== -1) {
+          user.courses.splice(courseIndex, 1);
+        } else {
+          console.error(`Course with ID ${courseID} not found in user's courses.`);
+        }
+
+        return this.http.put<any>(url, user);
+      })
+    );
+  }
 }

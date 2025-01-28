@@ -43,9 +43,7 @@
       <div *ngFor="let course of courses" class="course-item col-md-3 mt-3">
         <app-coursecard
           [course]="course"
-          [getUserCourseDetail]="getUserCourseDetail"
-          [removeCourse]="removeCourse"
-          [viewCourse]="viewCourse">
+          [user]="user">
         </app-coursecard>
       </div>
     </div>

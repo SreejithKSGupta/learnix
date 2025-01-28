@@ -1,6 +1,6 @@
 import { Component ,Input} from '@angular/core';
 import { Course } from '../../interfaces/course';
-
+import { Userservice } from '../../services/user.service';
 @Component({
   selector: 'app-coursecard',
   standalone: false,
@@ -12,7 +12,24 @@ import { Course } from '../../interfaces/course';
 
 export class CourseCardComponent {
   @Input() course!: Course;
-  @Input() getUserCourseDetail!: (courseId: string, detail: string) => any;
-  @Input() removeCourse!: (courseId: string) => void;
-  @Input() viewCourse!: (courseId: string) => void;
+  @Input() user!: any;
+
+  constructor(private userservice:Userservice){}
+
+
+  getUserCourseDetail(courseId: string, detail: string): any {
+    const userCourse = this.user?.courses?.find((course: { id: string; }) => course.id === courseId);
+    return userCourse ? userCourse[detail] : null;
+  }
+
+  removeCourse(courseID:String){
+    this.userservice.removeFromCourse(this.user.id,courseID).subscribe(res=>{
+      alert(res)
+    })
+    }
+
+  viewCourse(){
+    console.log("view");
+
+  }
 }

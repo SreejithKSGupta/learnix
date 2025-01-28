@@ -27,6 +27,10 @@
         <strong>Expiry:</strong> <span>{{ getUserCourseDetail(course.id!, 'expiry') | date }}</span>
       </div>
       <div class="info-item">
+        <mat-icon>star_rate</mat-icon>
+        <strong>completion:</strong> <span>{{ getUserCourseDetail(course.id!, 'completion') }}</span>
+      </div>
+      <div class="info-item">
         <mat-icon>people</mat-icon>
         <strong>Enrolled:</strong> <span>{{ course.numberOfEnrolledPeople || 0 }}</span>
       </div>
@@ -34,7 +38,9 @@
         <mat-icon>star_rate</mat-icon>
         <strong>Rating:</strong> <span>{{ course.totalStars || 0 }} / 5</span>
       </div>
+
     </div>
+
   </mat-card-content>
 
   <mat-card-actions class="d-flex justify-content-center">

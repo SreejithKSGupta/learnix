@@ -41,4 +41,5 @@ export class DataService {
     const url = `${this.courseurl}/${courseData.id}`;
     return this.http.put<any>(url, courseData);
   }
+
 }
