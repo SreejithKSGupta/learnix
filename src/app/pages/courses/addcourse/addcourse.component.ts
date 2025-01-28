@@ -1,11 +1,11 @@
-import { Course } from './../../interfaces/course';
+import { Course } from './../../../interfaces/course';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../../services/data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
-import { CloudinarymanagerService } from '../../services/cloudinarymanager.service';
+import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 
 @Component({
   selector: 'app-addcourse',

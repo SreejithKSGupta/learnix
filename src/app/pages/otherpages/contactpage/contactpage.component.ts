@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OtherServices } from '../../services/otherservices.service';
-import { Userservice } from '../../services/user.service';
+import { OtherServices } from '../../../services/otherservices.service';
+import { Userservice } from '../../../services/user.service';
 import { Observable } from 'rxjs';
 
 @Component({
