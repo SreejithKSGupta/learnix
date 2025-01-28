@@ -33,6 +33,8 @@ import { OtherServices } from './services/otherservices.service';
 import { ContactUsComponent } from './pages/otherpages/contactpage/contactpage.component';
 import { ServicesModule } from './shared/services/services.module';
 import { ImageboxComponent } from './components/imagebox/imagebox.component';
+import { CourseCardComponent } from './components/coursecard/coursecard.component';
+import { ModelwindowComponent } from './components/modelwindow/modelwindow.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ImageboxComponent } from './components/imagebox/imagebox.component';
     SigninComponent,
     ForgotpasswordComponent,
     ImageboxComponent,
+    CourseCardComponent,
+    ModelwindowComponent,
   ],
   imports: [
     BrowserModule,

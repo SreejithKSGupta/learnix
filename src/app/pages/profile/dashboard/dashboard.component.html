@@ -1,4 +1,4 @@
-<div class=" d-flex justify-content-center align-items-center mt-5">
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
   <div class="col-md-6">
     <mat-card class="profile-card shadow-sm">
       <mat-card-header class="text-center">
@@ -8,12 +8,12 @@
         <div class="avatar">
           <img src="/assets/404.webp" alt="user image" class="img-fluid rounded-circle">
         </div>
-         </mat-card-header>
+      </mat-card-header>
 
       <mat-card-content>
         <div class="user-info">
           <div class="info-item">
-            <strong>User Type:</strong> <span>{{ user?.usertype }}</span>
+            <strong>User Type:</strong> <span>{{ user?.usertype ? user?.usertype : "not available" }}</span>
           </div>
           <div class="info-item">
             <strong>Gender:</strong> <span>{{ user?.gender }}</span>
@@ -35,5 +35,19 @@
         <button mat-flat-button color="warn" class="mx-2" (click)="logout()">Logout</button>
       </mat-card-actions>
     </mat-card>
+  </div>
+
+  <div class="enrolled-courses mt-4 col-md-10">
+    <h3>Enrolled Courses</h3>
+    <div class="coursegrid row">
+      <div *ngFor="let course of courses" class="course-item col-md-3 mt-3">
+        <app-coursecard
+          [course]="course"
+          [getUserCourseDetail]="getUserCourseDetail"
+          [removeCourse]="removeCourse"
+          [viewCourse]="viewCourse">
+        </app-coursecard>
+      </div>
+    </div>
   </div>
 </div>

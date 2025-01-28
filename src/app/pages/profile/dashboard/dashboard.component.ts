@@ -1,6 +1,9 @@
+import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Userservice } from '../../../services/user.service';
+import { User } from '../login/user.interface';
+import { Course } from '../../../interfaces/course';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +13,13 @@ import { Userservice } from '../../../services/user.service';
 })
 export class DashboardComponent implements OnInit {
   user: any;
+  courses: Course[] = [];
 
-  constructor(private router: Router, private userservice: Userservice) {}
+  constructor(
+    private router: Router,
+    private userservice: Userservice,
+    private dataservice: DataService
+  ) {}
 
   ngOnInit(): void {
     if (this.userservice.isauthenticated()) {
@@ -23,6 +31,17 @@ export class DashboardComponent implements OnInit {
         this.userservice.getuserbyid(userId).subscribe({
           next: (userData) => {
             this.user = userData;
+            let usercourses = this.user?.courses;
+            if (usercourses) {
+              for (let item of usercourses) {
+                this.dataservice.getcoursebyid(item.id).subscribe(course => {
+                  this.courses.push(course);
+                });
+              }
+
+              console.log(this.courses)
+
+            }
           },
           error: (err) => {
             console.error('Error fetching user data:', err);
@@ -41,5 +60,16 @@ export class DashboardComponent implements OnInit {
 
   goto(path: string) {
     this.router.navigate([path]);
+  }
+  removeCourse(courseId: string): void {
+    console.log('Removing course:', courseId);
+  }
+
+  viewCourse(courseId: string): void {
+    console.log('Viewing course:', courseId);
+  }
+  getUserCourseDetail(courseId: string, detail: string): any {
+    const userCourse = this.user?.courses?.find((course: { id: string; }) => course.id === courseId);
+    return userCourse ? userCourse[detail] : null;
   }
 }

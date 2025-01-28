@@ -60,3 +60,34 @@ mat-chip {
   color: #000000;
   font-style: italic;
 }
+
+.coursegrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.course-item {
+  flex: 1 1 calc(33.333% - 1rem);
+  box-sizing: border-box;
+}
+
+.course-card {
+  width: 100%;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
