@@ -49,16 +49,26 @@
           <button
             mat-flat-button
             color="primary"
-            *ngIf="userrole === 'student'"
-            (click)="enrolltocourse(course.id)"
+            *ngIf="userrole === 'student' && !isUserEnrolledToCourse(course.id!)"
+            (click)="enrolltocourse(course.id!)"
             class="px-3"
           >
             Enroll Now
           </button>
           <button
+          mat-flat-button
+          disabled
+          *ngIf="userrole === 'student' && isUserEnrolledToCourse(course.id!)"
+          (click)="enrolltocourse(course.id!)"
+          class="px-3"
+        >
+          Enrolled
+        </button>
+
+          <button
             mat-flat-button
             *ngIf="userrole === 'tutor'"
-            (click)="editcourseitem(course.id)"
+            (click)="editcourseitem(course.id!)"
           >
             edit
           </button>
@@ -106,14 +116,23 @@
       </p>
       <mat-card-actions class="d-flex justify-content-evenly p-3">
         <button
-          mat-flat-button
-          color="primary"
-          *ngIf="userrole === 'student'"
-          (click)="enrolltocourse(data.id)"
-          class="px-3"
-        >
-          Enroll Now
-        </button>
+        mat-flat-button
+        color="primary"
+        *ngIf="userrole === 'student' && !isUserEnrolledToCourse(data.id!)"
+        (click)="enrolltocourse(data.id!)"
+        class="px-3"
+      >
+        Enroll Now
+      </button>
+      <button
+      mat-flat-button
+      disabled
+      *ngIf="userrole === 'student' && isUserEnrolledToCourse(data.id!)"
+      (click)="enrolltocourse(data.id!)"
+      class="px-3"
+    >
+      Enrolled
+    </button>
         <button
           mat-flat-button
           *ngIf="userrole === 'tutor'"
@@ -126,9 +145,9 @@
           mat-flat-button
           color="accent"
           class="px-3"
-          (click)="openCourseDetails(data, detailsTemplate)"
+          (click)="closecoursedetails()"
         >
-          View Details
+         close
         </button>
       </mat-card-actions>
     </mat-dialog-content>
