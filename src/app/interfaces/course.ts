@@ -8,4 +8,26 @@ export interface Course {
   courseFee: string;
   credits: number;
   imageUrl?:String;
+  numberOfEnrolledPeople?: number;
+  totalStars?: number;
+  feedback?:feedback[];
+  comments?:Comments[];
+}
+
+interface feedback{
+  id: String;
+  userid:String;
+  username:String;
+  comment:String;
+  date: Date;
+  likes:number;
+  dislikes:Number
+}
+
+ interface Comments {
+  id: String;
+  senderID:String;
+  utype:String;
+  Message:String;
+  urgency:String;
 }
