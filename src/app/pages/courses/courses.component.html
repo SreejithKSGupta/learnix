@@ -46,24 +46,16 @@
         </mat-card-content>
 
         <mat-card-actions class="d-flex justify-content-evenly p-3">
-          <button
-            mat-flat-button
-            color="primary"
-            *ngIf="userrole === 'student' && !isUserEnrolledToCourse(course.id!)"
-            (click)="enrolltocourse(course.id!)"
-            class="px-3"
-          >
-            Enroll Now
-          </button>
-          <button
-          mat-flat-button
-          disabled
-          *ngIf="userrole === 'student' && isUserEnrolledToCourse(course.id!)"
-          (click)="enrolltocourse(course.id!)"
-          class="px-3"
-        >
-          Enrolled
-        </button>
+            <button
+              mat-flat-button
+              color="primary"
+              [disabled]="subscriptionStatuses[course.id!]"
+               *ngIf="userrole === 'student'"
+              (click)="enrollToCourse(course.id!)"
+              class="px-3"
+            >
+             {{subscriptionStatuses[course.id!]?"Enrolled":"Enroll"}}
+            </button>
 
           <button
             mat-flat-button
@@ -115,24 +107,24 @@
         {{ data.importantTechnologiesUsed.join(", ") }}
       </p>
       <mat-card-actions class="d-flex justify-content-evenly p-3">
-        <button
-        mat-flat-button
-        color="primary"
-        *ngIf="userrole === 'student' && !isUserEnrolledToCourse(data.id!)"
-        (click)="enrolltocourse(data.id!)"
-        class="px-3"
-      >
-        Enroll Now
-      </button>
-      <button
-      mat-flat-button
-      disabled
-      *ngIf="userrole === 'student' && isUserEnrolledToCourse(data.id!)"
-      (click)="enrolltocourse(data.id!)"
-      class="px-3"
-    >
-      Enrolled
-    </button>
+          <button
+            mat-flat-button
+            color="primary"
+            *ngIf="!subscriptionStatuses[data.id!]"
+            (click)="enrollToCourse(data.id!)"
+            class="px-3"
+          >
+            Enroll
+          </button>
+          <button
+            mat-flat-button
+            color="disabled"
+            *ngIf="subscriptionStatuses[data.id!]"
+            class="px-3"
+          >
+            Enrolled
+          </button>
+
         <button
           mat-flat-button
           *ngIf="userrole === 'tutor'"
@@ -147,7 +139,7 @@
           class="px-3"
           (click)="closecoursedetails()"
         >
-         close
+          close
         </button>
       </mat-card-actions>
     </mat-dialog-content>
