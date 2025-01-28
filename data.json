@@ -117,7 +117,14 @@
         "cybersecurity"
       ],
       "experience": "4",
-      "password": "Hari*5559"
+      "password": "Hari*5559",
+      "courses": [
+        {
+          "id": "4",
+          "expiry": 1743232217185,
+          "date": 1738048217185
+        }
+      ]
     },
     {
       "id": "1737633178543",

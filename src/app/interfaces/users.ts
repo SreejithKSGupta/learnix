@@ -12,9 +12,10 @@ export interface Users {
 }
 
 export interface UserCourses {
-  id: string;
-  date: Date;
-  expiry:Date;
+  id: String;
+  date?: number;
+  expiry?:number;
+  completion?:number
 }
 
 export interface Messages {

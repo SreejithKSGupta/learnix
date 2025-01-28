@@ -1,7 +1,10 @@
+import { Course } from './../interfaces/course';
+import { User } from './../pages/profile/login/user.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
+import { UserCourses } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +25,7 @@ export class Userservice {
     return this.http.post<any>(this.userurl, item);
   }
 
-  removeuser(id: string): Observable<any> {
+  removeuser(id: String): Observable<any> {
     const url = `${this.userurl}/${id}`;
     return this.http.delete<any>(url).pipe(
       catchError((error) => {
@@ -31,7 +34,7 @@ export class Userservice {
     );
   }
 
-  getuserbyid(id: string): Observable<any> {
+  getuserbyid(id: String): Observable<any> {
     const url = `${this.userurl}/${id}`;
     return this.http.get<any>(url);
   }
@@ -63,4 +66,15 @@ export class Userservice {
     const user = JSON.parse(userl);
     return user?.usertype || ''; // Optional chaining for safety
   }
+
+  enrollToCourse(UserId: String, courseData: UserCourses): Observable<any> {
+    console.log(`Adding course: ${courseData.id} to user ${UserId}`);
+    const url = `${this.userurl}/${UserId}`;
+    return this.http.get<any>(url).pipe(
+        switchMap(user => {
+            user.courses.push(courseData);
+            return this.http.put<any>(url, user);
+        })
+    );
+}
 }

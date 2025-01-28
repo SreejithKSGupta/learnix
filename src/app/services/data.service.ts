@@ -36,6 +36,7 @@ export class DataService {
     const url = `${this.courseurl}/${id}`;
     return this.http.get<any>(url);
   }
+
   updateCourse(courseData: any) {
     const url = `${this.courseurl}/${courseData.id}`;
     return this.http.put<any>(url, courseData);

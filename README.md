@@ -7,6 +7,7 @@
 - show all users for admin
 - list of top courses in homepage
 - dashboard preview in homepage for signed in user.
+- subscription mailing using email.js
 
 ## Features
    - Join/create courses [students/tutors]
