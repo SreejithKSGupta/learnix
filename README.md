@@ -3,20 +3,24 @@
 
 # todo 
 - upload profile images, course images and issue images
-- email in more places
 - wirte and display blog for admin
 - list of top courses in homepage
 - searchbar in relevant places
 - Comprehensive UI and font updates
 - statistics for admin, student and tutor
-- subscribed user list.
-- admin can send custom email to everybody on the email list. 
 - lazy loading
 - service in module level
 - single ton components
+
+
 # done
+- subscribed user list.
 - sharable courses,
 - email for subscription
+- admin can send custom email to everybody on the email list. 
+- email in more places
+
+
 
 ## Features
    - Join/create courses [students/tutors]

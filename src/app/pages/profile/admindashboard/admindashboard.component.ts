@@ -46,11 +46,11 @@ export class AdmindashboardComponent {
     });
   }
 
-  deleteSubscriber(id: string): void {
-    this.adminservice.deleteSubscriber(id).subscribe({
+  deleteSubscriber(subscib:any): void {
+    this.adminservice.deleteSubscriber(subscib).subscribe({
       next: () => {
-        console.log('Subscriber deleted:', id);
-        this.allsubscribers = this.allsubscribers.filter(sub => sub.id !== id);
+        console.log('Subscriber deleted:', subscib.id);
+        this.allsubscribers = this.allsubscribers.filter(sub => sub.id !== subscib.id);
       },
       error: (err) => {
         console.error('Error deleting subscriber:', err);

@@ -27,8 +27,22 @@ export class AdmindataService {
   getsubscribers(): Observable<any> {
     return this.http.get(this.suburl).pipe(map((res) => res));
   }
-  deleteSubscriber(id: string): Observable<any> {
-    return this.http.delete(`${this.suburl}/${id}`);
+
+  deleteSubscriber(subscriber: any): Observable<any> {
+
+        this.emailservice.sendEmail(
+          'othermsg',
+           subscriber.emailid,
+          "learner",
+          "Learnix",
+          "unsubscribed from Learnix",
+          " you are removed fromthe subscription list as per your request. we hope to work with you soon."
+         )
+
+
+
+    return this.http.delete(`${this.suburl}/${subscriber.id}`);
+
   }
 
   sendBulkEmail(message: string, subscribers: any[]): Observable<any> {

@@ -6,6 +6,8 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { UserCourses } from '../interfaces/users';
 import { DataService } from './data.service';
+import { EmailService } from './email.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +17,7 @@ export class Userservice {
   ); // Default value is based on localStorage
   public authState$ = this.authStateSubject.asObservable(); // Observable to subscribe to
 
-  constructor(private http: HttpClient, private dataservice: DataService) {}
+  constructor(private http: HttpClient, private dataservice: DataService,private emailservice:EmailService) {}
 
   userurl = 'http://localhost:3000/users';
 
@@ -24,17 +26,17 @@ export class Userservice {
   }
 
   adduser(item: any): Observable<any> {
+    this.emailservice.sendEmail(
+      'othermsg',
+       item.email,
+      item.name,
+      "Learnix",
+      "welcome to Learnix",
+      "Welcome to learnix. we hope you have an excellent learning journey with us."
+     )
     return this.http.post<any>(this.userurl, item);
   }
 
-  removeuser(id: String): Observable<any> {
-    const url = `${this.userurl}/${id}`;
-    return this.http.delete<any>(url).pipe(
-      catchError((error) => {
-        return of(null);
-      })
-    );
-  }
 
   getuserbyid(id: String): Observable<any> {
     const url = `${this.userurl}/${id}`;
@@ -60,7 +62,15 @@ export class Userservice {
 
   signin(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
-    this.authStateSubject.next(true); // Notify subscribers that user is signed in
+    this.authStateSubject.next(true);
+    this.emailservice.sendEmail(
+      'othermsg',
+       user.email,
+      user.name,
+      "Learnix",
+      "Signed in to Learnix",
+      "you just signed in to Learnix, if it was not you, contact immideatly."
+     )
   }
 
   userrole(): string {
@@ -77,6 +87,19 @@ export class Userservice {
   }
 
   enrollToCourse(UserId: String, courseData: UserCourses): Observable<any> {
+    this.getuserbyid(UserId).subscribe(res=>{
+      this.dataservice.getcoursebyid(courseData.id as string).subscribe(cdata=>{
+        this.emailservice.sendEmail(
+          'othermsg',
+           res.email,
+          res.name,
+          "Learnix",
+          `Enrolled to ${cdata.courseName}`,
+          `you just enrolled to course ${cdata.courseName}, Happy learning`
+         )
+      })
+
+    })
     console.log(`Adding course: ${courseData.id} to user ${UserId}`);
     const url = `${this.userurl}/${UserId}`;
     return this.http.get<any>(url).pipe(
@@ -88,6 +111,17 @@ export class Userservice {
   }
 
   disableUser(id: String): Observable<any> {
+    this.getuserbyid(id).subscribe(res=>{
+
+      this.emailservice.sendEmail(
+        'othermsg',
+         res.email,
+        res.name,
+        "Learnix",
+        "Message from Learnix",
+        " Your account has been removed from learnix due to policy violations"
+       )
+    })
     const url = `${this.userurl}/${id}`;
     return this.http.get<any>(url).pipe(
       switchMap((user) => {
@@ -102,6 +136,19 @@ export class Userservice {
   }
 
   removeFromCourse(userID: string, courseID: String): Observable<any> {
+    this.getuserbyid(userID).subscribe(res=>{
+      this.dataservice.getcoursebyid(courseID as string).subscribe(cdata=>{
+        this.emailservice.sendEmail(
+          'othermsg',
+           res.email,
+          res.name,
+          "Learnix",
+          `Unenrolled from ${cdata.courseName}`,
+          `you just unenrolled from course ${cdata.courseName},let us upskill together.`
+         )
+      })
+
+    })
     console.log(`Removing course: ${courseID} from user ${userID}`);
     const url = `${this.userurl}/${userID}`;
 
@@ -120,19 +167,5 @@ export class Userservice {
     );
   }
 
-  replytomail(UserId:String,message:Messages):Observable<any>{
-    const url = `${this.userurl}/${UserId}`;
-    console.log(UserId)
-    return this.http.get<any>(url).pipe(
-      switchMap((user) => {
-        console.log(user)
-        if(!user.messages){
-          user.messages=[]
-        }
-        user.messages.push(message);
-        console.log(user.Message,UserId)
-        return this.http.put<any>(url, user);
-      })
-    );
-  }
+
 }

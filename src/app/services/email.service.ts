@@ -31,7 +31,7 @@ export class EmailService {
 
     if (emailtype === 'subscription') {
       console.log("Email is a subscription.");
-      // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     } else if (emailtype === 'contactmessage') {
 
@@ -39,10 +39,17 @@ export class EmailService {
       // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     } else if (emailtype === 'messagereply') {
-      // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
-    } else {
+      console.log("emailisa messagereply");
+
+      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+    } else if (emailtype === 'othermsg') {
+      console.log("emailisa othermessage");
+
+      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+    }else {
       console.warn("Invalid email type provided:", emailtype);
     }
+
       return Promise.resolve({ status: 200, text: "No email sent" } as EmailJSResponseStatus);
   }
 
