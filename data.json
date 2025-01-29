@@ -98,6 +98,7 @@
       "usertype": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
+      "imageURL":"https://res.cloudinary.com/dhrye1aew/image/upload/v1737978418/yw2bpfiqnu8jbkwacglg.jpg",
       "areaOfInterest": [
         "react",
         "ai and robotics",

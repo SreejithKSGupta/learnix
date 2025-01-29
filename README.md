@@ -11,6 +11,9 @@
 - lazy loading
 - service in module level
 - single ton components
+- otp for sign in and forgot password
+- edit profile
+
 
 
 # done

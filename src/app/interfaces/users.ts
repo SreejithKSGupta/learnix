@@ -8,6 +8,7 @@ export interface Users {
   areaOfInterest: string;
   experience:number;
   password: string;
+  imageURL?:String;
   courses?: UserCourses[];
   messages?:Messages[];
 }

@@ -6,7 +6,7 @@
         <mat-card-subtitle class="text-muted">{{ user?.email }}</mat-card-subtitle>
 
         <div class="avatar">
-          <img src="/assets/404.webp" alt="user image" class="img-fluid rounded-circle">
+          <img [src]="user?.imageURL || '/assets/404.webp'" alt="User image" class="img-fluid rounded-circle">
         </div>
       </mat-card-header>
 
