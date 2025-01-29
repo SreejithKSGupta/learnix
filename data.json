@@ -93,65 +93,6 @@
   ],
   "users": [
     {
-      "id": "1737632110429",
-      "name": "Sreejith KS",
-      "usertype": "student",
-      "gender": "male",
-      "email": "sreejithksgupta2255@gmail.com",
-      "imageURL":"https://res.cloudinary.com/dhrye1aew/image/upload/v1737978418/yw2bpfiqnu8jbkwacglg.jpg",
-      "areaOfInterest": [
-        "react",
-        "ai and robotics",
-        "cybersecurity"
-      ],
-      "experience": "4",
-      "password": "Hari*5559",
-      "courses": [
-        {
-          "id": "98f0",
-          "expiry": 1743276794864,
-          "date": 1738092794864,
-          "completion": 0
-        },
-        {
-          "id": "1c67",
-          "expiry": 1743276797825,
-          "date": 1738092797825,
-          "completion": 0
-        },
-        {
-          "id": "3",
-          "expiry": 1743357104725,
-          "date": 1738173104725,
-          "completion": 0
-        }
-      ],
-      "messages": [
-        {
-          "id": "1738132186193",
-          "senderID": "1737633271901",
-          "utype": "admin",
-          "message": "hjb",
-          "urgency": "kjhk"
-        },
-        {
-          "id": "1738132187193",
-          "senderID": "1737633271901",
-          "utype": "admin",
-          "message": "hello bro",
-          "urgency": "Hii"
-        },
-        {
-          "id": "1738133870908",
-          "senderID": "1737633271901",
-          "utype": "admin",
-          "message": "hrllo",
-          "urgency": "Medium"
-        }
-      ],
-      "disabled": "false"
-    },
-    {
       "id": "1737635287945",
       "name": "Emily Johnson",
       "usertype": "student",
@@ -212,6 +153,35 @@
           "urgency": ""
         }
       ]
+    },
+    {
+      "id": "1738176746899",
+      "disabled": "false",
+      "name": "Sreejith KS",
+      "usertype": "student",
+      "gender": "male",
+      "email": "sreejithksgupta2255@gmail.com",
+      "areaOfInterest": [
+        "coding"
+      ],
+      "experience": 5,
+      "password": "Hari*5559",
+      "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738176746/v4rox6kshji426hh9ywy.jpg",
+      "courses": [
+        {
+          "id": "5",
+          "expiry": 1743360782703,
+          "date": 1738176782703,
+          "completion": 0
+        },
+        {
+          "id": "5b8c",
+          "expiry": 1743360784396,
+          "date": 1738176784396,
+          "completion": 0
+        }
+      ],
+      "messages": []
     }
   ],
   "contactmessages": [

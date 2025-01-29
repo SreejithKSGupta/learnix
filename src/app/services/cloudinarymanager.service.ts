@@ -7,16 +7,10 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CloudinarymanagerService {
-  private cloudName = 'dhrye1aew'; // Your Cloudinary cloud name
-  private uploadPreset = 'default'; // Your upload preset
-
+  private cloudName = 'dhrye1aew';
+  private uploadPreset = 'default';
   constructor(private http: HttpClient) {}
 
-  /**
-   * Uploads an image to Cloudinary
-   * @param file - File to upload
-   * @returns Observable<string> - The uploaded image's secure URL
-   */
   uploadImage(file: File): Observable<string> {
     const url = `https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`;
 
@@ -33,13 +27,8 @@ export class CloudinarymanagerService {
     );
   }
 
-  /**
-   * Deletes an image from Cloudinary
-   * @param publicId - The public ID of the image to delete
-   * @returns Observable<boolean> - True if deletion was successful
-   */
+
   deleteImage(publicId: string): Observable<boolean> {
-    // Replace this with a call to your backend to securely handle the delete API
     console.warn(
       'Warning: Deleting images requires the API Secret. Avoid exposing it on the frontend!'
     );

@@ -52,6 +52,9 @@
             <mat-radio-button value="tutor">Tutor</mat-radio-button>
           </mat-radio-group>
 
+          <!-- Profile Image Upload -->
+          <app-imagebox (fileSelected)="onImageSelected($event)"></app-imagebox>
+
           <div class="step-buttons">
             <button
               mat-button

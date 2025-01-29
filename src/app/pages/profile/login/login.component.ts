@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from '../../../interfaces/users';
 import { Userservice } from '../../../services/user.service';
+import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,9 @@ export class LoginComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
+  uploadedimg: any;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private userservice:Userservice) {} // Injected Router for navigation
+  constructor(private _formBuilder: FormBuilder, private router: Router, private userservice: Userservice , private cloudinaryService:CloudinarymanagerService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -34,10 +36,7 @@ export class LoginComponent implements OnInit {
 
     this.thirdFormGroup = this._formBuilder.group(
       {
-        password: [
-          '',
-          [Validators.required, Validators.minLength(6)],
-        ],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
@@ -68,27 +67,44 @@ export class LoginComponent implements OnInit {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
+  onImageSelected(file: File | null) {
+     this.uploadedimg=file
+  }
+
   submit() {
     if (this.signupForm.valid) {
-      const user: Users = {
-        id: String(Date.now()),
-        name: this.firstFormGroup.get('name')?.value,
-        usertype: this.firstFormGroup.get('userType')?.value,
-        gender: this.secondFormGroup.get('gender')?.value,
-        email: this.firstFormGroup.get('email')?.value,
-        areaOfInterest: this.secondFormGroup.get('areaOfInterest')?.value || [],
-        experience: this.secondFormGroup.get('experience')?.value,
-        password: this.thirdFormGroup.get('password')?.value,
-      };
+      if (this.uploadedimg) {
+        this.cloudinaryService.uploadImage(this.uploadedimg).subscribe(
+          (imgurl) => {
+            const user: Users = {
+              id: String(Date.now()),
+              disabled:"false",
+              name: this.firstFormGroup.get('name')?.value,
+              usertype: this.firstFormGroup.get('userType')?.value,
+              gender: this.secondFormGroup.get('gender')?.value,
+              email: this.firstFormGroup.get('email')?.value,
+              areaOfInterest: this.secondFormGroup.get('areaOfInterest')?.value || [],
+              experience: this.secondFormGroup.get('experience')?.value,
+              password: this.thirdFormGroup.get('password')?.value,
+              imageURL: imgurl!,
+              courses:[],
+              messages:[]
+            };
+            this.userservice.adduser(user).subscribe((res) => {
+              console.log('User data submitted successfully:', res);
+              this.userservice.signin(user);
+            });
+
+            alert('Sign-up successful! Check the console for user data.');
+          },
+          (error) => {
+            console.error('Error uploading image:', error);
+            alert('Failed to upload image. Please try again.');
+          }
+        );
+      }
 
 
-      this.userservice.adduser(user).subscribe((res)=>{
-        console.log('User data submitted successfully:',res);
-        this.userservice.signin(user);
-        // this.navigateToProfile(); now, we agive a button to navigate to profile
-      });
-
-      alert('Sign-up successful! Check the console for user data.');
 
     } else {
       console.log('Form is invalid. Please fill all required fields.');
