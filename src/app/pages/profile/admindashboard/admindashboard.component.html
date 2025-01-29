@@ -68,3 +68,28 @@
     </div>
   </div>
 </div>
+<!-- Subscribers List Section -->
+<div class="section">
+  <h3>All Subscribers</h3>
+
+  <!-- Input box to send email to all subscribers -->
+  <div class="email-send-section">
+    <mat-form-field class="full-width">
+      <mat-label>Message to Subscribers</mat-label>
+      <textarea matInput [(ngModel)]="emailMessage"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendEmailToAll()">Send Email</button>
+  </div>
+
+  <!-- Subscribers List -->
+  <div class="cards-container">
+    <mat-card class="card" *ngFor="let subscriber of allsubscribers">
+      <mat-card-content>
+        <p><strong>Email:</strong> {{ subscriber.emailid }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="warn" (click)="deleteSubscriber(subscriber.id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

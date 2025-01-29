@@ -10,7 +10,10 @@
 - Comprehensive UI and font updates
 - statistics for admin, student and tutor
 - subscribed user list.
-
+- admin can send custom email to everybody on the email list. 
+- lazy loading
+- service in module level
+- single ton components
 # done
 - sharable courses,
 - email for subscription

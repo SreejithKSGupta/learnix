@@ -1,3 +1,4 @@
+import { AdmindataService } from './../../services/admindata.service';
 import { Component } from '@angular/core';
 import { EmailService } from '../../services/email.service';
 
@@ -33,20 +34,22 @@ export class FooterComponent {
   ];
   email = '';
 
-  constructor(private emailService: EmailService) {}
+  constructor(private emailService: EmailService,private admindataservice :AdmindataService) {}
 
   subscribeToNewsletter() {
     if (this.email) {
-      console.log(this.email)
-      this.emailService.sendEmail('subscription', this.email).then(response => {
-          console.log('Email sent successfully:', response);
-          alert('Thank you for subscribing! A welcome email has been sent.');
-          this.email = '';
-        })
-        .catch(error => {
-          console.error('Failed to send email:', error);
-          alert('An error occurred while sending the email. Please try again.');
-        });
+      // this.emailService.sendEmail('subscription', this.email).then(response => {
+      //     console.log('Email sent successfully:', response);
+      //     alert('Thank you for subscribing! A welcome email has been sent.');
+      //     this.email = '';
+      //   })
+      //   .catch(error => {
+      //     console.error('Failed to send email:', error);
+      //     alert('An error occurred while sending the email. Please try again.');
+      //   });
+      this.admindataservice.addtosubscribers(this.email).subscribe(res=>{
+        console.log(res);
+      })
     }
   }
 }

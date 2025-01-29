@@ -31,15 +31,15 @@ export class EmailService {
 
     if (emailtype === 'subscription') {
       console.log("Email is a subscription.");
-      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+      // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     } else if (emailtype === 'contactmessage') {
 
       console.log("Email is a contact message.");
-      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+      // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     } else if (emailtype === 'messagereply') {
-      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+      // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
     } else {
       console.warn("Invalid email type provided:", emailtype);
     }

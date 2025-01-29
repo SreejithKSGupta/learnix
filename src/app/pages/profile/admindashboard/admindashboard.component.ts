@@ -6,6 +6,7 @@ import { DataService } from '../../../services/data.service';
 import { OtherServices } from '../../../services/otherservices.service';
 import { Messages, Users } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
+import { AdmindataService } from '../../../services/admindata.service';
 
 @Component({
   selector: 'app-admindashboard',
@@ -17,17 +18,20 @@ export class AdmindashboardComponent {
   allusers!: Users[];
   allcourses!: Course[];
   allcontacts!: any[];
-  currentuser!:any;
+  currentuser!: any;
+  allsubscribers!: any[];
+  emailMessage: string = '';  // For input email message
 
   constructor(
     private userservice: Userservice,
     private dataservice: DataService,
     private otherServices: OtherServices,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private adminservice: AdmindataService
   ) {}
 
   ngOnInit(): void {
-    this.currentuser=this.userservice.getcurrentuser();
+    this.currentuser = this.userservice.getcurrentuser();
     this.userservice.getusers().subscribe(userlist => {
       this.allusers = userlist;
     });
@@ -37,8 +41,41 @@ export class AdmindashboardComponent {
     this.otherServices.getAllContactMessages().subscribe(contactlist => {
       this.allcontacts = contactlist;
     });
+    this.adminservice.getsubscribers().subscribe(subscribersList => {
+      this.allsubscribers = subscribersList;
+    });
   }
 
+  deleteSubscriber(id: string): void {
+    this.adminservice.deleteSubscriber(id).subscribe({
+      next: () => {
+        console.log('Subscriber deleted:', id);
+        this.allsubscribers = this.allsubscribers.filter(sub => sub.id !== id);
+      },
+      error: (err) => {
+        console.error('Error deleting subscriber:', err);
+      }
+    });
+  }
+
+  sendEmailToAll(): void {
+    if (!this.emailMessage.trim()) {
+      alert("Please enter a message before sending.");
+      return;
+    }
+
+    this.adminservice.sendBulkEmail(this.emailMessage, this.allsubscribers).subscribe({
+      next: () => {
+        alert("Email sent to all subscribers!");
+        this.emailMessage = '';  // Clear input after sending
+      },
+      error: (err) => {
+        console.error('Error sending email:', err);
+      }
+    });
+  }
+
+  // Existing methods for user and course management
   deleteContactMessage(id: string): void {
     this.otherServices.deleteContactMessage(id).subscribe({
       next: () => {
@@ -82,15 +119,13 @@ export class AdmindashboardComponent {
   }
 
   replyToMessage(id: string): void {
-
     let messagedata: Messages = {
-      id:String(Date.now()),
-      senderID:this.currentuser.id,
+      id: String(Date.now()),
+      senderID: this.currentuser.id,
       utype: 'admin',
       message: '',
       urgency: ''
     };
-    console.log(id)
 
     const dialogRef = this.dialog.open(MessagereplyComponent, {
       width: '250px',
