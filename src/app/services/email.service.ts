@@ -29,26 +29,26 @@ export class EmailService {
       message: message
     };
 
-    if (emailtype === 'subscription') {
-      console.log("Email is a subscription.");
-      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+    // if (emailtype === 'subscription') {
+    //   console.log("Email is a subscription.");
+    //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
-    } else if (emailtype === 'contactmessage') {
+    // } else if (emailtype === 'contactmessage') {
 
-      console.log("Email is a contact message.");
-      // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+    //   console.log("Email is a contact message.");
+    //   // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
-    } else if (emailtype === 'messagereply') {
-      console.log("emailisa messagereply");
+    // } else if (emailtype === 'messagereply') {
+    //   console.log("emailisa messagereply");
 
-      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
-    } else if (emailtype === 'othermsg') {
-      console.log("emailisa othermessage");
+    //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+    // } else if (emailtype === 'othermsg') {
+    //   console.log("emailisa othermessage");
 
-      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
-    }else {
-      console.warn("Invalid email type provided:", emailtype);
-    }
+    //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
+    // }else {
+    //   console.warn("Invalid email type provided:", emailtype);
+    // }
 
       return Promise.resolve({ status: 200, text: "No email sent" } as EmailJSResponseStatus);
   }

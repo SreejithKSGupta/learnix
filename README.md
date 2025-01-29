@@ -2,7 +2,6 @@
 - Online Learning Management system where your Learning is super charged. 
 
 # todo 
-- upload profile images, course images and issue images
 - wirte and display blog for admin
 - list of top courses in homepage
 - searchbar in relevant places
@@ -22,6 +21,8 @@
 - email for subscription
 - admin can send custom email to everybody on the email list. 
 - email in more places
+- upload profile images, course images 
+
 
 
 
