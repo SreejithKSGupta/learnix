@@ -36,6 +36,7 @@ import { ImageboxComponent } from './components/imagebox/imagebox.component';
 import { CourseCardComponent } from './components/coursecard/coursecard.component';
 import { ModelwindowComponent } from './components/modelwindow/modelwindow.component';
 import { AdmindashboardComponent } from './pages/profile/admindashboard/admindashboard.component';
+import { MessagereplyComponent } from './components/messagereply/messagereply.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { AdmindashboardComponent } from './pages/profile/admindashboard/admindas
     CourseCardComponent,
     ModelwindowComponent,
     AdmindashboardComponent,
+    MessagereplyComponent,
   ],
   imports: [
     BrowserModule,

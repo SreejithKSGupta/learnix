@@ -61,7 +61,7 @@
           <p><strong>Type:</strong> {{ contact.type }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button color="primary" (click)="replyToMessage(contact.id)">Reply</button>
+          <button mat-button color="primary" (click)="replyToMessage(contact.senderID)">Reply</button>
           <button mat-button color="warn" (click)="deleteContactMessage(contact.id)">Delete</button>
         </mat-card-actions>
       </mat-card>

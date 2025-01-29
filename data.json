@@ -93,20 +93,6 @@
   ],
   "users": [
     {
-      "id": "1737631633699",
-      "name": "Srejith",
-      "usertype": "student",
-      "gender": "male",
-      "email": "sreejith.ks@gmail.com",
-      "areaOfInterest": [
-        "react",
-        "ai and robotics",
-        "cybersecurity"
-      ],
-      "experience": "3",
-      "password": "Hari*5559"
-    },
-    {
       "id": "1737632110429",
       "name": "Sreejith KS",
       "usertype": "student",
@@ -138,31 +124,30 @@
           "date": 1738092797825,
           "completion": 0
         }
+      ],
+      "messages": [
+        {
+          "id": "1738132186193",
+          "senderID": "1737633271901",
+          "utype": "admin",
+          "message": "hjb",
+          "urgency": "kjhk"
+        },
+        {
+          "id": "1738132187193",
+          "senderID": "1737633271901",
+          "utype": "admin",
+          "message": "hello bro",
+          "urgency": "Hii"
+        },
+        {
+          "id": "1738133870908",
+          "senderID": "1737633271901",
+          "utype": "admin",
+          "message": "hrllo",
+          "urgency": "Medium"
+        }
       ]
-    },
-    {
-      "id": "1737633178543",
-      "name": "John Doe",
-      "usertype": "student",
-      "gender": "male",
-      "email": "johndoe@example.com",
-      "areaOfInterest": [
-        "web development"
-      ],
-      "experience": "2",
-      "password": "JohnDoe*1234"
-    },
-    {
-      "id": "1737634215786",
-      "name": "Jane Smith",
-      "usertype": "student",
-      "gender": "female",
-      "email": "janesmith@example.com",
-      "areaOfInterest": [
-        "data science"
-      ],
-      "experience": "3",
-      "password": "JaneSmith*2345"
     },
     {
       "id": "1737635287945",
@@ -187,30 +172,6 @@
       ],
       "experience": "4",
       "password": "MichaelWilliams*4567"
-    },
-    {
-      "id": "1737637412543",
-      "name": "Sarah Brown",
-      "usertype": "student",
-      "gender": "female",
-      "email": "sarahbrown@example.com",
-      "areaOfInterest": [
-        "ai and robotics"
-      ],
-      "experience": "5",
-      "password": "SarahBrown*5678"
-    },
-    {
-      "id": "1737638475649",
-      "name": "David Wilson",
-      "usertype": "student",
-      "gender": "male",
-      "email": "davidwilson@example.com",
-      "areaOfInterest": [
-        "cybersecurity"
-      ],
-      "experience": "3",
-      "password": "DavidWilson*6789"
     },
     {
       "id": "1737633219272",
@@ -245,21 +206,13 @@
   "contactmessages": [
     {
       "id": "d222",
+      "senderID": "1737632110429",
       "name": "sreejith KS",
       "phone": "7025692254",
       "message": "this is a very good site",
       "severity": "Low",
       "type": "Feedback",
       "email": "sreejithksgupta2255@gmail.com"
-    },
-    {
-      "id": "50f4",
-      "name": "anjitha J",
-      "phone": "9447400037",
-      "message": "this is again a very good message",
-      "severity": "Low",
-      "type": "General Inquiry",
-      "email": "anjithaj@gmail.com"
     }
   ]
 }

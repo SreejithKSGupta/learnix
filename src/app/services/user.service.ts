@@ -1,5 +1,5 @@
+import { Messages } from './../interfaces/users';
 import { Course } from './../interfaces/course';
-import { Users } from '../interfaces/users';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -66,7 +66,14 @@ export class Userservice {
   userrole(): string {
     const userl = localStorage.getItem('user') || 'null';
     const user = JSON.parse(userl);
-    return user?.usertype || ''; // Optional chaining for safety
+    return user?.usertype || '';
+  }
+
+
+  getcurrentuser(): string {
+    const userl = localStorage.getItem('user') || 'null';
+    const user = JSON.parse(userl);
+    return user || '';
   }
 
   enrollToCourse(UserId: String, courseData: UserCourses): Observable<any> {
@@ -108,6 +115,22 @@ export class Userservice {
           console.error(`Course with ID ${courseID} not found in user's courses.`);
         }
 
+        return this.http.put<any>(url, user);
+      })
+    );
+  }
+
+  replytomail(UserId:String,message:Messages):Observable<any>{
+    const url = `${this.userurl}/${UserId}`;
+    console.log(UserId)
+    return this.http.get<any>(url).pipe(
+      switchMap((user) => {
+        console.log(user)
+        if(!user.messages){
+          user.messages=[]
+        }
+        user.messages.push(message);
+        console.log(user.Message,UserId)
         return this.http.put<any>(url, user);
       })
     );

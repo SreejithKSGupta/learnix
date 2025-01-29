@@ -66,7 +66,7 @@ export class ContactUsComponent implements OnInit {
     }
 
     const contactData = this.contactForm.value;
-
+    console.log(contactData);
     // Use the service to send data to the JSON Server
     this.otherServices.submitContactForm(contactData).subscribe({
       next: (response) => {

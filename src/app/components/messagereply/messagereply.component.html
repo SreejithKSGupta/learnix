@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Reply to Message</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <input matInput [(ngModel)]="data.message">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Urgency</mat-label>
+    <mat-select [(ngModel)]="data.urgency">
+      <mat-option *ngFor="let option of severityOptions" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data">Send</button>
+</div>

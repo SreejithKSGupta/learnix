@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Course } from '../../../interfaces/course';
 import { Userservice } from '../../../services/user.service';
 import { DataService } from '../../../services/data.service';
 import { OtherServices } from '../../../services/otherservices.service';
-import { Users } from '../../../interfaces/users';
+import { Messages, Users } from '../../../interfaces/users';
+import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 
 @Component({
   selector: 'app-admindashboard',
@@ -13,19 +15,19 @@ import { Users } from '../../../interfaces/users';
 })
 export class AdmindashboardComponent {
   allusers!: Users[];
-  allcourses!: Course[] ;
-  allcontacts!: any[]
-  displayedColumns: string[] = ['name', 'email', 'usertype', 'status', 'action']; // For Users Table
-  displayedColumnsCourses: string[] = ['courseName', 'tutor', 'duration', 'fee', 'status', 'action']; // For Courses Table
-  displayedColumnsContacts: string[] = ['name', 'message', 'severity', 'type', 'email', 'actions']; // For Contact Messages Table
+  allcourses!: Course[];
+  allcontacts!: any[];
+  currentuser!:any;
 
   constructor(
     private userservice: Userservice,
     private dataservice: DataService,
-    private otherServices: OtherServices
+    private otherServices: OtherServices,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
+    this.currentuser=this.userservice.getcurrentuser();
     this.userservice.getusers().subscribe(userlist => {
       this.allusers = userlist;
     });
@@ -80,7 +82,29 @@ export class AdmindashboardComponent {
   }
 
   replyToMessage(id: string): void {
-    alert(`Replying to message with ID: ${id}`);
-    // Here you would add logic for the actual reply, but for now it shows an alert.
+
+    let messagedata: Messages = {
+      id:String(Date.now()),
+      senderID:this.currentuser.id,
+      utype: 'admin',
+      message: '',
+      urgency: ''
+    };
+
+    const dialogRef = this.dialog.open(MessagereplyComponent, {
+      width: '250px',
+      data: { message: messagedata.message, urgency: messagedata.urgency }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        messagedata.message = result.message;
+        messagedata.urgency = result.urgency;
+
+        this.userservice.replytomail(id, messagedata).subscribe(res => {
+          alert('Success');
+        });
+      }
+    });
   }
 }

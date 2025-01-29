@@ -23,6 +23,7 @@ export interface Messages {
   id: String;
   senderID:String;
   utype:String;
-  Message:String;
+  message:String;
   urgency:String;
 }
+

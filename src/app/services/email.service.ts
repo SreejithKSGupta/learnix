@@ -17,9 +17,11 @@ export class EmailService {
       to_name: "Learner",
       from_name:"Learnix",
       to_email: toEmail,
+      user:toEmail,
       subject: 'Thank you for subscribing!',
       message: `Hello! Thank you for subscribing to ${'Learnix'}. We're excited to have you with us!`
     };
+    console.log(templateParams)
 
     return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
   }

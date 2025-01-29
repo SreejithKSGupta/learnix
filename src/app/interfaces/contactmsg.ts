@@ -1,5 +1,6 @@
 export interface ContactMessage {
-  id: string;
+  id?: string;
+  senderID:String;
   name: string;
   phone: string;
   message: string;
