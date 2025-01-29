@@ -90,6 +90,7 @@ export class AdmindashboardComponent {
       message: '',
       urgency: ''
     };
+    console.log(id)
 
     const dialogRef = this.dialog.open(MessagereplyComponent, {
       width: '250px',
@@ -101,7 +102,7 @@ export class AdmindashboardComponent {
         messagedata.message = result.message;
         messagedata.urgency = result.urgency;
 
-        this.userservice.replytomail(id, messagedata).subscribe(res => {
+        this.otherServices.replytomail(id, messagedata).subscribe(res => {
           alert('Success');
         });
       }

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OtherServices } from '../../../services/otherservices.service';
 import { Userservice } from '../../../services/user.service';
-import { Observable } from 'rxjs';
-
+import { ContactMessage } from '../../../interfaces/contactmsg';
 @Component({
   selector: 'app-contact-us',
   standalone:false,
@@ -26,21 +25,18 @@ export class ContactUsComponent implements OnInit {
       message: ['', [Validators.required, Validators.minLength(10)]],
       severity: ['', Validators.required],
       type: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
     });
     this.issignedin = this.userservice.isauthenticated();
     // get and fill details of the user if signed in
     if (this.userservice.isauthenticated()) {
       const userl = localStorage.getItem('user');
-      console.log('User:', userl);
       if (userl) {
         const userId = JSON.parse(userl).id;
-        console.log('User ID:', userId);
 
         this.userservice.getuserbyid(userId).subscribe({
           next: (userData) => {
             this.user = userData;
-            console.log('User:', this.user);
             this.contactForm.patchValue({
               name: this.user.name,
               email: this.user.email,
@@ -65,10 +61,14 @@ export class ContactUsComponent implements OnInit {
       return;
     }
 
-    const contactData = this.contactForm.value;
-    console.log(contactData);
+    const contactData = this.contactForm.getRawValue();
+    let message:ContactMessage=contactData;
+    if(this.user){
+      message.senderID=this.user.id;
+    }
+
     // Use the service to send data to the JSON Server
-    this.otherServices.submitContactForm(contactData).subscribe({
+    this.otherServices.submitContactForm(message).subscribe({
       next: (response) => {
         console.log('Form submitted successfully:', response);
         // You can show a success message or redirect here

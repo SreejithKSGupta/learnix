@@ -38,8 +38,7 @@ export class FooterComponent {
   subscribeToNewsletter() {
     if (this.email) {
       console.log(this.email)
-      this.emailService.sendEmail(this.email)
-        .then(response => {
+      this.emailService.sendEmail('subscription', this.email).then(response => {
           console.log('Email sent successfully:', response);
           alert('Thank you for subscribing! A welcome email has been sent.');
           this.email = '';

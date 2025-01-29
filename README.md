@@ -1,13 +1,19 @@
 # Learnix 
 - Online Learning Management system where your Learning is super charged. 
 
-- sharable courses,
+# todo 
 - upload profile images, course images and issue images
+- email in more places
 - wirte and display blog for admin
-- show all users for admin
 - list of top courses in homepage
-- dashboard preview in homepage for signed in user.
 - searchbar in relevant places
+- Comprehensive UI and font updates
+- statistics for admin, student and tutor
+- subscribed user list.
+
+# done
+- sharable courses,
+- email for subscription
 
 ## Features
    - Join/create courses [students/tutors]
