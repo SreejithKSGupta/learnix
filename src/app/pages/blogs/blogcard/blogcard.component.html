@@ -1,0 +1,10 @@
+<div class="blog-list-container">
+  <h2>All Blogs</h2>
+  <div *ngFor="let blog of blogs" class="blog-card">
+    <img [src]="blog.imageURL" alt="{{ blog.title }}" />
+    <h3>{{ blog.title }}</h3>
+    <p>{{ blog.content }}...</p>
+    <p><strong>By:</strong> {{ blog.author }} | <strong>Date:</strong> {{ blog.date }}</p>
+    <button mat-raised-button color="warn" (click)="deleteBlog(blog.id!)">Delete</button>
+  </div>
+</div>

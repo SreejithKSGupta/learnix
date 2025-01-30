@@ -12,7 +12,8 @@
 - single ton components
 - otp for sign in and forgot password
 - edit profile
-
+- charts using Chart.js
+- features of learnix page
 
 
 # done

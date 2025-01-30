@@ -37,6 +37,10 @@ import { CourseCardComponent } from './components/coursecard/coursecard.componen
 import { ModelwindowComponent } from './components/modelwindow/modelwindow.component';
 import { AdmindashboardComponent } from './pages/profile/admindashboard/admindashboard.component';
 import { MessagereplyComponent } from './components/messagereply/messagereply.component';
+import { BlogAddComponent } from './pages/blogs/addblog/addblog.component';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+// import { ChartboxComponent } from './components/chartbox/chartbox.component';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +70,9 @@ import { MessagereplyComponent } from './components/messagereply/messagereply.co
     ModelwindowComponent,
     AdmindashboardComponent,
     MessagereplyComponent,
+    BlogsComponent,
+    BlogAddComponent,
+    // ChartboxComponent
   ],
   imports: [
     BrowserModule,
@@ -77,8 +84,9 @@ import { MessagereplyComponent } from './components/messagereply/messagereply.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
   ],
-  providers: [DataService, Userservice, OtherServices],
+  providers: [DataService, Userservice, OtherServices, provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

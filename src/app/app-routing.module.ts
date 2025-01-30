@@ -14,6 +14,7 @@ import { SigninComponent } from './pages/profile/signin/signin.component';
 import { DashboardComponent } from './pages/profile/dashboard/dashboard.component';
 import { ForgotpasswordComponent } from './pages/profile/forgotpassword/forgotpassword.component';
 import { AdmindashboardComponent } from './pages/profile/admindashboard/admindashboard.component';
+import { BlogAddComponent } from './pages/blogs/addblog/addblog.component';
 export const router: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'contact', component: ContactUsComponent },
@@ -29,6 +30,7 @@ export const router: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path:  'forgot-password', component: ForgotpasswordComponent},
   { path:'adminipanel',component:AdmindashboardComponent},
+  { path: 'add-blog', component: BlogAddComponent },
   { path: '**', component: N404pageComponent }
 
 ];

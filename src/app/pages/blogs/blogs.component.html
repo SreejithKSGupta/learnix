@@ -1,1 +1,17 @@
-<p>blogs works!</p>
+<!-- <mat-carousel>
+  <mat-carousel-slide *ngFor="let blog of blogs">
+    <img [src]="blog.imageURL" alt="{{ blog.title }}" />
+    <div class="carousel-caption">
+      <h3>{{ blog.title }}</h3>
+      <p>{{ blog.author }} - {{ blog.date | date }}</p>
+    </div>
+  </mat-carousel-slide>
+</mat-carousel> -->
+
+<div *ngFor="let blog of blogs">
+  <img [src]="blog.imageURL" alt="{{ blog.title }}" />
+  <div class="carousel-caption">
+    <h3>{{ blog.title }}</h3>
+    <p>{{ blog.author }} - {{ blog.date | date }}</p>
+  </div>
+</div>

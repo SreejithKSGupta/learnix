@@ -7,6 +7,7 @@ import { OtherServices } from '../../../services/otherservices.service';
 import { Messages, Users } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 import { AdmindataService } from '../../../services/admindata.service';
+import { ChartOptions, ChartData, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-admindashboard',
@@ -20,7 +21,7 @@ export class AdmindashboardComponent {
   allcontacts!: any[];
   currentuser!: any;
   allsubscribers!: any[];
-  emailMessage: string = '';  // For input email message
+  emailMessage: string = '';
 
   constructor(
     private userservice: Userservice,
@@ -29,6 +30,7 @@ export class AdmindashboardComponent {
     public dialog: MatDialog,
     private adminservice: AdmindataService
   ) {}
+
 
   ngOnInit(): void {
     this.currentuser = this.userservice.getcurrentuser();
