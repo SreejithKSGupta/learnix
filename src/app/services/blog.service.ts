@@ -9,6 +9,9 @@ export interface Blog {
   content: string;
   imageURL: string;
   date: string;
+  post:string;
+  description:any;
+  topic:string;
 }
 
 @Injectable({

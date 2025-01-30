@@ -1,28 +1,61 @@
-<div class="blog-form-container">
-  <h2>Add a New Blog</h2>
+<div class="container blog-form-container">
+  <h2 class="text-center mb-4">Add a New Blog</h2>
   <form [formGroup]="blogForm" (ngSubmit)="submitBlog()">
-    <mat-form-field>
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="title" required />
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Author</mat-label>
-      <input matInput formControlName="author" required />
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Content</mat-label>
-      <textarea matInput rows="4" formControlName="content" required></textarea>
-    </mat-form-field>
-
-    <div class="file-upload">
-      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
-      <div *ngIf="imagePreview">
-        <img [src]="imagePreview" alt="Preview" class="preview-img" />
+    <!-- Title and Author Fields -->
+    <div class="row mb-3">
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" required />
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Author</mat-label>
+          <input matInput formControlName="author" required />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Post</mat-label>
+          <input matInput formControlName="post" required />
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Topic</mat-label>
+          <input matInput formControlName="topic" required />
+        </mat-form-field>
       </div>
     </div>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="blogForm.invalid">Submit</button>
+
+    <!-- Description Field -->
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="2" formControlName="description" required></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- Content Field -->
+    <div class="mb-3">
+      <mat-form-field class="w-100">
+        <mat-label>Content</mat-label>
+        <textarea matInput rows="4" formControlName="content" required></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- File Upload Component -->
+    <div class="file-upload mb-3">
+      <app-imagebox (fileSelected)="onImageSelected($event)"></app-imagebox>
+    </div>
+
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="blogForm.invalid" class="w-100">
+      Submit
+    </button>
   </form>
 </div>

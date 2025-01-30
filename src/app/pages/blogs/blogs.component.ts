@@ -17,4 +17,10 @@ export class BlogsComponent {
       this.blogs = data.slice(0, 5);
     });
   }
+  onReadMore(blog:Blog){
+ console.log(blog,  " read more.")
+  }
+  onShare(blog:Blog){
+    console.log(blog, " Shared.")
+     }
 }

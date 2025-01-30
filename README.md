@@ -2,21 +2,21 @@
 - Online Learning Management system where your Learning is super charged. 
 
 # todo 
-- wirte and display blog for admin
 - list of top courses in homepage
 - searchbar in relevant places
 - Comprehensive UI and font updates
-- statistics for admin, student and tutor
+- statistics for admin, student and tutor with chart
+- otp for sign in and forgot password
+- edit profile
+- features of learnix page
 - lazy loading
 - service in module level
 - single ton components
-- otp for sign in and forgot password
-- edit profile
-- charts using Chart.js
-- features of learnix page
+
 
 
 # done
+- wirte and display blog
 - subscribed user list.
 - sharable courses,
 - email for subscription

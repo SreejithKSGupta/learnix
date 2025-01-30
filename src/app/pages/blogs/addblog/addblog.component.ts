@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogService } from '../../../services/blog.service';
+import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
+
 BlogService
 @Component({
   selector: 'app-addblog',
@@ -10,26 +12,26 @@ BlogService
 })
 export class BlogAddComponent {
   blogForm: FormGroup;
-  imagePreview: string | null = null;
 
-  constructor(private fb: FormBuilder, private blogService: BlogService) {
+  constructor(private fb: FormBuilder, private blogService: BlogService, private cloudinaryservices:CloudinarymanagerService) {
     this.blogForm = this.fb.group({
-      title: ['', Validators.required],
-      author: ['', Validators.required],
-      content: ['', Validators.required],
+      title: ['How E-learning is revolutionising India', Validators.required],
+      author: ['Sreejith KS', Validators.required],
+      post: ['CEO', Validators.required],
+      topic: ['Discussion', Validators.required],
+      content: ['this is the content of the blog', Validators.required],
+      description:['how platforms like Learnix are changing the Indian education landscape.',Validators.required],
       imageURL: ['', Validators.required]
     });
   }
 
-  onFileSelected(event: any): void {
-    const file = event.target.files[0];
+  onImageSelected(file: any): void {
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result as string;
-        this.blogForm.patchValue({ imageURL: this.imagePreview });
-      };
-      reader.readAsDataURL(file);
+      this.cloudinaryservices.uploadImage(file).subscribe(imgurl=>{
+        this.blogForm.patchValue({ imageURL:imgurl });
+
+      })
+
     }
   }
 
@@ -43,7 +45,6 @@ export class BlogAddComponent {
       this.blogService.addBlog(newBlog).subscribe(() => {
         alert('Blog added successfully!');
         this.blogForm.reset();
-        this.imagePreview = null;
       });
     } else {
       alert('Please fill in all required fields.');

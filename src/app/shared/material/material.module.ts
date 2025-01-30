@@ -20,6 +20,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
   exports: [
     MatCardModule,
+    MatExpansionModule,
     MatProgressBarModule,
     MatAutocompleteModule,
     MatBadgeModule,
