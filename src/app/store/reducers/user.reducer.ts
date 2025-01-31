@@ -1,8 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
-import { manageruserchange } from '../actions/user.action';
-export const initialState = '';
-const _helloReducer = createReducer(initialState,on(manageruserchange, (state) => 'Hello, NgRx!')
+import { User } from './../../interfaces/users';
+import { managerUserChange } from '../actions/user.action';
+
+export const initialState: User = {} as User;
+
+export const userReducer = createReducer(
+  initialState,
+  on(managerUserChange, (state, { user }) => {
+    console.log('User state updated:', user);
+    return { ...(state || {}), ...(user || {}) };
+  })
 );
-export function helloReducer(state: any, action: any) {
-return _helloReducer(state, action);
-}

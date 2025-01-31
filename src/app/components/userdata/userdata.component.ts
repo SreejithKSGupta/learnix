@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { manageruserchange } from '../../store/actions/user.action';
+import { managerUserChange } from '../../store/actions/user.action';
 import { selectUserState } from '../../store/selectors/user.selector';
 
 
@@ -14,12 +14,15 @@ import { selectUserState } from '../../store/selectors/user.selector';
   styleUrl: './userdata.component.css'
 })
 export class UserdataComponent {
-  hello$: Observable<string>;
-  constructor(private store: Store) {
-  this.hello$ = this.store.select(selectUserState);
-  }
-  sayHello() {
-  this.store.dispatch(manageruserchange());
-  }
-}
+  user$: Observable<any>;
 
+  constructor(private store: Store) {
+  this.user$ = this.store.select(selectUserState);
+  }
+  changeUser() {
+    let positions = ["hello", "this", "something else", "totally different"];
+      let randomPosition = positions[Math.floor(Math.random() * positions.length)];
+      // this.store.dispatch(managerUserChange({ name: randomPosition }));
+  }
+
+}

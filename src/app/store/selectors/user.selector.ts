@@ -1,2 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
-export const selectUserState = createFeatureSelector<string>('user');
+import { User } from './../../interfaces/users';
+import { createFeatureSelector } from '@ngrx/store';
+
+export const selectUserState = createFeatureSelector<User>('user');

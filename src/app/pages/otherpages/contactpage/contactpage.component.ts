@@ -4,9 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OtherServices } from '../../../services/otherservices.service';
 import { Userservice } from '../../../services/user.service';
 import { ContactMessage } from '../../../interfaces/contactmsg';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-contact-us',
-  standalone:false,
+  standalone: false,
   templateUrl: './contactpage.component.html',
   styleUrls: ['./contactpage.component.css']
 })
@@ -14,9 +16,16 @@ export class ContactUsComponent implements OnInit {
   contactForm!: FormGroup;
   severityOptions: string[] = ['Low', 'Medium', 'High'];
   typeOptions: string[] = ['General Inquiry', 'Support', 'Feedback'];
-  issignedin: boolean = false;
-  user: any;
-  constructor(private fb: FormBuilder, private otherServices: OtherServices, private router :Router, private userservice:Userservice) {}
+  user$: Observable<any>; // Define the user$ observable
+
+  constructor(
+    private fb: FormBuilder,
+    private otherServices: OtherServices,
+    private router: Router,
+    private userservice: Userservice
+  ) {
+    this.user$ = this.userservice.user$; // Assuming user$ is defined in the user service
+  }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
@@ -27,33 +36,18 @@ export class ContactUsComponent implements OnInit {
       type: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
-    this.issignedin = this.userservice.isauthenticated();
-    // get and fill details of the user if signed in
-    if (this.userservice.isauthenticated()) {
-      const userl = localStorage.getItem('user');
-      if (userl) {
-        const userId = JSON.parse(userl).id;
 
-        this.userservice.getuserbyid(userId).subscribe({
-          next: (userData) => {
-            this.user = userData;
-            this.contactForm.patchValue({
-              name: this.user.name,
-              email: this.user.email,
-            });
-            // disable editing those fields
-            this.contactForm.get('name')?.disable();
-            this.contactForm.get('email')?.disable();
-          },
-          error: (err) => {
-            console.error('Error fetching user data:', err);
-          }
+    this.user$.subscribe(user => {
+      if (user?.name) {
+        this.contactForm.patchValue({
+          name: user.name,
+          email: user.email,
         });
+        // Disable editing of the name and email fields
+        this.contactForm.get('name')?.disable();
+        this.contactForm.get('email')?.disable();
       }
-    }
-
-
-
+    });
   }
 
   onSubmit(): void {
@@ -62,22 +56,26 @@ export class ContactUsComponent implements OnInit {
     }
 
     const contactData = this.contactForm.getRawValue();
-    let message:ContactMessage=contactData;
-    if(this.user){
-      message.senderID=this.user.id;
-    }
+    let message: ContactMessage = contactData;
 
-    // Use the service to send data to the JSON Server
+    // Check if the user is signed in and add senderID if present
+    this.user$.subscribe(user => {
+      if (user?.id) {
+        message.senderID = user.id;
+      }
+    });
+
+    // Use the service to send data to the backend
     this.otherServices.submitContactForm(message).subscribe({
       next: (response) => {
         console.log('Form submitted successfully:', response);
-        // You can show a success message or redirect here
+        // Show success message or redirect
         this.contactForm.reset();
         this.router.navigate(['/']);
       },
       error: (error) => {
         console.error('Error submitting form:', error);
-        // You can show an error message here
+        // Show error message
       }
     });
   }

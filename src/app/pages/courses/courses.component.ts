@@ -7,6 +7,8 @@ import { Userservice } from '../../services/user.service';
 import { User } from '../../interfaces/users';
 import { forkJoin } from 'rxjs';
 import { ModelwindowComponent } from '../../components/modelwindow/modelwindow.component';
+import { Store } from '@ngrx/store';
+import { selectUserState } from '../../store/selectors/user.selector'; // Adjust path if needed
 
 @Component({
   selector: 'app-courses',
@@ -20,66 +22,74 @@ export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   signeduser: User | undefined;
   subscriptionStatuses: { [courseId: string]: boolean } = {};
+  user$: any; // Declare user$ here as an undefined property
 
   constructor(
     private dataService: DataService,
     private dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private userservice: Userservice
+    private userservice: Userservice,
+    private store: Store // Inject store in the constructor
   ) {}
 
   ngOnInit(): void {
-    let userid = JSON.parse(localStorage.getItem('user') || '{}').id;
-    if (userid) {
-      forkJoin({
-        user: this.userservice.getuserbyid(userid),
-        courses: this.dataService.getcourses()
-      }).subscribe(({ user, courses }) => {
-        this.signeduser = user;
-        this.courses = courses;
-        this.courses.forEach(course => {
-          this.isUserEnrolledToCourse(course.id!);
-        });
-        this.checkForCourseId();
-      });
-    }
+    // Initialize the user$ observable here after the store is initialized
+    this.user$ = this.store.select(selectUserState);
 
-    this.isauthenticated = this.userservice.isauthenticated();
-    if (this.isauthenticated) {
-      this.userrole = this.userservice.userrole();
+    // Subscribe to the user observable when initialized
+    this.user$.subscribe((user: User | undefined) => {
+      if (user) {
+        this.signeduser = user;
+        this.fetchCourses();
+        this.checkForCourseId();
+      }
+    });
+
+    if (this.user$.userrole) {
+   let role = this.user$.userrole
       if (
-        this.userrole !== 'tutor' &&
-        this.userrole !== 'student' &&
-        this.userrole !== 'admin'
+        role !== 'tutor' &&
+        role!== 'student' &&
+        role!== 'admin'
       ) {
         this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
       }
     }
   }
 
+  fetchCourses(): void {
+    this.dataService.getcourses().subscribe((courses) => {
+      this.courses = courses;
+      this.courses.forEach((course) => {
+        this.isUserEnrolledToCourse(course.id!);
+      });
+    });
+  }
+
   openCourseDetails(course: Course): void {
     this.dialog.open(ModelwindowComponent, {
-      data: { course,
+      data: {
+        course,
         isEnrolled: this.subscriptionStatuses[course.id!],
         isTutor: this.userrole === 'tutor',
         enroll: this.enrollToCourse.bind(this),
-        editCourse: this.editcourseitem.bind(this), },
+        editCourse: this.editcourseitem.bind(this),
+      },
       width: '400px',
     });
   }
 
-  enrollToCourse(id: string) {
+  enrollToCourse(id: string): void {
     console.log('enrolling to course', id);
-    let userid = JSON.parse(localStorage.getItem('user') || '{}').id;
-    if (userid) {
-      let coursedata = {
+    if (this.signeduser) {
+      const coursedata = {
         id: id,
         expiry: Date.now() + 60 * 24 * 60 * 60 * 1000,
         date: Date.now(),
         completion: 0,
       };
-      this.userservice.enrollToCourse(userid, coursedata).subscribe(() => {
+      this.userservice.enrollToCourse(this.signeduser.id, coursedata).subscribe(() => {
         this.subscriptionStatuses[id] = true;
       });
     }
@@ -90,23 +100,25 @@ export class CoursesComponent implements OnInit {
       this.subscriptionStatuses[courseId] = false;
       return;
     }
-    this.subscriptionStatuses[courseId] = this.signeduser.courses.some((course: any) => course.id === courseId);
+    this.subscriptionStatuses[courseId] = this.signeduser.courses.some(
+      (course: any) => course.id === courseId
+    );
   }
 
   checkForCourseId(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       const courseId = params['cid'];
       if (courseId) {
-        const course = this.courses.find(c => c.id === courseId);
+        const course = this.courses.find((c) => c.id === courseId);
         if (course) {
           this.openCourseDetails(course);
         }
       }
     });
   }
-  editcourseitem(item: any) {
+
+  editcourseitem(item: any): void {
     console.log('editing course', item);
-    // this.closecoursedetails();
     this.router.navigate(['/addcourse'], { queryParams: { id: item } });
   }
 }

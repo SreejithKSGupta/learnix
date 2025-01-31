@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { manageruserchange } from '../../store/actions/user.action';
+import { userReducer } from '../../store/reducers/user.reducer';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forRoot({ hello: manageruserchange }),
+    StoreModule.forFeature('user', userReducer), // Pass feature name as string
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ]
 })
 export class StoredModule { }
+

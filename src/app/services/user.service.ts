@@ -1,5 +1,3 @@
-import { Message } from './../interfaces/users';
-import { Course } from './../interfaces/course';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -7,19 +5,37 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { UserCourse } from '../interfaces/users';
 import { DataService } from './data.service';
 import { EmailService } from './email.service';
-
+import { Store } from '@ngrx/store';
+import { managerUserChange } from '../store/actions/user.action';
+import { selectUserState } from '../store/selectors/user.selector';
 @Injectable({
   providedIn: 'root',
 })
-export class Userservice {
-  private authStateSubject = new BehaviorSubject<boolean>(
-    this.isauthenticated()
-  ); // Default value is based on localStorage
-  public authState$ = this.authStateSubject.asObservable(); // Observable to subscribe to
-
-  constructor(private http: HttpClient, private dataservice: DataService,private emailservice:EmailService) {}
-
+export class Userservice  {
+  private authStateSubject = new BehaviorSubject<boolean>(false);
+  public authState$ = this.authStateSubject.asObservable();
+  user$!: Observable<any>;
   userurl = 'http://localhost:3000/users';
+
+  constructor(
+    private http: HttpClient,
+    private dataservice: DataService,
+    private emailservice: EmailService,
+    private store: Store
+  ) {}
+
+  checkauthentication(): void {
+    console.log("hello");
+
+    const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log(`Saved ID = ${savedUser}`)
+    if (savedUser) {
+      this.authStateSubject.next(true);
+      this.getuserbyid(savedUser).subscribe(user => {
+        this.store.dispatch(managerUserChange({ user }));
+      });
+    }
+  }
 
   getusers(): Observable<any> {
     return this.http.get(this.userurl).pipe(map((res) => res));
@@ -28,18 +44,18 @@ export class Userservice {
   adduser(item: any): Observable<any> {
     this.emailservice.sendEmail(
       'othermsg',
-       item.email,
+      item.email,
       item.name,
-      "Learnix",
-      "welcome to Learnix",
-      "Welcome to learnix. we hope you have an excellent learning journey with us."
-     )
+      'Learnix',
+      'welcome to Learnix',
+      'Welcome to Learnix. We hope you have an excellent learning journey with us.'
+    );
     return this.http.post<any>(this.userurl, item);
   }
 
-
   getuserbyid(id: String): Observable<any> {
     const url = `${this.userurl}/${id}`;
+     console.log(url)
     return this.http.get<any>(url);
   }
 
@@ -48,114 +64,97 @@ export class Userservice {
     return this.http.put(`${url}`, userData);
   }
 
-  isauthenticated(): boolean {
-    const userl = localStorage.getItem('user') || 'null';
-    const user = JSON.parse(userl);
-    return user !== null;
-  }
-
   signout() {
     console.log('Signing out from services');
-    localStorage.removeItem('user');
-    this.authStateSubject.next(false); // Notify subscribers that user is signed out
+    this.authStateSubject.next(false);
+    this.store.dispatch(managerUserChange({ user: null }));
+    localStorage.removeItem('user'); // Remove user from localStorage
   }
 
   signin(user: any) {
-    localStorage.setItem('user', JSON.stringify(user));
     this.authStateSubject.next(true);
+    this.store.dispatch(managerUserChange({ user }));
+
+    // Save user to localStorage to persist authentication across reloads
+    localStorage.setItem('user', JSON.stringify(user.id));
+
     this.emailservice.sendEmail(
       'othermsg',
-       user.email,
+      user.email,
       user.name,
-      "Learnix",
-      "Signed in to Learnix",
-      "you just signed in to Learnix, if it was not you, contact immideatly."
-     )
-  }
-
-  userrole(): string {
-    const userl = localStorage.getItem('user') || 'null';
-    const user = JSON.parse(userl);
-    return user?.usertype || '';
-  }
-
-
-  getcurrentuser(): string {
-    const userl = localStorage.getItem('user') || 'null';
-    const user = JSON.parse(userl);
-    return user || '';
+      'Learnix',
+      'Signed in to Learnix',
+      'You just signed in to Learnix. If it was not you, please contact us immediately.'
+    );
   }
 
   enrollToCourse(UserId: String, courseData: UserCourse): Observable<any> {
-    this.getuserbyid(UserId).subscribe(res=>{
-      this.dataservice.getcoursebyid(courseData.id as string).subscribe(cdata=>{
-        this.emailservice.sendEmail(
-          'othermsg',
-           res.email,
-          res.name,
-          "Learnix",
-          `Enrolled to ${cdata.courseName}`,
-          `you just enrolled to course ${cdata.courseName}, Happy learning`
-         )
-      })
-
-    })
-    console.log(`Adding course: ${courseData.id} to user ${UserId}`);
-    const url = `${this.userurl}/${UserId}`;
-    return this.http.get<any>(url).pipe(
+    return this.getuserbyid(UserId).pipe(
       switchMap((user) => {
-        user.courses.push(courseData);
-        return this.http.put<any>(url, user);
+        this.dataservice.getcoursebyid(courseData.id as string).subscribe((cdata) => {
+          this.emailservice.sendEmail(
+            'othermsg',
+            user.email,
+            user.name,
+            'Learnix',
+            `Enrolled to ${cdata.courseName}`,
+            `You just enrolled in the course ${cdata.courseName}, Happy learning!`
+          );
+        });
+
+        console.log(`Adding course: ${courseData.id} to user ${UserId}`);
+        const url = `${this.userurl}/${UserId}`;
+        return this.http.get<any>(url).pipe(
+          switchMap((user) => {
+            user.courses.push(courseData);
+            return this.http.put<any>(url, user);
+          })
+        );
       })
     );
   }
 
   disableUser(id: String): Observable<any> {
-    this.getuserbyid(id).subscribe(res=>{
-
-      this.emailservice.sendEmail(
-        'othermsg',
-         res.email,
-        res.name,
-        "Learnix",
-        "Message from Learnix",
-        " Your account has been removed from learnix due to policy violations"
-       )
-    })
-    const url = `${this.userurl}/${id}`;
-    return this.http.get<any>(url).pipe(
+    return this.getuserbyid(id).pipe(
       switchMap((user) => {
-        user.disabled = 'true'; // Mark the user as disabled
-        return this.http.put<any>(url, user); // Update the user with the new status
+        this.emailservice.sendEmail(
+          'othermsg',
+          user.email,
+          user.name,
+          'Learnix',
+          'Message from Learnix',
+          'Your account has been removed from Learnix due to policy violations.'
+        );
+        user.disabled = 'true';
+        const url = `${this.userurl}/${id}`;
+        return this.http.put<any>(url, user);
       }),
       catchError((error) => {
         console.error('Error disabling user:', error);
-        return of(null); // Return null on error
+        return of(null);
       })
     );
   }
 
   removeFromCourse(userID: string, courseID: String): Observable<any> {
-    this.getuserbyid(userID).subscribe(res=>{
-      this.dataservice.getcoursebyid(courseID as string).subscribe(cdata=>{
-        this.emailservice.sendEmail(
-          'othermsg',
-           res.email,
-          res.name,
-          "Learnix",
-          `Unenrolled from ${cdata.courseName}`,
-          `you just unenrolled from course ${cdata.courseName},let us upskill together.`
-         )
-      })
-
-    })
-    console.log(`Removing course: ${courseID} from user ${userID}`);
-    const url = `${this.userurl}/${userID}`;
-
-    return this.http.get<any>(url).pipe(
+    return this.getuserbyid(userID).pipe(
       switchMap((user) => {
-        const courseIndex = user.courses.findIndex((course: UserCourse) => course.id === courseID);
+        this.dataservice.getcoursebyid(courseID as string).subscribe((cdata) => {
+          this.emailservice.sendEmail(
+            'othermsg',
+            user.email,
+            user.name,
+            'Learnix',
+            `Unenrolled from ${cdata.courseName}`,
+            `You just unenrolled from the course ${cdata.courseName}, Let us upskill together.`
+          );
+        });
 
+        console.log(`Removing course: ${courseID} from user ${userID}`);
+        const url = `${this.userurl}/${userID}`;
+        const courseIndex = user.courses.findIndex(
+          (course: UserCourse) => course.id === courseID
+        );
         if (courseIndex !== -1) {
           user.courses.splice(courseIndex, 1);
         } else {
@@ -166,6 +165,4 @@ export class Userservice {
       })
     );
   }
-
-
 }

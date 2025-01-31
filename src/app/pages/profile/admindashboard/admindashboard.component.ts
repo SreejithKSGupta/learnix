@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Course } from '../../../interfaces/course';
 import { Userservice } from '../../../services/user.service';
@@ -7,37 +7,43 @@ import { OtherServices } from '../../../services/otherservices.service';
 import { Message, User } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 import { AdmindataService } from '../../../services/admindata.service';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
-
+import { managerUserChange } from '../../../store/actions/user.action';
+import { selectUserState } from '../../../store/selectors/user.selector';
 @Component({
   selector: 'app-admindashboard',
   standalone: false,
   templateUrl: './admindashboard.component.html',
   styleUrls: ['./admindashboard.component.css']
 })
-export class AdmindashboardComponent {
+export class AdmindashboardComponent implements OnInit {
   allusers!: User[];
   allcourses!: Course[];
   allcontacts!: any[];
-  currentuser!: any;
   allsubscribers!: any[];
   emailMessage: string = '';
-  statistics:any;
+  statistics: any;
 
-
+  // Define user$ within the component itself
+  user$: Observable<User | null> ;
 
   constructor(
     private userservice: Userservice,
     private dataservice: DataService,
     private otherServices: OtherServices,
     public dialog: MatDialog,
-    private adminservice: AdmindataService
-  ) {}
+    private adminservice: AdmindataService,
+    private store: Store
+
+  ) {
+    this.user$ = this.store.select(selectUserState);
+
+  }
 
   ngOnInit(): void {
-    this.currentuser = this.userservice.getcurrentuser();
-
+    // Fetch all data at once using forkJoin
     forkJoin({
       users: this.userservice.getusers(),
       courses: this.dataservice.getcourses(),
@@ -51,6 +57,7 @@ export class AdmindashboardComponent {
       this.updateStatistics();
     });
   }
+
   updateStatistics(): void {
     if (!this.allusers || !this.allcourses || !this.allsubscribers || !this.allcontacts) {
       return;
@@ -74,7 +81,7 @@ export class AdmindashboardComponent {
 
       userRoles: {
         id: "userRoles",
-        labels: ['Students', 'Tutors', 'Disabled Users','Subscribers'],
+        labels: ['Students', 'Tutors', 'Disabled Users', 'Subscribers'],
         values: [
           this.allusers.filter(user => user.userType === 'student').length,
           this.allusers.filter(user => user.userType === 'tutor').length,
@@ -83,8 +90,8 @@ export class AdmindashboardComponent {
         ],
         type: 'bar',
         heading: 'User Roles Distribution',
-        backgroundcolor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)', 'rgba(255, 159, 64, 0.5)','rgb(233, 64, 255)'],
-        bordercolor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)','rgb(233, 64, 255)'],
+        backgroundcolor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)', 'rgba(255, 159, 64, 0.5)', 'rgb(233, 64, 255)'],
+        bordercolor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)', 'rgb(233, 64, 255)'],
         borderWidth: 1,
         width: '500'
       },
@@ -103,7 +110,6 @@ export class AdmindashboardComponent {
         borderWidth: 1,
         width: '400'
       },
-
 
       messageseverity: {
         id: "messageSeverity",
@@ -139,9 +145,7 @@ export class AdmindashboardComponent {
     };
   }
 
-
-
-  deleteSubscriber(subscib:any): void {
+  deleteSubscriber(subscib: any): void {
     this.adminservice.deleteSubscriber(subscib).subscribe({
       next: () => {
         console.log('Subscriber deleted:', subscib.id);
@@ -215,11 +219,18 @@ export class AdmindashboardComponent {
   replyToMessage(id: string): void {
     let messagedata: Message = {
       id: String(Date.now()),
-      senderId: this.currentuser.id,
+      senderId: '', // Will be set when the user data is available
       userType: 'admin',
       message: '',
       urgency: 'Low'
     };
+
+    // Subscribe to the user$ observable to get the current user
+    this.user$.subscribe(user => {
+      if (user?.id) {
+        messagedata.senderId = user.id; // Set senderId based on current user
+      }
+    });
 
     const dialogRef = this.dialog.open(MessagereplyComponent, {
       width: '250px',

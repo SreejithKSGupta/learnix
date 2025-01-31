@@ -1,2 +1,7 @@
-import { createAction } from '@ngrx/store';
-export const manageruserchange = createAction('[Hello dear Component] Say Hello');
+import { createAction, props } from '@ngrx/store';
+import { User } from './../../interfaces/users';
+
+export const managerUserChange = createAction(
+  '[User] Manager User Change',
+  props<{ user: User | null}>()
+);

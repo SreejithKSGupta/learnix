@@ -17,6 +17,8 @@
 - single ton components
 - edit stats, testimonials, learnix data, hero data, socials in admin panel
 
+# errors
+- taking dashboard directly will redirect to signin, since user$ not loaded by then
 
 
 # done

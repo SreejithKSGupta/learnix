@@ -1,4 +1,4 @@
-<div>
-  <button (click)="sayHello()">Say Hello</button>
-  <p>{{ hello$ | async }}</p>
+<div class="d-flex justify-content-center align-content-center flex-column">
+  <button mat-flat-button (click)="changeUser()">Say Hello</button>
+  <p>{{ (user$ | async)?.name }}</p>
 </div>

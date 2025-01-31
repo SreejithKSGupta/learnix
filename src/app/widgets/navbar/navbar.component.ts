@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { Userservice } from '../../services/user.service';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { User } from '../../interfaces/users';
+import { selectUserState } from '../../store/selectors/user.selector';
 
 @Component({
   selector: 'app-navbar',
@@ -9,23 +12,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
   logordash: string | undefined;
-  private authSubscription: Subscription = new Subscription();
+  user$: Observable<User | null>;
 
-  constructor(private userservice: Userservice) {}
-
-  ngOnInit() {
-    this.authSubscription = this.userservice.authState$.subscribe((isAuthenticated) => {
-      this.logordash = isAuthenticated ? 'Dashboard' : 'Login';
-    });
+  constructor(private store: Store) {
+    this.user$ = this.store.select(selectUserState);
   }
 
-  ngOnDestroy() {
-    // Cleanup the subscription when the component is destroyed
-    if (this.authSubscription) {
-      this.authSubscription.unsubscribe();
-    }
+  ngOnInit() {
+    this.user$.subscribe((user) => {
+      this.logordash = user?.name ? 'Dashboard' : 'Login';
+    });
   }
 
   positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
