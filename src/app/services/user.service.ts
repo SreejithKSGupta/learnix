@@ -5,9 +5,11 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { UserCourse } from '../interfaces/users';
 import { DataService } from './data.service';
 import { EmailService } from './email.service';
+
 import { Store } from '@ngrx/store';
 import { managerUserChange } from '../store/actions/user.action';
 import { selectUserState } from '../store/selectors/user.selector';
+import { OtherServices } from './otherservices.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,7 +23,8 @@ export class Userservice  {
     private http: HttpClient,
     private dataservice: DataService,
     private emailservice: EmailService,
-    private store: Store
+    private store: Store,
+    private otherservices:OtherServices
   ) {}
 
   checkauthentication(): void {
@@ -50,6 +53,10 @@ export class Userservice  {
       'welcome to Learnix',
       'Welcome to Learnix. We hope you have an excellent learning journey with us.'
     );
+    this.otherservices
+    .showalert('success', 'Welcome to Learnix')
+    .subscribe((result) => {
+     })
     return this.http.post<any>(this.userurl, item);
   }
 
@@ -61,6 +68,10 @@ export class Userservice  {
 
   updateuser(userData: any) {
     const url = `${this.userurl}/${userData.id}`;
+    this.otherservices
+    .showalert('success', 'Updated profile')
+    .subscribe((result) => {
+     })
     return this.http.put(`${url}`, userData);
   }
 
@@ -68,7 +79,11 @@ export class Userservice  {
     console.log('Signing out from services');
     this.authStateSubject.next(false);
     this.store.dispatch(managerUserChange({ user: null }));
-    localStorage.removeItem('user'); // Remove user from localStorage
+    localStorage.removeItem('user');
+      this.otherservices
+    .showalert('success', 'Signed out Succesfully')
+    .subscribe((result) => {
+     })
   }
 
   signin(user: any) {
@@ -86,6 +101,10 @@ export class Userservice  {
       'Signed in to Learnix',
       'You just signed in to Learnix. If it was not you, please contact us immediately.'
     );
+    this.otherservices
+    .showalert('success', 'Signed in Succesfully')
+    .subscribe((result) => {
+     })
   }
 
   enrollToCourse(UserId: String, courseData: UserCourse): Observable<any> {
@@ -100,6 +119,10 @@ export class Userservice  {
             `Enrolled to ${cdata.courseName}`,
             `You just enrolled in the course ${cdata.courseName}, Happy learning!`
           );
+          this.otherservices
+                .showalert('success', 'Enrolled to Course')
+                .subscribe((result) => {
+                 })
         });
 
         console.log(`Adding course: ${courseData.id} to user ${UserId}`);

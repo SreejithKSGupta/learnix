@@ -11,11 +11,11 @@
 - edit profile
 - check if suscribers/users exist before adding them.
 - better alert
+- edit stats, testimonials, learnix data, hero data, socials in admin panel
 - features of learnix page
 - lazy loading
 - service in module level
 - single ton components
-- edit stats, testimonials, learnix data, hero data, socials in admin panel
 
 # errors
 - taking dashboard directly will redirect to signin, since user$ not loaded by then

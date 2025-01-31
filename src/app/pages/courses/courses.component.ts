@@ -9,6 +9,7 @@ import { forkJoin } from 'rxjs';
 import { ModelwindowComponent } from '../../components/modelwindow/modelwindow.component';
 import { Store } from '@ngrx/store';
 import { selectUserState } from '../../store/selectors/user.selector'; // Adjust path if needed
+import { OtherServices } from '../../services/otherservices.service';
 
 @Component({
   selector: 'app-courses',
@@ -30,14 +31,13 @@ export class CoursesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private userservice: Userservice,
-    private store: Store // Inject store in the constructor
+    private store: Store,
+    private otherServices: OtherServices
   ) {}
 
   ngOnInit(): void {
-    // Initialize the user$ observable here after the store is initialized
     this.user$ = this.store.select(selectUserState);
 
-    // Subscribe to the user observable when initialized
     this.user$.subscribe((user: User | undefined) => {
       if (user) {
         this.signeduser = user;
@@ -47,12 +47,8 @@ export class CoursesComponent implements OnInit {
     });
 
     if (this.user$.userrole) {
-   let role = this.user$.userrole
-      if (
-        role !== 'tutor' &&
-        role!== 'student' &&
-        role!== 'admin'
-      ) {
+      let role = this.user$.userrole;
+      if (role !== 'tutor' && role !== 'student' && role !== 'admin') {
         this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
       }
     }
@@ -81,19 +77,22 @@ export class CoursesComponent implements OnInit {
   }
 
   enrollToCourse(id: string): void {
-    console.log('enrolling to course', id);
-    if (this.signeduser) {
-      const coursedata = {
-        id: id,
-        expiry: Date.now() + 60 * 24 * 60 * 60 * 1000,
-        date: Date.now(),
-        completion: 0,
-      };
-      this.userservice.enrollToCourse(this.signeduser.id, coursedata).subscribe(() => {
-        this.subscriptionStatuses[id] = true;
-      });
-    }
-  }
+            if (this.signeduser) {
+              const coursedata = {
+              id: id,
+              expiry: Date.now() + 60 * 24 * 60 * 60 * 1000,
+              date: Date.now(),
+              completion: 0,
+            };
+            this.userservice
+              .enrollToCourse(this.signeduser.id, coursedata)
+              .subscribe(() => {
+                this.subscriptionStatuses[id] = true;
+                })
+          }
+        }
+
+
 
   isUserEnrolledToCourse(courseId: string): void {
     if (!this.signeduser || !this.signeduser.courses) {
@@ -118,7 +117,13 @@ export class CoursesComponent implements OnInit {
   }
 
   editcourseitem(item: any): void {
-    console.log('editing course', item);
-    this.router.navigate(['/addcourse'], { queryParams: { id: item } });
+    this.otherServices
+      .showalert('confirm', 'Editing Blog?')
+      .subscribe((result) => {
+        if (result == 'yes') {
+          console.log('editing course', item);
+          this.router.navigate(['/addcourse'], { queryParams: { id: item } });
+        }
+      });
   }
 }

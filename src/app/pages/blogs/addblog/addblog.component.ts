@@ -1,3 +1,4 @@
+import { OtherServices } from './../../../services/otherservices.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogService } from '../../../services/blog.service';
@@ -13,7 +14,7 @@ BlogService
 export class BlogAddComponent {
   blogForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private blogService: BlogService, private cloudinaryservices:CloudinarymanagerService) {
+  constructor(private fb: FormBuilder, private blogService: BlogService,private otherServices:OtherServices, private cloudinaryservices:CloudinarymanagerService) {
     this.blogForm = this.fb.group({
       title: ['How E-learning is revolutionising India', Validators.required],
       author: ['Sreejith KS', Validators.required],
@@ -42,10 +43,16 @@ export class BlogAddComponent {
         date: new Date().toISOString()
       };
 
-      this.blogService.addBlog(newBlog).subscribe(() => {
-        alert('Blog added successfully!');
-        this.blogForm.reset();
-      });
+      this.otherServices.showalert('confirm', 'Submit blog?')
+      .subscribe((result) => {
+        if(result=='yes'){
+          this.blogService.addBlog(newBlog).subscribe(() => {
+            this.blogForm.reset();});
+        }
+       })
+
+
+
     } else {
       alert('Please fill in all required fields.');
     }

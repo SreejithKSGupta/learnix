@@ -55,6 +55,7 @@ export class ContactUsComponent implements OnInit {
       return;
     }
 
+
     const contactData = this.contactForm.getRawValue();
     let message: ContactMessage = contactData;
 

@@ -1,3 +1,4 @@
+import { OtherServices } from './../../../services/otherservices.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -25,7 +26,8 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private userservice: Userservice,
     private dataservice: DataService,
-    private store: Store
+    private store: Store,
+    private otherServices: OtherServices
   ) {
     this.user$ = this.store.select(selectUserState);
   }
@@ -80,12 +82,20 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    this.userservice.signout();
-    this.router.navigate(['/signin']);
+    this.otherServices.showalert('confirm','Do you Really want to Logout?').subscribe((result) => {
+      console.log(result);
+      if(result=='yes'){
+        this.userservice.signout();
+        this.router.navigate(['/signin']);
+      }
+    });
+
   }
 
   goto(path: string): void {
-    this.router.navigate([path]);
+    this.otherServices.showalert("info",'Editing profile').subscribe((result) => {
+      console.log(result,path);
+    });
   }
 
   removeCourse(courseId: string): void {

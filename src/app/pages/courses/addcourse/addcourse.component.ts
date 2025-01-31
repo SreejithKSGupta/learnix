@@ -6,7 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
-
+import { OtherServices } from '../../../services/otherservices.service';
+OtherServices
 @Component({
   selector: 'app-addcourse',
   standalone: false,
@@ -36,7 +37,8 @@ export class AddcourseComponent implements OnInit {
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute,
-    private cloudinaryService: CloudinarymanagerService
+    private cloudinaryService: CloudinarymanagerService,
+    private otherServices:OtherServices,
   ) {
     this.createForm();
   }
@@ -156,22 +158,34 @@ export class AddcourseComponent implements OnInit {
 
   onSubmit() {
     if (this.angForm.valid) {
-      if (this.selectedFile) {
-        this.cloudinaryService.uploadImage(this.selectedFile).subscribe(
-          (url) => {
-            this.submitForm(url);
-          },
-          (error) => {
-            console.error('Error uploading image:', error);
-            alert('Failed to upload image. Please try again.');
+      this.otherServices.showalert("confirm","submit Blog").subscribe(res=>{
+        if(res=='yes'){
+          if (this.selectedFile) {
+
+            this.cloudinaryService.uploadImage(this.selectedFile).subscribe(
+              (url) => {
+                this.submitForm(url);
+              },
+              (error) => {
+                console.error('Error uploading image:', error);
+                this.otherServices.showalert('info','Failed to upload image. Please try again.').subscribe(res=>{
+console.log(res);
+
+                });
+              }
+            );
+          } else {
+            this.submitForm();
           }
-        );
-      } else {
-        this.submitForm();
-      }
+        }
+      })
+
     } else {
-      alert('Please fill in all required fields correctly.');
-    }
+      this.otherServices.showalert('info','Fill in all fields').subscribe(res=>{
+      console.log(res);
+
+      })
+      }
   }
 
   submitForm(imageUrl?: string) {

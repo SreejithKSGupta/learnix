@@ -9,14 +9,14 @@ import { MessagereplyComponent } from '../../../components/messagereply/messager
 import { AdmindataService } from '../../../services/admindata.service';
 import { forkJoin, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-
 import { managerUserChange } from '../../../store/actions/user.action';
 import { selectUserState } from '../../../store/selectors/user.selector';
+
 @Component({
   selector: 'app-admindashboard',
   standalone: false,
   templateUrl: './admindashboard.component.html',
-  styleUrls: ['./admindashboard.component.css']
+  styleUrls: ['./admindashboard.component.css'],
 })
 export class AdmindashboardComponent implements OnInit {
   allusers!: User[];
@@ -25,9 +25,7 @@ export class AdmindashboardComponent implements OnInit {
   allsubscribers!: any[];
   emailMessage: string = '';
   statistics: any;
-
-  // Define user$ within the component itself
-  user$: Observable<User | null> ;
+  user$: Observable<User | null>;
 
   constructor(
     private userservice: Userservice,
@@ -36,19 +34,16 @@ export class AdmindashboardComponent implements OnInit {
     public dialog: MatDialog,
     private adminservice: AdmindataService,
     private store: Store
-
   ) {
     this.user$ = this.store.select(selectUserState);
-
   }
 
   ngOnInit(): void {
-    // Fetch all data at once using forkJoin
     forkJoin({
       users: this.userservice.getusers(),
       courses: this.dataservice.getcourses(),
       contacts: this.otherServices.getAllContactMessages(),
-      subscribers: this.adminservice.getsubscribers()
+      subscribers: this.adminservice.getsubscribers(),
     }).subscribe(({ users, courses, contacts, subscribers }) => {
       this.allusers = users;
       this.allcourses = courses;
@@ -59,159 +54,132 @@ export class AdmindashboardComponent implements OnInit {
   }
 
   updateStatistics(): void {
-    if (!this.allusers || !this.allcourses || !this.allsubscribers || !this.allcontacts) {
-      return;
-    }
+    if (!this.allusers || !this.allcourses || !this.allsubscribers || !this.allcontacts) return;
 
     this.statistics = {
       users: {
-        id: "users",
+        id: 'users',
         labels: ['Active', 'Disabled'],
         values: [
-          this.allusers.filter(user => !user.disabled).length,
-          this.allusers.filter(user => user.disabled).length
+          this.allusers.filter((user) => !user.disabled).length,
+          this.allusers.filter((user) => user.disabled).length,
         ],
         type: 'pie',
         heading: 'User Status Distribution',
         backgroundcolor: ['rgba(54, 162, 235, 0.5)', 'rgba(255, 99, 132, 0.5)'],
         bordercolor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
         borderWidth: 1,
-        width: '400'
+        width: '400',
       },
 
       userRoles: {
-        id: "userRoles",
+        id: 'userRoles',
         labels: ['Students', 'Tutors', 'Disabled Users', 'Subscribers'],
         values: [
-          this.allusers.filter(user => user.userType === 'student').length,
-          this.allusers.filter(user => user.userType === 'tutor').length,
-          this.allusers.filter(user => user.disabled).length,
-          this.allsubscribers.length
+          this.allusers.filter((user) => user.userType === 'student').length,
+          this.allusers.filter((user) => user.userType === 'tutor').length,
+          this.allusers.filter((user) => user.disabled).length,
+          this.allsubscribers.length,
         ],
         type: 'bar',
         heading: 'User Roles Distribution',
-        backgroundcolor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)', 'rgba(255, 159, 64, 0.5)', 'rgb(233, 64, 255)'],
-        bordercolor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)', 'rgb(233, 64, 255)'],
-        borderWidth: 1,
-        width: '500'
-      },
-
-      courses: {
-        id: "courses",
-        labels: ['Active', 'Disabled'],
-        values: [
-          this.allcourses.filter(course => !course.disabled).length,
-          this.allcourses.filter(course => course.disabled).length
+        backgroundcolor: [
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(255, 159, 64, 0.5)',
+          'rgb(233, 64, 255)',
         ],
-        type: 'pie',
-        heading: 'Course Status Distribution',
-        backgroundcolor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 159, 64, 0.5)'],
-        bordercolor: ['rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)'],
-        borderWidth: 1,
-        width: '400'
-      },
-
-      messageseverity: {
-        id: "messageSeverity",
-        labels: ['Low', 'Medium', 'High'],
-        values: [
-          this.allcontacts.filter(msg => msg.severity === 'Low').length,
-          this.allcontacts.filter(msg => msg.severity === 'Medium').length,
-          this.allcontacts.filter(msg => msg.severity === 'High').length
+        bordercolor: [
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgb(233, 64, 255)',
         ],
-        type: 'pie',
-        heading: 'Message Severity Distribution',
-        backgroundcolor: ['rgba(47, 249, 47, 0.5)', 'rgba(164, 159, 9, 0.5)', 'rgba(251, 54, 0, 0.5)'],
-        bordercolor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 205, 86, 1)'],
         borderWidth: 1,
-        width: '400'
+        width: '500',
       },
-
-      messageTypes: {
-        id: "messageTypes",
-        labels: ['General Inquiry', 'Support', 'Feedback'],
-        values: [
-          this.allcontacts.filter(msg => msg.type === 'General Inquiry').length,
-          this.allcontacts.filter(msg => msg.type === 'Support').length,
-          this.allcontacts.filter(msg => msg.type === 'Feedback').length
-        ],
-        type: 'bar',
-        heading: 'Message Type Distribution',
-        backgroundcolor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 205, 86, 0.5)'],
-        bordercolor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 205, 86, 1)'],
-        borderWidth: 1,
-        width: '400'
-      }
     };
   }
 
-  deleteSubscriber(subscib: any): void {
-    this.adminservice.deleteSubscriber(subscib).subscribe({
-      next: () => {
-        console.log('Subscriber deleted:', subscib.id);
-        this.allsubscribers = this.allsubscribers.filter(sub => sub.id !== subscib.id);
-      },
-      error: (err) => {
-        console.error('Error deleting subscriber:', err);
+  deleteSubscriber(subscriber: any): void {
+    this.otherServices.showalert('confirm', 'Delete Subscriber?').subscribe((res) => {
+      if (res === 'confirmed') {
+        this.adminservice.deleteSubscriber(subscriber).subscribe({
+          next: () => {
+            this.allsubscribers = this.allsubscribers.filter((sub) => sub.id !== subscriber.id);
+            this.otherServices.showalert('success', 'Subscriber deleted successfully.');
+          },
+          error: () => {
+            this.otherServices.showalert('info', 'Error deleting subscriber.');
+          },
+        });
       }
     });
   }
 
   sendEmailToAll(): void {
     if (!this.emailMessage.trim()) {
-      alert("Please enter a message before sending.");
+      this.otherServices.showalert('info', 'Please enter a message before sending.');
       return;
     }
 
     this.adminservice.sendBulkEmail(this.emailMessage, this.allsubscribers).subscribe({
       next: () => {
-        alert("Email sent to all subscribers!");
+        this.otherServices.showalert('success', 'Email sent to all subscribers!');
         this.emailMessage = '';
       },
-      error: (err) => {
-        console.error('Error sending email:', err);
-      }
+      error: () => {
+        this.otherServices.showalert('info', 'Error sending email.');
+      },
     });
   }
 
   deleteContactMessage(id: string): void {
-    this.otherServices.deleteContactMessage(id).subscribe({
-      next: () => {
-        console.log('Contact message deleted:', id);
-        this.allcontacts = this.allcontacts!.filter(msg => msg.id !== id);
-      },
-      error: (err) => {
-        console.error('Error deleting contact message:', err);
+    this.otherServices.showalert('confirm', 'Delete this message?').subscribe((res) => {
+      if (res === 'confirmed') {
+        this.otherServices.deleteContactMessage(id).subscribe({
+          next: () => {
+            this.allcontacts = this.allcontacts.filter((msg) => msg.id !== id);
+            this.otherServices.showalert('success', 'Message deleted successfully.');
+          },
+          error: () => {
+            this.otherServices.showalert('info', 'Error deleting message.');
+          },
+        });
       }
     });
   }
 
-  disableUser(id: String): void {
-    this.userservice.disableUser(id).subscribe({
-      next: () => {
-        console.log('User disabled:', id);
-        const user = this.allusers!.find(u => u.id == id);
-        if (user) {
-          user.disabled = true;
-        }
-      },
-      error: (err) => {
-        console.error('Error disabling user:', err);
+  disableUser(id: string): void {
+    this.otherServices.showalert('confirm', 'Disable this user?').subscribe((res) => {
+      if (res === 'confirmed') {
+        this.userservice.disableUser(id).subscribe({
+          next: () => {
+            const user = this.allusers.find((u) => u.id === id);
+            if (user) user.disabled = true;
+            this.otherServices.showalert('success', 'User disabled successfully.');
+          },
+          error: () => {
+            this.otherServices.showalert('info', 'Error disabling user.');
+          },
+        });
       }
     });
   }
 
   disableCourse(id: string): void {
-    this.dataservice.disableCourse(id).subscribe({
-      next: () => {
-        console.log('Course disabled:', id);
-        const course = this.allcourses!.find(c => c.id === id);
-        if (course) {
-          course.disabled = true;
-        }
-      },
-      error: (err) => {
-        console.error('Error disabling course:', err);
+    this.otherServices.showalert('confirm', 'Disable this course?').subscribe((res) => {
+      if (res === 'confirmed') {
+        this.dataservice.disableCourse(id).subscribe({
+          next: () => {
+            const course = this.allcourses.find((c) => c.id === id);
+            if (course) course.disabled = true;
+            this.otherServices.showalert('success', 'Course disabled successfully.');
+          },
+          error: () => {
+            this.otherServices.showalert('info', 'Error disabling course.');
+          },
+        });
       }
     });
   }
@@ -219,31 +187,35 @@ export class AdmindashboardComponent implements OnInit {
   replyToMessage(id: string): void {
     let messagedata: Message = {
       id: String(Date.now()),
-      senderId: '', // Will be set when the user data is available
+      senderId: '',
       userType: 'admin',
       message: '',
-      urgency: 'Low'
+      urgency: 'Low',
     };
 
-    // Subscribe to the user$ observable to get the current user
-    this.user$.subscribe(user => {
+    this.user$.subscribe((user) => {
       if (user?.id) {
-        messagedata.senderId = user.id; // Set senderId based on current user
+        messagedata.senderId = user.id;
       }
     });
 
     const dialogRef = this.dialog.open(MessagereplyComponent, {
       width: '250px',
-      data: { message: messagedata.message, urgency: messagedata.urgency }
+      data: { message: messagedata.message, urgency: messagedata.urgency },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         messagedata.message = result.message;
         messagedata.urgency = result.urgency;
 
-        this.otherServices.replytomail(id, messagedata).subscribe(res => {
-          alert('Success');
+        this.otherServices.replytomail(id, messagedata).subscribe({
+          next: () => {
+            this.otherServices.showalert('success', 'Reply sent successfully.');
+          },
+          error: () => {
+            this.otherServices.showalert('info', 'Error sending reply.');
+          },
         });
       }
     });
