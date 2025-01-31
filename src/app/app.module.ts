@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataService } from './services/data.service';
@@ -40,6 +40,12 @@ import { MessagereplyComponent } from './components/messagereply/messagereply.co
 import { BlogAddComponent } from './pages/blogs/addblog/addblog.component';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ChartboxComponent } from './components/chartbox/chartbox.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoredModule } from './shared/store/store.module';
+import { UserdataComponent } from './components/userdata/userdata.component';
+
 
 
 @NgModule({
@@ -72,11 +78,13 @@ import { ChartboxComponent } from './components/chartbox/chartbox.component';
     MessagereplyComponent,
     BlogsComponent,
     BlogAddComponent,
-    ChartboxComponent
+    ChartboxComponent,
+    UserdataComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
+    StoredModule,
     ServicesModule,
     LightboxModule,
     AppRoutingModule,
@@ -84,6 +92,9 @@ import { ChartboxComponent } from './components/chartbox/chartbox.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 
   ],
   providers: [DataService, Userservice, OtherServices, provideCharts(withDefaultRegisterables())],
