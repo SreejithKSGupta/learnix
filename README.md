@@ -2,16 +2,20 @@
 - Online Learning Management system where your Learning is super charged. 
 
 # todo 
+- make faq, privacy, about, help and features page.
 - list of top courses in homepage
 - searchbar in relevant places
 - Comprehensive UI and font updates
 - statistics for admin, student and tutor with chart
 - otp for sign in and forgot password
 - edit profile
+- check if suscribers/users exist before adding them.
+- better alert
 - features of learnix page
 - lazy loading
 - service in module level
 - single ton components
+- edit stats, testimonials, learnix data, hero data, socials in admin panel
 
 
 

@@ -4,7 +4,7 @@ import { Course } from '../../../interfaces/course';
 import { Userservice } from '../../../services/user.service';
 import { DataService } from '../../../services/data.service';
 import { OtherServices } from '../../../services/otherservices.service';
-import { Messages, Users } from '../../../interfaces/users';
+import { Message, User } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 import { AdmindataService } from '../../../services/admindata.service';
 import { forkJoin } from 'rxjs';
@@ -17,7 +17,7 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./admindashboard.component.css']
 })
 export class AdmindashboardComponent {
-  allusers!: Users[];
+  allusers!: User[];
   allcourses!: Course[];
   allcontacts!: any[];
   currentuser!: any;
@@ -76,8 +76,8 @@ export class AdmindashboardComponent {
         id: "userRoles",
         labels: ['Students', 'Tutors', 'Disabled Users','Subscribers'],
         values: [
-          this.allusers.filter(user => user.usertype === 'student').length,
-          this.allusers.filter(user => user.usertype === 'tutor').length,
+          this.allusers.filter(user => user.userType === 'student').length,
+          this.allusers.filter(user => user.userType === 'tutor').length,
           this.allusers.filter(user => user.disabled).length,
           this.allsubscribers.length
         ],
@@ -188,7 +188,7 @@ export class AdmindashboardComponent {
         console.log('User disabled:', id);
         const user = this.allusers!.find(u => u.id == id);
         if (user) {
-          user.disabled = 'true';
+          user.disabled = true;
         }
       },
       error: (err) => {
@@ -203,7 +203,7 @@ export class AdmindashboardComponent {
         console.log('Course disabled:', id);
         const course = this.allcourses!.find(c => c.id === id);
         if (course) {
-          course.disabled = 'true';
+          course.disabled = true;
         }
       },
       error: (err) => {
@@ -213,12 +213,12 @@ export class AdmindashboardComponent {
   }
 
   replyToMessage(id: string): void {
-    let messagedata: Messages = {
+    let messagedata: Message = {
       id: String(Date.now()),
-      senderID: this.currentuser.id,
-      utype: 'admin',
+      senderId: this.currentuser.id,
+      userType: 'admin',
       message: '',
-      urgency: ''
+      urgency: 'Low'
     };
 
     const dialogRef = this.dialog.open(MessagereplyComponent, {

@@ -1,10 +1,11 @@
 export interface ContactMessage {
   id?: string;
-  senderID?:String; // can be subscribed (has sender ID), or Not.
+  senderID?: string;
   name: string;
   phone: string;
-  message: string;
-  severity: string; // can be low, medium, high
-  type: string; // can be general enquery, support or feedback
   email: string;
+  message: string;
+  severity: "Low" | "Medium" | "High";
+  type: "General Inquiry" | "Support" | "Feedback";
+  createdAt?: Date;
 }

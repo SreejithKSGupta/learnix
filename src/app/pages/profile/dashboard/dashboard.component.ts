@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Userservice } from '../../../services/user.service';
 import { Course } from '../../../interfaces/course';
-import { Users } from '../../../interfaces/users';
+import { User } from '../../../interfaces/users';
 @Component({
   selector: 'app-dashboard',
   standalone: false,
@@ -11,7 +11,7 @@ import { Users } from '../../../interfaces/users';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  user: any;
+  user!: any;
   courses: Course[] = [];
 
   constructor(
@@ -30,7 +30,8 @@ export class DashboardComponent implements OnInit {
         this.userservice.getuserbyid(userId).subscribe({
           next: (userData) => {
             this.user = userData;
-            if(this.user.usertype=='admin'){
+            console.log(this.user.userType)
+            if(this.user.userType==="admin"){
             this.router.navigate(['/adminipanel']);
             }
             let usercourses = this.user?.courses;

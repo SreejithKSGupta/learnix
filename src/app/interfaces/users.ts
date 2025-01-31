@@ -1,30 +1,29 @@
-export interface Users {
-  id: String;
-  disabled?:String; // true or false
+export interface User {
+  id: string;
+  disabled?: boolean; // Changed from string to boolean for easier checking
   name: string;
-  usertype: string; // tutor, student or admin
-  gender: string; // male , female or other
+  userType: "tutor" | "student" | "admin"; // Restricted to valid user types
+  gender: "male" | "female" | "other"; // Restricted to valid gender options
   email: string;
-  areaOfInterest: string[]; // can be coding , sports or arts
-  experience:number; // can b a number ranging from 0-20
+  areaOfInterest: ("coding" | "sports" | "arts")[]; // Restricted to valid interests
+  experience: number; // 0-20
   password: string;
-  imageURL?:String;
-  courses?: UserCourses[];
-  messages?:Messages[];
+  imageUrl?: string; // Fixed casing for consistency
+  courses?: UserCourse[]; // Fixed naming consistency
+  messages?: Message[]; // Fixed naming consistency
 }
 
-export interface UserCourses {
-  id: String;
-  date?: number;
-  expiry?:number;
-  completion?:number
+export interface UserCourse {
+  id: string;
+  date?: number; // Optional field for course start date
+  expiry?: number; // Optional field for course expiry date
+  completion?: number; // Completion percentage (0-100)
 }
 
-export interface Messages {
-  id: String;
-  senderID:String;
-  utype:String;
-  message:String;
-  urgency:String;
+export interface Message {
+  id: string;
+  senderId: string; // Changed `senderID` to camelCase for consistency
+  userType: string; // `userType` is a more clear name than `utype`
+  message: string;
+  urgency: "Low" | "Medium" | "High"; // Restricting urgency to valid values
 }
-

@@ -1,10 +1,10 @@
-import { Messages } from './../interfaces/users';
+import { Message } from './../interfaces/users';
 import { Course } from './../interfaces/course';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { UserCourses } from '../interfaces/users';
+import { UserCourse } from '../interfaces/users';
 import { DataService } from './data.service';
 import { EmailService } from './email.service';
 
@@ -86,7 +86,7 @@ export class Userservice {
     return user || '';
   }
 
-  enrollToCourse(UserId: String, courseData: UserCourses): Observable<any> {
+  enrollToCourse(UserId: String, courseData: UserCourse): Observable<any> {
     this.getuserbyid(UserId).subscribe(res=>{
       this.dataservice.getcoursebyid(courseData.id as string).subscribe(cdata=>{
         this.emailservice.sendEmail(
@@ -154,7 +154,7 @@ export class Userservice {
 
     return this.http.get<any>(url).pipe(
       switchMap((user) => {
-        const courseIndex = user.courses.findIndex((course: UserCourses) => course.id === courseID);
+        const courseIndex = user.courses.findIndex((course: UserCourse) => course.id === courseID);
 
         if (courseIndex !== -1) {
           user.courses.splice(courseIndex, 1);

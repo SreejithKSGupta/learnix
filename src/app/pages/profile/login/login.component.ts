@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Users } from '../../../interfaces/users';
+import { User } from '../../../interfaces/users';
 import { Userservice } from '../../../services/user.service';
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 
@@ -76,17 +76,17 @@ export class LoginComponent implements OnInit {
       if (this.uploadedimg) {
         this.cloudinaryService.uploadImage(this.uploadedimg).subscribe(
           (imgurl) => {
-            const user: Users = {
+            const user: User = {
               id: String(Date.now()),
-              disabled:"false",
+              disabled:false,
               name: this.firstFormGroup.get('name')?.value,
-              usertype: this.firstFormGroup.get('userType')?.value,
+              userType: this.firstFormGroup.get('userType')?.value,
               gender: this.secondFormGroup.get('gender')?.value,
               email: this.firstFormGroup.get('email')?.value,
               areaOfInterest: this.secondFormGroup.get('areaOfInterest')?.value || [],
               experience: this.secondFormGroup.get('experience')?.value,
               password: this.thirdFormGroup.get('password')?.value,
-              imageURL: imgurl!,
+              imageUrl: imgurl!,
               courses:[],
               messages:[]
             };
