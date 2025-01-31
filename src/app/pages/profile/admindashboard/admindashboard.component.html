@@ -1,4 +1,9 @@
-<!-- <app-chartbox></app-chartbox> -->
+<div class="d-flex">
+<div *ngFor="let stat of statistics | keyvalue">
+  <app-chartbox [chartdata]="stat.value"></app-chartbox>
+</div>
+</div>
+
 
 <div class="dashboard-container">
   <h2>Admin Dashboard</h2>

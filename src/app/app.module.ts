@@ -39,7 +39,7 @@ import { AdmindashboardComponent } from './pages/profile/admindashboard/admindas
 import { MessagereplyComponent } from './components/messagereply/messagereply.component';
 import { BlogAddComponent } from './pages/blogs/addblog/addblog.component';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
-// import { ChartboxComponent } from './components/chartbox/chartbox.component';
+import { ChartboxComponent } from './components/chartbox/chartbox.component';
 
 
 @NgModule({
@@ -72,7 +72,7 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
     MessagereplyComponent,
     BlogsComponent,
     BlogAddComponent,
-    // ChartboxComponent
+    ChartboxComponent
   ],
   imports: [
     BrowserModule,

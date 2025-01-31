@@ -1,6 +1,6 @@
-<div>
-<h1 style="text-align: center; padding:10px;;">
-  Statistics
-</h1>
-<canvas id="myChart"></canvas>
+<div [style.width.px]="chartdata.width">
+  <h1 style="text-align: center; padding:10px;">
+    {{ chartdata.heading }}
+  </h1>
+  <canvas #chartCanvas></canvas>
 </div>

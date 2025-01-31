@@ -15,5 +15,5 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: linear-gradient(60deg, rgba(203,255,232,1) 0%, rgb(248, 201, 230) 50%, rgb(179, 227, 247) 100%);
+  background: linear-gradient(60deg, rgb(209, 208, 235) 0%, rgb(248, 201, 230) 50%, rgb(179, 227, 247) 100%);
 }

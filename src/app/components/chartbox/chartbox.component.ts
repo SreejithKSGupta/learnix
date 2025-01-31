@@ -1,44 +1,54 @@
-// import { Component, OnInit } from '@angular/core';
-// import { Chart, LinearScale, CategoryScale,LineController, Title, Tooltip, Legend ,BarController } from 'chart.js';
+import { Component, Input, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import Chart, { ChartTypeRegistry } from 'chart.js/auto';
 
-// // Register necessary components for Chart.js
-// Chart.register(LinearScale, CategoryScale, Title, Tooltip,  Legend,LineController,BarController);
+@Component({
+  selector: 'app-chartbox',
+  standalone: false,
+  templateUrl: './chartbox.component.html',
+  styleUrls: ['./chartbox.component.css']
+})
+export class ChartboxComponent implements OnInit, OnDestroy {
+  @Input() chartdata!: any;
+  @ViewChild('chartCanvas', { static: true }) chartCanvas!: ElementRef<HTMLCanvasElement>;
 
-// @Component({
-//   selector: 'app-chartbox',
-//   standalone: false,
-//   templateUrl: './chartbox.component.html',
-//   styleUrls: ['./chartbox.component.css']
-// })
-// export class ChartboxComponent implements OnInit {
-//   constructor() { }
-//   labels= ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
-//     values= [12, 19, 3, 5, 2, 3]
-//   ngOnInit(): void {
+  private chartInstance!: Chart;
 
+  constructor() {}
 
+  ngOnInit(): void {
+    this.initializeChart();
+  }
 
-//       new Chart('myChart', {
-//         type: 'bar',
-//         data: {
-//           labels: this.labels,
-//           datasets: [{
-//             label: 'Sample Data',
-//             data: this.values,
-//             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-//             borderColor: 'rgba(75, 192, 192, 1)',
-//             borderWidth: 1
-//           }]
-//         },
-//         options: {
-//           responsive: true,
-//           scales: {
-//             y: {
-//               beginAtZero: true
-//             }
-//           }
-//         }
-//       });
-//     }
-//   }
+  ngOnDestroy(): void {
+    if (this.chartInstance) {
+      this.chartInstance.destroy(); // Destroy chart before component is removed
+    }
+  }
 
+  private initializeChart(): void {
+    if (this.chartInstance) {
+      this.chartInstance.destroy(); // Destroy previous instance if exists
+    }
+
+    this.chartInstance = new Chart(this.chartCanvas.nativeElement, {
+      type: this.chartdata.type as keyof ChartTypeRegistry,
+      data: {
+        labels: this.chartdata.labels,
+        datasets: [{
+          label: this.chartdata.heading,
+          data: this.chartdata.values,
+          backgroundColor: this.chartdata.color || this.chartdata.backgroundcolor,
+          borderColor: this.chartdata.bordercolor,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  }
+}
