@@ -45,6 +45,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoredModule } from './shared/store/store.module';
 import { UserdataComponent } from './components/userdata/userdata.component';
+import { FeaturespageComponent } from './pages/otherpages/featurespage/featurespage.component';
 
 
 
@@ -79,7 +80,8 @@ import { UserdataComponent } from './components/userdata/userdata.component';
     BlogsComponent,
     BlogAddComponent,
     ChartboxComponent,
-    UserdataComponent
+    UserdataComponent,
+    FeaturespageComponent
   ],
   imports: [
     BrowserModule,

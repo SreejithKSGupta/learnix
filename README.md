@@ -2,23 +2,24 @@
 - Online Learning Management system where your Learning is super charged. 
 
 # todo 
-- make faq, privacy, about, help and features page.
+- features page.
 - list of top courses in homepage
 - searchbar in relevant places
 - Comprehensive UI and font updates
-- statistics for admin, student and tutor with chart
 - otp for sign in and forgot password
 - edit profile
-- check if suscribers/users exist before adding them.
-- better alert
 - edit stats, testimonials, learnix data, hero data, socials in admin panel
 - features of learnix page
+
+
+# advanced
 - lazy loading
 - service in module level
 - single ton components
 
 # errors
 - taking dashboard directly will redirect to signin, since user$ not loaded by then
+- check if suscribers/users exist before adding them.
 
 
 # done
@@ -38,7 +39,7 @@
    - attend courses
    - Student/tutor statistics [number of hours learned,performance, number of courses enrolled,made]
    - Admin can see the subscriber email as well as contact messages in dashboard
-## External components
+
 
 ## Pages
   - Home
@@ -52,13 +53,6 @@
   - Privacy policy
   - Profile [login in/sign out]
   - 404 
-
-
-## Modules
-  - static pages
-  - tutor section
-  - student section
-  - Quizzing section
 
 ## fonts 
   - Anton
