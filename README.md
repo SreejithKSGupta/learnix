@@ -20,6 +20,7 @@
 # errors
 - taking dashboard directly will redirect to signin, since user$ not loaded by then
 - check if suscribers/users exist before adding them.
+- header navbar is in chaos in small screens
 
 
 # done

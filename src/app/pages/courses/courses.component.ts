@@ -5,11 +5,10 @@ import { Course } from '../../interfaces/course';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Userservice } from '../../services/user.service';
 import { User } from '../../interfaces/users';
-import { forkJoin } from 'rxjs';
-import { ModelwindowComponent } from '../../components/modelwindow/modelwindow.component';
 import { Store } from '@ngrx/store';
-import { selectUserState } from '../../store/selectors/user.selector'; // Adjust path if needed
+import { selectUserState } from '../../store/selectors/user.selector';
 import { OtherServices } from '../../services/otherservices.service';
+import { ModelwindowComponent } from '../../components/modelwindow/modelwindow.component';
 
 @Component({
   selector: 'app-courses',
@@ -21,9 +20,14 @@ export class CoursesComponent implements OnInit {
   isauthenticated: boolean = false;
   userrole: string = '';
   courses: Course[] = [];
+  filteredCourses: Course[] = [];
   signeduser: User | undefined;
   subscriptionStatuses: { [courseId: string]: boolean } = {};
-  user$: any; // Declare user$ here as an undefined property
+  user$: any;
+
+  searchQuery: string = '';
+  selectedFilter: string = '';
+  filterValue: number | string = '';
 
   constructor(
     private dataService: DataService,
@@ -57,6 +61,7 @@ export class CoursesComponent implements OnInit {
   fetchCourses(): void {
     this.dataService.getcourses().subscribe((courses) => {
       this.courses = courses;
+      this.filteredCourses = [...this.courses]; // Initialize filtered courses
       this.courses.forEach((course) => {
         this.isUserEnrolledToCourse(course.id!);
       });
@@ -77,22 +82,20 @@ export class CoursesComponent implements OnInit {
   }
 
   enrollToCourse(id: string): void {
-            if (this.signeduser) {
-              const coursedata = {
-              id: id,
-              expiry: Date.now() + 60 * 24 * 60 * 60 * 1000,
-              date: Date.now(),
-              completion: 0,
-            };
-            this.userservice
-              .enrollToCourse(this.signeduser.id, coursedata)
-              .subscribe(() => {
-                this.subscriptionStatuses[id] = true;
-                })
-          }
-        }
-
-
+    if (this.signeduser) {
+      const coursedata = {
+        id: id,
+        expiry: Date.now() + 60 * 24 * 60 * 60 * 1000,
+        date: Date.now(),
+        completion: 0,
+      };
+      this.userservice
+        .enrollToCourse(this.signeduser.id, coursedata)
+        .subscribe(() => {
+          this.subscriptionStatuses[id] = true;
+        });
+    }
+  }
 
   isUserEnrolledToCourse(courseId: string): void {
     if (!this.signeduser || !this.signeduser.courses) {
@@ -125,5 +128,45 @@ export class CoursesComponent implements OnInit {
           this.router.navigate(['/addcourse'], { queryParams: { id: item } });
         }
       });
+  }
+
+  // Handle search changes
+  onSearchChange(): void {
+    this.applyFilters();
+  }
+
+  // Handle filter changes
+  onFilterChange(): void {
+    this.applyFilters();
+  }
+
+  // Apply search and filter to the course list
+  applyFilters(): void {
+    this.filteredCourses = this.courses.filter((course) => {
+      const matchesSearch =
+        course.courseName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        course.tutor.toLowerCase().includes(this.searchQuery.toLowerCase());
+
+      const matchesFilter =
+        this.selectedFilter === 'tutor'
+          ? course.tutor.toLowerCase().includes(this.filterValue.toString().toLowerCase())
+          : this.selectedFilter === 'category'
+          ? course.importantTechnologiesUsed.some(tech =>
+              tech.toLowerCase().includes(this.filterValue.toString().toLowerCase())
+            )
+          : this.selectedFilter === 'duration'
+          ? course.duration === this.filterValue
+          : this.selectedFilter === 'credits'
+          ? course.credits === this.filterValue
+          : this.selectedFilter === 'fee'
+          ? course.courseFee <= Number(this.filterValue)
+          : this.selectedFilter === 'rating'
+          ? (course.totalStars || 0) / (course.feedback?.length || 1) >= Number(this.filterValue)
+          : this.selectedFilter === 'disabled'
+          ? course.disabled === (this.filterValue === 'true')
+          : true;
+
+      return matchesSearch && matchesFilter;
+    });
   }
 }

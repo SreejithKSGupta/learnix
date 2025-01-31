@@ -24,13 +24,11 @@ export class FooterComponent {
     { platform: 'LinkedIn', url: '#', icon: '/assets/icons/linkedin.svg' }
   ];
   pages = [
-    { name: 'Privacy Policy', url: '#' },
-    { name: 'About Us', url: '#' },
     { name: 'Home', url: '#' },
-    { name: 'Courses', url: '#' },
-    { name: 'Tutors/Students Portal', url: '#' },
-    { name: 'Help and Support', url: '#' },
-    { name: 'Blog', url: '#' }
+    { name: 'Privacy Policy', url: 'privacy' },
+    { name: 'About Us', url: 'about' },
+    { name: 'Courses', url: 'courses' },
+    { name: 'Blog', url: 'blogs' }
   ];
   email = '';
 
