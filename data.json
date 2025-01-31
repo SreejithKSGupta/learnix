@@ -29,7 +29,8 @@
       "courseFee": "300",
       "credits": "3",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
-      "id": "4"
+      "id": "4",
+      "disabled": "true"
     },
     {
       "courseName": "Full Stack Web Development",
@@ -258,6 +259,10 @@
     {
       "id": "c14a",
       "emailid": "ajithveee@gmail.com"
+    },
+    {
+      "id": "72cb",
+      "emailid": "thisisnewemail@gmail.com"
     }
   ],
   "blogs": [

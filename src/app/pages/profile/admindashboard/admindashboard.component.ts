@@ -104,17 +104,6 @@ export class AdmindashboardComponent {
         width: '400'
       },
 
-      subscribers: {
-        id: "subscribers",
-        labels: ['Total Subscribers'],
-        values: [this.allsubscribers.length],
-        type: 'bar',
-        heading: 'Total Subscribers',
-        backgroundcolor: 'rgba(153, 102, 255, 0.5)',
-        bordercolor: 'rgba(153, 102, 255, 1)',
-        borderWidth: 1,
-        width: '400'
-      },
 
       messageseverity: {
         id: "messageSeverity",
@@ -140,7 +129,7 @@ export class AdmindashboardComponent {
           this.allcontacts.filter(msg => msg.type === 'Support').length,
           this.allcontacts.filter(msg => msg.type === 'Feedback').length
         ],
-        type: 'pie',
+        type: 'bar',
         heading: 'Message Type Distribution',
         backgroundcolor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 205, 86, 0.5)'],
         bordercolor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 205, 86, 1)'],
