@@ -1,12 +1,12 @@
 export interface Users {
   id: String;
-  disabled?:String;
+  disabled?:String; // true or false
   name: string;
-  usertype: string;
-  gender: string;
+  usertype: string; // tutor, student or admin
+  gender: string; // male , female or other
   email: string;
-  areaOfInterest: string;
-  experience:number;
+  areaOfInterest: string[]; // can be coding , sports or arts
+  experience:number; // can b a number ranging from 0-20
   password: string;
   imageURL?:String;
   courses?: UserCourses[];

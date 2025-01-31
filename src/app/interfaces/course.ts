@@ -2,11 +2,11 @@ export interface Course {
   id?: string;
   courseName: string;
   tutor: string;
-  duration: number;
+  duration: number; // can be from 0-12 weeks
   description: string;
-  importantTechnologiesUsed: string[];
-  courseFee: string;
-  credits: number;
+  importantTechnologiesUsed: string[]; // array of any set of strings
+  courseFee: string; // 0-500
+  credits: number; // 1-5
   imageUrl?:String;
   numberOfEnrolledPeople?: number;
   totalStars?: number;

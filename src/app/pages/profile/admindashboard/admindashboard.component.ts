@@ -7,7 +7,6 @@ import { OtherServices } from '../../../services/otherservices.service';
 import { Messages, Users } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 import { AdmindataService } from '../../../services/admindata.service';
-import { ChartOptions, ChartData, ChartType } from 'chart.js';
 import { forkJoin } from 'rxjs';
 
 
@@ -24,80 +23,9 @@ export class AdmindashboardComponent {
   currentuser!: any;
   allsubscribers!: any[];
   emailMessage: string = '';
+  statistics:any;
 
 
-
-    statistics = {
-      dummydata : {
-        id:"dummydata",
-        labels : ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        values : [12, 19, 3, 5, 2, 3],
-        color :  ['rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)',
-          'rgb(255, 0, 247)',
-          'rgb(70, 174, 0)'],
-        type: 'bar',
-        heading: "Occuruence of colors",
-        backgroundcolor:'rgba(75, 192, 192, 0.2)',
-        bordercolor:'rgba(75, 192, 192, 1)',
-        borderWidth:1,
-        width:'500'
-        },
-      users: {
-        id:"users",
-        labels: ['Active', 'Disabled'],
-        values: [
-          this.allusers?.filter(user => !user.disabled).length || 0,
-          this.allusers?.filter(user => user.disabled).length || 0
-        ],
-        type: 'pie',
-        heading: 'User Status Distribution',
-        backgroundcolor: ['rgba(54, 162, 235, 0.5)', 'rgba(255, 99, 132, 0.5)'],
-        bordercolor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
-        borderWidth: 1,
-        width: '400'
-      },
-
-      courses: {
-        id:"courses",
-        labels: ['Active', 'Disabled'],
-        values: [
-          this.allcourses?.filter(course => !course.disabled).length || 0,
-          this.allcourses?.filter(course => course.disabled).length || 0
-        ],
-        type: 'pie',
-        heading: 'Course Status Distribution',
-        backgroundcolor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 159, 64, 0.5)'],
-        bordercolor: ['rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)'],
-        borderWidth: 1,
-        width: '400'
-      },
-
-      subscribers: {
-        id:"subscribers",
-        labels: ['Total Subscribers'],
-        values: [this.allsubscribers?.length || 0],
-        type: 'bar',
-        heading: 'Total Subscribers',
-        backgroundcolor: 'rgba(153, 102, 255, 0.5)',
-        bordercolor: 'rgba(153, 102, 255, 1)',
-        borderWidth: 1,
-        width: '400'
-      },
-
-      contactMessages: {
-        id:"contact messages",
-        labels: ['Total Messages'],
-        values: [this.allcontacts?.length || 0],
-        type: 'bar',
-        heading: 'Total Contact Messages',
-        backgroundcolor: 'rgba(255, 206, 86, 0.5)',
-        bordercolor: 'rgba(255, 206, 86, 1)',
-        borderWidth: 1,
-        width: '400'
-      }
-    };
 
   constructor(
     private userservice: Userservice,
@@ -120,29 +48,15 @@ export class AdmindashboardComponent {
       this.allcourses = courses;
       this.allcontacts = contacts;
       this.allsubscribers = subscribers;
-
-      // Now we update statistics since all data is available
       this.updateStatistics();
     });
   }
   updateStatistics(): void {
+    if (!this.allusers || !this.allcourses || !this.allsubscribers || !this.allcontacts) {
+      return;
+    }
+
     this.statistics = {
-      dummydata: {
-        id: "dummydata",
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        values: [12, 19, 3, 5, 2, 3],
-        color: ['rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)',
-                'rgb(255, 0, 247)',
-                'rgb(70, 174, 0)'],
-        type: 'bar',
-        heading: "Occurrence of colors",
-        backgroundcolor: 'rgba(75, 192, 192, 0.2)',
-        bordercolor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
-        width: '500'
-      },
       users: {
         id: "users",
         labels: ['Active', 'Disabled'],
@@ -157,6 +71,24 @@ export class AdmindashboardComponent {
         borderWidth: 1,
         width: '400'
       },
+
+      userRoles: {
+        id: "userRoles",
+        labels: ['Students', 'Tutors', 'Disabled Users','Subscribers'],
+        values: [
+          this.allusers.filter(user => user.usertype === 'student').length,
+          this.allusers.filter(user => user.usertype === 'tutor').length,
+          this.allusers.filter(user => user.disabled).length,
+          this.allsubscribers.length
+        ],
+        type: 'bar',
+        heading: 'User Roles Distribution',
+        backgroundcolor: ['rgba(75, 192, 192, 0.5)', 'rgba(255, 99, 132, 0.5)', 'rgba(255, 159, 64, 0.5)','rgb(233, 64, 255)'],
+        bordercolor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)','rgb(233, 64, 255)'],
+        borderWidth: 1,
+        width: '500'
+      },
+
       courses: {
         id: "courses",
         labels: ['Active', 'Disabled'],
@@ -171,6 +103,7 @@ export class AdmindashboardComponent {
         borderWidth: 1,
         width: '400'
       },
+
       subscribers: {
         id: "subscribers",
         labels: ['Total Subscribers'],
@@ -182,19 +115,41 @@ export class AdmindashboardComponent {
         borderWidth: 1,
         width: '400'
       },
-      contactMessages: {
-        id: "contact messages",
-        labels: ['Total Messages'],
-        values: [this.allcontacts.length],
-        type: 'bar',
-        heading: 'Total Contact Messages',
-        backgroundcolor: 'rgba(255, 206, 86, 0.5)',
-        bordercolor: 'rgba(255, 206, 86, 1)',
+
+      messageseverity: {
+        id: "messageSeverity",
+        labels: ['Low', 'Medium', 'High'],
+        values: [
+          this.allcontacts.filter(msg => msg.severity === 'Low').length,
+          this.allcontacts.filter(msg => msg.severity === 'Medium').length,
+          this.allcontacts.filter(msg => msg.severity === 'High').length
+        ],
+        type: 'pie',
+        heading: 'Message Severity Distribution',
+        backgroundcolor: ['rgba(47, 249, 47, 0.5)', 'rgba(164, 159, 9, 0.5)', 'rgba(251, 54, 0, 0.5)'],
+        bordercolor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 205, 86, 1)'],
+        borderWidth: 1,
+        width: '400'
+      },
+
+      messageTypes: {
+        id: "messageTypes",
+        labels: ['General Inquiry', 'Support', 'Feedback'],
+        values: [
+          this.allcontacts.filter(msg => msg.type === 'General Inquiry').length,
+          this.allcontacts.filter(msg => msg.type === 'Support').length,
+          this.allcontacts.filter(msg => msg.type === 'Feedback').length
+        ],
+        type: 'pie',
+        heading: 'Message Type Distribution',
+        backgroundcolor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 205, 86, 0.5)'],
+        bordercolor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 205, 86, 1)'],
         borderWidth: 1,
         width: '400'
       }
     };
   }
+
 
 
   deleteSubscriber(subscib:any): void {
@@ -218,7 +173,7 @@ export class AdmindashboardComponent {
     this.adminservice.sendBulkEmail(this.emailMessage, this.allsubscribers).subscribe({
       next: () => {
         alert("Email sent to all subscribers!");
-        this.emailMessage = '';  // Clear input after sending
+        this.emailMessage = '';
       },
       error: (err) => {
         console.error('Error sending email:', err);
@@ -226,7 +181,6 @@ export class AdmindashboardComponent {
     });
   }
 
-  // Existing methods for user and course management
   deleteContactMessage(id: string): void {
     this.otherServices.deleteContactMessage(id).subscribe({
       next: () => {

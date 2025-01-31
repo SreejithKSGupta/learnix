@@ -1,104 +1,114 @@
-<div class="d-flex">
-<div *ngFor="let stat of statistics | keyvalue">
-  <app-chartbox [chartdata]="stat.value"></app-chartbox>
-</div>
-</div>
-
-
 <div class="dashboard-container">
   <h2>Admin Dashboard</h2>
 
-  <!-- Users Section -->
-  <div class="section">
-    <h3>Users</h3>
-    <div class="cards-container">
-      <mat-card class="card" *ngFor="let user of allusers">
-        <mat-card-header>
-          <mat-card-title>{{ user.name }}</mat-card-title>
-          <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p><strong>User Type:</strong> {{ user.usertype }}</p>
-          <p><strong>Status:</strong> {{ user.disabled === 'true' ? 'Disabled' : 'Active' }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button color="warn" *ngIf="user.disabled !== 'true'" (click)="disableUser(user.id)">
-            Disable User
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
 
-  <!-- Courses Section -->
-  <div class="section">
-    <h3>Courses</h3>
-    <div class="cards-container">
-      <mat-card class="card" *ngFor="let course of allcourses">
-        <mat-card-header>
-          <mat-card-title>{{ course.courseName }}</mat-card-title>
-          <mat-card-subtitle>{{ course.tutor }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p><strong>Duration:</strong> {{ course.duration }} hours</p>
-          <p><strong>Fee:</strong> {{ course.courseFee }}</p>
-          <p><strong>Status:</strong> {{ course.disabled === 'true' ? 'Disabled' : 'Active' }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button color="warn" *ngIf="course.disabled !== 'true'" (click)="disableCourse(course.id!)">
-            Disable Course
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
 
-  <!-- Contact Messages Section -->
-  <div class="section">
-    <h3>Contact Messages</h3>
-    <div class="cards-container">
-      <mat-card class="card" *ngFor="let contact of allcontacts">
-        <mat-card-header>
-          <mat-card-title>{{ contact.name }}</mat-card-title>
-          <mat-card-subtitle>{{ contact.email }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p><strong>Message:</strong> {{ contact.message }}</p>
-          <p><strong>Severity:</strong> {{ contact.severity }}</p>
-          <p><strong>Type:</strong> {{ contact.type }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button color="primary" (click)="replyToMessage(contact.senderID)">Reply</button>
-          <button mat-button color="warn" (click)="deleteContactMessage(contact.id)">Delete</button>
-        </mat-card-actions>
-      </mat-card>
+  <mat-accordion multi="true">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h3>Statistics</h3>
+      </mat-expansion-panel-header>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let stat of statistics | keyvalue" class="col-md-4">
+        <app-chartbox [chartdata]="stat.value"></app-chartbox>
+      </div>
     </div>
-  </div>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h3>Users</h3>
+      </mat-expansion-panel-header>
+      <div class="cards-container">
+        <mat-card class="card" *ngFor="let user of allusers">
+          <mat-card-header>
+            <mat-card-title>{{ user.name }}</mat-card-title>
+            <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p><strong>User Type:</strong> {{ user.usertype }}</p>
+            <p><strong>Status:</strong> {{ user.disabled === 'true' ? 'Disabled' : 'Active' }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="warn" *ngIf="user.disabled !== 'true'" (click)="disableUser(user.id)">
+              Disable User
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h3>Courses</h3>
+      </mat-expansion-panel-header>
+      <div class="cards-container">
+        <mat-card class="card" *ngFor="let course of allcourses">
+          <mat-card-header>
+            <mat-card-title>{{ course.courseName }}</mat-card-title>
+            <mat-card-subtitle>{{ course.tutor }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p><strong>Duration:</strong> {{ course.duration }} hours</p>
+            <p><strong>Fee:</strong> {{ course.courseFee }}</p>
+            <p><strong>Status:</strong> {{ course.disabled === 'true' ? 'Disabled' : 'Active' }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="warn" *ngIf="course.disabled !== 'true'" (click)="disableCourse(course.id!)">
+              Disable Course
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h3>Contact Messages</h3>
+      </mat-expansion-panel-header>
+      <div class="cards-container">
+        <mat-card class="card" *ngFor="let contact of allcontacts">
+          <mat-card-header>
+            <mat-card-title>{{ contact.name }}</mat-card-title>
+            <mat-card-subtitle>{{ contact.email }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p><strong>Message:</strong> {{ contact.message }}</p>
+            <p><strong>Severity:</strong> {{ contact.severity }}</p>
+            <p><strong>Type:</strong> {{ contact.type }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" (click)="replyToMessage(contact.senderID)">Reply</button>
+            <button mat-button color="warn" (click)="deleteContactMessage(contact.id)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h3>All Subscribers</h3>
+      </mat-expansion-panel-header>
+
+      <div class="email-send-section">
+        <mat-form-field class="full-width">
+          <mat-label>Message to Subscribers</mat-label>
+          <textarea matInput [(ngModel)]="emailMessage"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendEmailToAll()">Send Email</button>
+      </div>
+
+      <div class="cards-container">
+        <mat-card class="card" *ngFor="let subscriber of allsubscribers">
+          <mat-card-content>
+            <p><strong>Email:</strong> {{ subscriber.emailid }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="warn" (click)="deleteSubscriber(subscriber)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
-<!-- Subscribers List Section -->
-<div class="section">
-  <h3>All Subscribers</h3>
-
-  <!-- Input box to send email to all subscribers -->
-  <div class="email-send-section">
-    <mat-form-field class="full-width">
-      <mat-label>Message to Subscribers</mat-label>
-      <textarea matInput [(ngModel)]="emailMessage"></textarea>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="sendEmailToAll()">Send Email</button>
-  </div>
-
-  <!-- Subscribers List -->
-  <div class="cards-container">
-    <mat-card class="card" *ngFor="let subscriber of allsubscribers">
-      <mat-card-content>
-        <p><strong>Email:</strong> {{ subscriber.emailid }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button color="warn" (click)="deleteSubscriber(subscriber)">Delete</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div>
-
-

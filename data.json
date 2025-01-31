@@ -222,6 +222,16 @@
       "severity": "Medium",
       "type": "Support",
       "email": "anjithaj@gmail.com"
+    },
+    {
+      "id": "e53a",
+      "name": "Sreejith KS",
+      "phone": "7025692254",
+      "message": "this is a general enquiery",
+      "severity": "Low",
+      "type": "General Inquiry",
+      "email": "sreejithksgupta2255@gmail.com",
+      "senderID": "1738176746899"
     }
   ],
   "subscriberslist": [

@@ -21,13 +21,13 @@ export class ChartboxComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.chartInstance) {
-      this.chartInstance.destroy(); // Destroy chart before component is removed
+      this.chartInstance.destroy();
     }
   }
 
   private initializeChart(): void {
     if (this.chartInstance) {
-      this.chartInstance.destroy(); // Destroy previous instance if exists
+      this.chartInstance.destroy();
     }
 
     this.chartInstance = new Chart(this.chartCanvas.nativeElement, {
