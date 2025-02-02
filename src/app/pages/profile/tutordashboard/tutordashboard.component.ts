@@ -1,23 +1,26 @@
 import { OtherServices } from './../../../services/otherservices.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, tap } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import { Userservice } from '../../../services/user.service';
 import { DataService } from '../../../services/data.service';
 import { Course } from '../../../interfaces/course';
 import { User } from '../../../interfaces/users';
+import { managerUserChange } from '../../../store/actions/user.action';
 import { selectUserState } from '../../../store/selectors/user.selector';
+import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-tutordashboard',
   standalone: false,
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+
+  templateUrl: './tutordashboard.component.html',
+  styleUrl: './tutordashboard.component.css'
 })
-export class DashboardComponent implements OnInit {
-  user$: Observable<User | null>;
+export class TutordashboardComponent {
   courses: Course[] = [];
+  user$: Observable<User | null>;
 
   constructor(
     private router: Router,
@@ -33,28 +36,27 @@ export class DashboardComponent implements OnInit {
     this.user$.pipe(
       tap({
         next: (userData) => {
-          if (!userData || !userData.id) {
-            this.router.navigate(['/signin']);
-          }
         },
         error: (err) => console.error('Error fetching user data:', err),
       })
-    ).subscribe();
-  }
+    ).subscribe(res=>{
+      console.log(res);
+      this.loadUserCourses(res!.name);
 
-  logout(): void {
-    this.otherServices.showalert('confirm', 'Do you really want to Logout?').subscribe((result) => {
-      console.log(result);
-      if (result === 'yes') {
-        this.userservice.signout();
-        this.router.navigate(['/signin']);
+
+    }
+
+    );
+  }
+private loadUserCourses(username: string): void {
+  this.dataservice.getcourses().subscribe(allcourses => {
+    allcourses.forEach((courseItem:any) => {
+      if(courseItem.tutor==username){
+        this.courses.push(courseItem);
       }
     });
-  }
+  });
+  console.log(this.courses);
 
-  editprofile(id: string): void {
-    this.otherServices.showalert("info", 'Editing profile').subscribe((result) => {
-      this.router.navigate(['/login'], { queryParams: { id: id } });
-    });
-  }
+}
 }

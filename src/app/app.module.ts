@@ -47,6 +47,8 @@ import { StoredModule } from './shared/store/store.module';
 import { UserdataComponent } from './components/userdata/userdata.component';
 import { FeaturespageComponent } from './pages/otherpages/featurespage/featurespage.component';
 import { CourseCardComponentnew } from './components/course-card/course-card.component';
+import { StudentdashboardComponent } from './pages/profile/studentdashboard/studentdashboard.component';
+import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordashboard.component';
 
 
 
@@ -83,7 +85,9 @@ import { CourseCardComponentnew } from './components/course-card/course-card.com
     BlogAddComponent,
     ChartboxComponent,
     UserdataComponent,
-    FeaturespageComponent
+    FeaturespageComponent,
+    StudentdashboardComponent,
+    TutordashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
   "courses": [
     {
       "courseName": "Data Science with python and Google cloud",
-      "tutor": "Anjitha J",
+      "tutor": "ambika",
       "duration": "10",
       "description": "Explore data science concepts and techniques using R, including data manipulation, visualization, and machine learning.",
       "importantTechnologiesUsed": [
@@ -19,7 +19,7 @@
     },
     {
       "courseName": "Machine Learning with TensorFlow",
-      "tutor": "Bob Brown",
+      "tutor": "ambika",
       "duration": "12",
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
       "importantTechnologiesUsed": [

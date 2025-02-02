@@ -1,51 +1,59 @@
-<div class="d-flex flex-column justify-content-center align-items-center mt-5">
-  <div class="col-md-6">
-    <mat-card class="profile-card shadow-sm" *ngIf="user$ | async as user">
-      <mat-card-header class="text-center" >
-        <mat-card-title class="mt-3">{{ user.name }}</mat-card-title>
-        <mat-card-subtitle class="text-muted">{{ user.email }}</mat-card-subtitle>
 
-        <div class="avatar">
-          <img [src]="user.imageUrl || '/assets/404.webp'" alt="User image" class="img-fluid rounded-circle">
-        </div>
-      </mat-card-header>
+<div *ngIf="user$ | async as user; else loading">
+  <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+    <div class="col-md-6">
+      <mat-card class="profile-card shadow-sm">
+        <mat-card-header class="text-center" >
+          <mat-card-title class="mt-3">{{ user.name }}</mat-card-title>
+          <mat-card-subtitle class="text-muted">{{ user.email }}</mat-card-subtitle>
 
-      <mat-card-content >
-        <div class="user-info">
-          <div class="info-item">
-            <strong>User Type:</strong> <span>{{ user.userType ? user.userType : "not available" }}</span>
+          <div class="avatar">
+            <img [src]="user.imageUrl || '/assets/404.webp'" alt="User image" class="img-fluid rounded-circle">
           </div>
-          <div class="info-item">
-            <strong>Gender:</strong> <span>{{ user.gender }}</span>
-          </div>
-          <div class="info-item">
-            <strong>Area of Interest:</strong>
-            <div class="interest-chips">
-              <mat-chip *ngFor="let interest of user.areaOfInterest">{{ interest }}</mat-chip>
+        </mat-card-header>
+
+        <mat-card-content >
+          <div class="user-info">
+            <div class="info-item">
+              <strong>User Type:</strong> <span>{{ user.userType ? user.userType : "not available" }}</span>
+            </div>
+            <div class="info-item">
+              <strong>Gender:</strong> <span>{{ user.gender }}</span>
+            </div>
+            <div class="info-item">
+              <strong>Area of Interest:</strong>
+              <div class="interest-chips">
+                <mat-chip *ngFor="let interest of user.areaOfInterest">{{ interest }}</mat-chip>
+              </div>
+            </div>
+            <div class="info-item">
+              <strong>Experience:</strong> <span>{{ user.experience }} years</span>
             </div>
           </div>
-          <div class="info-item">
-            <strong>Experience:</strong> <span>{{ user.experience }} years</span>
-          </div>
-        </div>
-      </mat-card-content>
+        </mat-card-content>
 
-      <mat-card-actions class="text-center d-flex justify-content-center">
-        <button mat-flat-button color="primary" class="mx-2" (click)="editprofile(user.id)">Edit Profile</button>
-        <button mat-flat-button color="warn" class="mx-2" (click)="logout()">Logout</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+        <mat-card-actions class="text-center d-flex justify-content-center">
+          <button mat-flat-button color="primary" class="mx-2" (click)="editprofile(user.id)">Edit Profile</button>
+          <button mat-flat-button color="warn" class="mx-2" (click)="logout()">Logout</button>
+        </mat-card-actions>
 
-  <div class="enrolled-courses mt-4 col-md-10">
-    <h3>Enrolled Courses</h3>
-    <div class="coursegrid row">
-      <div *ngFor="let course of courses" class="course-item col-md-3 mt-3">
-        <app-coursecard
-          [course]="course"
-          [user]="(user$ | async)">
-        </app-coursecard>
-      </div>
+      </mat-card>
     </div>
+
+  </div>
+    <div *ngIf="user?.id">
+    <div>
+      <app-admindashboard  *ngIf="user.userType =='admin'"></app-admindashboard>
+      <app-studentdashboard  *ngIf="user.userType =='student'"></app-studentdashboard>
+      <app-tutordashboard  *ngIf="user.userType =='tutor'"></app-tutordashboard>
+
+    </div>
+
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="spinner">Loading...</div>
+</ng-template>
+
+

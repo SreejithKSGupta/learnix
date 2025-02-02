@@ -1,43 +1,218 @@
+/* General container */
+.container {
+  margin-top: 20px;
+}
+
+/* Title */
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Search and Filter Panel */
+.d-flex {
+  gap: 15px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 95, 179, 0.5);
+}
+
+/* Courses List */
+#coursesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.course-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Course Image and Overlay */
+.course-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
 
 .course-bg-image {
-  height: 180px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 5px 5px 0 0;
+  filter: brightness(0.5);
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.6);
-  transition: opacity 0.3s;
-  border-radius: 5px 5px 0 0;
-  transition-duration: 200ms
-}
-
-.overlay:hover {
-  background: rgba(0, 0, 0, 0.95);
-}
-
-
-.course-title {
-  font-size: 1.5rem;
-  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
   text-align: center;
   padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.course-card:hover .overlay {
+  opacity: 1;
+}
+
+.course-title {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .course-tutor {
   font-size: 0.9rem;
-  font-style: italic;
+  color: #ccc;
 }
 
-.mat-card {
-  border-radius: 5px;
+/* Card Content Styling */
+.mat-card-content {
+  padding: 16px;
+  background-color: #fff;
 }
 
-.mat-dialog-title {
-  font-size: 1.5rem;
+.d-flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.material-icons {
+  font-size: 18px;
+}
+
+.text-muted {
+  color: #777;
+}
+
+.text-primary {
+  color: #007bff;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-warning {
+  color: #ffc107;
+}
+
+.course-details {
+  margin-top: 10px;
+}
+
+.course-details .detail {
+  margin: 5px 0;
+}
+
+.course-details .detail span {
+  font-size: 14px;
+}
+
+/* Button Styles */
+.mat-flat-button {
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.mat-flat-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.mat-flat-button[disabled] {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.mat-flat-button.color-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.mat-flat-button.color-accent {
+  background-color: #ff5733;
+  color: white;
+}
+
+.mat-flat-button.color-accent:hover {
+  background-color: #e04a1f;
+}
+
+.mat-flat-button.color-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Enroll Button */
+.enroll-btn {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
   font-weight: bold;
 }
 
-.mat-dialog-content p {
-  margin-bottom: 8px;
+.enroll-btn:hover {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  transform: translateY(-3px);
+}
+
+/* Filter Section */
+.select-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-value {
+  width: 100px;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .course-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .course-image-wrapper {
+    height: 150px;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-control,
+  .form-select {
+    width: 100%;
+  }
+
+  .filter-value {
+    width: 100%;
+  }
 }

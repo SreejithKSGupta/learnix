@@ -52,8 +52,13 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link" matTooltip="Profile Settings">
-            {{logordash}}
+          <a routerLink="/dashboard" *ngIf="logordash=='Dashboard'" routerLinkActive="active" class="nav-link" matTooltip="Profile Settings">
+            DashBoard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/signin" *ngIf="logordash=='Login'" routerLinkActive="active" class="nav-link" matTooltip="Profile Settings">
+            Login
           </a>
         </li>
 
