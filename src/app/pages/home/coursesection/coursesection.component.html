@@ -1,7 +1,10 @@
-<div id="coursessection">
-    <div *ngFor="let course of courses" class="card">
-      <div class="cardheader">{{ course[0] }}</div>
-      <div class="cardbody">{{ course[1] }}</div>
-    </div>
+<div>
+  <h2>Top Courses</h2>
+  <div id="coursessection">
+    <app-course-card
+      *ngFor="let course of filteredCourses"
+      [course]="course"
+      (courseSelected)="openCourseDetails($event)">
+    </app-course-card>
   </div>
-  
+</div>

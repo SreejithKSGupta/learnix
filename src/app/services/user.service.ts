@@ -28,10 +28,8 @@ export class Userservice  {
   ) {}
 
   checkauthentication(): void {
-    console.log("hello");
 
     const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
-    console.log(`Saved ID = ${savedUser}`)
     if (savedUser) {
       this.authStateSubject.next(true);
       this.getuserbyid(savedUser).subscribe(user => {
@@ -62,7 +60,6 @@ export class Userservice  {
 
   getuserbyid(id: String): Observable<any> {
     const url = `${this.userurl}/${id}`;
-     console.log(url)
     return this.http.get<any>(url);
   }
 

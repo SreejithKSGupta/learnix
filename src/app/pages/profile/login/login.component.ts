@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../../../interfaces/users';
 import { Userservice } from '../../../services/user.service';
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   thirdFormGroup!: FormGroup;
   uploadedimg: any;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private userservice: Userservice , private cloudinaryService:CloudinarymanagerService) {}
+  constructor(private _formBuilder: FormBuilder, private router: Router, private userservice: Userservice , private cloudinaryService:CloudinarymanagerService,    private route: ActivatedRoute ) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -47,6 +47,16 @@ export class LoginComponent implements OnInit {
       secondFormGroup: this.secondFormGroup,
       thirdFormGroup: this.thirdFormGroup,
     });
+    this.route.queryParams.subscribe((params) => {
+      const userId = params['id'];
+      console.log(userId);
+
+      if (userId) {
+        this.userservice.getuserbyid(userId).subscribe((user) => {
+          this.populateForm(user);
+        });
+      }
+    });
 
     this.firstFormGroup.get('userType')?.valueChanges.subscribe((userType) => {
       if (userType === 'tutor') {
@@ -60,6 +70,31 @@ export class LoginComponent implements OnInit {
       this.secondFormGroup.get('areaOfInterest')?.updateValueAndValidity();
     });
   }
+
+  populateForm(user: User) {
+    // Populate the form with the user data
+    this.firstFormGroup.patchValue({
+      name: user.name,
+      email: user.email,
+      userType: user.userType,
+    });
+
+    this.secondFormGroup.patchValue({
+      gender: user.gender,
+      // expertise: user.expertise,
+      areaOfInterest: user.areaOfInterest,
+      experience: user.experience,
+    });
+
+    this.thirdFormGroup.patchValue({
+      password: user.password,
+      confirmPassword: user.password,
+    });
+
+    // Set the uploaded image if available
+    this.uploadedimg = user.imageUrl;
+  }
+
 
   passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const password = group.get('password')?.value;

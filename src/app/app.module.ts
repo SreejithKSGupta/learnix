@@ -46,6 +46,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoredModule } from './shared/store/store.module';
 import { UserdataComponent } from './components/userdata/userdata.component';
 import { FeaturespageComponent } from './pages/otherpages/featurespage/featurespage.component';
+import { CourseCardComponentnew } from './components/course-card/course-card.component';
 
 
 
@@ -61,6 +62,7 @@ import { FeaturespageComponent } from './pages/otherpages/featurespage/featuresp
     AddcourseComponent,
     HerosectionComponent,
     HomeComponent,
+    CourseCardComponentnew,
     StatisticssectionComponent,
     CoursesectionComponent,
     TestimonialsectionComponent,

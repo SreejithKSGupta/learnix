@@ -1,103 +1,148 @@
-/* Hero Section Styling */
+
 .hero {
-  background-color: black;
-  background-image: url('/res/hero.svg');
-  height: 90vh;
-  color: white;
-  justify-content: center;
-  text-align: center;
-}
-
-/* Left Content */
-.hero-left {
-  z-index: 2;
-}
-
-.hero-title {
-  font-size: 6rem;
-  font-weight: bold;
-  line-height: 1.2;
-  font-family: 'Oswald', 'Roboto', sans-serif;
-}
-
-.highlighted-text {
-  color: #ffc107;
-  background: linear-gradient(to right, #ffeb3b, #03a9f4);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 450px;
-}
-
-/* Right Content */
-.hero-right {
+  min-height: 90vh;
+  padding: 3rem 2rem;
+  background: #081527;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-card {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 15px;
-  overflow: hidden;
-  background-color: transparent;
-  box-shadow: none;
-  justify-content: center;
-  align-items: center;
-}
-
-#herofrontimg {
-  height: auto;
-  width: 100%;
-  background-color: transparent;
-  object-fit: cover;
-}
-
-/* Button Styling */
-.cta-buttons .btn {
-  font-size: 1.2rem;
-  padding: 10px;
-  font-weight: 500;
-}
-.cta-buttons .btn:hover {
-  scale: 1.1;
-}
-
-.cta-buttons .btn:first-child {
-  margin-right: 15px;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    padding: 20px;
-  }
-
-  .hero-left {
-    align-items: center;
-    text-align: center;
-  }
+  flex-wrap: wrap;
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-family:'Jersey', 'Courier New', Courier, monospace;
+
+    animation: fadeInDown 1s ease-in-out;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #ff007a, #ff6600);
+    font-family:'Kanit', 'Courier New', Courier, monospace;
+    -webkit-background-clip: text;
+    background-clip:text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: bolder;
+
+
   }
 
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size:2rem;
+    margin-top: 1rem;
+    font-family:'oswald', 'Courier New', Courier, monospace;
+    animation: fadeInUp 1.2s ease-in-out;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    li {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      animation: fadeInLeft 1.5s ease-in-out;
+      color: #faffc4;
+      font-family:'jersery', 'Courier New', Courier, monospace;
+      &:hover{
+        font-weight: bold;
+        color: #0099ff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+
+    .custom-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
+      }
+    }
+
+    .custom-btn-outline {
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      background: transparent;
+      border: 2px solid #ff007a;
+      color: #ff007a;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background: #ff007a;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
+      }
+    }
   }
 
   .hero-right {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1.5s ease-in-out;
+  }
+
+  .hero-card {
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: transparent;
+    box-shadow: none;
+    img {
+      width: 80%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

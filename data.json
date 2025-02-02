@@ -201,6 +201,24 @@
         }
       ],
       "messages": []
+    },
+    {
+      "id": "1738358839686",
+      "disabled": false,
+      "name": "ambika",
+      "userType": "tutor",
+      "gender": "female",
+      "email": "ambikavs@gmail.com",
+      "areaOfInterest": [
+        "react",
+        "ai and robotics",
+        "cybersecurity"
+      ],
+      "experience": "5",
+      "password": "Amma@5559",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
+      "courses": [],
+      "messages": []
     }
   ],
   "contactmessages": [

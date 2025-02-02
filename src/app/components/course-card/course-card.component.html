@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header class="cardheader">
+   <img src="{{course.imageUrl}}" alt="product image">
+
+  </mat-card-header>
+  <mat-card-content class="cardbody">
+    <mat-card-title>{{ course.courseName }}</mat-card-title>
+    <mat-card-subtitle>{{ course.tutor }}</mat-card-subtitle>
+    <p class="course-description">{{ course.description }}</p>
+    <p><strong>Duration:</strong> {{ course.duration }} weeks</p>
+  </mat-card-content>
+  <mat-card-footer class="cardfooter">
+    <button mat-button (click)="openCourseDetails()">View Details</button>
+  </mat-card-footer>
+</mat-card>

@@ -92,9 +92,10 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  goto(path: string): void {
+  editprofile(id:String): void {
     this.otherServices.showalert("info",'Editing profile').subscribe((result) => {
-      console.log(result,path);
+      this.router.navigate(['/login'], { queryParams: { id: id } });
+
     });
   }
 

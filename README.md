@@ -2,14 +2,10 @@
 - Online Learning Management system where your Learning is super charged. 
 
 # todo 
-- features page.
-- list of top courses in homepage
-- searchbar in relevant places
+
 - Comprehensive UI and font updates
 - otp for sign in and forgot password
-- edit profile
 - edit stats, testimonials, learnix data, hero data, socials in admin panel
-- features of learnix page
 
 
 # advanced
@@ -24,6 +20,8 @@
 
 
 # done
+- searchbar in relevant places
+- features page.
 - wirte and display blog
 - subscribed user list.
 - sharable courses,
@@ -31,6 +29,9 @@
 - admin can send custom email to everybody on the email list. 
 - email in more places
 - upload profile images, course images 
+- edit profile
+- list of top courses in homepage
+
 
 
 

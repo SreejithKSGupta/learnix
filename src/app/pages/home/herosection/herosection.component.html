@@ -1,41 +1,31 @@
-<section class="hero d-flex justify-content-evenly align-items-center">
+<section class="hero d-flex justify-content-between align-items-center">
   <!-- Left Content -->
-  <div class="hero-left col-md-5 d-flex flex-column align-items-center justify-content-center text-white px-4">
+  <div class="hero-left col-md-6 text-white px-4">
     <h1 class="hero-title">
-      Start Your <div class="highlighted-text">Learning Journey</div> Today
+      Start your <span class="gradient-text">Upskilling Journey</span>
     </h1>
-    <!-- <p class="hero-subtitle mt-3">
-      Unlock a world of knowledge with expert-led courses designed to help you achieve your goals.
-    </p> -->
+    <p class="hero-subtitle">
+      Unlock your potential with our comprehensive tech courses and upskilling programs
+    </p>
+    <ul class="features-list">
+      <li> 50+ tech courses</li>
+      <li> 150+ skilled Instructors</li>
+      <li>10+ years of Experience</li>
+    </ul>
     <div class="cta-buttons mt-4">
-      <button
-        mat-raised-button
-        color="primary"
-        class="btn btn-lg px-4"
-        routerLink="/Courses"
-      >
-        Explore Courses
+      <button mat-raised-button color="primary" class="btn btn-lg custom-btn" routerLink="/courses">
+        Courses
       </button>
-      <button
-        mat-raised-button
-        color="accent"
-        class="btn btn-lg px-4"
-        routerLink="/contact"
-      >
-        Contact Us
+      <button mat-raised-button color="accent" class="btn btn-lg custom-btn-outline" routerLink="/Contact">
+         Contact Us
       </button>
     </div>
   </div>
 
   <!-- Right Content -->
-  <div class="hero-right col-md-4 d-flex align-items-center justify-content-center">
+  <div class="hero-right col-md-5">
     <mat-card class="hero-card mat-elevation-z8">
-      <img
-        mat-card-image
-        id="herofrontimg"
-        src="./res/heroimgpersonwithlap.webp"
-        alt="Learning"
-      />
+      <img mat-card-image id="hero-image"  src="./res/heroimgpersonwithlap.webp" alt="Learning Person" />
     </mat-card>
   </div>
 </section>
