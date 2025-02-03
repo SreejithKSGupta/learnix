@@ -22,10 +22,7 @@
       "tutor": "ambika",
       "duration": "12",
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
-      "importantTechnologiesUsed": [
-        "TensorFlow",
-        "Keras"
-      ],
+      "importantTechnologiesUsed": ["TensorFlow", "Keras"],
       "courseFee": "300",
       "credits": "3",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
@@ -55,12 +52,7 @@
       "tutor": "Sreejith KS",
       "duration": "5",
       "description": "this is a good course",
-      "importantTechnologiesUsed": [
-        "html",
-        "css",
-        "js",
-        "node"
-      ],
+      "importantTechnologiesUsed": ["html", "css", "js", "node"],
       "courseFee": "766",
       "credits": "5"
     },
@@ -70,9 +62,7 @@
       "tutor": "sreejith ksw",
       "duration": 5,
       "description": "this is a course from jan 27",
-      "importantTechnologiesUsed": [
-        "html"
-      ],
+      "importantTechnologiesUsed": ["html"],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": ""
@@ -83,9 +73,7 @@
       "tutor": "kjbkjb",
       "duration": 9,
       "description": "good course",
-      "importantTechnologiesUsed": [
-        "html"
-      ],
+      "importantTechnologiesUsed": ["html"],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": "",
@@ -99,9 +87,7 @@
       "userType": "student",
       "gender": "female",
       "email": "emilyjohnson@example.com",
-      "areaOfInterest": [
-        "machine learning"
-      ],
+      "areaOfInterest": ["machine learning"],
       "experience": "2",
       "password": "EmilyJohnson*3456"
     },
@@ -111,9 +97,7 @@
       "userType": "student",
       "gender": "male",
       "email": "michaelwilliams@example.com",
-      "areaOfInterest": [
-        "cloud computing"
-      ],
+      "areaOfInterest": ["cloud computing"],
       "experience": "4",
       "password": "MichaelWilliams*4567"
     },
@@ -123,11 +107,7 @@
       "userType": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": [
-        "react",
-        "ai and robotics",
-        "cybersecurity"
-      ],
+      "areaOfInterest": ["react", "ai and robotics", "cybersecurity"],
       "experience": "5",
       "password": "Amma@5559"
     },
@@ -137,11 +117,7 @@
       "userType": "admin",
       "gender": "female",
       "email": "anjitha@gmail.com",
-      "areaOfInterest": [
-        "svelte",
-        "bun",
-        "vs code"
-      ],
+      "areaOfInterest": ["svelte", "bun", "vs code"],
       "experience": "5",
       "password": "Anju*5559",
       "disabled": "true",
@@ -162,9 +138,7 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
+      "areaOfInterest": ["coding"],
       "experience": 5,
       "password": "Hari*5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738176746/v4rox6kshji426hh9ywy.jpg",
@@ -209,11 +183,7 @@
       "userType": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": [
-        "react",
-        "ai and robotics",
-        "cybersecurity"
-      ],
+      "areaOfInterest": ["react", "ai and robotics", "cybersecurity"],
       "experience": "5",
       "password": "Amma@5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
@@ -339,5 +309,79 @@
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738354258/o5ogbk7qwat0e21ixkba.jpg",
       "date": "2025-01-31T20:11:07.392Z"
     }
-  ]
+  ],
+
+  "particlesconfig": {
+    "background": {
+      "color": {
+        "value": "#0d47a1"
+      }
+    },
+    "fpsLimit": 30,
+    "interactivity": {
+      "events": {
+        "resize": true
+      },
+      "hover":true,
+
+      "modes": {
+        "connect.distance":100,
+        "push": {
+          "quantity": 10
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        }
+      }
+    },
+    "particles": {
+      "color": {
+        "value": "#ffffff",
+        "width":0.1
+      },
+      "links": {
+        "color": "#ff00ff",
+        "distance": 150,
+        "enable": true,
+        "opacity": 0.5,
+        "width": 1
+      },
+      "move": {
+        "direction": "none",
+        "enable": true,
+        "outModes": {
+          "default": "bounce"
+        },
+        "random": true,
+        "speed": 2,
+        "straight": false
+      },
+      "number": {
+        "density": {
+          "enable": true,
+          "area": 100
+        },
+        "value": 300
+      },
+      "opacity": {
+        "value": 1
+      },
+      "shape": {
+        "type": "star",
+        "character": {
+          "value": "hello",
+          "font": "Verdana",
+          "style": "",
+          "weight": ""
+        }
+      },
+
+      "size": {
+        "value": 1,
+        "random": true
+      }
+    },
+    "detectRetina": true
+  }
 }

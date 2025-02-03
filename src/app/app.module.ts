@@ -49,6 +49,8 @@ import { FeaturespageComponent } from './pages/otherpages/featurespage/featuresp
 import { CourseCardComponentnew } from './components/course-card/course-card.component';
 import { StudentdashboardComponent } from './pages/profile/studentdashboard/studentdashboard.component';
 import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordashboard.component';
+import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
+import { NgxParticlesModule } from "@tsparticles/angular";
 
 
 
@@ -87,10 +89,12 @@ import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordas
     UserdataComponent,
     FeaturespageComponent,
     StudentdashboardComponent,
-    TutordashboardComponent
+    TutordashboardComponent,
+    ParticlesbgComponent
   ],
   imports: [
     BrowserModule,
+    NgxParticlesModule,
     MaterialModule,
     StoredModule,
     ServicesModule,

@@ -29,7 +29,7 @@ export class Userservice  {
 
   checkauthentication(): void {
 
-    const savedUser = JSON.parse(localStorage.getItem('user') || '{}');
+    const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
     if (savedUser) {
       this.authStateSubject.next(true);
       this.getuserbyid(savedUser).subscribe(user => {
@@ -55,6 +55,7 @@ export class Userservice  {
     .showalert('success', 'Welcome to Learnix')
     .subscribe((result) => {
      })
+    localStorage.setItem('users', JSON.stringify(item.id));
     return this.http.post<any>(this.userurl, item);
   }
 
@@ -86,9 +87,8 @@ export class Userservice  {
   signin(user: any) {
     this.authStateSubject.next(true);
     this.store.dispatch(managerUserChange({ user }));
-
     // Save user to localStorage to persist authentication across reloads
-    localStorage.setItem('user', JSON.stringify(user.id));
+    localStorage.setItem('users', JSON.stringify(user.id));
 
     this.emailservice.sendEmail(
       'othermsg',

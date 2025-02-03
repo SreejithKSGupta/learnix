@@ -40,10 +40,8 @@ export class CoursesectionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("reaching here");
 
     this.user$ = this.store.select(selectUserState);
-    console.log("reaching here");
 
     this.user$.subscribe((user: User | undefined) => {
       if (user) {
@@ -58,8 +56,6 @@ export class CoursesectionComponent implements OnInit {
 
   fetchCourses(): void {
     this.dataService.getcourses().subscribe((courses) => {
-      console.log(courses);
-
       this.courses = courses.sort((a: { subscribers: number; }, b: { subscribers: number; }) => b.subscribers - a.subscribers).slice(0, 4);
       this.filteredCourses = [...this.courses];
       this.courses.forEach((course) => {
@@ -124,7 +120,6 @@ export class CoursesectionComponent implements OnInit {
       .showalert('confirm', 'Editing Blog?')
       .subscribe((result) => {
         if (result == 'yes') {
-          console.log('editing course', item);
           this.router.navigate(['/addcourse'], { queryParams: { id: item } });
         }
       });
