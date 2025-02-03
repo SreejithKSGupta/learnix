@@ -2,7 +2,6 @@
     font-family: 'oswald','lora', Arial, Helvetica, sans-serif    ;
 }
 
-#contentbox{
+*contentbox{
   z-index: 2;
-  /* background-color: rgba(45, 27, 2, 0.424); */
 }

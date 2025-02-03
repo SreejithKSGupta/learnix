@@ -8,7 +8,7 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .stat-item {
     background-color: #dddddd;
     display: flex;
@@ -18,48 +18,47 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .stat-item:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   }
-  
+
   .stat-number {
     font-size: 4.5rem;
     font-weight: bold;
     color: #026b6b;
     font-family: 'Oswald', sans-serif;
   }
-  
+
   .stat-text {
     font-size: 1.1rem;
     color: #333;
     font-family: 'Pacifico', cursive;
   }
-  
+
   strong {
     font-size: 2rem;
     font-weight: bold;
     color: #007c7f;
     font-family: 'Kanit', sans-serif;
   }
-  
+
   /* Mobile Responsiveness */
   @media (max-width: 768px) {
     .statistics {
       padding: 20px;
     }
-  
+
     .stat-item {
       padding: 15px;
     }
-  
+
     .stat-number {
       font-size: 2rem;
     }
-  
+
     .stat-text {
       font-size: 1rem;
     }
   }
-  

@@ -2,34 +2,33 @@
 .hero {
   min-height: 90vh;
   padding: 3rem 2rem;
-  background: #081527;
+  background: #0815272b;
   display: flex;
   flex-wrap: wrap;
+  padding: 20px 100px;
 
   .hero-title {
     font-size: 3rem;
-    font-family:'Jersey', 'Courier New', Courier, monospace;
+    font-family: "Jersey", "Courier New", Courier, monospace;
 
     animation: fadeInDown 1s ease-in-out;
   }
 
   .gradient-text {
     background: linear-gradient(90deg, #ff007a, #ff6600);
-    font-family:'Kanit', 'Courier New', Courier, monospace;
+    font-family: "Kanit", "Courier New", Courier, monospace;
     -webkit-background-clip: text;
-    background-clip:text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
-    font-size: 4rem;
+    font-size: 6rem;
     font-weight: bolder;
-
-
   }
 
   .hero-subtitle {
-    font-size:2rem;
+    font-size: 2rem;
     margin-top: 1rem;
-    font-family:'oswald', 'Courier New', Courier, monospace;
+    font-family: "oswald", "Courier New", Courier, monospace;
     animation: fadeInUp 1.2s ease-in-out;
   }
 
@@ -42,8 +41,8 @@
       margin-bottom: 0.5rem;
       animation: fadeInLeft 1.5s ease-in-out;
       color: #faffc4;
-      font-family:'jersery', 'Courier New', Courier, monospace;
-      &:hover{
+      font-family: "jersery", "Courier New", Courier, monospace;
+      &:hover {
         font-weight: bold;
         color: #0099ff;
         cursor: pointer;
@@ -101,7 +100,6 @@
     }
   }
 }
-
 
 @keyframes fadeInDown {
   from {

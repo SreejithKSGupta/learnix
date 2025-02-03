@@ -1,16 +1,17 @@
-body {
+#body {
     font-family: Arial, sans-serif;
+    z-index: 5;
   }
-  
+
   .navbar {
     margin-bottom: 20px;
   }
-  
+
   .jumbotron {
     background-color: #f8f9fa;
     padding: 2rem 1rem;
   }
-  
+
   h2 {
     margin-top: 20px;
   }

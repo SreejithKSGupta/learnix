@@ -311,34 +311,53 @@
     }
   ],
 
-  "particlesconfig": {
+  "particlesconfig":{
     "background": {
       "color": {
-        "value": "#0d47a1"
+        "value": "#081527"
       }
     },
-    "fpsLimit": 30,
+    "fpsLimit": 60,
     "interactivity": {
       "events": {
+        "onHover": {
+          "enable": true,
+          "mode": ["grab", "bubble"]
+        },
+        "onClick": {
+          "enable": true,
+          "mode": ["push", "repulse"]
+        },
         "resize": true
       },
-      "hover":true,
-
       "modes": {
-        "connect.distance":100,
-        "push": {
-          "quantity": 10
+        "grab": {
+          "distance": 150,
+          "lineLinked": {
+            "opacity": 0.8
+          }
+        },
+        "bubble": {
+          "distance": 200,
+          "size": 5,
+          "duration": 0.4,
+          "opacity": 1
         },
         "repulse": {
           "distance": 200,
           "duration": 0.4
+        },
+        "push": {
+          "quantity": 5
+        },
+        "remove": {
+          "quantity": 2
         }
       }
     },
     "particles": {
       "color": {
-        "value": "#ffffff",
-        "width":0.1
+        "value": "#ffffff"
       },
       "links": {
         "color": "#ff00ff",
@@ -360,28 +379,22 @@
       "number": {
         "density": {
           "enable": true,
-          "area": 100
+          "area": 800
         },
-        "value": 300
+        "value": 200
       },
       "opacity": {
-        "value": 1
+        "value": 0.5
       },
       "shape": {
-        "type": "star",
-        "character": {
-          "value": "hello",
-          "font": "Verdana",
-          "style": "",
-          "weight": ""
-        }
+        "type": "star"
       },
-
       "size": {
-        "value": 1,
+        "value": 2,
         "random": true
       }
     },
     "detectRetina": true
   }
+
 }
