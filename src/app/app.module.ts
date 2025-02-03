@@ -51,8 +51,7 @@ import { StudentdashboardComponent } from './pages/profile/studentdashboard/stud
 import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordashboard.component';
 import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
 import { NgxParticlesModule } from "@tsparticles/angular";
-
-
+import { CountUpModule } from 'ngx-countup';
 
 @NgModule({
   declarations: [
@@ -94,6 +93,7 @@ import { NgxParticlesModule } from "@tsparticles/angular";
   ],
   imports: [
     BrowserModule,
+    CountUpModule,
     NgxParticlesModule,
     MaterialModule,
     StoredModule,

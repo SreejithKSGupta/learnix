@@ -64,3 +64,7 @@
   - Lora
   - Oswald
   - Pacifico
+  - Press Start 2P
+  - "Permanent Marker"
+  - "Barriecito"
+  - Lilita One

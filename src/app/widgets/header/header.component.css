@@ -1,5 +1,6 @@
 header {
-  background-color: #00000049;
+  backdrop-filter:blur(5px);
+  background-color: rgba(57, 0, 111, 0.611);
   color: white;
   display: flex;
   gap: 1rem;

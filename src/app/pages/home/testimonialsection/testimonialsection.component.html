@@ -1,21 +1,46 @@
-<div id="testimonial-carousel" (mouseover)="stopAutoplay()" (mouseout)="startAutoplay()"
-  class="testimonial-container mat-elevation-z4">
-  <!-- Testimonial Cards -->
-  <div class="testimonial-content" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
-    <mat-card *ngFor="let testimonial of testimonials" class="testimonial-card mat-elevation-z4">
-      <div> <mat-card-title class="test-author">{{ testimonial.name }}</mat-card-title>
-        <mat-card-subtitle class="test-position">{{ testimonial.position }}</mat-card-subtitle>
-      </div> <mat-card-content>
+<div
+  id="testimonial-carousel"
+  (mouseover)="stopAutoplay()"
+  (mouseout)="startAutoplay()"
+  class="testimonial-container mat-elevation-z4"
+>
+  <div
+    class="testimonial-content"
+    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+  >
+    <mat-card
+      *ngFor="let testimonial of testimonials"
+      class="testimonial-card mat-elevation-z4"
+    >
+      <div >
+        <mat-card-title class="test-author">{{
+          testimonial.name
+        }}</mat-card-title>
+        <mat-card-subtitle class="test-position">{{
+          testimonial.position
+        }}</mat-card-subtitle>
+      </div>
+      <mat-card-content>
         <p class="test-text">{{ testimonial.Test }}</p>
       </mat-card-content>
     </mat-card>
   </div>
 
   <!-- Carousel Buttons -->
-  <button mat-fab class="carousel-btn prev" aria-label="Previous testimonial" (click)="prevTestimonial()">
+  <button
+    mat-fab
+    class="carousel-btn prev"
+    aria-label="Previous testimonial"
+    (click)="prevTestimonial()"
+  >
     <mat-icon>chevron_left</mat-icon>
   </button>
-  <button mat-fab class="carousel-btn next" aria-label="Next testimonial" (click)="nextTestimonial()">
+  <button
+    mat-fab
+    class="carousel-btn next"
+    aria-label="Next testimonial"
+    (click)="nextTestimonial()"
+  >
     <mat-icon>chevron_right</mat-icon>
   </button>
 </div>

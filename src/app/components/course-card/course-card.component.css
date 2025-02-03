@@ -1,77 +1,91 @@
-
 .course-card {
-  background-color: #fdfdfd;
+  background: rgba(255, 255, 255, 0.1); /* Transparent white */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-}
-
-img{
-  width: 100%;
-  aspect-ratio: 1/1;
-
-}
-
-mat-card-header{
-  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100%;
 }
 
 .course-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-subtitle {
+  color: rgb(255, 255, 255);
 }
 
 .cardheader {
-  background-color: #046d6d;
-  color: white;
-  padding: 20px;
+  background: linear-gradient(135deg, #04586d, #032f3d);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+  flex: 1 1 auto;
 }
 
-.cardheader .mat-card-title {
-  font-size: 1.8rem;
-  font-weight: 500;
+.cardheader img {
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
-.cardheader .mat-card-subtitle {
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-top: 5px;
-}
-
+/* Card Body */
 .cardbody {
   padding: 20px;
   font-size: 1rem;
-  color: #333;
-  aspect-ratio: 3/2;
+  color: #fff;
+  text-align: center;
+  flex: 2 1 auto; /* Allow this section to take more space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space */
 }
 
 .course-description {
   font-size: 1.1rem;
-  color: #555;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+
+.cardbody mat-card-title,
+.cardbody mat-card-subtitle {
+  margin-bottom: 15px; /* Space between title and subtitle */
+}
+
+.cardbody p {
+  margin: 5px 0;
 }
 
 .cardfooter {
-  padding: 20px;
+  padding: 15px;
   text-align: center;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0 0 20px 20px;
+  flex: 1 0 50px;
 }
 
 .cardfooter button {
-  background-color: #04586d;
+  background: linear-gradient(135deg, #04586d, #032f3d);
   color: white;
-  border-radius: 5px;
+  border-radius: 25px;
   padding: 10px 20px;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .cardfooter button:hover {
-  background-color: #034d4d;
+  background: linear-gradient(135deg, #034d4d, #022830);
+  transform: scale(1.05);
 }

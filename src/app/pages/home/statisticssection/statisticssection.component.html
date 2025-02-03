@@ -1,8 +1,7 @@
 <div class="statistics">
     <div *ngFor="let stat of statistics" class="stat-item">
-      <span class="stat-number">{{ stat[0] }}</span>
-      <span class="stat-text">{{ stat[1] }}</span>
-      <strong>{{ stat[2] }}</strong>
+      <span class="stat-number" [countUp]="stat.value" [options]="{ enableScrollSpy: true }">{{ stat.value }}</span>
+      <span class="stat-text">{{ stat.prefix }}</span>
+      <strong>{{ stat.description }}</strong>
     </div>
   </div>
-  
