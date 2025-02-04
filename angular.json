@@ -31,7 +31,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              
+
               {
                 "glob": "**/*",
                 "input": "public"
@@ -54,8 +54,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2500kB",
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",

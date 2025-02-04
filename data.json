@@ -22,7 +22,10 @@
       "tutor": "ambika",
       "duration": "12",
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
-      "importantTechnologiesUsed": ["TensorFlow", "Keras"],
+      "importantTechnologiesUsed": [
+        "TensorFlow",
+        "Keras"
+      ],
       "courseFee": "300",
       "credits": "3",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
@@ -52,7 +55,12 @@
       "tutor": "Sreejith KS",
       "duration": "5",
       "description": "this is a good course",
-      "importantTechnologiesUsed": ["html", "css", "js", "node"],
+      "importantTechnologiesUsed": [
+        "html",
+        "css",
+        "js",
+        "node"
+      ],
       "courseFee": "766",
       "credits": "5"
     },
@@ -62,7 +70,9 @@
       "tutor": "sreejith ksw",
       "duration": 5,
       "description": "this is a course from jan 27",
-      "importantTechnologiesUsed": ["html"],
+      "importantTechnologiesUsed": [
+        "html"
+      ],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": ""
@@ -73,7 +83,9 @@
       "tutor": "kjbkjb",
       "duration": 9,
       "description": "good course",
-      "importantTechnologiesUsed": ["html"],
+      "importantTechnologiesUsed": [
+        "html"
+      ],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": "",
@@ -87,7 +99,9 @@
       "userType": "student",
       "gender": "female",
       "email": "emilyjohnson@example.com",
-      "areaOfInterest": ["machine learning"],
+      "areaOfInterest": [
+        "machine learning"
+      ],
       "experience": "2",
       "password": "EmilyJohnson*3456"
     },
@@ -97,39 +111,29 @@
       "userType": "student",
       "gender": "male",
       "email": "michaelwilliams@example.com",
-      "areaOfInterest": ["cloud computing"],
+      "areaOfInterest": [
+        "cloud computing"
+      ],
       "experience": "4",
       "password": "MichaelWilliams*4567"
     },
     {
-      "id": "1737633219272",
+      "id": "1738358839686",
+      "disabled": false,
       "name": "ambika",
       "userType": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": ["react", "ai and robotics", "cybersecurity"],
+      "areaOfInterest": [
+        "react",
+        "ai and robotics",
+        "cybersecurity"
+      ],
       "experience": "5",
-      "password": "Amma@5559"
-    },
-    {
-      "id": "1737633271901",
-      "name": "Anjithja J",
-      "userType": "admin",
-      "gender": "female",
-      "email": "anjitha@gmail.com",
-      "areaOfInterest": ["svelte", "bun", "vs code"],
-      "experience": "5",
-      "password": "Anju*5559",
-      "disabled": "true",
-      "messages": [
-        {
-          "id": "1738140536917",
-          "senderID": "1737633271901",
-          "utype": "admin",
-          "message": "OK, NOW LET ME CHECK IF IT WORKS",
-          "urgency": ""
-        }
-      ]
+      "password": "Amma@5559",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
+      "courses": [],
+      "messages": []
     },
     {
       "id": "1738176746899",
@@ -138,7 +142,9 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": ["coding"],
+      "areaOfInterest": [
+        "coding"
+      ],
       "experience": 5,
       "password": "Hari*5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738176746/v4rox6kshji426hh9ywy.jpg",
@@ -177,16 +183,34 @@
       "messages": []
     },
     {
-      "id": "1738358839686",
+      "id": "1738654092497",
       "disabled": false,
-      "name": "ambika",
-      "userType": "tutor",
-      "gender": "female",
-      "email": "ambikavs@gmail.com",
-      "areaOfInterest": ["react", "ai and robotics", "cybersecurity"],
-      "experience": "5",
-      "password": "Amma@5559",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
+      "name": "Sreejith KS",
+      "userType": "student",
+      "gender": "male",
+      "email": "sreejithksgupta2255@gmail.com",
+      "areaOfInterest": [
+        "coding"
+      ],
+      "experience": 8,
+      "password": "Hari*5559",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654091/wtw5e3nssnnejsshkdpb.jpg",
+      "courses": [],
+      "messages": []
+    },
+    {
+      "id": "1738654316811",
+      "disabled": false,
+      "name": "Sreejith KS",
+      "userType": "student",
+      "gender": "male",
+      "email": "sreejithksgupta2255@gmail.com",
+      "areaOfInterest": [
+        "coding"
+      ],
+      "experience": 8,
+      "password": "Hari*5559",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654316/vn1x0n9wzz6kqwv9zrpt.jpg",
       "courses": [],
       "messages": []
     }
@@ -310,8 +334,7 @@
       "date": "2025-01-31T20:11:07.392Z"
     }
   ],
-
-  "particlesconfig":{
+  "particlesconfig": {
     "background": {
       "color": {
         "value": "#081527"
@@ -322,11 +345,17 @@
       "events": {
         "onHover": {
           "enable": true,
-          "mode": ["grab", "bubble"]
+          "mode": [
+            "grab",
+            "bubble"
+          ]
         },
         "onClick": {
           "enable": true,
-          "mode": ["push", "repulse"]
+          "mode": [
+            "push",
+            "repulse"
+          ]
         },
         "resize": true
       },
@@ -396,5 +425,4 @@
     },
     "detectRetina": true
   }
-
 }

@@ -64,13 +64,23 @@ export class Userservice  {
     return this.http.get<any>(url);
   }
 
-  updateuser(userData: any) {
-    const url = `${this.userurl}/${userData.id}`;
-    this.otherservices
-    .showalert('success', 'Updated profile')
-    .subscribe((result) => {
-     })
-    return this.http.put(`${url}`, userData);
+updateuser(userData: any): Observable<any> {
+
+    return this.user$.pipe(
+      switchMap(currentUser => {
+        console.log(`Current User: ${currentUser.id}, Updating UserID: ${userData.id}`)
+        const url = `${this.userurl}/${currentUser.id}`;
+        const updatedUser = { ...currentUser, ...userData ,id:currentUser.id};
+        console.log("updated user :",updatedUser.id);
+
+        this.otherservices
+        .showalert('success', 'Updated profile')
+            .subscribe((result) => {});
+        return this.http.put(url, updatedUser);
+      })
+
+    )
+
   }
 
   signout() {

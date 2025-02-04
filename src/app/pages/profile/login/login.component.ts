@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
 import { User } from '../../../interfaces/users';
 import { Userservice } from '../../../services/user.service';
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { selectUserState } from '../../../store/selectors/user.selector';
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -17,8 +21,20 @@ export class LoginComponent implements OnInit {
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
   uploadedimg: any;
+  user$: Observable<User | null>;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private userservice: Userservice , private cloudinaryService:CloudinarymanagerService,    private route: ActivatedRoute ) {}
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private router: Router,
+    private userservice: Userservice,
+    private cloudinaryService: CloudinarymanagerService,
+    private route: ActivatedRoute,
+    private store: Store,
+
+  ) {
+        this.user$ = this.store.select(selectUserState);
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -60,10 +76,14 @@ export class LoginComponent implements OnInit {
 
     this.firstFormGroup.get('userType')?.valueChanges.subscribe((userType) => {
       if (userType === 'tutor') {
-        this.secondFormGroup.get('expertise')?.setValidators([Validators.required]);
+        this.secondFormGroup
+          .get('expertise')
+          ?.setValidators([Validators.required]);
         this.secondFormGroup.get('areaOfInterest')?.clearValidators();
       } else if (userType === 'student') {
-        this.secondFormGroup.get('areaOfInterest')?.setValidators([Validators.required]);
+        this.secondFormGroup
+          .get('areaOfInterest')
+          ?.setValidators([Validators.required]);
         this.secondFormGroup.get('expertise')?.clearValidators();
       }
       this.secondFormGroup.get('expertise')?.updateValueAndValidity();
@@ -95,7 +115,6 @@ export class LoginComponent implements OnInit {
     this.uploadedimg = user.imageUrl;
   }
 
-
   passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
@@ -103,7 +122,7 @@ export class LoginComponent implements OnInit {
   }
 
   onImageSelected(file: File | null) {
-     this.uploadedimg=file
+    this.uploadedimg = file;
   }
 
   submit() {
@@ -113,17 +132,18 @@ export class LoginComponent implements OnInit {
           (imgurl) => {
             const user: User = {
               id: String(Date.now()),
-              disabled:false,
+              disabled: false,
               name: this.firstFormGroup.get('name')?.value,
               userType: this.firstFormGroup.get('userType')?.value,
               gender: this.secondFormGroup.get('gender')?.value,
               email: this.firstFormGroup.get('email')?.value,
-              areaOfInterest: this.secondFormGroup.get('areaOfInterest')?.value || [],
+              areaOfInterest:
+                this.secondFormGroup.get('areaOfInterest')?.value || [],
               experience: this.secondFormGroup.get('experience')?.value,
               password: this.thirdFormGroup.get('password')?.value,
               imageUrl: imgurl!,
-              courses:[],
-              messages:[]
+              courses: [],
+              messages: [],
             };
             this.userservice.adduser(user).subscribe((res) => {
               console.log('User data submitted successfully:', res);
@@ -138,9 +158,6 @@ export class LoginComponent implements OnInit {
           }
         );
       }
-
-
-
     } else {
       console.log('Form is invalid. Please fill all required fields.');
       alert('Form is invalid. Please fill all required fields.');
