@@ -29,6 +29,5 @@ export class ParticlesbgComponent implements OnInit {
   }
 
   particlesLoaded(container: Container): void {
-    console.log(container.id);
   }
 }

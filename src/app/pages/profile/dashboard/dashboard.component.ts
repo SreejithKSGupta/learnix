@@ -30,21 +30,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user$.pipe(
-      tap({
-        next: (userData) => {
-          if (!userData || !userData.id) {
-            this.router.navigate(['/signin']);
-          }
-        },
-        error: (err) => console.error('Error fetching user data:', err),
-      })
-    ).subscribe();
+    let suerid=JSON.parse(localStorage.getItem('users')||'null')
+    if(!suerid){
+      this.router.navigate(['/signin']);
+    }
   }
 
   logout(): void {
     this.otherServices.showalert('confirm', 'Do you really want to Logout?').subscribe((result) => {
-      console.log(result);
       if (result === 'yes') {
         this.userservice.signout();
         this.router.navigate(['/signin']);

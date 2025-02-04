@@ -74,10 +74,9 @@ export class Userservice  {
   }
 
   signout() {
-    console.log('Signing out from services');
     this.authStateSubject.next(false);
     this.store.dispatch(managerUserChange({ user: null }));
-    localStorage.removeItem('user');
+    localStorage.removeItem('users');
       this.otherservices
     .showalert('success', 'Signed out Succesfully')
     .subscribe((result) => {

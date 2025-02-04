@@ -69,7 +69,7 @@ export class OtherServices {
       };
     } = {
       confirm: {
-        title: 'Do you want to save the changes?',
+        title: data? data:'Do you want to save the changes?',
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: 'Yes',
