@@ -11,9 +11,7 @@ export class DataService {
   courseurl = 'http://localhost:3000/courses';
   testurl = 'https://jsonplaceholder.typicode.com/users';
 
-  getUsers(): Observable<any> {
-    return this.http.get(this.testurl).pipe(map((res) => res));
-  }
+
 
   getcourses(): Observable<any> {
     return this.http.get(this.courseurl).pipe(map((res) => res));

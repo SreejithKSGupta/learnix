@@ -13,7 +13,7 @@ import { OtherServices } from './otherservices.service';
 @Injectable({
   providedIn: 'root',
 })
-export class Userservice  {
+export class Userservice {
   private authStateSubject = new BehaviorSubject<boolean>(false);
   public authState$ = this.authStateSubject.asObservable();
   user$!: Observable<any>;
@@ -24,15 +24,14 @@ export class Userservice  {
     private dataservice: DataService,
     private emailservice: EmailService,
     private store: Store,
-    private otherservices:OtherServices
+    private otherservices: OtherServices
   ) {}
 
   checkauthentication(): void {
-
     const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
     if (savedUser) {
       this.authStateSubject.next(true);
-      this.getuserbyid(savedUser).subscribe(user => {
+      this.getuserbyid(savedUser).subscribe((user) => {
         this.store.dispatch(managerUserChange({ user }));
       });
     }
@@ -52,9 +51,8 @@ export class Userservice  {
       'Welcome to Learnix. We hope you have an excellent learning journey with us.'
     );
     this.otherservices
-    .showalert('success', 'Welcome to Learnix')
-    .subscribe((result) => {
-     })
+      .showalert('success', 'Welcome to Learnix')
+      .subscribe((result) => {});
     localStorage.setItem('users', JSON.stringify(item.id));
     return this.http.post<any>(this.userurl, item);
   }
@@ -64,33 +62,25 @@ export class Userservice  {
     return this.http.get<any>(url);
   }
 
-updateuser(userData: any): Observable<any> {
+  updateuser(userData: any): Observable<any> {;
 
-    return this.user$.pipe(
-      switchMap(currentUser => {
-        console.log(`Current User: ${currentUser.id}, Updating UserID: ${userData.id}`)
-        const url = `${this.userurl}/${currentUser.id}`;
-        const updatedUser = { ...currentUser, ...userData ,id:currentUser.id};
-        console.log("updated user :",updatedUser.id);
+        const url = `${this.userurl}/${userData.id}`;
+        const updatedUser = { ...userData};
+        console.log('updated user :', updatedUser.id);
 
         this.otherservices
-        .showalert('success', 'Updated profile')
-            .subscribe((result) => {});
+          .showalert('success', 'Updated profile')
+          .subscribe((result) => {});
         return this.http.put(url, updatedUser);
-      })
-
-    )
-
   }
 
   signout() {
     this.authStateSubject.next(false);
     this.store.dispatch(managerUserChange({ user: null }));
     localStorage.removeItem('users');
-      this.otherservices
-    .showalert('success', 'Signed out Succesfully')
-    .subscribe((result) => {
-     })
+    this.otherservices
+      .showalert('success', 'Signed out Succesfully')
+      .subscribe((result) => {});
   }
 
   signin(user: any) {
@@ -108,28 +98,28 @@ updateuser(userData: any): Observable<any> {
       'You just signed in to Learnix. If it was not you, please contact us immediately.'
     );
     this.otherservices
-    .showalert('success', 'Signed in Succesfully')
-    .subscribe((result) => {
-     })
+      .showalert('success', 'Signed in Succesfully')
+      .subscribe((result) => {});
   }
 
   enrollToCourse(UserId: String, courseData: UserCourse): Observable<any> {
     return this.getuserbyid(UserId).pipe(
       switchMap((user) => {
-        this.dataservice.getcoursebyid(courseData.id as string).subscribe((cdata) => {
-          this.emailservice.sendEmail(
-            'othermsg',
-            user.email,
-            user.name,
-            'Learnix',
-            `Enrolled to ${cdata.courseName}`,
-            `You just enrolled in the course ${cdata.courseName}, Happy learning!`
-          );
-          this.otherservices
-                .showalert('success', 'Enrolled to Course')
-                .subscribe((result) => {
-                 })
-        });
+        this.dataservice
+          .getcoursebyid(courseData.id as string)
+          .subscribe((cdata) => {
+            this.emailservice.sendEmail(
+              'othermsg',
+              user.email,
+              user.name,
+              'Learnix',
+              `Enrolled to ${cdata.courseName}`,
+              `You just enrolled in the course ${cdata.courseName}, Happy learning!`
+            );
+            this.otherservices
+              .showalert('success', 'Enrolled to Course')
+              .subscribe((result) => {});
+          });
 
         console.log(`Adding course: ${courseData.id} to user ${UserId}`);
         const url = `${this.userurl}/${UserId}`;
@@ -168,16 +158,18 @@ updateuser(userData: any): Observable<any> {
   removeFromCourse(userID: string, courseID: String): Observable<any> {
     return this.getuserbyid(userID).pipe(
       switchMap((user) => {
-        this.dataservice.getcoursebyid(courseID as string).subscribe((cdata) => {
-          this.emailservice.sendEmail(
-            'othermsg',
-            user.email,
-            user.name,
-            'Learnix',
-            `Unenrolled from ${cdata.courseName}`,
-            `You just unenrolled from the course ${cdata.courseName}, Let us upskill together.`
-          );
-        });
+        this.dataservice
+          .getcoursebyid(courseID as string)
+          .subscribe((cdata) => {
+            this.emailservice.sendEmail(
+              'othermsg',
+              user.email,
+              user.name,
+              'Learnix',
+              `Unenrolled from ${cdata.courseName}`,
+              `You just unenrolled from the course ${cdata.courseName}, Let us upskill together.`
+            );
+          });
 
         console.log(`Removing course: ${courseID} from user ${userID}`);
         const url = `${this.userurl}/${userID}`;
@@ -187,7 +179,9 @@ updateuser(userData: any): Observable<any> {
         if (courseIndex !== -1) {
           user.courses.splice(courseIndex, 1);
         } else {
-          console.error(`Course with ID ${courseID} not found in user's courses.`);
+          console.error(
+            `Course with ID ${courseID} not found in user's courses.`
+          );
         }
 
         return this.http.put<any>(url, user);

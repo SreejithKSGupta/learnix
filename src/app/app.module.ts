@@ -52,6 +52,7 @@ import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordas
 import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
 import { NgxParticlesModule } from "@tsparticles/angular";
 import { CountUpModule } from 'ngx-countup';
+import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { CountUpModule } from 'ngx-countup';
     FeaturespageComponent,
     StudentdashboardComponent,
     TutordashboardComponent,
-    ParticlesbgComponent
+    ParticlesbgComponent,
+    CoursePageCourseCardComponent
   ],
   imports: [
     BrowserModule,
@@ -107,8 +109,7 @@ import { CountUpModule } from 'ngx-countup';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-
-  ],
+],
   providers: [DataService, Userservice, OtherServices, provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
 })

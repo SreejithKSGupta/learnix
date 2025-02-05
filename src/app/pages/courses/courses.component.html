@@ -41,76 +41,10 @@
   />
 </div>
 
-
-  <!-- Courses List -->
-  <div class="row g-4" id="coursesContainer">
-    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let course of filteredCourses">
-      <mat-card class="course-card shadow-sm h-100">
-        <div class="course-image-wrapper position-relative">
-          <img
-            [src]="course.imageUrl || 'assets/gallery/designer.webp'"
-            alt="Course Image"
-            class="course-bg-image w-100"
-          />
-          <div
-            class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center"
-          >
-            <h5 class="text-white course-title mb-1">{{ course.courseName }}</h5>
-            <p class="text-light course-tutor small">{{ course.tutor }}</p>
-          </div>
-        </div>
-
-        <mat-card-content class="p-3">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <div class="d-flex align-items-center">
-              <i class="material-icons text-primary me-2">schedule</i>
-              <span class="text-muted small">{{ course.duration }}</span>
-            </div>
-            <div class="d-flex align-items-center">
-              <i class="material-icons text-primary me-2">plus_one</i>
-              <span class="text-muted small">{{ course.credits }}</span>
-            </div>
-            <div class="d-flex align-items-center">
-              <i class="material-icons text-success me-2">attach_money</i>
-              <span class="text-muted small">{{ course.courseFee }}</span>
-            </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <i class="material-icons text-warning me-2">code</i>
-            <span class="text-muted small">{{ course.importantTechnologiesUsed.join(", ") }}</span>
-          </div>
-        </mat-card-content>
-
-        <mat-card-actions class="d-flex justify-content-evenly p-3">
-          <button
-            mat-flat-button
-            color="primary"
-            [disabled]="subscriptionStatuses[course.id!]"
-            *ngIf="userrole === 'student'"
-            (click)="enrollToCourse(course.id!)"
-            class="px-3"
-          >
-            {{ subscriptionStatuses[course.id!] ? "Enrolled" : "Enroll" }}
-          </button>
-
-          <button
-            mat-flat-button
-            *ngIf="userrole === 'tutor'"
-            (click)="editcourseitem(course.id!)"
-          >
-            Edit
-          </button>
-
-          <button
-            mat-flat-button
-            color="accent"
-            class="px-3"
-            (click)="openCourseDetails(course)"
-          >
-            View Details
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+<div class="row g-4" id="coursesContainer">
+  <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let course of filteredCourses">
+    <app-course-page-course-card
+      [course]="course"
+    ></app-course-page-course-card>
   </div>
 </div>

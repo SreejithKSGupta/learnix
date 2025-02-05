@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   thirdFormGroup!: FormGroup;
   uploadedimg: any;
   user$: Observable<User | null>;
+  iseditmode:Boolean|undefined;
+  currentuserdata!:User;
 
 
   constructor(
@@ -68,7 +70,9 @@ export class LoginComponent implements OnInit {
       console.log(userId);
 
       if (userId) {
+        this.iseditmode = true;
         this.userservice.getuserbyid(userId).subscribe((user) => {
+          this.currentuserdata=user;
           this.populateForm(user);
         });
       }
@@ -131,8 +135,8 @@ export class LoginComponent implements OnInit {
         this.cloudinaryService.uploadImage(this.uploadedimg).subscribe(
           (imgurl) => {
             const user: User = {
-              id: String(Date.now()),
-              disabled: false,
+              id: this.currentuserdata.id || String(Date.now()),
+              disabled:this.currentuserdata.disabled ||  false,
               name: this.firstFormGroup.get('name')?.value,
               userType: this.firstFormGroup.get('userType')?.value,
               gender: this.secondFormGroup.get('gender')?.value,
@@ -142,15 +146,27 @@ export class LoginComponent implements OnInit {
               experience: this.secondFormGroup.get('experience')?.value,
               password: this.thirdFormGroup.get('password')?.value,
               imageUrl: imgurl!,
-              courses: [],
-              messages: [],
+              courses:this.currentuserdata.courses ||   [],
+              messages:this.currentuserdata.messages ||  [],
             };
-            this.userservice.adduser(user).subscribe((res) => {
-              console.log('User data submitted successfully:', res);
-              this.userservice.signin(user);
-            });
+            if(this.iseditmode){
+              this.userservice.updateuser(user).subscribe((res) => {
+                console.log('User data submitted successfully:', res);
+            })
+              alert('Sign-up successful! Check the console for user data.');
+              this.router.navigate(['/dashboard']);
+              return;
+            }
+            else{
+              this.userservice.adduser(user).subscribe((res) => {
+                console.log('User data submitted successfully:', res);
+                this.userservice.signin(user);
+              });
 
-            alert('Sign-up successful! Check the console for user data.');
+              alert('Sign-up successful! Check the console for user data.');
+            }
+
+
           },
           (error) => {
             console.error('Error uploading image:', error);
