@@ -2,13 +2,14 @@
   <div class="container ">
 
     <div class="row py-4">
-      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" *ngIf="address">
         <img [src]="logo" alt="logo" width="50" class="mb-2">
         <h4>{{ footertitle }}</h4>
-        <p>{{ footerDescription }}</p>
-        <p><strong>Address:</strong> {{ contactDetails.address }}</p>
-        <p><strong>Email:</strong> <a href="mailto:{{ contactDetails.email }}" class="text-white">{{ contactDetails.email }}</a></p>
-        <p><strong>Phone:</strong> {{ contactDetails.phone }}</p>
+        <p><strong>Address:</strong> {{ address.street }}</p>
+        <p>{{ address.city }}, {{ address.state }} {{ address.zip }}</p>
+        <p>{{ address.country }}</p>
+        <p><strong>Email:</strong> <a href="mailto:{{ address.email }}" class="text-white">{{ address.email }}</a></p>
+        <p><strong>Phone:</strong> {{ address.phone }}</p>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 text-center">
@@ -29,7 +30,7 @@
         <h5>Follow Us</h5>
         <div>
           <a *ngFor="let link of socialLinks" mat-icon-button [href]="link.url" class="text-white me-2">
-            <img [src]="link.icon" alt="{{ link.platform }} icon" fill="#000000" class="socialcion" width="24" height="24">
+            <img src={{[link.icon]}} alt="{{ link.platform }} icon" fill="#000000" class="socialcion" width="24" height="24">
           </a>
         </div>
       </div>

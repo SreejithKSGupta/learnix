@@ -4,8 +4,17 @@
 # todo 
 
 - Comprehensive UI and font updates
-- otp for sign in and forgot password
-- edit stats, testimonials, learnix data, hero data, socials in admin panel
+- Otp for sign in and forgot password
+- edit stats, testimonials, learnix data, learnixdata, FAQs, socials in admin panel
+- duplication of methods in courses
+- consistent look across login, sign in and forgot passoword pages
+- Course View more Card UI update with proper options depending on auth status
+- rick text editor for Blog
+- settings: email preferences, style preferences, user preferences [for student,tutor, etc]
+- caching images
+- game on error page
+- implement SSR?
+
 
 
 # advanced
@@ -14,7 +23,6 @@
 - single ton components
 
 # errors
-- navbar lgin/dashoard doesnt update after signout
 - check if suscribers/users exist before adding them.
 - header navbar is in chaos in small screens
 

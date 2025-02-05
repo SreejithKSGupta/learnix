@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Statistics} from '../../../interfaces/otherinterfaces'
+import { OtherServices } from '../../../services/otherservices.service';
 @Component({
   selector: 'app-statisticssection',
   standalone: false,
@@ -13,12 +14,11 @@ export class StatisticssectionComponent {
 
 
 
-  statistics: Statistics[] = [
-    { value: 3000, prefix: "+ Hours worth of", description: " content" },
-    { value: 150, prefix: "+ World-class", description: " instructors" },
-    { value: 50, prefix: "+ Top quality", description: " Courses" },
-    { value: 2000, prefix: "+ Successful students", description: " Graduated" },
-    { value: 10, prefix: "+ Years of experience in", description: " online education" }
-  ];
+  statistics: any;
+    constructor(private otherServices: OtherServices){
+      this.otherServices.getappdata().subscribe((data:any)=>{
+        this.statistics=data.stats;
+      })
+    }
 
 }

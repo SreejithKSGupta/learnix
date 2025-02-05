@@ -22,10 +22,7 @@
       "tutor": "ambika",
       "duration": "12",
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
-      "importantTechnologiesUsed": [
-        "TensorFlow",
-        "Keras"
-      ],
+      "importantTechnologiesUsed": ["TensorFlow", "Keras"],
       "courseFee": "300",
       "credits": "3",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
@@ -55,12 +52,7 @@
       "tutor": "Sreejith KS",
       "duration": "5",
       "description": "this is a good course",
-      "importantTechnologiesUsed": [
-        "html",
-        "css",
-        "js",
-        "node"
-      ],
+      "importantTechnologiesUsed": ["html", "css", "js", "node"],
       "courseFee": "766",
       "credits": "5"
     },
@@ -70,9 +62,7 @@
       "tutor": "sreejith ksw",
       "duration": 5,
       "description": "this is a course from jan 27",
-      "importantTechnologiesUsed": [
-        "html"
-      ],
+      "importantTechnologiesUsed": ["html"],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": ""
@@ -83,9 +73,7 @@
       "tutor": "kjbkjb",
       "duration": 9,
       "description": "good course",
-      "importantTechnologiesUsed": [
-        "html"
-      ],
+      "importantTechnologiesUsed": ["html"],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": "",
@@ -99,9 +87,7 @@
       "userType": "student",
       "gender": "female",
       "email": "emilyjohnson@example.com",
-      "areaOfInterest": [
-        "machine learning"
-      ],
+      "areaOfInterest": ["machine learning"],
       "experience": "2",
       "password": "EmilyJohnson*3456"
     },
@@ -111,9 +97,7 @@
       "userType": "student",
       "gender": "male",
       "email": "michaelwilliams@example.com",
-      "areaOfInterest": [
-        "cloud computing"
-      ],
+      "areaOfInterest": ["cloud computing"],
       "experience": "4",
       "password": "MichaelWilliams*4567"
     },
@@ -124,11 +108,7 @@
       "userType": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": [
-        "react",
-        "ai and robotics",
-        "cybersecurity"
-      ],
+      "areaOfInterest": ["react", "ai and robotics", "cybersecurity"],
       "experience": "5",
       "password": "Amma@5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
@@ -142,9 +122,7 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
+      "areaOfInterest": ["coding"],
       "experience": 8,
       "password": "Hari@1234",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738741094/rwwqrmwebzcrx1ngpuxy.jpg",
@@ -189,9 +167,7 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
+      "areaOfInterest": ["coding"],
       "experience": 8,
       "password": "Hari*5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654091/wtw5e3nssnnejsshkdpb.jpg",
@@ -205,9 +181,7 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
+      "areaOfInterest": ["coding"],
       "experience": 8,
       "password": "Hari*5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654316/vn1x0n9wzz6kqwv9zrpt.jpg",
@@ -345,17 +319,11 @@
       "events": {
         "onHover": {
           "enable": true,
-          "mode": [
-            "grab",
-            "bubble"
-          ]
+          "mode": ["grab", "bubble"]
         },
         "onClick": {
           "enable": true,
-          "mode": [
-            "push",
-            "repulse"
-          ]
+          "mode": ["push", "repulse"]
         },
         "resize": true
       },
@@ -424,5 +392,207 @@
       }
     },
     "detectRetina": true
+  },
+  "appdata": {
+    "name": "Learnix",
+    "logourl": "/learnixtplogo.webp",
+    "email": "sreejithksgupta2255@gmail.com",
+    "description": "Learnix is a platform for learning new skills and improving existing ones. It is a place where you can find courses, tutorials, and other resources to help you learn and grow.",
+    "keywords": ["Learnix", "Learn", "Learnix"],
+    "navlinks": {
+      "home": "/",
+      "courses": "/courses",
+      "blog": "/blog",
+      "dashboard": "/dashboard",
+      "logout": "/logout",
+      "profile": "/profile",
+      "help": "/help",
+      "faq": "/faq",
+      "privacy": "/privacy",
+      "about": "/about",
+      "contact": "/contact",
+      "login": "/login",
+      "forgot-password": "/forgot-password",
+      "signup": "/signup",
+      "addblog": "/add-blog"
+    },
+    "footernavlinks": [
+      {
+        "name": "Home",
+        "url": "/"
+      },
+      {
+        "name": "Courses",
+        "url": "/courses"
+      },
+      {
+        "name": "Blog",
+        "url": "/blogs"
+      },
+      {
+        "name": "About",
+        "url": "/about"
+      },
+      {
+        "name": "Contact",
+        "url": "/contact"
+      },
+      {
+        "name": "FAQ",
+        "url": "/faq"
+      },
+      {
+        "name": "Privacy",
+        "url": "/privacy"
+      },
+      {
+        "name": "Help",
+        "url": "/help"
+      }
+    ],
+    "socials": [
+      {
+        "platform": "Facebook",
+        "url": "https://www.facebook.com/learnix",
+        "icon": "https://www.google.com/s2/favicons?domain=facebook.com"
+      },
+      {
+        "platform": "Twitter",
+        "url": "https://www.twitter.com/learnix",
+        "icon": "https://www.google.com/s2/favicons?domain=twitter.com"
+      },
+      {
+        "platform": "Instagram",
+        "url": "https://www.instagram.com/learnix",
+        "icon": "https://www.google.com/s2/favicons?domain=instagram.com"
+      },
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/learnix",
+        "icon": "https://www.google.com/s2/favicons?domain=youtube.com"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://www.linkedin.com/learnix",
+        "icon": "https://www.google.com/s2/favicons?domain=linkedin.com"
+      }
+    ],
+
+    "address": {
+      "street": "123, Learnix Street",
+      "city": "Learnix City",
+      "state": "Learnix State",
+      "country": "Learnix Country",
+      "pincode": "123456",
+      "email": "learnix@gmail.com",
+      "phone": "+919876543210",
+      "website": "https://www.learnix.com",
+      "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0000000000000!2d77.5936843148219!3d12.971598990859999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sKormangala%20Industrial%20Area%2C%20Bengaluru%2C%20Karnataka%20560096!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+    },
+    "testimonials": [
+      {
+        "name": "Agatha K S",
+        "Test": "Helped me learn despite my inability to concentrate due to ADHD.",
+        "position": "Student"
+      },
+      {
+        "name": "John D.",
+        "Test": "The platform made learning fun and interactive, even with my busy schedule. I was able to learn at my own pace.",
+        "position": "Software Developer"
+      },
+      {
+        "name": "Rita P.",
+        "Test": "A game-changer for me! The clear explanations and structured courses made complex topics easy to grasp.",
+        "position": "Marketing Specialist"
+      },
+      {
+        "name": "Samuel W.",
+        "Test": "I had struggled with learning online before, but the support and resources here have truly made a difference in my progress.",
+        "position": "Entrepreneur"
+      },
+      {
+        "name": "Emily T.",
+        "Test": "As a working mom, I was able to balance my job and education thanks to the flexible course schedule. Highly recommend!",
+        "position": "Project Manager"
+      },
+      {
+        "name": "Michael B.",
+        "Test": "The personalized feedback and mentoring I received helped me grow my skills in a way that traditional classes never could.",
+        "position": "Graphic Designer"
+      },
+      {
+        "name": "Sophia G.",
+        "Test": "The platform allowed me to learn new skills while juggling my full-time job. The bite-sized lessons fit perfectly into my day.",
+        "position": "Data Analyst"
+      },
+      {
+        "name": "James L.",
+        "Test": "As a retiree, I wanted to continue learning, and this platform made it easy to stay engaged and learn at my own pace.",
+        "position": "Retired"
+      },
+      {
+        "name": "Olivia N.",
+        "Test": "The interactive exercises and quizzes helped me retain information in a way that traditional learning methods couldn't.",
+        "position": "Teacher"
+      },
+      {
+        "name": "David F.",
+        "Test": "I love how I could take courses on topics I was passionate about while balancing a full-time job. Highly flexible and efficient!",
+        "position": "Financial Analyst"
+      }
+    ],
+    "stats": [
+      {
+        "value": 3000,
+        "prefix": "+ Hours worth of",
+        "description": " content"
+      },
+      {
+        "value": 150,
+        "prefix": "+ World-class",
+        "description": " instructors"
+      },
+      { "value": 50, "prefix": "+ Top quality", "description": " Courses" },
+      {
+        "value": 2000,
+        "prefix": "+ Successful students",
+        "description": " Graduated"
+      },
+      {
+        "value": 10,
+        "prefix": "+ Years of experience in",
+        "description": " online education"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What is Learnix?",
+        "answer": "Learnix is a dynamic eLearning platform that connects tutors and learners worldwide. Whether you're looking to expand your knowledge or share your expertise, Learnix provides a seamless and interactive learning experience."
+      },
+      {
+        "question": "How do I enroll in a course?",
+        "answer": "Enrolling in a course is easy! Simply create an account, browse through our extensive catalog of courses, and select the one that interests you. Follow the on-screen instructions to complete your enrollment and start learning instantly."
+      },
+      {
+        "question": "Is Learnix free to use?",
+        "answer": "Learnix offers a variety of courses, some of which are completely free! However, premium courses offered by expert tutors may require a one-time payment or a subscription fee. Keep an eye out for discounts and promotional offers!"
+      },
+      {
+        "question": "How can I become a tutor on Learnix?",
+        "answer": "Becoming a tutor is simple. Register on Learnix, submit your credentials, and apply to become an instructor. Once verified, you can start creating and publishing courses to share your expertise with learners across the globe."
+      },
+      {
+        "question": "What types of courses are available?",
+        "answer": "Learnix hosts a wide range of courses, from technology and business to creative arts and personal development. Whether you're a beginner or an expert, there's something for everyone!"
+      },
+      {
+        "question": "Can I access Learnix on mobile devices?",
+        "answer": "Yes! Learnix is fully responsive and works seamlessly on desktops, tablets, and smartphones, so you can learn anytime, anywhere."
+      },
+      {
+        "question": "How can I get support if I have issues?",
+        "answer": "If you need any assistance, our support team is here to help. You can reach out through the “Contact Us” page, and we'll get back to you as soon as possible."
+      }
+    ]
   }
 }

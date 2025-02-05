@@ -12,7 +12,7 @@ import { Message } from '../interfaces/users';
 })
 export class OtherServices {
   userurl = 'http://localhost:3000/users';
-
+  private appdataurl = 'http://localhost:3000/appdata';
   private courseurl = 'http://localhost:3000/contactmessages';
 
   constructor(private http: HttpClient, private emailservice: EmailService) {}
@@ -170,6 +170,12 @@ export class OtherServices {
     return this.http
       .get<any[]>(this.courseurl)
       .pipe(catchError(this.handleError('getAllContactMessages', [])));
+  }
+
+  getappdata(): Observable<any[]> {
+    return this.http
+      .get<any[]>(this.appdataurl)
+      .pipe(catchError(this.handleError('getappdata', [])));
   }
 
   getContactMessageById(id: string): Observable<any> {

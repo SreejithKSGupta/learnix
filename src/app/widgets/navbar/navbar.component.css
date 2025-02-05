@@ -1,6 +1,6 @@
 .navbar {
   font-family: 'Jersey', sans-serif;
-
+  z-index: 10000;
 }
 
 .nav-item a {
@@ -20,7 +20,7 @@
 .nav-item {
   margin: 0 10px;
   list-style: none;
-
+  z-index: 10000;
 }
 
 @media (max-width: 600px) {
