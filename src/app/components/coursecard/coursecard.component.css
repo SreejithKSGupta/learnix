@@ -109,3 +109,12 @@ button[mat-flat-button]:last-child {
   background-color: #2196f3;
   color: white;
 }
+
+.over{
+  color: red !important;
+}
+
+.notover{
+  color: green !important;
+
+}

@@ -1,0 +1,8 @@
+quill-editor{
+  width: 100%;
+  margin:20px auto;
+}
+
+img {
+  max-height: 200px !important;
+}

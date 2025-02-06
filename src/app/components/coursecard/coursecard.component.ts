@@ -32,4 +32,11 @@ export class CourseCardComponent {
     console.log("view");
 
   }
+
+  isclassover(courseId: string): boolean {
+    const userCourse = this.user?.courses?.find((course: { id: string; }) => course.id === courseId);
+   // check if usercourse.expiry is over
+
+   return userCourse.expiry<new Date();
+  }
 }

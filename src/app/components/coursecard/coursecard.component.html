@@ -24,7 +24,7 @@
       </div>
       <div class="info-item">
         <mat-icon>alarm</mat-icon>
-        <strong>Expiry:</strong> <span>{{ getUserCourseDetail(course.id!, 'expiry') | date }}</span>
+        <strong>Expiry:</strong> <span [ngClass]="isclassover(course.id!)? 'over':'notover'">{{ getUserCourseDetail(course.id!, 'expiry') | date }}</span>
       </div>
       <div class="info-item">
         <mat-icon>star_rate</mat-icon>

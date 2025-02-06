@@ -1,3 +1,11 @@
-<div [ngStyle]="{'color': 'blue', 'font-size': '24px', 'font-weight': 'bold'}">
-  style using ngStyle
-  </div>
+<quill-editor
+  [formControl]="control"
+  [placeholder]="''"
+  (onEditorChanged)="changedEditor($event)"
+  [modules]="quillConfiguration"
+  [styles]="{'min-height': '120px'}"
+  class="content-editor"
+>
+</quill-editor>
+
+<quill-view [content]="delta" format="object" theme="snow"></quill-view>
