@@ -50,9 +50,11 @@ import { CourseCardComponentnew } from './components/course-card/course-card.com
 import { StudentdashboardComponent } from './pages/profile/studentdashboard/studentdashboard.component';
 import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordashboard.component';
 import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
-import { NgxParticlesModule } from "@tsparticles/angular";
+import { NgxParticlesModule } from '@tsparticles/angular';
 import { CountUpModule } from 'ngx-countup';
 import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 
 @NgModule({
   declarations: [
@@ -91,10 +93,13 @@ import { CoursePageCourseCardComponent } from './components/course-page-course-c
     StudentdashboardComponent,
     TutordashboardComponent,
     ParticlesbgComponent,
-    CoursePageCourseCardComponent
+    CoursePageCourseCardComponent,
+    WysiwygEditorComponent,
   ],
   imports: [
+    FroalaEditorModule,
     BrowserModule,
+    FroalaViewModule,
     CountUpModule,
     NgxParticlesModule,
     MaterialModule,
@@ -109,8 +114,13 @@ import { CoursePageCourseCardComponent } from './components/course-page-course-c
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-],
-  providers: [DataService, Userservice, OtherServices, provideCharts(withDefaultRegisterables())],
+  ],
+  providers: [
+    DataService,
+    Userservice,
+    OtherServices,
+    provideCharts(withDefaultRegisterables()),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
