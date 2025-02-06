@@ -1,7 +1,15 @@
+mat-toolbar {
+  background-color: rgba(6, 6, 101, 0.53);
+  backdrop-filter: blur(10px);
+
+  color: white;
+}
+
 .title {
   font-size: 1.5em;
   font-weight: bold;
   margin-right: 20px;
+  font-family:'Pacifico', 'Courier New', Courier, monospace;
 }
 
 .logo {
@@ -19,12 +27,21 @@
 
 .mat-menu-item {
   min-width: 150px;
+
+
 }
 
+.mat-drawer-content {
+display: none !important;}
+
 mat-toolbar {
-  position: sticky;
-  top: 0;
+  height: 10vh;
   z-index: 100;
+  color: white !important;
+}
+
+.mat-mdc-button {
+  color: white !important;
 }
 
 .desknav {
@@ -62,3 +79,27 @@ mat-toolbar {
     display: block; /* Show mobile menu button */
   }
 }
+.drawer-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: transparent;
+}
+
+.mat-mdc-button-touch-target{
+  color: rgb(255, 255, 255) !important;
+  font-size: 1.5rem;
+}
+.mat-drawer{
+  background-color: rgba(5, 31, 54, 0.631) !important;
+  backdrop-filter: blur(10px);
+  color: white !important;
+}
+
+.mat-drawer {
+  position: absolute; /* Overlay the content */
+  top: 0;
+  bottom: 0;
+  /* ... other drawer styles */
+}
+

@@ -2,11 +2,9 @@
   <div class="logobox">
     <img [src]="logo" alt="Logo" class="logo" />
     <span class="title">{{ title }}</span>
-
   </div>
   <span class="spacer"></span>
   <div class="desknav">
-
     <div *ngFor="let link of navLinks">
       <button
         mat-button
@@ -28,14 +26,12 @@
         </div>
       </mat-menu>
     </div>
-
     <button
       mat-button
       [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'"
     >
       {{ logordash }}
     </button>
-
   </div>
   <button mat-icon-button class="mobile-menu-button" (click)="toggleDrawer()">
     <mat-icon>menu</mat-icon>
@@ -60,6 +56,4 @@
       <button mat-button [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'" (click)="closeDrawer()">{{ logordash }}</button>
     </div>
   </mat-drawer>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>  </mat-drawer-content>
-</mat-drawer-container>
+  </mat-drawer-container>
