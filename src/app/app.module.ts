@@ -7,7 +7,6 @@ import { LightboxModule } from 'ngx-lightbox';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
 import { FooterComponent } from './widgets/footer/footer.component';
-import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/profile/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -65,7 +64,6 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
     HeaderComponent,
     DashboardComponent,
     FooterComponent,
-    NavbarComponent,
     LoginComponent,
     AddcourseComponent,
     HerosectionComponent,

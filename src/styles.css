@@ -4,6 +4,9 @@
   width: 0px;
 }
 
+:root{
+  --primary-color: #00fcfc;
+}
 
 
 html,

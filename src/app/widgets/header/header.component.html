@@ -1,14 +1,65 @@
-<header class="w-100">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-    <div class="col-4">
-      <a routerLink="/" class="nav-link d-flex align-items-center">
-        <img id="logo" src="{{ logo }}" alt="logo" />
-        <h1 class="mb-0" id="logotxt">{{ title }}</h1>
-      </a>
+<mat-toolbar color="primary">
+  <div class="logobox">
+    <img [src]="logo" alt="Logo" class="logo" />
+    <span class="title">{{ title }}</span>
+
+  </div>
+  <span class="spacer"></span>
+  <div class="desknav">
+
+    <div *ngFor="let link of navLinks">
+      <button
+        mat-button
+        [matMenuTriggerFor]="link.submenu ? menu : null"
+        [routerLink]="link.submenu ? null : link.path"
+        routerLinkActive="active"
+      >
+        {{ link.label }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <div *ngIf="link.submenu">
+          <button
+            mat-menu-item
+            *ngFor="let subLink of link.submenu"
+            [routerLink]="subLink.path"
+          >
+            {{ subLink.label }}
+          </button>
+        </div>
+      </mat-menu>
     </div>
 
-    <div class="col-8 d-flex justify-content-end">
-      <app-navbar></app-navbar>
-    </div>
+    <button
+      mat-button
+      [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'"
+    >
+      {{ logordash }}
+    </button>
+
   </div>
-</header>
+  <button mat-icon-button class="mobile-menu-button" (click)="toggleDrawer()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer mode="push" position="end">
+    <div class="mobile-menu">
+      <div *ngFor="let link of navLinks">
+        <button mat-button [matMenuTriggerFor]="link.submenu ? mobileMenu : null" [routerLink]="link.submenu ? null : link.path" (click)="closeDrawer()">
+          {{ link.label }}
+        </button>
+        <mat-menu #mobileMenu="matMenu">
+          <div *ngIf="link.submenu">
+            <button mat-menu-item *ngFor="let subLink of link.submenu" [routerLink]="subLink.path" (click)="closeDrawer()">
+              {{ subLink.label }}
+            </button>
+          </div>
+        </mat-menu>
+      </div>
+      <button mat-button [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'" (click)="closeDrawer()">{{ logordash }}</button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>  </mat-drawer-content>
+</mat-drawer-container>

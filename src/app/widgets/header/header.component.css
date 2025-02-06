@@ -1,23 +1,64 @@
-header {
-  backdrop-filter:blur(5px);
-  background-color: rgba(57, 0, 111, 0.611);
-  color: white;
-  display: flex;
-  gap: 1rem;
-  height: clamp(50px, 10vh, 100px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10000;
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-right: 20px;
 }
 
-#logo {
-  height: clamp(40px, 8vh, 80px);
-  aspect-ratio: 1/1;
-  margin-right: 10px;
-  border-radius: 50%;
+.logo {
+  height: 40px;
+  margin-right: 20px;
 }
 
-#logotxt {
-  font-family: Pacifico, cursive;
-  font-size: 1.5rem;
-  color: #ffffff;
+.spacer {
+  flex: 1 1 auto;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.mat-menu-item {
+  min-width: 150px;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.desknav {
+  display: flex; /* Ensure horizontal layout */
+  align-items: center; /* Vertically align items */
+}
+
+.desknav button {
+  margin-left: 8px; /* Add some spacing between buttons */
+}
+
+.mobile-menu-button {
+  display: none; /* Hide on larger screens */
+}
+
+.drawer-container {
+  height: calc(100vh - 64px); /* Adjust height for toolbar */
+}
+
+.mobile-menu {
+  padding: 16px;
+}
+
+.mobile-menu button {
+  width: 100%; /* Make buttons full width in mobile menu */
+  margin-bottom: 8px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .desknav {
+    display: none; /* Hide desktop nav */
+  }
+  .mobile-menu-button {
+    display: block; /* Show mobile menu button */
+  }
 }
