@@ -53,7 +53,6 @@ import { ParticlesbgComponent } from './components/particlesbg/particlesbg.compo
 import { NgxParticlesModule } from '@tsparticles/angular';
 import { CountUpModule } from 'ngx-countup';
 import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 
 @NgModule({
@@ -97,9 +96,7 @@ import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-edit
     WysiwygEditorComponent,
   ],
   imports: [
-    FroalaEditorModule,
     BrowserModule,
-    FroalaViewModule,
     CountUpModule,
     NgxParticlesModule,
     MaterialModule,
