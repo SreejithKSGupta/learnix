@@ -1,46 +1,53 @@
-<footer class="bg-dark text-white ">
-  <div class="container ">
-
+<footer class="bg-dark text-white">
+  <div class="container">
     <div class="row py-4">
-      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" *ngIf="address">
-        <img src="/learnixtplogo.webp"alt="logo" width="50" class="mb-2">
-        <h4>{{ footertitle }}</h4>
-        <p><strong>Address:</strong> {{ address.street }}</p>
-        <p>{{ address.city }}, {{ address.state }} {{ address.zip }}</p>
-        <p>{{ address.country }}</p>
-        <p><strong>Email:</strong> <a href="mailto:{{ address.email }}" class="text-white">{{ address.email }}</a></p>
-        <p><strong>Phone:</strong> {{ address.phone }}</p>
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <div *ngIf="address">
+          <img src="/learnixtplogo.webp" alt="logo" width="50" class="mb-2">
+          <h4>{{ footertitle }}</h4>
+          <address>
+            <p class="mb-2">{{ address.street }}<br>
+              {{ address.city }}, {{ address.state }} {{ address.zip }}<br>
+              {{ address.country }}
+            </p>
+            <p class="mb-2"><strong>Email:</strong> <a href="mailto:{{ address.email }}" class="text-white">{{ address.email }}</a></p>
+            <p><strong>Phone:</strong> {{ address.phone }}</p>
+          </address>
+        </div>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 text-center">
         <h5>Quick Links</h5>
         <nav>
-          <a *ngFor="let page of pages" [href]="page.url" class="text-white d-block mb-1">{{ page.name }}</a>
+          <a *ngFor="let page of pages" [href]="page.url" class="text-white d-block mb-2">{{ page.name }}</a>
         </nav>
       </div>
 
       <div class="col-lg-4 col-md-12">
-        <h5>Subscribe to our Newsletter</h5>
-        <form (submit)="subscribeToNewsletter()">
-          <div class="input-group mb-3">
-            <input type="email" [(ngModel)]="email" name="email" class="form-control" placeholder="Enter your email" required>
-            <button type="submit" mat-flat-button class="btn btn-primary">Subscribe</button>
-          </div>
-        </form>
-        <h5>Follow Us</h5>
+        <div class="mb-4">
+          <h5>Subscribe to our Newsletter</h5>
+          <form (ngSubmit)="subscribeToNewsletter()">
+            <div class="input-group mb-3">
+              <input type="email" [(ngModel)]="email" name="email" class="form-control rounded-pill" placeholder="Enter your email" required>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+          </form>
+        </div>
+
         <div>
-          <a *ngFor="let link of socialLinks" mat-icon-button [href]="link.url" class="text-white me-2">
-            <img src={{[link.icon]}} alt="{{ link.platform }} icon" fill="#000000" class="socialcion" width="24" height="24">
-          </a>
+          <h5>Follow Us</h5>
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener noreferrer" class="text-white me-2">
+              <img [src]="link.icon" alt="{{ link.platform }} icon" class="social-icon" width="24" height="24">
+            </a>
+          </div>
         </div>
       </div>
     </div>
-
     <hr class="bg-light">
-
     <div class="row">
       <div class="col text-center">
-        <p>&copy; 2025 {{ footertitle }}. All Rights Reserved.</p>
+        <p>&copy; Sreejith ks , All Rights Reserved.</p>
       </div>
     </div>
   </div>

@@ -5,6 +5,12 @@ mat-toolbar {
   color: white;
 }
 
+.logobox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title {
   font-size: 1.5em;
   font-weight: bold;
@@ -21,14 +27,17 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
-.active {
-  font-weight: bold;
-}
+
 
 .mat-menu-item {
   min-width: 150px;
 
 
+}
+
+.mat-menu-item:hover {
+  background-color: rgba(9, 9, 198, 0.829);
+  color: white;
 }
 
 .mat-drawer-content {
@@ -45,20 +54,20 @@ mat-toolbar {
 }
 
 .desknav {
-  display: flex; /* Ensure horizontal layout */
-  align-items: center; /* Vertically align items */
+  display: flex;
+  align-items: center;
 }
 
 .desknav button {
-  margin-left: 8px; /* Add some spacing between buttons */
+  margin-left: 8px;
 }
 
 .mobile-menu-button {
-  display: none; /* Hide on larger screens */
+  display: none;
 }
 
 .drawer-container {
-  height: calc(100vh - 64px); /* Adjust height for toolbar */
+  height: calc(100vh - 64px);
 }
 
 .mobile-menu {
@@ -66,17 +75,17 @@ mat-toolbar {
 }
 
 .mobile-menu button {
-  width: 100%; /* Make buttons full width in mobile menu */
+  width: 100%;
   margin-bottom: 8px;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) { /* Adjust breakpoint as needed */
+
+@media (max-width: 768px) {
   .desknav {
-    display: none; /* Hide desktop nav */
+    display: none;
   }
   .mobile-menu-button {
-    display: block; /* Show mobile menu button */
+    display: block;
   }
 }
 .drawer-container {
@@ -97,9 +106,14 @@ mat-toolbar {
 }
 
 .mat-drawer {
-  position: absolute; /* Overlay the content */
+  position: absolute;
   top: 0;
   bottom: 0;
-  /* ... other drawer styles */
+
 }
 
+.active {
+  font-weight: bold !important;
+  color:var( --primary-color) !important;
+
+}

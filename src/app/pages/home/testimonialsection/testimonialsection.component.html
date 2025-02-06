@@ -1,46 +1,24 @@
-<div
-  id="testimonial-carousel"
-  (mouseover)="stopAutoplay()"
-  (mouseout)="startAutoplay()"
-  class="testimonial-container mat-elevation-z4"
->
-  <div
-    class="testimonial-content"
-    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
-  >
-    <mat-card
-      *ngFor="let testimonial of testimonials"
-      class="testimonial-card mat-elevation-z4"
-    >
-      <div >
-        <mat-card-title class="test-author">{{
-          testimonial.name
-        }}</mat-card-title>
-        <mat-card-subtitle class="test-position">{{
-          testimonial.position
-        }}</mat-card-subtitle>
-      </div>
-      <mat-card-content>
-        <p class="test-text">{{ testimonial.Test }}</p>
-      </mat-card-content>
-    </mat-card>
+<div class="testimonial-container">
+  <div class="testimonial-slider" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+    <div *ngFor="let testimonial of testimonials" class="testimonial-slide">
+      <mat-card class="testimonial-card">
+        <div class="testimonial-content">
+          <div class="testimonial-author">
+            <span class="testimonial-name">{{ testimonial.name }}</span>
+            <span class="testimonial-position">{{ testimonial.position }}</span>
+          </div>
+          <p class="testimonial-text">{{ testimonial.Test }}</p>
+        </div>
+      </mat-card>
+    </div>
   </div>
 
-  <!-- Carousel Buttons -->
-  <button
-    mat-fab
-    class="carousel-btn prev"
-    aria-label="Previous testimonial"
-    (click)="prevTestimonial()"
-  >
-    <mat-icon>chevron_left</mat-icon>
-  </button>
-  <button
-    mat-fab
-    class="carousel-btn next"
-    aria-label="Next testimonial"
-    (click)="nextTestimonial()"
-  >
-    <mat-icon>chevron_right</mat-icon>
-  </button>
+  <div class="testimonial-controls">
+    <button mat-icon-button class="testimonial-button prev" (click)="prevTestimonial()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button class="testimonial-button next" (click)="nextTestimonial()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
 </div>

@@ -59,6 +59,8 @@
       font-size: 1.1rem;
       transition: all 0.3s ease-in-out;
       &:hover {
+        background: #ff007a;
+        color: white;
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
       }
@@ -99,6 +101,35 @@
       object-fit: cover;
     }
   }
+}
+
+@media screen and (max-width: 500px) {
+  .hero{
+    padding: 20px 20px;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+
+  }
+  .hero-left {
+    animation: fadeInUp 1.5s ease-in-out;
+  }
+  .hero-right {
+    animation: fadeInUp 1.5s ease-in-out;
+  }
+  .gradient-text{
+    font-size: 4rem !important;
+  }
+  .cta-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-right  img {
+    display:none;
+  }
+
 }
 
 @keyframes fadeInDown {

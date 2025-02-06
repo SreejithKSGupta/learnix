@@ -1,71 +1,37 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subscription } from 'rxjs';
 import { OtherServices } from '../../../services/otherservices.service';
+import { Subscription, interval } from 'rxjs'; // Import interval
 
 @Component({
-  standalone: false,
   selector: 'app-testimonials-section',
+  standalone:false,
   templateUrl: './testimonialsection.component.html',
-  styleUrl: './testimonialsection.component.css',
+  styleUrls: ['./testimonialsection.component.css'],
 })
 export class TestimonialsectionComponent implements OnInit, OnDestroy {
-  testimonials = [
-    {
-      name: 'James L.',
-      Test: 'As a retiree, I wanted to continue learning, and this platform made it easy to stay engaged and learn at my own pace.',
-      position: 'Retired',
-    },
-  ];
+  testimonials: any[] = [];
   currentIndex = 0;
-  autoplayInterval: any = null;
-  // apiUrl = 'https://api.jsonbin.io/v3/b/6788a954e41b4d34e4783023/latest';
-  // private subscription: Subscription | null = null;
+  private autoplaySubscription: Subscription | undefined;
 
-  // private masterKey = '$2a$10$x1xZJYdkDcwurCkY31PvD.wpYb37N5OswPY9WeOQ/HnWvvQ9YZNtC';
-  // private accessKey = '$2a$10$IMKd0tQnu.oX8gqp3I7tg.OpV4mKVIzh2KjKXwPE3n2rCMCYQZrlO';
+  constructor(private otherServices: OtherServices) {}
 
-  // constructor(private http: HttpClient) {}
-  // getTestimonials(): void {
-  //   const headers = new HttpHeaders({
-  //     'X-Master-Key': this.masterKey,
-  //     'X-Access-Key': this.accessKey,
-  //   });
-
-  //   this.subscription = this.http
-  //     .get<{ record: any }>(this.apiUrl, { headers })
-  //     .subscribe(
-  //       (response) => {
-  //         this.testimonials = response.record;
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching testimonials', error);
-  //       }
-  //     );
-  // }
-
-  constructor(private otherServices: OtherServices) {
+  ngOnInit(): void {
     this.otherServices.getappdata().subscribe((data: any) => {
-      this.testimonials = data.testimonials;
+      this.testimonials = data.testimonials || [];
+      this.startAutoplay();
     });
   }
 
-  ngOnInit(): void {
-    this.startAutoplay();
-  }
-
   ngOnDestroy(): void {
-    if (this.autoplayInterval) clearInterval(this.autoplayInterval);
+    if (this.autoplaySubscription) {
+      this.autoplaySubscription.unsubscribe();
+    }
   }
 
   startAutoplay(): void {
-    this.autoplayInterval = setInterval(() => {
+    this.autoplaySubscription = interval(5000).subscribe(() => {
       this.nextTestimonial();
-    }, 5000);
-  }
-
-  stopAutoplay(): void {
-    if (this.autoplayInterval) clearInterval(this.autoplayInterval);
+    });
   }
 
   nextTestimonial(): void {
@@ -73,8 +39,6 @@ export class TestimonialsectionComponent implements OnInit, OnDestroy {
   }
 
   prevTestimonial(): void {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.testimonials.length) %
-      this.testimonials.length;
+    this.currentIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
   }
 }
