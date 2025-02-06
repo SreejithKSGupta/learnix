@@ -15,7 +15,12 @@
 - game on error page
 - implement SSR?
 
+## UI
+- smaller logo in head
+- box for header nav links
+- primary : orange-red
 
+- 
 
 # advanced
 - lazy loading

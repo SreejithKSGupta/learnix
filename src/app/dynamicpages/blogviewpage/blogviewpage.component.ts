@@ -15,7 +15,6 @@ export class BlogviewpageComponent {
   blogData:any;
 
   ngOnInit(){
-    // get the parameter eg: af92 from the url blog/af92 passed as ['blog', 'af92']
     const url = this.router.url.split('/')
     const blogId = url[url.length - 1]
     console.log(blogId);
@@ -27,3 +26,5 @@ export class BlogviewpageComponent {
   }
 
 }
+
+

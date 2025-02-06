@@ -1,20 +1,24 @@
 <div class="blog-container">
-  <h1>{{ blogData.title }}</h1>
+  <h1 id="blogtitle">{{ blogData.title }}</h1>
 
-  <div class="post-info">
-    <p><strong>Author:</strong> {{ blogData.author }}</p>
-    <p><strong>Post Type:</strong> {{ blogData.post }}</p>
-    <p><strong>Date:</strong> {{ blogData.date | date: 'longDate' }}</p>
+
+  <div class="d-flex flex-row">
+
+    <div class="blog-image col-md-8">
+      <img [src]="blogData.imageURL" alt="{{ blogData.title }}" />
+    </div>
+
+    <div class="p-3 col-md-4">
+         <img [src]="blogData.authorImage" alt="{{ blogData.author }}" />
+         <p><strong>Author:</strong> {{ blogData.author }}</p>
+         <p><strong></strong> {{ blogData.post}}</p>
+         <p><strong>Date:</strong> {{ blogData.date | date: 'longDate' }}</p>
+
+      <p>{{ blogData.description }}</p>
+    </div>
   </div>
 
-  <div class="blog-image">
-    <img [src]="blogData.imageURL" alt="{{ blogData.title }}" />
-  </div>
-
-  <div class="description">
-    <p>{{ blogData.description }}</p>
-  </div>
-   <p>{{ blogData.content }}</p>
+  <div class="blog-content">
   <quill-view [content]="blogData.content" format="object" theme="snow"></quill-view>
-
+</div>
 </div>

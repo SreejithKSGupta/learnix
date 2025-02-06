@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BlogService, Blog } from '../../services/blog.service';
+import { OtherServices } from '../../services/otherservices.service';
 
 @Component({
   selector: 'app-blogs',
@@ -15,7 +16,7 @@ export class BlogsComponent implements OnInit {
   selectedFilter: string = '';
   filterValue: string = '';
 
-  constructor(private blogService: BlogService, private router: Router) {}
+  constructor(private blogService: BlogService, private router: Router , private otherServices: OtherServices) {}
 
   ngOnInit() {
     this.blogService.getBlogs().subscribe((data) => {
@@ -28,8 +29,13 @@ export class BlogsComponent implements OnInit {
      this.router.navigate(['/blog', id]);
   }
 
-  onShare(blog: Blog) {
-    console.log(blog, " Shared.");
+  onShare(id: any) {
+    const blogLink = `${window.location.origin}/blog/${id}`;
+    navigator.clipboard.writeText(blogLink).then(() => {
+            this.otherServices.showalert( 'info','Blog link copied to clipboard!').subscribe(res=>{
+
+      });
+     });
   }
 
   // Handle search input change
