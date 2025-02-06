@@ -17,10 +17,13 @@ import { AdmindashboardComponent } from './pages/profile/admindashboard/admindas
 import { BlogAddComponent } from './pages/blogs/addblog/addblog.component';
 import { FeaturespageComponent } from './pages/otherpages/featurespage/featurespage.component';
 import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.component';
+import { CourseviewpageComponent } from './dynamicpages/courseviewpage/courseviewpage.component';
+
 export const router: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'contact', component: ContactUsComponent },
   { path: 'blog/:id', component: BlogviewpageComponent },
+  { path: 'course/:id', component: CourseviewpageComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   {path:  'signin', component: SigninComponent},

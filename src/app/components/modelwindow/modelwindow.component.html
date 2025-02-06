@@ -1,5 +1,6 @@
 <h2 mat-dialog-title class="text-center">Course Details</h2>
 <mat-dialog-content class="px-3">
+  <img src="{{ data.course.imageUrl }}" alt="{{ data.course.courseName }}" class="img-fluid mb-3">
   <p>
     <i class="material-icons text-primary me-2">school</i>
     <strong>Course Name:</strong> {{ data.course.courseName }}
@@ -62,4 +63,5 @@
   >
     Close
   </button>
+  <button mat-button (click)="ReadMore(data.course.id!)">Read More</button>
 </mat-dialog-actions>

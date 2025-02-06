@@ -7,8 +7,9 @@ export interface Course {
   importantTechnologiesUsed: string[]; // List of key technologies used
   courseFee: number; // Changed from string to number (ensures valid fee range)
   credits: 1 | 2 | 3 | 4 | 5; // Restricting values to a valid range
-  imageUrl?: string;
+  imageUrl?: string | null;
   numberOfEnrolledPeople?: number;
+  content:any;
   totalStars?: number; // Used for average rating
   feedback?: Feedback[]; // Fixed casing for consistency
   comments?: Comment[]; // Fixed casing for consistency

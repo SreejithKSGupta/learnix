@@ -56,6 +56,7 @@ import { QuillModule } from 'ngx-quill'; // Import QuillModule
 import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.component';
+import { CourseviewpageComponent } from './dynamicpages/courseviewpage/courseviewpage.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.
     CoursePageCourseCardComponent,
     WysiwygEditorComponent,
     BlogviewpageComponent,
+    CourseviewpageComponent,
   ],
   imports: [
     BrowserModule,

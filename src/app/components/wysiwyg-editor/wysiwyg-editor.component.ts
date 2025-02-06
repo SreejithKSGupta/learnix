@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input, input } from '@angular/core';
 import Quill from 'quill';
 import { ImageHandler, Options } from 'ngx-quill-upload';
 import { CloudinarymanagerService } from '../../services/cloudinarymanager.service';
@@ -15,6 +15,7 @@ Quill.register('modules/imageHandler', ImageHandler);
 })
 export class WysiwygEditorComponent implements OnInit {
   @Output() richquilltxt = new EventEmitter<any>();
+  @Input() control!: FormControl;
 
    delta: any;
   constructor(private cloudinarymanagerService: CloudinarymanagerService) {}
@@ -59,14 +60,12 @@ export class WysiwygEditorComponent implements OnInit {
     // defaultEmptyValue: 'No description',
   };
   quillConfiguration = this.editorModules;
-  @Input() control!: FormControl;
 
   ngOnInit() {
     this.control = this.control ?? new FormControl();
   }
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection) {
-    console.log(event.editor.getContents().ops);
     this.delta = event.editor.getContents();
     this.richquilltxt.emit(this.delta);
   }
