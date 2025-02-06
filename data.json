@@ -22,7 +22,10 @@
       "tutor": "ambika",
       "duration": "12",
       "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
-      "importantTechnologiesUsed": ["TensorFlow", "Keras"],
+      "importantTechnologiesUsed": [
+        "TensorFlow",
+        "Keras"
+      ],
       "courseFee": "300",
       "credits": "3",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
@@ -52,7 +55,12 @@
       "tutor": "Sreejith KS",
       "duration": "5",
       "description": "this is a good course",
-      "importantTechnologiesUsed": ["html", "css", "js", "node"],
+      "importantTechnologiesUsed": [
+        "html",
+        "css",
+        "js",
+        "node"
+      ],
       "courseFee": "766",
       "credits": "5"
     },
@@ -62,7 +70,9 @@
       "tutor": "sreejith ksw",
       "duration": 5,
       "description": "this is a course from jan 27",
-      "importantTechnologiesUsed": ["html"],
+      "importantTechnologiesUsed": [
+        "html"
+      ],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": ""
@@ -73,7 +83,9 @@
       "tutor": "kjbkjb",
       "duration": 9,
       "description": "good course",
-      "importantTechnologiesUsed": ["html"],
+      "importantTechnologiesUsed": [
+        "html"
+      ],
       "courseFee": 5,
       "credits": 5,
       "imageUrl": "",
@@ -87,7 +99,9 @@
       "userType": "student",
       "gender": "female",
       "email": "emilyjohnson@example.com",
-      "areaOfInterest": ["machine learning"],
+      "areaOfInterest": [
+        "machine learning"
+      ],
       "experience": "2",
       "password": "EmilyJohnson*3456"
     },
@@ -97,7 +111,9 @@
       "userType": "student",
       "gender": "male",
       "email": "michaelwilliams@example.com",
-      "areaOfInterest": ["cloud computing"],
+      "areaOfInterest": [
+        "cloud computing"
+      ],
       "experience": "4",
       "password": "MichaelWilliams*4567"
     },
@@ -108,7 +124,11 @@
       "userType": "tutor",
       "gender": "female",
       "email": "ambikavs@gmail.com",
-      "areaOfInterest": ["react", "ai and robotics", "cybersecurity"],
+      "areaOfInterest": [
+        "react",
+        "ai and robotics",
+        "cybersecurity"
+      ],
       "experience": "5",
       "password": "Amma@5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
@@ -122,7 +142,9 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": ["coding"],
+      "areaOfInterest": [
+        "coding"
+      ],
       "experience": 8,
       "password": "Hari@1234",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738741094/rwwqrmwebzcrx1ngpuxy.jpg",
@@ -167,7 +189,9 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": ["coding"],
+      "areaOfInterest": [
+        "coding"
+      ],
       "experience": 8,
       "password": "Hari*5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654091/wtw5e3nssnnejsshkdpb.jpg",
@@ -181,7 +205,9 @@
       "userType": "student",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": ["coding"],
+      "areaOfInterest": [
+        "coding"
+      ],
       "experience": 8,
       "password": "Hari*5559",
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654316/vn1x0n9wzz6kqwv9zrpt.jpg",
@@ -306,6 +332,79 @@
       "description": "how platforms like Learnix are changing the Indian education landscape.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738354258/o5ogbk7qwat0e21ixkba.jpg",
       "date": "2025-01-31T20:11:07.392Z"
+    },
+    {
+      "id": "1e97",
+      "title": "How E-learning is revolutionising India",
+      "author": "Sreejith KS",
+      "post": "CEO",
+      "topic": "Discussion",
+      "content": {
+        "ops": [
+          {
+            "insert": "because learnix is very beautiful, "
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "some pointas include:"
+          },
+          {
+            "insert": "\none"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "two"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "three"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "link": "asastech.in"
+            },
+            "insert": "asastech.in"
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "insert": {
+              "image": {
+                "alt": null,
+                "url": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738842555/ek71inxlvwbo1m0vb6ux.webp"
+              }
+            }
+          },
+          {
+            "insert": "\n"
+          }
+        ]
+      },
+      "description": "how platforms like Learnix are changing the Indian education landscape.",
+      "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738842593/qxurmzhveirgtifzbuae.webp",
+      "date": "2025-02-06T11:49:55.639Z"
     }
   ],
   "particlesconfig": {
@@ -319,11 +418,17 @@
       "events": {
         "onHover": {
           "enable": true,
-          "mode": ["grab", "bubble"]
+          "mode": [
+            "grab",
+            "bubble"
+          ]
         },
         "onClick": {
           "enable": true,
-          "mode": ["push", "repulse"]
+          "mode": [
+            "push",
+            "repulse"
+          ]
         },
         "resize": true
       },
@@ -398,7 +503,11 @@
     "logourl": "/learnixtplogo.webp",
     "email": "sreejithksgupta2255@gmail.com",
     "description": "Learnix is a platform for learning new skills and improving existing ones. It is a place where you can find courses, tutorials, and other resources to help you learn and grow.",
-    "keywords": ["Learnix", "Learn", "Learnix"],
+    "keywords": [
+      "Learnix",
+      "Learn",
+      "Learnix"
+    ],
     "navlinks": {
       "home": "/",
       "courses": "/courses",
@@ -477,7 +586,6 @@
         "icon": "https://www.google.com/s2/favicons?domain=linkedin.com"
       }
     ],
-
     "address": {
       "street": "123, Learnix Street",
       "city": "Learnix City",
@@ -552,7 +660,11 @@
         "prefix": "+ World-class",
         "description": " instructors"
       },
-      { "value": 50, "prefix": "+ Top quality", "description": " Courses" },
+      {
+        "value": 50,
+        "prefix": "+ Top quality",
+        "description": " Courses"
+      },
       {
         "value": 2000,
         "prefix": "+ Successful students",

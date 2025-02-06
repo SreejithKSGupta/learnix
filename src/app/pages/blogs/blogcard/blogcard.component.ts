@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { BlogService, Blog } from '../../../services/blog.service';
+import { QuillModule } from 'ngx-quill';
 @Component({
   selector: 'app-blogcard',
   standalone: false,

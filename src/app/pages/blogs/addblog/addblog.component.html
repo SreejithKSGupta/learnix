@@ -1,7 +1,6 @@
 <div class="container blog-form-container">
   <h2 class="text-center mb-4">Add a New Blog</h2>
   <form [formGroup]="blogForm" (ngSubmit)="submitBlog()">
-    <!-- Title and Author Fields -->
     <div class="row mb-3">
       <div class="col-12 col-md-6">
         <mat-form-field class="w-100">
@@ -41,13 +40,13 @@
     </div>
 
     <!-- Content Field -->
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <mat-form-field class="w-100">
         <mat-label>Content</mat-label>
         <textarea matInput rows="4" formControlName="content" required></textarea>
       </mat-form-field>
-    </div>
-    <app-wysiwyg-editor></app-wysiwyg-editor>
+    </div> -->
+    <app-wysiwyg-editor (richquilltxt)="onRichTextChange($event)"></app-wysiwyg-editor>
 
     <!-- File Upload Component -->
     <div class="file-upload mb-3">

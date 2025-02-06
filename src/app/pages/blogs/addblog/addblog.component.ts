@@ -36,6 +36,10 @@ export class BlogAddComponent {
     }
   }
 
+  onRichTextChange(richtextobject:any){
+    this.blogForm.patchValue({ content:richtextobject });
+  }
+
   submitBlog() {
     if (this.blogForm.valid) {
       const newBlog = {

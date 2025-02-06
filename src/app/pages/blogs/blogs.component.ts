@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BlogService, Blog } from '../../services/blog.service';
 
@@ -14,7 +15,7 @@ export class BlogsComponent implements OnInit {
   selectedFilter: string = '';
   filterValue: string = '';
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService, private router: Router) {}
 
   ngOnInit() {
     this.blogService.getBlogs().subscribe((data) => {
@@ -23,8 +24,8 @@ export class BlogsComponent implements OnInit {
     });
   }
 
-  onReadMore(blog: Blog) {
-    console.log(blog, " read more.");
+  onReadMore(id: any) {
+     this.router.navigate(['/blog', id]);
   }
 
   onShare(blog: Blog) {
