@@ -1,6 +1,6 @@
 .course-card {
-  background: rgba(255, 255, 255, 0.1); /* Transparent white */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   overflow: hidden;
@@ -26,7 +26,7 @@ mat-card-subtitle {
   background: linear-gradient(135deg, #04586d, #032f3d);
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  padding: 15px;
+  padding: 5px;
   border-radius: 15px;
   flex: 1 1 auto;
 }
@@ -34,13 +34,13 @@ mat-card-subtitle {
 .cardheader img {
   width: 100%;
   border-radius: 10px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 2/1;
   object-fit: cover;
 }
 
 /* Card Body */
 .cardbody {
-  padding: 20px;
+  padding: 10px;
   font-size: 1rem;
   color: #fff;
   text-align: center;
@@ -53,14 +53,14 @@ mat-card-subtitle {
 .course-description {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
+  line-height: 1.2;
   margin-bottom: 10px;
 }
 
 
 .cardbody mat-card-title,
 .cardbody mat-card-subtitle {
-  margin-bottom: 15px; /* Space between title and subtitle */
+  margin-bottom: 5px; /* Space between title and subtitle */
 }
 
 .cardbody p {

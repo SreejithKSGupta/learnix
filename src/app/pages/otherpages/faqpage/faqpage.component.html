@@ -1,18 +1,12 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4 text-primary fw-bold">Frequently Asked Questions</h2>
-  <p class="text-center mb-4">
-      Have questions? We've got answers! Below are some of the most common inquiries about Learnix.
-  </p>
-  <mat-accordion multi="true" class="shadow-lg  bg-light">
-      <mat-expansion-panel *ngFor="let faq of faqs">
-          <mat-expansion-panel-header>
-              <mat-panel-title>
-                  {{ faq.question }}
-              </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p class="p-3">
-              {{ faq.answer }}
-          </p>
-      </mat-expansion-panel>
+  <p class="text-center mb-4 lead">Have questions? We've got answers! Below are some of the most common inquiries about Learnix.</p>
+  <mat-accordion multi="true" class="shadow-lg bg-light rounded">
+    <mat-expansion-panel *ngFor="let faq of faqs" class="faq-panel">
+      <mat-expansion-panel-header class="faq-header">
+        <mat-panel-title class="faq-title">{{ faq.question }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="faq-content p-3">{{ faq.answer }}</div>
+    </mat-expansion-panel>
   </mat-accordion>
 </div>

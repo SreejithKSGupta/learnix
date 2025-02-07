@@ -24,28 +24,37 @@ export class HeaderComponent implements OnInit, OnDestroy {
       path: '/courses',
       label: 'Courses',
       tooltip: 'Explore Courses',
-      submenu: [
-        { path: '/courses/advanced', label: 'Advanced Courses', tooltip: 'Explore Advanced Courses' },
-        { path: '/courses/beginner', label: 'Beginner Courses', tooltip: 'Explore Beginner Courses' },
-        { path: '/courses/professional', label: 'Professional Courses', tooltip: 'Explore Professional Courses' },
-      ],
+      // submenu: [
+      //   { path: '/courses/advanced', label: 'Advanced Courses', tooltip: 'Explore Advanced Courses' },
+      //   { path: '/courses/beginner', label: 'Beginner Courses', tooltip: 'Explore Beginner Courses' },
+      //   { path: '/courses/professional', label: 'Professional Courses', tooltip: 'Explore Professional Courses' },
+      // ],
     },
     {
       path: '/blogs',
       label: 'Blogs',
       tooltip: 'Read Blogs',
+      // submenu: [
+      //   { path: '/blogs/tutorials', label: 'Tutorials', tooltip: 'Read Tutorials' },
+      //   { path: '/blogs/updates', label: 'Updates', tooltip: 'Read Updates' },
+      //   { path: '/blogs/interviews', label: 'Interviews', tooltip: 'Read Interviews' },
+      // ],
+    },
+    {
+      path: '#',
+      label: 'Others',
+      tooltip: 'others',
       submenu: [
-        { path: '/blogs/tutorials', label: 'Tutorials', tooltip: 'Read Tutorials' },
-        { path: '/blogs/updates', label: 'Updates', tooltip: 'Read Updates' },
+        { path: '/faq', label: 'FAQ', tooltip: 'FAQs' },
+        { path: '/about', label: 'About', tooltip: 'About' },
         { path: '/blogs/interviews', label: 'Interviews', tooltip: 'Read Interviews' },
+        { path: '/privacy', label: 'Privacy', tooltip: 'Privacy Policy' },
+        { path: '/contact', label: 'Contact', tooltip: 'Contact Us' },
+        { path: '/addcourse', label: 'Add Course', tooltip: 'Add Course' },
+        { path: '/add-blog', label: 'Add Blog', tooltip: 'Add Blog' },
       ],
     },
-    { path: '/faq', label: 'FAQ', tooltip: 'FAQs' },
-    { path: '/about', label: 'About', tooltip: 'About Us' },
-    { path: '/privacy', label: 'Privacy', tooltip: 'Privacy Policy' },
-    { path: '/contact', label: 'Contact', tooltip: 'Contact Us' },
-    { path: '/addcourse', label: 'Add Course', tooltip: 'Add Course' },
-    { path: '/add-blog', label: 'Add Blog', tooltip: 'Add Blog' },
+
   ];
 
   constructor(private store: Store) {

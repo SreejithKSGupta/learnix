@@ -4,6 +4,9 @@ h1 {
 
 p{
     font-family: 'Jersey','Courier New', Courier, monospace;
+    color: white;
+    font-weight: bold;
+    font-size: 140%;
 }
 
 .mat-raised-button {

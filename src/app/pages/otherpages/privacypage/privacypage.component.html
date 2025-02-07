@@ -1,53 +1,16 @@
 <div class="container mt-5">
-  <mat-card class="p-4 shadow-lg">
-      <h2 class="text-center mb-4 text-primary">Privacy Policy</h2>
-      <p class="lead text-muted">
-          Your privacy is important to us. This Privacy Policy explains how Learnix collects, uses, and protects your personal information.
-      </p>
+  <mat-card class="p-4 shadow-lg frosted-card">
+    <h2 class="text-center mb-4 text-primary">{{ privacyPolicy.title }}</h2>
+    <p class="lead text-muted">{{ privacyPolicy.introduction }}</p>
 
-      <h4 class="fw-bold">1. Information We Collect</h4>
-      <p>
-          We collect basic user details such as name, email, and course activity to enhance your learning experience. Additionally, we may collect browsing data and user preferences to personalize your experience further.
-      </p>
+    <div *ngFor="let section of privacyPolicy.sections">
+      <h4 class="fw-bold">{{ section.title }}</h4>
+      <p>{{ section.content }}</p>
+    </div>
 
-      <h4 class="fw-bold">2. How We Use Your Information</h4>
-      <p>
-          The information collected is used for platform improvements, user support, and personalized course recommendations. We may also use your data to communicate updates, promotional offers, and important notifications related to Learnix.
-      </p>
-
-      <h4 class="fw-bold">3. Data Security</h4>
-      <p>
-          We implement industry-standard security measures, including encryption and secure authentication protocols, to protect your data from unauthorized access. Your personal information is stored securely and is only accessible to authorized personnel.
-      </p>
-
-      <h4 class="fw-bold">4. Cookies & Tracking Technologies</h4>
-      <p>
-          Learnix uses cookies and similar tracking technologies to improve user experience, analyze platform performance, and ensure seamless navigation. Users have the option to manage cookie preferences through their browser settings.
-      </p>
-
-      <h4 class="fw-bold">5. Third-Party Sharing</h4>
-      <p>
-          Learnix does not sell or share your personal data with third parties, except when required by law or when partnering with trusted service providers to enhance our platform's functionality. Any third-party access to user data is strictly regulated.
-      </p>
-
-      <h4 class="fw-bold">6. Data Retention</h4>
-      <p>
-          We retain your personal data only for as long as necessary to fulfill its intended purpose. Users can request account deletion, upon which all associated data will be permanently erased from our system.
-      </p>
-
-      <h4 class="fw-bold">7. Your Rights & Control Over Data</h4>
-      <p>
-          As a Learnix user, you have the right to access, modify, or delete your personal data at any time. Additionally, you can opt out of promotional emails and control privacy settings from your account dashboard.
-      </p>
-
-      <h4 class="fw-bold">8. Changes to This Policy</h4>
-      <p>
-          We may update this Privacy Policy from time to time. Any changes will be posted on this page, and significant updates will be communicated via email or platform notifications.
-      </p>
-
-      <h4 class="fw-bold">9. Contact Us</h4>
-      <p>
-          If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@learnix.com" class="text-primary">support.learnix.com</a>.
-      </p>
+    <h4 class="fw-bold">{{ privacyPolicy.contact.title }}</h4>
+    <p>
+      {{ privacyPolicy.contact.text }} <a href="mailto:{{ privacyPolicy.contact.email }}" class="text-primary">{{ privacyPolicy.contact.email }}</a>.
+    </p>
   </mat-card>
 </div>

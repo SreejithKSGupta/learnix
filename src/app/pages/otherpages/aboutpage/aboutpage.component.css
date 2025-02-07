@@ -1,0 +1,88 @@
+body {
+  background-color: #301934;
+  color: white;
+}
+
+.container {
+  max-width: 900px;
+}
+
+h1, h2, h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  color: #f8f9fa;
+}
+
+h2 {
+  color: #007bff;
+}
+
+p.lead {
+  font-size: 1.1rem;
+  color: #ced4da;
+  line-height: 1.7;
+  font-family: 'Roboto', sans-serif;
+}
+
+.frosted-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  margin: 10px;
+}
+
+.frosted-inner-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: none;
+  border-radius: 8px;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p.lead {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p.lead {
+    font-size: 0.9rem;
+  }
+}

@@ -1,9 +1,9 @@
-/* Styling for the blog form container */
 .blog-form-container {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #ffffff;
+  backdrop-filter: blur(10px);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -11,10 +11,9 @@
 .blog-form-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #4caf50;
+  color: #3c3c3c;
 }
 
-/* Mat-form-field styling for a clean layout */
 .mat-form-field {
   width: 100%;
   margin-bottom: 16px;
@@ -24,7 +23,6 @@
   font-weight: bold;
 }
 
-/* Button styling */
 button.mat-raised-button {
   width: 100%;
   padding: 10px;
@@ -32,7 +30,6 @@ button.mat-raised-button {
   margin-top: 10px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .blog-form-container {
     padding: 15px;

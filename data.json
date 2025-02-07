@@ -1690,6 +1690,16 @@
       "type": "General Inquiry",
       "email": "sreejithksgupta2255@gmail.com",
       "senderID": "1738176746899"
+    },
+    {
+      "id": "5574",
+      "name": "ambika",
+      "phone": "7025692254",
+      "message": "this is a test message from th feb",
+      "severity": "Medium",
+      "type": "General Inquiry",
+      "email": "ambikavs@gmail.com",
+      "senderID": "1738358839686"
     }
   ],
   "subscriberslist": [
@@ -1980,10 +1990,6 @@
       {
         "name": "Privacy",
         "url": "/privacy"
-      },
-      {
-        "name": "Help",
-        "url": "/help"
       }
     ],
     "socials": [

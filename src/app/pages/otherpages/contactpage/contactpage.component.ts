@@ -5,6 +5,8 @@ import { OtherServices } from '../../../services/otherservices.service';
 import { Userservice } from '../../../services/user.service';
 import { ContactMessage } from '../../../interfaces/contactmsg';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectUserState } from '../../../store/selectors/user.selector';
 
 @Component({
   selector: 'app-contact-us',
@@ -22,9 +24,11 @@ export class ContactUsComponent implements OnInit {
     private fb: FormBuilder,
     private otherServices: OtherServices,
     private router: Router,
-    private userservice: Userservice
+    private userservice: Userservice,
+        private store: Store
+
   ) {
-    this.user$ = this.userservice.user$; // Assuming user$ is defined in the user service
+    this.user$ = this.store.select(selectUserState);
   }
 
   ngOnInit(): void {
