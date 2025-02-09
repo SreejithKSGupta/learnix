@@ -73,9 +73,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   toggleDrawer() {
     this.drawer.toggle();
+    console.log("drawyer toggleS");
+
+    // display none or block for .drawer-container
+    // const drawerContainer = document.querySelector('.drawer-container') as HTMLElement;
+    // if (drawerContainer) {
+    //       drawerContainer.style.display = drawerContainer.style.display === "flex" ? "block" : "none";
+    // }
   }
 
   closeDrawer() {
     this.drawer.close();
+    console.log("drawyer close");
+
+    // const drawerContainer = document.querySelector('.drawer-container') as HTMLElement;
+    // if (drawerContainer) {
+    //       drawerContainer.style.display = "flex";
+    // }
   }
 }

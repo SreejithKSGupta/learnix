@@ -5,7 +5,7 @@ mat-toolbar {
   color: white;
 }
 
-.logobox{
+.logobox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@ mat-toolbar {
   font-size: 1.5em;
   font-weight: bold;
   margin-right: 20px;
-  font-family:'Pacifico', 'Courier New', Courier, monospace;
+  font-family: "Pacifico", "Courier New", Courier, monospace;
 }
 
 .logo {
@@ -27,12 +27,8 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
-
-
 .mat-menu-item {
   min-width: 150px;
-
-
 }
 
 .mat-menu-item:hover {
@@ -41,7 +37,8 @@ mat-toolbar {
 }
 
 .mat-drawer-content {
-display: none !important;}
+  display: none !important;
+}
 
 mat-toolbar {
   height: 10vh;
@@ -79,7 +76,6 @@ mat-toolbar {
   margin-bottom: 8px;
 }
 
-
 @media (max-width: 768px) {
   .desknav {
     display: none;
@@ -95,11 +91,11 @@ mat-toolbar {
   background-color: transparent;
 }
 
-.mat-mdc-button-touch-target{
+.mat-mdc-button-touch-target {
   color: rgb(255, 255, 255) !important;
   font-size: 1.5rem;
 }
-.mat-drawer{
+.mat-drawer {
   background-color: rgba(5, 31, 54, 0.631) !important;
   backdrop-filter: blur(10px);
   color: white !important;
@@ -109,11 +105,10 @@ mat-toolbar {
   position: absolute;
   top: 0;
   bottom: 0;
-
 }
 
 .active {
   font-weight: bold !important;
-  color:var( --primary-color) !important;
-
+  color: var(--primary-color) !important;
 }
+
