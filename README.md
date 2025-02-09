@@ -29,7 +29,7 @@
 
 # errors
 - check if suscribers/users exist before adding them.
-- header navbar is in chaos in small screens
+-  goes to 404 page because data is checked before initialization in multiple pages => add initialization to main.js
 
 
 # done

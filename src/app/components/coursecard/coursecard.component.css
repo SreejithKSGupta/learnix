@@ -1,6 +1,5 @@
 .course-card {
-  width: 100%;
-  max-width: 400px;
+  width: clamp(270px, 80%, 400px);
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   margin: 16px 0;

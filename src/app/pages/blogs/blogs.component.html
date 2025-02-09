@@ -1,60 +1,75 @@
 <!-- Search and Filter Panel -->
 <div class="d-flex justify-content-between mb-4">
-  <input
-    type="text"
-    class="form-control w-50"
-    [(ngModel)]="searchQuery"
-    (input)="onSearchChange()"
-    placeholder="Search blogs by title, author, or topic..."
-  />
+  <div class="searchbox">
+    <input
+      type="text"
+      class="form-control w-50"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchChange()"
+      placeholder="Search blogs by title, author, or topic..."
+    />
 
-  <select class="form-select w-25" [(ngModel)]="selectedFilter" (change)="onFilterChange()">
-    <option value="">All Blogs</option>
-    <option value="author">By Author</option>
-    <option value="topic">By Topic</option>
-    <option value="date">By Date</option>
-  </select>
+    <select
+      class="form-select w-25"
+      [(ngModel)]="selectedFilter"
+      (change)="onFilterChange()"
+    >
+      <option value="">All Blogs</option>
+      <option value="author">By Author</option>
+      <option value="topic">By Topic</option>
+      <option value="date">By Date</option>
+    </select>
 
-  <input
-    type="text"
-    class="form-control w-25"
-    [(ngModel)]="filterValue"
-    (input)="onFilterChange()"
-    *ngIf="selectedFilter === 'author' || selectedFilter === 'topic'"
-    placeholder="Enter filter value"
-  />
+    <input
+      type="text"
+      class="form-control w-25"
+      [(ngModel)]="filterValue"
+      (input)="onFilterChange()"
+      *ngIf="selectedFilter === 'author' || selectedFilter === 'topic'"
+      placeholder="Enter filter value"
+    />
 
-  <input
-    type="date"
-    class="form-control w-25"
-    [(ngModel)]="filterValue"
-    (input)="onFilterChange()"
-    *ngIf="selectedFilter === 'date'"
-  />
+    <input
+      type="date"
+      class="form-control w-25"
+      [(ngModel)]="filterValue"
+      (input)="onFilterChange()"
+      *ngIf="selectedFilter === 'date'"
+    />
+  </div>
 </div>
-
 <!-- Blog List -->
 <div class="blogpanel">
   <div *ngFor="let blog of filteredBlogs" class="blog-card-container">
     <mat-card class="blog-card">
       <mat-card-header>
-        <img mat-card-image [src]="blog.imageURL" alt="{{ blog.title }}" class="blog-image" />
+        <img
+          mat-card-image
+          [src]="blog.imageURL"
+          alt="{{ blog.title }}"
+          class="blog-image"
+        />
         <h3 class="blogtitle">{{ blog.title }}</h3>
       </mat-card-header>
       <mat-card-content>
-        <p class="blog-meta">
-          <mat-icon>person</mat-icon> {{ blog.author }} -
-          <mat-icon>date_range</mat-icon> {{ blog.date | date: 'longDate' }}
-        </p>
+        <div class="blog-meta">
+          <div class="featurelist"><mat-icon>person</mat-icon> {{ blog.author }}</div>
+          <div class="featurelist">
+            <mat-icon>date_range</mat-icon> {{ blog.date | date : "longDate" }}
+          </div>
+        </div>
         <p class="blog-topic"><strong>Topic:</strong> {{ blog.topic }}</p>
         <p class="blog-post"><strong>Posted by:</strong> {{ blog.post }}</p>
         <p class="blog-description">{{ blog.description }}</p>
       </mat-card-content>
 
       <mat-card-actions>
-        <button mat-button color="primary" (click)="onReadMore(blog.id)">Read More</button>
-        <button mat-button color="accent" (click)="onShare(blog.id)">Share</button>
-
+        <button mat-button color="primary" (click)="onReadMore(blog.id)">
+          Read More
+        </button>
+        <button mat-button color="accent" (click)="onShare(blog.id)">
+          Share
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
