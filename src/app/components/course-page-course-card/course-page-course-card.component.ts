@@ -63,7 +63,9 @@ export class CoursePageCourseCardComponent {
         enroll: this.enrollToCourse.bind(this),
         editCourse: this.editcourseitem.bind(this),
       },
-      width: '400px',
+      width: '900px',
+      maxWidth: '800px',
+        panelClass: 'dark-themed-dialog'
     });
   }
 

@@ -1,67 +1,115 @@
-<h2 mat-dialog-title class="text-center">Course Details</h2>
-<mat-dialog-content class="px-3">
-  <img src="{{ data.course.imageUrl }}" alt="{{ data.course.courseName }}" class="img-fluid mb-3">
-  <p>
-    <i class="material-icons text-primary me-2">school</i>
-    <strong>Course Name:</strong> {{ data.course.courseName }}
-  </p>
-  <p>
-    <i class="material-icons text-info me-2">person</i>
-    <strong>Tutor:</strong> {{ data.course.tutor }}
-  </p>
-  <p>
-    <i class="material-icons text-secondary me-2">schedule</i>
-    <strong>Duration:</strong> {{ data.course.duration }}
-  </p>
-  <p>
-    <i class="material-icons text-success me-2">attach_money</i>
-    <strong>Fee:</strong> {{ data.course.courseFee }}
-  </p>
-  <p>
-    <i class="material-icons text-warning me-2">description</i>
-    <strong>Description:</strong> {{ data.course.description }}
-  </p>
-  <p>
-    <i class="material-icons text-dark me-2">code</i>
-    <strong>Technologies:</strong> {{ data.course.importantTechnologiesUsed.join(", ") }}
-  </p>
-</mat-dialog-content>
-
-<mat-dialog-actions class="d-flex justify-content-evenly p-3">
-  <button
-    mat-flat-button
-    color="primary"
-    *ngIf="!data.isEnrolled"
-    (click)="enroll()"
-    class="px-3"
-  >
-    Enroll
-  </button>
-  <button
-    mat-flat-button
-    disabled
-    color="disabled"
-    *ngIf="data.isEnrolled"
-    class="px-3"
-  >
-    Enrolled
+<div class="course-details-dialog">
+  <!-- Close Button -->
+  <button mat-icon-button class="close-btn" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
   </button>
 
-  <button
-    mat-flat-button
-    *ngIf="data.isTutor"
-    (click)="editCourse()"
-  >
-    Edit
-  </button>
+  <!-- Header with Course Image Banner -->
+  <div class="position-relative">
+    <img
+      [src]="data.course.imageUrl"
+      [alt]="data.course.courseName"
+      class="w-100 course-banner"
+      onerror="this.src='assets/gallery/designer.webp'"
+    >
+    <div class="banner-overlay"></div>
+    <h2 mat-dialog-title class="position-absolute bottom-0 start-0 w-100 p-4 m-0">
+      {{ data.course.courseName }}
+    </h2>
+  </div>
 
-  <button
-    mat-flat-button
-    color="accent"
-    class="px-3"
-    (click)="closeDialog()"
-  >
-    Close
-  </button>
-  <button mat-button (click)="ReadMore(data.course.id!)">Read More</button>
-</mat-dialog-actions>
+  <!-- Content Section -->
+  <mat-dialog-content class="px-4 py-3">
+    <!-- Tutor and Key Metrics Row -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+      <div class="d-flex align-items-center mb-2 mb-md-0">
+        <mat-icon class="text-info me-2">person</mat-icon>
+        <span>
+          <small class="text-muted d-block">Instructor</small>
+          <strong>{{ data.course.tutor }}</strong>
+        </span>
+      </div>
+      <div class="d-flex gap-4">
+        <div class="d-flex align-items-center">
+          <mat-icon class="text-secondary me-2">schedule</mat-icon>
+          <span>
+            <small class="text-muted d-block">Duration</small>
+            <strong>{{ data.course.duration }}</strong>
+          </span>
+        </div>
+        <div class="d-flex align-items-center">
+          <mat-icon class="text-success me-2">attach_money</mat-icon>
+          <span>
+            <small class="text-muted d-block">Course Fee</small>
+            <strong>${{ data.course.courseFee }}</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Description -->
+    <div class="mb-4">
+      <h3 class="h6 text-uppercase mb-3">About This Course</h3>
+      <p class="course-description mb-3">{{ data.course.description }}</p>
+    </div>
+
+    <!-- Technologies Section -->
+    <div class="mb-4">
+      <h3 class="h6 text-uppercase mb-3">Technologies Covered</h3>
+      <div class="d-flex flex-wrap gap-2">
+        <mat-chip-listbox>
+          <mat-chip *ngFor="let tech of data.course.importantTechnologiesUsed">
+            {{ tech }}
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </div>
+
+    <!-- Enrollment Status -->
+    <div *ngIf="data.isEnrolled" class="enrolled-alert d-flex align-items-center mb-3">
+      <mat-icon class="me-2">check_circle</mat-icon>
+      You are enrolled in this course
+    </div>
+  </mat-dialog-content>
+
+  <!-- Actions Footer -->
+  <mat-dialog-actions align="end" class="px-4 py-3 border-top">
+    <button
+      mat-button
+      color="primary"
+      (click)="ReadMore(data.course.id!)"
+      class="me-auto"
+    >
+      Read More
+      <mat-icon class="ms-1">arrow_forward</mat-icon>
+    </button>
+    <button
+      mat-flat-button
+      *ngIf="data.isTutor"
+      color="primary"
+      (click)="editCourse()"
+    >
+      <mat-icon class="me-2">edit</mat-icon>
+      Edit Course
+    </button>
+    <button
+      mat-flat-button
+      color="accent"
+      *ngIf="!data.isEnrolled"
+      (click)="enroll()"
+      class="px-4"
+    >
+      <mat-icon class="me-2">school</mat-icon>
+      Enroll Now
+    </button>
+    <button
+      mat-flat-button
+      disabled
+      *ngIf="data.isEnrolled"
+      class="px-4"
+    >
+      <mat-icon class="me-2">check</mat-icon>
+      Enrolled
+    </button>
+  </mat-dialog-actions>
+</div>
