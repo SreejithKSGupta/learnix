@@ -1,50 +1,103 @@
-<div class="container my-3">
-  <h2 >Courses</h2>
+<!-- courses.component.html -->
+<div class="container mx-auto px-4 py-6">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold mb-6">Courses</h1>
 
-<!-- Search and Filter Panel -->
-<div class="d-flex justify-content-between mb-4">
-  <input
-    type="text"
-    class="form-control w-50"
-    [(ngModel)]="searchQuery"
-    (input)="onSearchChange()"
-    placeholder="Search courses by name or tutor..."
-  />
+    <!-- Loading Spinner -->
+    <div *ngIf="loading" class="flex justify-center my-8">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
 
-  <select class="form-select w-25" [(ngModel)]="selectedFilter" (change)="onFilterChange()">
-    <option value="">All Courses</option>
-    <option value="tutor">By Tutor</option>
-    <option value="category">By Category</option>
-    <option value="duration">By Duration</option>
-    <option value="credits">By Credits</option>
-    <option value="fee">By Course Fee</option>
-    <option value="rating">By Rating</option>
-    <option value="disabled">Show Disabled</option>
-  </select>
+    <!-- Filters Section -->
+    <div class="searchbox">
+      <!-- Search Input -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Search courses</mat-label>
+        <input
+          matInput
+          [value]="filterState$.value.searchQuery"
+          (input)="onSearchChange($any($event.target).value)"
+          placeholder="Search by course name or tutor"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
 
-  <input
-    type="number"
-    class="form-control w-25"
-    [(ngModel)]="filterValue"
-    (input)="onFilterChange()"
-    *ngIf="selectedFilter === 'duration' || selectedFilter === 'credits' || selectedFilter === 'fee'"
-    placeholder="Filter value"
-  />
+      <!-- Filter Type Select -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Filter by</mat-label>
+        <mat-select
+          [value]="filterState$.value.filterType"
+          (selectionChange)="onFilterTypeChange($event.value)"
+        >
+          <mat-option
+            *ngFor="let option of filterOptions"
+            [value]="option.value"
+          >
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <input
-    type="number"
-    class="form-control w-25"
-    [(ngModel)]="filterValue"
-    (input)="onFilterChange()"
-    *ngIf="selectedFilter === 'rating'"
-    placeholder="Minimum Rating"
-  />
-</div>
+      <!-- Filter Value Input -->
+      <mat-form-field
+        *ngIf="filterState$.value.filterType"
+        appearance="outline"
+        class="w-full"
+      >
+        <mat-label>Filter value</mat-label>
+        <input
+          matInput
+          [type]="
+            ['duration', 'credits', 'fee', 'rating'].includes(
+              filterState$.value.filterType
+            )
+              ? 'number'
+              : 'text'
+          "
+          [value]="filterState$.value.filterValue"
+          (input)="onFilterValueChange($any($event.target).value)"
+          [placeholder]="'Enter ' + filterState$.value.filterType"
+        />
+      </mat-form-field>
+    </div>
 
-<div class="row g-4" id="coursesContainer">
-  <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let course of filteredCourses">
-    <app-course-page-course-card
-      [course]="course"
-    ></app-course-page-course-card>
+    <!-- Results Summary -->
+    <div class="mb-4 summarytxt">
+      Showing {{ displayedCourses.length }} of {{ totalCourses }} courses
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="row g-4">
+      <div
+        *ngFor="let course of displayedCourses"
+        class="col-lg-3 col-md-6 col-sm-12"
+      >
+        <app-course-page-course-card
+          [course]="course"
+          class="h-100 w-100"
+        ></app-course-page-course-card>
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div
+      *ngIf="!loading && displayedCourses.length === 0"
+      class="text-center py-8"
+    >
+      <mat-icon class="text-gray-400 text-5xl mb-4">search_off</mat-icon>
+      <p class="text-gray-600">No courses found matching your criteria</p>
+    </div>
+
+    <!-- Pagination -->
+    <mat-paginator
+      *ngIf="totalCourses > 0"
+      [length]="totalCourses"
+      [pageSize]="filterState$.value.pageSize"
+      [pageIndex]="filterState$.value.pageIndex"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChange($event)"
+      class="mt-6"
+    >
+    </mat-paginator>
   </div>
 </div>

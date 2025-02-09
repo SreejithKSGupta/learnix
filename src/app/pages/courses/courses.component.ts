@@ -1,98 +1,211 @@
-import { Component, OnInit } from '@angular/core';
+// courses.component.ts
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { DataService } from '../../services/data.service';
 import { Course } from '../../interfaces/course';
-import { Router} from '@angular/router';
 import { User } from '../../interfaces/users';
-import { Store } from '@ngrx/store';
 import { selectUserState } from '../../store/selectors/user.selector';
+import { PageEvent } from '@angular/material/paginator';
+
+interface FilterState {
+  searchQuery: string;
+  filterType: string;
+  filterValue: string | number;
+  pageIndex: number;
+  pageSize: number;
+}
 
 @Component({
   selector: 'app-courses',
-  standalone: false,
+  standalone:false,
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css'],
+  styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
-  isauthenticated: boolean = false;
-  userrole: string = '';
+export class CoursesComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+  filterState$ = new BehaviorSubject<FilterState>({
+    searchQuery: '',
+    filterType: '',
+    filterValue: '',
+    pageIndex: 0,
+    pageSize: 4
+  });
+
   courses: Course[] = [];
   filteredCourses: Course[] = [];
-  signeduser: User | undefined;
-  user$: any;
+  displayedCourses: Course[] = [];
+  totalCourses = 0;
+  loading = false;
+  signedUser?: User;
 
-  searchQuery: string = '';
-  selectedFilter: string = '';
-  filterValue: number | string = '';
+  // Pagination
+  pageSizeOptions = [4,12, 24, 48, 96];
+
+  // Filter options
+  filterOptions = [
+    { value: '', label: 'All Courses' },
+    { value: 'tutor', label: 'By Tutor' },
+    { value: 'category', label: 'By Category' },
+    { value: 'duration', label: 'By Duration' },
+    { value: 'credits', label: 'By Credits' },
+    { value: 'fee', label: 'By Course Fee' },
+    { value: 'rating', label: 'By Rating' },
+    { value: 'disabled', label: 'Show Disabled' }
+  ];
 
   constructor(
     private dataService: DataService,
     private router: Router,
-    private store: Store,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
-    this.user$ = this.store.select(selectUserState);
+    // Subscribe to user state
+    this.store.select(selectUserState)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(this.handleUserState.bind(this));
 
-    this.user$.subscribe((user: User | undefined) => {
-      if (user) {
-        this.signeduser = user;
-        this.fetchCourses();
-      }
-    });
+    // Subscribe to filter changes
+    this.filterState$
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(this.handleFilterChange.bind(this));
+  }
 
-    if (this.user$.userrole) {
-      let role = this.user$.userrole;
-      if (role !== 'tutor' && role !== 'student' && role !== 'admin') {
-        this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
-      }
+  private handleUserState(user: User | undefined): void {
+    if (!user) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    console.log(user.userType);
+
+
+    if (!['tutor', 'student', 'admin'].includes(user.userType)) {
+      this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
+      return;
+    }
+
+    this.signedUser = user;
+    this.fetchCourses();
+  }
+
+  private handleFilterChange(filterState: FilterState): void {
+    if (!this.courses.length) return;
+
+    this.loading = true;
+    try {
+      this.applyFilters(filterState);
+    } finally {
+      this.loading = false;
     }
   }
 
-  fetchCourses(): void {
-    this.dataService.getcourses().subscribe((courses) => {
-      this.courses = courses;
-      this.filteredCourses = [...this.courses];
-      this.courses.forEach((course) => {
-      });
-    });
+  private async fetchCourses(): Promise<void> {
+    this.loading = true;
+    try {
+      const courses = await this.dataService.getcourses().toPromise();
+      if (courses) {
+        this.courses = courses;
+        this.applyFilters(this.filterState$.value);
+      }
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      // Handle error appropriately
+    } finally {
+      this.loading = false;
+    }
   }
 
+  private applyFilters(filterState: FilterState): void {
+    const { searchQuery, filterType, filterValue, pageIndex, pageSize } = filterState;
 
+    // Apply filters
+    this.filteredCourses = this.courses.filter(course => {
+      const matchesSearch = !searchQuery ||
+        course.courseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.tutor.toLowerCase().includes(searchQuery.toLowerCase());
 
-  onSearchChange(): void {
-    this.applyFilters();
-  }
-
-  onFilterChange(): void {
-    this.applyFilters();
-  }
-
-  applyFilters(): void {
-    this.filteredCourses = this.courses.filter((course) => {
-      const matchesSearch =
-        course.courseName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        course.tutor.toLowerCase().includes(this.searchQuery.toLowerCase());
-
-      const matchesFilter =
-        this.selectedFilter === 'tutor'
-          ? course.tutor.toLowerCase().includes(this.filterValue.toString().toLowerCase())
-          : this.selectedFilter === 'category'
-          ? course.importantTechnologiesUsed.some(tech =>
-              tech.toLowerCase().includes(this.filterValue.toString().toLowerCase())
-            )
-          : this.selectedFilter === 'duration'
-          ? course.duration === this.filterValue
-          : this.selectedFilter === 'credits'
-          ? course.credits === this.filterValue
-          : this.selectedFilter === 'fee'
-          ? course.courseFee <= Number(this.filterValue)
-          : this.selectedFilter === 'rating'
-          ? (course.totalStars || 0) / (course.feedback?.length || 1) >= Number(this.filterValue)
-          : this.selectedFilter === 'disabled'
-          ? course.disabled === (this.filterValue === 'true')
-          : true;
+      const matchesFilter = this.matchesFilterCriteria(course, filterType, filterValue);
 
       return matchesSearch && matchesFilter;
     });
+
+    // Update total and paginate
+    this.totalCourses = this.filteredCourses.length;
+    this.paginateCourses(pageIndex, pageSize);
+  }
+
+  private matchesFilterCriteria(course: Course, filterType: string, filterValue: string | number): boolean {
+    if (!filterType || !filterValue) return true;
+
+    switch (filterType) {
+      case 'tutor':
+        return course.tutor.toLowerCase().includes(String(filterValue).toLowerCase());
+      case 'category':
+        return course.importantTechnologiesUsed.some(tech =>
+          tech.toLowerCase().includes(String(filterValue).toLowerCase())
+        );
+      case 'duration':
+        return course.duration === Number(filterValue);
+      case 'credits':
+        return course.credits === Number(filterValue);
+      case 'fee':
+        return course.courseFee <= Number(filterValue);
+      case 'rating':
+        const avgRating = (course.totalStars || 0) / (course.feedback?.length || 1);
+        return avgRating >= Number(filterValue);
+      case 'disabled':
+        return course.disabled === (filterValue === 'true');
+      default:
+        return true;
+    }
+  }
+
+  private paginateCourses(pageIndex: number, pageSize: number): void {
+    const startIndex = pageIndex * pageSize;
+    this.displayedCourses = this.filteredCourses.slice(startIndex, startIndex + pageSize);
+  }
+
+  // Event handlers
+  onSearchChange(value: string): void {
+    this.updateFilterState({ searchQuery: value });
+  }
+
+  onFilterTypeChange(filterType: string): void {
+    this.updateFilterState({
+      filterType,
+      filterValue: '',
+      pageIndex: 0
+    });
+  }
+
+  onFilterValueChange(value: string): void {
+    this.updateFilterState({ filterValue: value });
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.updateFilterState({
+      pageIndex: event.pageIndex,
+      pageSize: event.pageSize
+    });
+  }
+
+  private updateFilterState(update: Partial<FilterState>): void {
+    this.filterState$.next({
+      ...this.filterState$.value,
+      ...update
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

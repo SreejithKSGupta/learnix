@@ -21,8 +21,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatMenuModule } from '@angular/material/menu';  // <-- Import this module
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -31,6 +32,8 @@ import { MatMenuModule } from '@angular/material/menu';  // <-- Import this modu
 
   exports: [
     MatCardModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
     MatMenuModule,
     MatExpansionModule,
     MatProgressBarModule,
