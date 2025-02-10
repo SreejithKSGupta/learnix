@@ -3,7 +3,7 @@
     <div class="row py-4">
       <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
         <div *ngIf="address">
-          <img src="/learnixtplogo.webp" alt="logo" width="50" class="mb-2">
+          <img src="https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/zzmfodapfta2x4yeqzxs" alt="logo" width="50" class="mb-2">
           <h4>{{ footertitle }}</h4>
           <address>
             <p class="mb-2">{{ address.street }}<br>
@@ -25,7 +25,7 @@
 
       <div class="col-lg-4 col-md-12 d-flex flex-column justify-content-evenly">
         <div class="mb-4">
-          <h5 class="mb-3 text-secondary h3">Subscribe to our Newsletter</h5>
+          <h5 class="mb-3 h3">Subscribe to our Newsletter</h5>
           <form (ngSubmit)="subscribeToNewsletter()">
             <div class="input-group mb-3">
               <input type="email" [(ngModel)]="email" name="email" class="form-control rounded-pill" placeholder="Enter your email" required>
@@ -35,7 +35,7 @@
         </div>
 
         <div>
-          <h5 class="mb-3 h3 text-secondary">Follow Us</h5>
+          <h5 class="mb-3 h3">Follow Us</h5>
           <div class="d-flex flex-row justify-content-evenly align-content-center">
             <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener noreferrer" class="text-white me-2">
               <img [src]="link.icon" alt="{{ link.platform }} icon" class="social-icon" width="24" height="24">

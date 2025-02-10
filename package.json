@@ -26,6 +26,7 @@
     "@ngrx/effects": "19.0.0",
     "@ngrx/store": "19.0.0",
     "@ngrx/store-devtools": "19.0.0",
+    "@nguniversal/express-engine": "7.0.2",
     "@tsparticles/angular": "^3.0.0",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/slim": "^3.8.1",
