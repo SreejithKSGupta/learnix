@@ -14,7 +14,19 @@ export class AdmindataService {
   constructor(private http: HttpClient, private userservices: Userservice, private dataservices: DataService,private emailservice:EmailService) { }
 
   addtosubscribers(emailid: string): Observable<any> {
-    return this.http.post<any>(this.suburl, {emailid});
+    return this.getsubscribers().pipe(
+      map(subscribers => {
+        const emailExists = subscribers.some((subscriber: any) => subscriber.emailid === emailid);
+        if (!emailExists) {
+          return this.http.post<any>(this.suburl, { emailid }).pipe(
+            catchError(this.handleError('addtosubscribers'))
+          );
+        } else {
+            return false;
+        }
+      }),
+      catchError(this.handleError('addtosubscribers'))
+    );
   }
 
   private handleError(operation = 'operation', result?: any) {

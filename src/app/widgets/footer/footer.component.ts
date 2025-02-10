@@ -37,19 +37,27 @@ export class FooterComponent {
   subscribeToNewsletter() {
     if (this.email) {
       this.admindataservice.addtosubscribers(this.email).subscribe((res) => {
-        console.log(res);
+        if(res!=false){
+          this.emailService
+          .sendEmail('subscription', this.email)
+          .then((response) => {
+            console.log('Email sent successfully:', response);
+            alert('Thank you for subscribing! A welcome email has been sent.');
+            this.email = '';
+          })
+          .catch((error) => {
+            console.error('Failed to send email:', error);
+            alert('An error occurred while sending the email. Please try again.');
+          });
+        }
+        else{
+          this.otheservices.showalert('error','Email already subscribed').subscribe((res)=>{
+            console.log(res);
+          }
+          )
+        }
       });
-      this.emailService
-        .sendEmail('subscription', this.email)
-        .then((response) => {
-          console.log('Email sent successfully:', response);
-          alert('Thank you for subscribing! A welcome email has been sent.');
-          this.email = '';
-        })
-        .catch((error) => {
-          console.error('Failed to send email:', error);
-          alert('An error occurred while sending the email. Please try again.');
-        });
+
     }
   }
 }
