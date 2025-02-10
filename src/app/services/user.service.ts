@@ -28,12 +28,14 @@ export class Userservice {
   ) {}
 
   checkauthentication(): void {
-    const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
-    if (savedUser) {
-      this.authStateSubject.next(true);
-      this.getuserbyid(savedUser).subscribe((user) => {
-        this.store.dispatch(managerUserChange({ user }));
-      });
+    if (typeof window !== 'undefined') {
+      const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
+      if (savedUser) {
+        this.authStateSubject.next(true);
+        this.getuserbyid(savedUser).subscribe((user) => {
+          this.store.dispatch(managerUserChange({ user }));
+        });
+      }
     }
   }
 
@@ -53,7 +55,9 @@ export class Userservice {
     this.otherservices
       .showalert('success', 'Welcome to Learnix')
       .subscribe((result) => {});
-    localStorage.setItem('users', JSON.stringify(item.id));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('users', JSON.stringify(item.id));
+    }
     return this.http.post<any>(this.userurl, item);
   }
 
@@ -62,22 +66,23 @@ export class Userservice {
     return this.http.get<any>(url);
   }
 
-  updateuser(userData: any): Observable<any> {;
+  updateuser(userData: any): Observable<any> {
+    const url = `${this.userurl}/${userData.id}`;
+    const updatedUser = { ...userData };
+    console.log('updated user :', updatedUser.id);
 
-        const url = `${this.userurl}/${userData.id}`;
-        const updatedUser = { ...userData};
-        console.log('updated user :', updatedUser.id);
-
-        this.otherservices
-          .showalert('success', 'Updated profile')
-          .subscribe((result) => {});
-        return this.http.put(url, updatedUser);
+    this.otherservices
+      .showalert('success', 'Updated profile')
+      .subscribe((result) => {});
+    return this.http.put(url, updatedUser);
   }
 
   signout() {
     this.authStateSubject.next(false);
     this.store.dispatch(managerUserChange({ user: null }));
-    localStorage.removeItem('users');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('users');
+    }
     this.otherservices
       .showalert('success', 'Signed out Succesfully')
       .subscribe((result) => {});
@@ -87,7 +92,9 @@ export class Userservice {
     this.authStateSubject.next(true);
     this.store.dispatch(managerUserChange({ user }));
     // Save user to localStorage to persist authentication across reloads
-    localStorage.setItem('users', JSON.stringify(user.id));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('users', JSON.stringify(user.id));
+    }
 
     this.emailservice.sendEmail(
       'othermsg',

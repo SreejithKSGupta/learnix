@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { Course } from '../../interfaces/course';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-courseviewpage',
@@ -18,9 +19,12 @@ export class CourseviewpageComponent {
   isclassover(arg0: any) {
     return 1;
   }
+  isBrowser: boolean;
 
 
-  constructor(private router: Router, private data: DataService) {}
+  constructor( @Inject(PLATFORM_ID) private platformId: object, private router: Router, private data: DataService) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
   course$!: Observable<Course>|null;
   ngOnInit(): void {
     this.course$=this.data.getcoursebyid(this.router.url.split('/')[2])

@@ -70,9 +70,11 @@ export class BlogsComponent implements OnInit {
 
   onShare(id: any) {
     const blogLink = `${window.location.origin}/blog/${id}`;
+    if (typeof window !== 'undefined') {
     navigator.clipboard.writeText(blogLink).then(() => {
       this.otherServices.showalert('info', 'Blog link copied to clipboard!');
     });
+  }
   }
 
   onSearchChange(): void {

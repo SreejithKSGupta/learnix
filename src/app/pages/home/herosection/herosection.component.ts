@@ -12,7 +12,10 @@ export class HerosectionComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
-    const scrollPosition = window.scrollY;
+
+    if (typeof window !== 'undefined') {
+      const scrollPosition = window.scrollY | 0;
+
     const leftContent = document.querySelector('.hero-left') as HTMLElement;
     const rightContent = document.querySelector('.hero-right') as HTMLElement;
 
@@ -24,4 +27,5 @@ export class HerosectionComponent implements OnInit {
       rightContent.style.transform = `translateY(${scrollPosition * -0.2}px)`;
     }
   }
+}
 }

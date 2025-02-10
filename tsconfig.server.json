@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "dist/learnix-server",
+    "module": "ESNext",
+    "target": "ES2022",
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false
+  },
+  "files": ["server.ts", "src/main.server.ts"]
+}

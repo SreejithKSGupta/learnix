@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 
@@ -11,7 +12,10 @@ import { BlogService } from '../../services/blog.service';
   styleUrl: './blogviewpage.component.css'
 })
 export class BlogviewpageComponent {
-  constructor(private router:Router, private blogService:BlogService ){}
+  isBrowser: boolean;
+  constructor(@Inject(PLATFORM_ID) private platformId: object,private router:Router, private blogService:BlogService ){
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
   blogData:any;
 
   ngOnInit(){

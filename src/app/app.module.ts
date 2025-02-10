@@ -3,7 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataService } from './services/data.service';
 import { Userservice } from './services/user.service';
-import { LightboxModule } from 'ngx-lightbox';
+// import { LightboxModule } from 'ngx-lightbox';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
 import { FooterComponent } from './widgets/footer/footer.component';
@@ -37,7 +37,7 @@ import { ModelwindowComponent } from './components/modelwindow/modelwindow.compo
 import { AdmindashboardComponent } from './pages/profile/admindashboard/admindashboard.component';
 import { MessagereplyComponent } from './components/messagereply/messagereply.component';
 import { BlogAddComponent } from './pages/blogs/addblog/addblog.component';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+// import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ChartboxComponent } from './components/chartbox/chartbox.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -48,10 +48,9 @@ import { FeaturespageComponent } from './pages/otherpages/featurespage/featuresp
 import { CourseCardComponentnew } from './components/course-card/course-card.component';
 import { StudentdashboardComponent } from './pages/profile/studentdashboard/studentdashboard.component';
 import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordashboard.component';
-import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
-import { NgxParticlesModule } from '@tsparticles/angular';
-import { CountUpModule } from 'ngx-countup';
-import { QuillModule } from 'ngx-quill'; // Import QuillModule
+// import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
+Zimport { CountUpModule } from 'ngx-countup';
+// import { QuillModule } from 'ngx-quill'; // Import QuillModule
 import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.component';
@@ -60,7 +59,7 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
 @NgModule({
   declarations: [
     ContactUsComponent,
-    AppComponent,
+    AppComponent,ZZZ
     HeaderComponent,
     DashboardComponent,
     FooterComponent,
@@ -92,7 +91,7 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
     FeaturespageComponent,
     StudentdashboardComponent,
     TutordashboardComponent,
-    ParticlesbgComponent,
+    // ParticlesbgComponent,
     CoursePageCourseCardComponent,
     WysiwygEditorComponent,
     BlogviewpageComponent,
@@ -100,13 +99,13 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
   ],
   imports: [
     BrowserModule,
-    QuillModule.forRoot() ,
+    // QuillModule.forRoot() ,
     CountUpModule,
-    NgxParticlesModule,
+    // NgxParticlesModule,
     MaterialModule,
     StoredModule,
     ServicesModule,
-    LightboxModule,
+    // LightboxModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
@@ -120,8 +119,10 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
     DataService,
     Userservice,
     OtherServices,
-    provideCharts(withDefaultRegisterables()),
+    // provideCharts(withDefaultRegisterables()),
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+

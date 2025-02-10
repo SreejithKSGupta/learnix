@@ -14,7 +14,7 @@ export class CloudinarymanagerService {
   constructor(private http: HttpClient) {}
 
 
-  async compressImage(file: File): Promise<File> {
+  async compressImage(file: File): Promise<File>  {
     const options = {
       maxSizeMB: 0.2,
       maxWidthOrHeight: 540,
@@ -22,25 +22,31 @@ export class CloudinarymanagerService {
     };
 
     try {
-      const useridd = JSON.parse(localStorage.getItem('users') || 'null');
-      if (!useridd) {
-        throw new Error('User ID is not available');
+      if (typeof window !== 'undefined') {
+        const useridd = JSON.parse(localStorage.getItem('users') || 'null');
+        if (!useridd) {
+          throw new Error('User ID is not available');
+        }
+
+        const fname = file.name;
+        const compressedFile = await imageCompression(file, options);
+
+        // Create a new File with the desired name
+        const newFile = new File([compressedFile], `${fname}-${useridd}.webp`, {
+          type: 'image/webp',
+        });
+
+        return newFile;
+      } else {
+        throw new Error('Window is undefined');
       }
-
-      const fname = file.name;
-      const compressedFile = await imageCompression(file, options);
-
-      // Create a new File with the desired name
-      const newFile = new File([compressedFile], `${fname}-${useridd}.webp`, {
-        type: 'image/webp',
-      });
-
-      return newFile;
     } catch (error) {
       console.error('Error during image compression:', error);
       throw error;
     }
   }
+
+
 
 
 

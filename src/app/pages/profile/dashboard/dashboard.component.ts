@@ -30,10 +30,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (typeof window !== 'undefined') {
     let suerid=JSON.parse(localStorage.getItem('users')||'null')
     if(!suerid){
       this.router.navigate(['/signin']);
     }
+  }
   }
 
   logout(): void {

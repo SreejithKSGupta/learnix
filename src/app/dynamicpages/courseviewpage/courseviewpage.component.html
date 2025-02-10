@@ -36,7 +36,7 @@
       <p>{{ course.description }}</p>
     </div>
     <div class="blog-content">
-      <quill-view [content]="course.content" format="object" theme="snow"></quill-view>
+      <!-- <quill-view *ngIf="isBrowser" [content]="course.content" format="object" theme="snow"></quill-view> -->
     </div>
   </mat-card-content>
 

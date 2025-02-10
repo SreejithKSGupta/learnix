@@ -20,18 +20,30 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/learnix-server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "learnix:build",
+            "serverTarget": "learnix:server"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/learnix",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-
               {
                 "glob": "**/*",
                 "input": "public"
@@ -39,7 +51,8 @@
             ],
             "styles": [
               "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.snow.css",              "@angular/material/prebuilt-themes/azure-blue.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "./node_modules/ngx-lightbox/lightbox.css"
@@ -47,7 +60,6 @@
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/jquery/dist/jquery.min.js"
-
             ]
           },
           "configurations": {
@@ -92,10 +104,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
@@ -107,7 +116,7 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css",
               "./node_modules/ngx-lightbox/lightbox.css"
-   ],
+            ],
             "scripts": []
           }
         }
