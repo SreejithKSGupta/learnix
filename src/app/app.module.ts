@@ -49,7 +49,7 @@ import { CourseCardComponentnew } from './components/course-card/course-card.com
 import { StudentdashboardComponent } from './pages/profile/studentdashboard/studentdashboard.component';
 import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordashboard.component';
 // import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
-Zimport { CountUpModule } from 'ngx-countup';
+import { CountUpModule } from 'ngx-countup';
 // import { QuillModule } from 'ngx-quill'; // Import QuillModule
 import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
@@ -59,7 +59,7 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
 @NgModule({
   declarations: [
     ContactUsComponent,
-    AppComponent,ZZZ
+    AppComponent,
     HeaderComponent,
     DashboardComponent,
     FooterComponent,
