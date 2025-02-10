@@ -64,9 +64,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Subscribe to user state
-    this.store.select(selectUserState)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(this.handleUserState.bind(this));
+    this.store.select(selectUserState).subscribe(this.handleUserState.bind(this));
 
     // Subscribe to filter changes
     this.filterState$
@@ -87,7 +85,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
     console.log(user.userType);
 
 
-    if (!['tutor', 'student', 'admin'].includes(user.userType)) {
+    if (!['tutor', 'student', 'admin' ,undefined].includes(user.userType)) {
       this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
       return;
     }

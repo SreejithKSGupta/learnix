@@ -6,7 +6,6 @@ import { Observable, of } from 'rxjs';
 import { EmailService } from './email.service';
 import { Message } from '../interfaces/users';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -43,9 +42,9 @@ export class OtherServices {
       .catch((error) => {
         console.error('Error sending email:', error);
       });
-      this.showalert('success', 'Email sent successfully')
-      .subscribe((result) => {
-       })
+    this.showalert('success', 'Email sent successfully').subscribe(
+      (result) => {}
+    );
     this.http
       .post<any>(this.courseurl, contactData)
       .pipe(catchError(this.handleError('submitContactForm')))
@@ -69,7 +68,7 @@ export class OtherServices {
       };
     } = {
       confirm: {
-        title: data? data:'Do you want to save the changes?',
+        title: data ? data : 'Do you want to save the changes?',
         showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: 'Yes',
@@ -93,6 +92,15 @@ export class OtherServices {
         confirmButtonText: 'OK',
         denyButtonText: '',
         icon: 'success',
+      },
+      error: {
+        title: 'Error',
+        text: data,
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+        denyButtonText: '',
+        icon: 'error',
       },
     };
 
@@ -137,15 +145,10 @@ export class OtherServices {
         emailMessage
       )
       .then((response) => {
-        this.showalert('success', 'reply Sent')
-        .subscribe((result) => {
-         })
-
+        this.showalert('success', 'reply Sent').subscribe((result) => {});
       })
       .catch((error) => {
-        this.showalert('info', 'Unble to reply')
-        .subscribe((result) => {
-         })
+        this.showalert('info', 'Unble to reply').subscribe((result) => {});
       });
     if (UserId) {
       const url = `${this.userurl}/${UserId}`;

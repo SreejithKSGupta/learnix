@@ -1,55 +1,209 @@
 .dashboard-container {
-  padding: 20px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-h2{
+h2 {
   text-align: center;
-  padding:20px;
-  font-size: 300%;
+  padding: 24px 0;
+  font-size: 2.5rem;
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 32px;
   user-select: none;
-  font-family: 'Lora', Courier, monospace;
-  font-weight: bolder;
 }
 
+/* Panel Styles */
 mat-expansion-panel {
-  margin-bottom: 10px;
-  background: #f9f9f9;
+  margin-bottom: 16px;
   border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: #0000005f;
 }
 
 mat-expansion-panel-header {
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 16px 24px;
+  background-color: #f8f8f8e5 !important;
 }
+
+mat-panel-title h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #34495e;
+  margin: 0;
+}
+
+/* Statistics Section */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 16px;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.568);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Cards Container */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  padding: 10px;
-  justify-content: center;
-  align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 16px;
+  background-color: #3d3d3d3e;
 }
 
-
-.card {
-  width: 300px;
-  padding: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+/* Card Styles */
+mat-card {
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.header-content {
+  padding: 16px 16px 8px;
 }
 
 mat-card-title {
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
 }
 
-.email-send-section {
+mat-card-subtitle {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Card Content Styles */
+.user-info,
+.course-info,
+.message-info {
+  padding: 16px;
+}
+
+.label {
+  font-weight: 600;
+  color: #34495e;
+  margin-right: 8px;
+}
+
+.message-text {
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Status Indicators */
+.status-active {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+.status-disabled {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+/* Severity Indicators */
+.severity-high {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.severity-medium {
+  color: #f39c12;
+  font-weight: 500;
+}
+
+.severity-low {
+  color: #27ae60;
+  font-weight: 500;
+}
+
+/* Button Styles */
+.action-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.action-button.primary {
+  color: #3498db;
+}
+
+.action-button.warn {
+  color: #e74c3c;
+}
+
+.action-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dual-actions {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+/* Email Section Styles */
+.email-send-section {
+  padding: 24px;
+  background-color: #2323233e;
+  border-radius: 8px;
+  margin-bottom: 24px;
 }
 
 .full-width {
   width: 100%;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.send-email-button {
+  margin-top: 16px;
+  background-color: #3498db;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.send-email-button:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 16px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    padding: 16px 0;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  mat-card {
+    width: 100%;
+  }
 }

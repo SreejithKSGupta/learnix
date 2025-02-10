@@ -5,10 +5,12 @@ import { Store } from '@ngrx/store';
 
 import { User } from '../../../interfaces/users';
 import { Userservice } from '../../../services/user.service';
+
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, firstValueFrom, Observable, tap, throwError } from 'rxjs';
 import { selectUserState } from '../../../store/selectors/user.selector';
+import { OtherServices } from '../../../services/otherservices.service';
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
     private cloudinaryService: CloudinarymanagerService,
     private route: ActivatedRoute,
     private store: Store,
+    private otherservices:OtherServices
 
   ) {
         this.user$ = this.store.select(selectUserState);
@@ -129,56 +132,114 @@ export class LoginComponent implements OnInit {
     this.uploadedimg = file;
   }
 
-  submit() {
-    if (this.signupForm.valid) {
-      if (this.uploadedimg) {
-        this.cloudinaryService.uploadImage(this.uploadedimg).subscribe(
-          (imgurl) => {
-            const user: User = {
-              id: this.currentuserdata.id || String(Date.now()),
-              disabled:this.currentuserdata.disabled ||  false,
-              name: this.firstFormGroup.get('name')?.value,
-              userType: this.firstFormGroup.get('userType')?.value,
-              gender: this.secondFormGroup.get('gender')?.value,
-              email: this.firstFormGroup.get('email')?.value,
-              areaOfInterest:
-                this.secondFormGroup.get('areaOfInterest')?.value || [],
-              experience: this.secondFormGroup.get('experience')?.value,
-              password: this.thirdFormGroup.get('password')?.value,
-              imageUrl: imgurl!,
-              courses:this.currentuserdata.courses ||   [],
-              messages:this.currentuserdata.messages ||  [],
-            };
-            if(this.iseditmode){
-              this.userservice.updateuser(user).subscribe((res) => {
-                console.log('User data submitted successfully:', res);
-            })
-              alert('Sign-up successful! Check the console for user data.');
-              this.router.navigate(['/dashboard']);
-              return;
-            }
-            else{
-              this.userservice.adduser(user).subscribe((res) => {
-                console.log('User data submitted successfully:', res);
-                this.userservice.signin(user);
-              });
+  async submit() {
+    if (!this.signupForm.valid) {
+      this.otherservices.showalert('error', 'Please fill all required fields correctly');
+      return;
+    }
 
-              alert('Sign-up successful! Check the console for user data.');
-            }
+    try {
+      // Create user object from form data, safely handling undefined currentuserdata
+      const user: User = {
+        // For new users, use Date.now(); for editing, use existing ID if available
+        id: this.iseditmode ? this.currentuserdata?.id : String(Date.now()),
 
+        // Default values for new users, preserve existing values when editing
+        disabled: this.iseditmode ? (this.currentuserdata?.disabled ?? false) : false,
 
-          },
-          (error) => {
-            console.error('Error uploading image:', error);
-            alert('Failed to upload image. Please try again.');
+        // Form values with null checking
+        name: this.firstFormGroup.get('name')?.value || '',
+        userType: this.firstFormGroup.get('userType')?.value || '',
+        gender: this.secondFormGroup.get('gender')?.value || '',
+        email: this.firstFormGroup.get('email')?.value || '',
+        areaOfInterest: this.secondFormGroup.get('areaOfInterest')?.value || [],
+        experience: this.secondFormGroup.get('experience')?.value || '',
+        password: this.thirdFormGroup.get('password')?.value || '',
+        imageUrl: this.iseditmode ? (this.currentuserdata?.imageUrl) : '',
+        courses: this.iseditmode ? (this.currentuserdata?.courses ?? []) : [],
+        messages: this.iseditmode ? (this.currentuserdata?.messages ?? []) : [],
+      };
+
+      // Check if the user already exists for new user
+      if (!this.iseditmode) {
+         this.userservice.checkIfUserExists(user).subscribe(async res=>{
+          if (res) {
+            console.log('User already exists',res);
+            this.router.navigate(['/signin']);
+            this.otherservices.showalert('error', 'User already exists').subscribe(() => {
+            });
+            return;
           }
-        );
+          else {
+
+      // Validate required fields
+      if (!user.name || !user.email || !user.password) {
+        this.otherservices.showalert('error', 'Please fill all required fields');
+        return;
       }
-    } else {
-      console.log('Form is invalid. Please fill all required fields.');
-      alert('Form is invalid. Please fill all required fields.');
+
+      // Handle image upload if present (only for new users or if the image was changed)
+      if (this.uploadedimg && (!this.iseditmode || this.uploadedimg !== this.currentuserdata?.imageUrl)) {
+        try {
+          const imgurl = await firstValueFrom(
+            this.cloudinaryService.uploadImage(this.uploadedimg)
+          );
+          user.imageUrl = imgurl;
+        } catch (error) {
+          console.error('Image upload failed:', error);
+          this.otherservices.showalert('error', 'Failed to upload image. Please try again');
+          return;
+        }
+      }
+
+            // Handle edit mode vs new user
+            if (this.iseditmode) {
+              // Update existing user
+              this.userservice.updateuser(user).pipe(
+                tap((res) => {
+                  console.log('User updated successfully:', res);
+                  this.otherservices.showalert('success', 'Profile updated successfully');
+                  this.router.navigate(['/dashboard']);
+                }),
+                catchError((error) => {
+                  console.error('Update failed:', error);
+                  this.otherservices.showalert('error', 'Failed to update profile');
+                  return throwError(() => error);
+                })
+              ).subscribe();
+            } else {
+              // Add new user
+              this.userservice.addUser(user).pipe(
+                tap((res) => {
+                  console.log('User created successfully:', res);
+                  this.userservice.signin(user);
+                  this.otherservices.showalert('success', 'Sign-up successful! Welcome to our platform');
+                }),
+                catchError((error) => {
+                  console.error('Sign-up failed:', error);
+                  let errorMessage = 'Sign-up failed. Please try again';
+                  if (error.message?.includes('already exists')) {
+                    errorMessage = error.message;
+                  }
+                  this.otherservices.showalert('error', errorMessage);
+                  return throwError(() => error);
+                })
+              ).subscribe();
+            }
+
+          }
+        });
+
+      }
+
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      this.otherservices.showalert('error', 'An unexpected error occurred');
     }
   }
+
+
 
   navigateToProfile() {
     console.log('Navigating to profile page...');

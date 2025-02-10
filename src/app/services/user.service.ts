@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { UserCourse } from '../interfaces/users';
 import { DataService } from './data.service';
@@ -28,6 +28,8 @@ export class Userservice {
   ) {}
 
   checkauthentication(): void {
+    console.log('authentiucation being checkwds');
+
     const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
     if (savedUser) {
       this.authStateSubject.next(true);
@@ -41,20 +43,43 @@ export class Userservice {
     return this.http.get(this.userurl).pipe(map((res) => res));
   }
 
-  adduser(item: any): Observable<any> {
-    this.emailservice.sendEmail(
-      'othermsg',
-      item.email,
-      item.name,
-      'Learnix',
-      'welcome to Learnix',
-      'Welcome to Learnix. We hope you have an excellent learning journey with us.'
+
+  checkIfUserExists(item: any): Observable<boolean> {
+    return this.http.get<any[]>(this.userurl).pipe(
+      map((users) => {
+        const existingUser = users.find(
+          (user) =>
+            user.email.toLowerCase() === item.email.toLowerCase() ||
+            user.name.toLowerCase() === item.name.toLowerCase()
+        );
+        console.log(existingUser);
+
+        return !!existingUser;
+      })
     );
-    this.otherservices
-      .showalert('success', 'Welcome to Learnix')
-      .subscribe((result) => {});
-    localStorage.setItem('users', JSON.stringify(item.id));
-    return this.http.post<any>(this.userurl, item);
+  }
+
+  addUser(item: any): Observable<any> {
+    return this.http.post<any>(this.userurl, item).pipe(
+      tap((newUser: { id: any }) => {
+        this.emailservice.sendEmail(
+          'othermsg',
+          item.email,
+          item.name,
+          'Learnix',
+          'welcome to Learnix',
+          'Welcome to Learnix. We hope you have an excellent learning journey with us.'
+        );
+
+        this.otherservices
+          .showalert('success', 'Welcome to Learnix')
+          .subscribe(res=>{
+            console.log(res);
+          });
+
+        localStorage.setItem('users', JSON.stringify(newUser.id));
+      })
+    );
   }
 
   getuserbyid(id: String): Observable<any> {
@@ -62,16 +87,15 @@ export class Userservice {
     return this.http.get<any>(url);
   }
 
-  updateuser(userData: any): Observable<any> {;
+  updateuser(userData: any): Observable<any> {
+    const url = `${this.userurl}/${userData.id}`;
+    const updatedUser = { ...userData };
+    console.log('updated user :', updatedUser.id);
 
-        const url = `${this.userurl}/${userData.id}`;
-        const updatedUser = { ...userData};
-        console.log('updated user :', updatedUser.id);
-
-        this.otherservices
-          .showalert('success', 'Updated profile')
-          .subscribe((result) => {});
-        return this.http.put(url, updatedUser);
+    this.otherservices
+      .showalert('success', 'Updated profile')
+      .subscribe((result) => {});
+    return this.http.put(url, updatedUser);
   }
 
   signout() {

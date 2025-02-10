@@ -22,9 +22,9 @@ export class CloudinarymanagerService {
     };
 
     try {
-      const useridd = JSON.parse(localStorage.getItem('users') || 'null');
+      let useridd = JSON.parse(localStorage.getItem('users') || 'null');
       if (!useridd) {
-        throw new Error('User ID is not available');
+           useridd='unauthenticated';
       }
 
       const fname = file.name;

@@ -1534,15 +1534,15 @@
     },
     {
       "id": "1737636349897",
-      "name": "Michael Williams",
-      "userType": "student",
-      "gender": "male",
-      "email": "michaelwilliams@example.com",
+      "name": "Anjithja J",
+      "userType": "admin",
+      "gender": "female",
+      "email": "anjitha@gmail.com",
       "areaOfInterest": [
         "cloud computing"
       ],
       "experience": "4",
-      "password": "MichaelWilliams*4567"
+      "password": "Anju*5559"
     },
     {
       "id": "1738358839686",
@@ -1574,7 +1574,7 @@
       ],
       "experience": 8,
       "password": "Hari@1234",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738741094/rwwqrmwebzcrx1ngpuxy.jpg",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
       "courses": [
         {
           "id": "5",
@@ -1610,34 +1610,18 @@
       "messages": []
     },
     {
-      "id": "1738654092497",
+      "id": "1739221050077",
       "disabled": false,
-      "name": "Sreejith KS",
+      "name": "amma",
       "userType": "student",
       "gender": "male",
-      "email": "sreejithksgupta2255@gmail.com",
+      "email": "ammukutti@gmail.com",
       "areaOfInterest": [
         "coding"
       ],
-      "experience": 8,
-      "password": "Hari*5559",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654091/wtw5e3nssnnejsshkdpb.jpg",
-      "courses": [],
-      "messages": []
-    },
-    {
-      "id": "1738654316811",
-      "disabled": false,
-      "name": "Sreejith KS",
-      "userType": "student",
-      "gender": "male",
-      "email": "sreejithksgupta2255@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
-      "experience": 8,
-      "password": "Hari*5559",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738654316/vn1x0n9wzz6kqwv9zrpt.jpg",
+      "experience": 5,
+      "password": "Ammu@5559",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739221051/mqekjteh8au8cqduiydo.webp",
       "courses": [],
       "messages": []
     }
