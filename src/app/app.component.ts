@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Userservice } from './services/user.service';
+import { ThemeService } from './services/theme.service';
+
 
 
 @Component({
@@ -10,9 +12,15 @@ import { Userservice } from './services/user.service';
 })
 export class AppComponent implements OnInit {
   title = 'e-Learn';
-  constructor(private userservice:Userservice){  }
+  sparticles=false;
+  constructor(private userservice:Userservice,    private themeService: ThemeService
+  ){  }
   ngOnInit(): void {
     this.userservice.checkauthentication();
+    this.themeService.getSettings().subscribe((settings) => {
+      this.sparticles = settings.showparticles;
+    });
+
   }
 
 }

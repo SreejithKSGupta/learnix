@@ -56,6 +56,7 @@ import { CoursePageCourseCardComponent } from './components/course-page-course-c
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.component';
 import { CourseviewpageComponent } from './dynamicpages/courseviewpage/courseviewpage.component';
+import { SettingsComponent } from './pages/otherpages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
     WysiwygEditorComponent,
     BlogviewpageComponent,
     CourseviewpageComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

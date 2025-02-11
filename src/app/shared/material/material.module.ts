@@ -24,6 +24,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -33,6 +34,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   exports: [
     MatCardModule,
     MatProgressSpinnerModule,
+    MatSliderModule,
     MatPaginatorModule,
     MatMenuModule,
     MatExpansionModule,

@@ -1,0 +1,83 @@
+.settings-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .settings-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+.settings-card, .preview-card {
+  height: fit-content;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.preview-section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+}
+
+.button-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sample-card {
+  background-color: var(--surface-color);
+}
+
+.form-elements-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+mat-progress-bar {
+  flex-grow: 1;
+}
+
+h3 {
+  margin-top: 0;
+  color: var(--text-color);
+}

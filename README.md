@@ -40,3 +40,12 @@
 ## pushing to github
 - ng build --base-href "https://sreejithksgupta.github.io/learnix/"
 - ngh --dir=dist/learnix/browser
+
+
+    <!-- "development": {
+              "outputHashing": "all",
+               "namedChunks": true,
+              "optimization": true,
+              "extractLicenses": true,
+              "sourceMap": true
+            } -->
