@@ -28,7 +28,6 @@ export class Userservice {
   ) {}
 
   checkauthentication(): void {
-    console.log('authentiucation being checkwds');
 
     const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
     if (savedUser) {
@@ -52,7 +51,6 @@ export class Userservice {
             user.email.toLowerCase() === item.email.toLowerCase() ||
             user.name.toLowerCase() === item.name.toLowerCase()
         );
-        console.log(existingUser);
 
         return !!existingUser;
       })
@@ -90,7 +88,6 @@ export class Userservice {
   updateuser(userData: any): Observable<any> {
     const url = `${this.userurl}/${userData.id}`;
     const updatedUser = { ...userData };
-    console.log('updated user :', updatedUser.id);
 
     this.otherservices
       .showalert('success', 'Updated profile')
@@ -145,7 +142,6 @@ export class Userservice {
               .subscribe((result) => {});
           });
 
-        console.log(`Adding course: ${courseData.id} to user ${UserId}`);
         const url = `${this.userurl}/${UserId}`;
         return this.http.get<any>(url).pipe(
           switchMap((user) => {
@@ -195,7 +191,6 @@ export class Userservice {
             );
           });
 
-        console.log(`Removing course: ${courseID} from user ${userID}`);
         const url = `${this.userurl}/${userID}`;
         const courseIndex = user.courses.findIndex(
           (course: UserCourse) => course.id === courseID

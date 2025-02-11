@@ -7,6 +7,8 @@ export const initialState: User = {} as User;
 export const userReducer = createReducer(
   initialState,
   on(managerUserChange, (state, { user }) => {
+    console.log( "user: ",user);
+
     return { ...(state || {}), ...(user || {}) };
   })
 );

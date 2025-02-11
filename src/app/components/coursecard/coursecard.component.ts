@@ -24,7 +24,10 @@ export class CourseCardComponent {
 
   removeCourse(courseID:String){
     this.userservice.removeFromCourse(this.user.id,courseID).subscribe(res=>{
-      alert(res)
+      alert("succesfully removed from course");
+      // dynamically remove the course from the user's course list
+      this.user.courses = this.user.courses.filter((course: { id: string; }) => course.id !== courseID);
+      window.location.reload();
     })
     }
 
@@ -37,7 +40,7 @@ export class CourseCardComponent {
     const userCourse = this.user?.courses?.find((course: { id: string; }) => course.id === courseId);
    // check if usercourse.expiry is over
 
-  //  return userCourse.expiry<new Date();
+   return userCourse.expiry<new Date();
   return true
   }
 }

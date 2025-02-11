@@ -1,8 +1,7 @@
 
 <div *ngIf="user$ | async as user; else loading">
   <div class="d-flex flex-column justify-content-center align-items-center mt-5">
-    <div class="col-md-6">
-      <mat-card class="profile-card shadow-sm">
+      <mat-card class="profile-card shadow-sm col-md-6">
         <mat-card-header class="text-center" >
           <mat-card-title class="mt-3">{{ user.name }}</mat-card-title>
           <mat-card-subtitle class="text-muted">{{ user.email }}</mat-card-subtitle>
@@ -38,11 +37,10 @@
         </mat-card-actions>
 
       </mat-card>
-    </div>
 
   </div>
     <div *ngIf="user?.id">
-    <div>
+    <div class="dashboard-container">
       <app-admindashboard  *ngIf="user.userType =='admin'"></app-admindashboard>
       <app-studentdashboard  *ngIf="user.userType =='student'"></app-studentdashboard>
       <app-tutordashboard  *ngIf="user.userType =='tutor'"></app-tutordashboard>

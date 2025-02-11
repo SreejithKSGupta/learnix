@@ -103,7 +103,9 @@ export class AdmindashboardComponent implements OnInit {
 
   deleteSubscriber(subscriber: any): void {
     this.otherServices.showalert('confirm', 'Delete Subscriber?').subscribe((res) => {
-      if (res === 'confirmed') {
+      console.log("opt",res);
+
+      if (res === 'yes') {
         this.adminservice.deleteSubscriber(subscriber).subscribe({
           next: () => {
             this.allsubscribers = this.allsubscribers.filter((sub) => sub.id !== subscriber.id);

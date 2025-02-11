@@ -27,6 +27,7 @@
   .hero-subtitle {
     font-size: 2rem;
     margin-top: 1rem;
+    text-align: left;
     font-family: "oswald", "Courier New", Courier, monospace;
     animation: fadeInUp 1.2s ease-in-out;
   }
@@ -52,7 +53,6 @@
   .cta-buttons {
     display: flex;
     gap: 1rem;
-
     .custom-btn {
       padding: 0.8rem 1.5rem;
       font-size: 1.1rem;
@@ -60,6 +60,8 @@
       color: white;
       flex-grow: 1;
       transition: all 0.3s ease-in-out;
+      font-weight: bolder!important;
+      font-family: "oswald", "Courier New", Courier, monospace;
       &:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
@@ -74,6 +76,8 @@
       color: #ff007a;
       transition: all 0.3s ease-in-out;
       flex-grow: 1;
+      font-weight: bolder!important;
+      font-family: "oswald", "Courier New", Courier, monospace;
 
       &:hover {
         background: #ff007a;

@@ -1,7 +1,6 @@
 # Learnix
 - Online Learning Management system where your Learning is super charged.
-
-https://sreejithksgupta.github.io/learnix/
+- https://sreejithksgupta.github.io/learnix/
 
 # todo
 
@@ -21,8 +20,7 @@ https://sreejithksgupta.github.io/learnix/
 ### feature and bug testing
 - Otp for sign in and forgot password
 - comments on courses
-- check if suscribers/users exist before adding them.
-- goes to 404 page because data is checked before initialization in multiple pages => add initialization to main.js
+
 
 - admin => can see courses, students and tutors, and enable/disable them. see messages
 - tutor=> create new courses, see and edit existing courses, tutor panel
@@ -33,7 +31,12 @@ https://sreejithksgupta.github.io/learnix/
 ## priority order
 - OTP 
 - admin/tutor/student [error correction]
-- check user/subscriber exist before adding
-- 404 issue
 - comprehensive UI updates
+- comments in courses and blogs
 - SEO optimizations
+- messages should show in user dashboard from other users too
+- removing/changing courses does not immediately reflect
+
+## pushing to github
+- ng build --base-href "https://sreejithksgupta.github.io/learnix/"
+- ngh --dir=dist/learnix/browser

@@ -13,9 +13,16 @@
 
 .profile-card {
   border-radius: 10px;
+  width: clamp(300px, 90%, 800px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.dashboard-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
 
 mat-card-actions {
   background-color: #f8f9fa;

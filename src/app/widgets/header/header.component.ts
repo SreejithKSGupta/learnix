@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       submenu: [
         { path: '/faq', label: 'FAQ', tooltip: 'FAQs' },
         { path: '/about', label: 'About', tooltip: 'About' },
-        { path: '/blogs/interviews', label: 'Interviews', tooltip: 'Read Interviews' },
         { path: '/privacy', label: 'Privacy', tooltip: 'Privacy Policy' },
         { path: '/contact', label: 'Contact', tooltip: 'Contact Us' },
         { path: '/addcourse', label: 'Add Course', tooltip: 'Add Course' },
@@ -63,7 +62,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userSubscription = this.user$.subscribe((user) => {
-      this.logordash = user ? 'Dashboard' : 'Login';
+      this.logordash = user!.id ? 'Dashboard' : 'Login';
     });
   }
 

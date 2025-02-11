@@ -1,30 +1,27 @@
 .dashboard-container {
-  padding: 24px;
-  max-width: 1400px;
+  width: clamp(300px,80vw,1000px);
   margin: 0 auto;
 }
 
 h2 {
   text-align: center;
-  padding: 24px 0;
   font-size: 2.5rem;
   font-family: 'Lora', serif;
   font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 32px;
+  color: #ffffff;
   user-select: none;
 }
 
 /* Panel Styles */
 mat-expansion-panel {
-  margin-bottom: 16px;
+  margin-bottom: 6px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   background-color: #0000005f;
 }
 
 mat-expansion-panel-header {
-  padding: 16px 24px;
+  padding: 6px 8px;
   background-color: #f8f8f8e5 !important;
 }
 
@@ -39,14 +36,14 @@ mat-panel-title h3 {
 .stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 16px;
+  gap: 10px;
+  padding: 6px;
 }
 
 .stat-box {
   background: rgba(255, 255, 255, 0.568);
   border-radius: 8px;
-  padding: 20px;
+  padding: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -54,8 +51,8 @@ mat-panel-title h3 {
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  padding: 16px;
+  gap: 8px;
+  padding: 6px;
   background-color: #3d3d3d3e;
 }
 
@@ -91,7 +88,7 @@ mat-card-subtitle {
 .user-info,
 .course-info,
 .message-info {
-  padding: 16px;
+  padding: 6px;
 }
 
 .label {
@@ -101,8 +98,8 @@ mat-card-subtitle {
 }
 
 .message-text {
-  margin-bottom: 16px;
-  line-height: 1.5;
+  margin-bottom: 6px;
+  line-height: 1;
 }
 
 /* Status Indicators */
@@ -141,11 +138,12 @@ mat-card-subtitle {
 }
 
 .action-button.primary {
-  color: #3498db;
+  color: #cbeaff;
 }
 
 .action-button.warn {
-  color: #e74c3c;
+  color: white;
+  background-color: rgb(255, 55, 0);
 }
 
 .action-button:hover {
@@ -154,16 +152,13 @@ mat-card-subtitle {
 
 .dual-actions {
   display: flex;
-  justify-content: space-between;
-  padding: 8px 16px;
-}
+  justify-content: space-between;}
 
 /* Email Section Styles */
 .email-send-section {
-  padding: 24px;
+  padding: 6px;
   background-color: #2323233e;
   border-radius: 8px;
-  margin-bottom: 24px;
 }
 
 .full-width {

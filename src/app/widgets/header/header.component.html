@@ -28,10 +28,12 @@
     </div>
     <button
       mat-button
-      [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'"
+      *ngIf="user$ | async as user"
+      [routerLink]="user.id ? '/dashboard' : '/signin'"
     >
-      {{ logordash }}
+      {{ user.id ? 'dashboard' : 'login' }}
     </button>
+
   </div>
   <button mat-icon-button class="mobile-menu-button" (click)="toggleDrawer()">
     <mat-icon>menu</mat-icon>
