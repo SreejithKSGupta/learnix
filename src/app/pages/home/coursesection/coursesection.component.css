@@ -9,15 +9,6 @@
   text-align: center;
 }
 
- h2 {
-  font-size: 3.5rem;
-  font-weight: bolder;
-  color: #00fcfc;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: oswald;
-}
-
 
 @media (max-width: 768px) {
   #coursessection {

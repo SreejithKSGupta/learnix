@@ -10,6 +10,7 @@ export interface ThemeSettings {
   padding: string;
   transparency: number;
   showparticles: boolean;
+  mainheadingcolor: string;
 }
 
 @Injectable({
@@ -26,6 +27,7 @@ export class ThemeService {
     padding: '16px',
     transparency: 1,
     showparticles: false,
+    mainheadingcolor: '#000000',
   };
 
   private themeSettings = new BehaviorSubject<ThemeSettings>(this.loadSettings());

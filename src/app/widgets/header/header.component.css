@@ -1,22 +1,26 @@
+/* Global styles for the toolbar */
 mat-toolbar {
-  background-color: rgba(6, 6, 101, 0.53);
+  background: #011734;
   backdrop-filter: blur(10px);
-
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: white;
+  height: 10vh;
 }
 
 .logobox {
   display: flex;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
 }
 
 .title {
   font-size: 1.5em;
   font-weight: bold;
-  margin-right: 20px;
   font-family: "Pacifico", "Courier New", Courier, monospace;
+  margin-right: 20px;
 }
 
 .logo {
@@ -24,48 +28,23 @@ mat-toolbar {
   margin-right: 20px;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-
-.mat-menu-item {
-  min-width: 150px;
-}
-
-.mat-menu-item:hover {
-  background-color: rgba(9, 9, 198, 0.829);
-  color: white;
-}
-
-.mat-drawer-content {
-  display: none !important;
-}
-
-mat-toolbar {
-  height: 10vh;
-  z-index: 100;
-  color: white !important;
-}
-
-.mat-mdc-button {
-  color: white !important;
-}
-
+/* Navigation Links */
 .desknav {
   display: flex;
   align-items: center;
 }
 
-.desknav button {
-  margin-left: 8px;
+.mat-menu-item {
+  min-width: 150px;
+  border-radius: 10px;
 }
 
 .mobile-menu-button {
   display: none;
 }
 
-.drawer-container {
-  height: calc(100vh - 64px);
+.mat-mdc-button {
+  color: white !important;
 }
 
 .mobile-menu {
@@ -74,42 +53,37 @@ mat-toolbar {
 
 .mobile-menu button {
   width: 100%;
-  margin-bottom: 8px;
+  margin: 4px;
 }
 
-@media (max-width: 768px) {
-  .desknav {
-    display: none;
-  }
-  .mobile-menu-button {
-    display: block;
-  }
-}
 .drawer-container {
-  width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   background-color: transparent;
+  width: 100%;
 }
 
-.mat-mdc-button-touch-target {
-  color: rgb(255, 255, 255) !important;
-  font-size: 1.5rem;
-}
 .mat-drawer {
   background-color: rgba(5, 31, 54, 0.631) !important;
   backdrop-filter: blur(10px);
   color: white !important;
-}
-
-.mat-drawer {
   position: absolute;
   top: 0;
-  bottom: 0;
 }
 
+/* Active Link Styles */
 .active {
   font-weight: bold !important;
   color: var(--primary-color) !important;
 }
 
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .desknav {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+}

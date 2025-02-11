@@ -1,9 +1,14 @@
 <mat-toolbar color="primary">
+  <!-- Logo and Title -->
   <div class="logobox" [routerLink]="['/']">
     <img [src]="logo" alt="Logo" class="logo" />
     <span class="title">{{ title }}</span>
   </div>
+
+  <!-- Spacer between the logo and navigation buttons -->
   <span class="spacer"></span>
+
+  <!-- Navigation Links (Desktop) -->
   <div class="desknav">
     <div *ngFor="let link of navLinks">
       <button
@@ -14,6 +19,7 @@
       >
         {{ link.label }}
       </button>
+
       <mat-menu #menu="matMenu">
         <div *ngIf="link.submenu">
           <button
@@ -26,22 +32,24 @@
         </div>
       </mat-menu>
     </div>
+
+    <!-- User button (Login/Dashboard) -->
     <button
       mat-button
       *ngIf="user$ | async as user"
       [routerLink]="user.id ? '/dashboard' : '/signin'"
     >
-      {{ user.id ? 'dashboard' : 'login' }}
+      {{ user.id ? 'Dashboard' : 'Login' }}
     </button>
-
   </div>
+
+  <!-- Mobile Menu Button -->
   <button mat-icon-button class="mobile-menu-button" (click)="toggleDrawer()">
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
 
-<!-- If you uncommment this, then drawyer overlay will be present, even if drawyer is not -->
-
+<!-- Mobile Drawer (on smaller screens) -->
 <!-- <mat-drawer-container class="drawer-container">
   <mat-drawer #drawer mode="push" position="end">
     <div class="mobile-menu">
@@ -49,6 +57,7 @@
         <button mat-button [matMenuTriggerFor]="link.submenu ? mobileMenu : null" [routerLink]="link.submenu ? null : link.path" (click)="closeDrawer()">
           {{ link.label }}
         </button>
+
         <mat-menu #mobileMenu="matMenu">
           <div *ngIf="link.submenu">
             <button mat-menu-item *ngFor="let subLink of link.submenu" [routerLink]="subLink.path" (click)="closeDrawer()">
@@ -57,7 +66,9 @@
           </div>
         </mat-menu>
       </div>
-      <button mat-button [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'" (click)="closeDrawer()">{{ logordash }}</button>
+      <button mat-button [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'" (click)="closeDrawer()">
+        {{ logordash }}
+      </button>
     </div>
   </mat-drawer>
-  </mat-drawer-container> -->
+</mat-drawer-container> -->

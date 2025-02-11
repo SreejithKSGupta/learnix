@@ -1,18 +1,19 @@
 .hero {
   min-height: 90vh;
   padding: 3rem 2rem;
-  background: #0815272b;
+  background: #011734;
   display: flex;
   flex-wrap: wrap;
-  padding: 20px 100px;
+  justify-content: space-between;
 
+  /* Hero Title */
   .hero-title {
     font-size: 3rem;
     font-family: "Jersey", "Courier New", Courier, monospace;
-
     animation: fadeInDown 1s ease-in-out;
   }
 
+  /* Gradient Text */
   .gradient-text {
     background: linear-gradient(90deg, #ff007a, #ff6600);
     font-family: "Kanit", "Courier New", Courier, monospace;
@@ -24,14 +25,17 @@
     font-weight: bolder;
   }
 
+  /* Hero Subtitle */
   .hero-subtitle {
     font-size: 2rem;
     margin-top: 1rem;
     text-align: left;
-    font-family: "oswald", "Courier New", Courier, monospace;
+    font-family: "Oswald", "Courier New", Courier, monospace;
     animation: fadeInUp 1.2s ease-in-out;
+    color: white;
   }
 
+  /* Features List */
   .features-list {
     list-style: none;
     padding: 0;
@@ -39,101 +43,108 @@
     li {
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
+      font-family: "Jersey", "Courier New", Courier, monospace;
       animation: fadeInLeft 1.5s ease-in-out;
-      color: #faffc4;
-      font-family: "jersery", "Courier New", Courier, monospace;
+
       &:hover {
         font-weight: bold;
-        color: #0099ff;
         cursor: pointer;
       }
     }
   }
 
+  /* Call-To-Action Buttons */
   .cta-buttons {
     display: flex;
     gap: 1rem;
-    .custom-btn {
-      padding: 0.8rem 1.5rem;
-      font-size: 1.1rem;
-      background: #ce0064;
-      color: white;
-      flex-grow: 1;
-      transition: all 0.3s ease-in-out;
-      font-weight: bolder!important;
-      font-family: "oswald", "Courier New", Courier, monospace;
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
-      }
-    }
-
-    .custom-btn-outline {
-      padding: 0.8rem 1.5rem;
-      font-size: 1.1rem;
-      background: transparent;
-      border: 2px solid #ff007a;
-      color: #ff007a;
-      transition: all 0.3s ease-in-out;
-      flex-grow: 1;
-      font-weight: bolder!important;
-      font-family: "oswald", "Courier New", Courier, monospace;
-
-      &:hover {
-        background: #ff007a;
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
-      }
-    }
   }
 
+  .custom-btn,
+  .custom-btn-outline {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    font-family: "Oswald", "Courier New", Courier, monospace;
+    transition: all 0.3s ease-in-out;
+    flex-grow: 1;
+  }
+
+    /* Custom Button */
+    .custom-btn {
+      background: #ce0064;
+      color: white;
+
+    }
+    .custom-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
+    }
+
+      /* Custom Outline Button */
+      .custom-btn-outline {
+        background: transparent;
+        border: 2px solid #ff007a;
+        color: #ff007a;
+
+      }
+
+  .custom-btn-outline:hover {
+    background: #ff007b9d;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
+  }
+
+  /* Hero Right Section */
   .hero-right {
     display: flex;
     justify-content: center;
     align-items: center;
     animation: fadeInRight 1.5s ease-in-out;
+    background-color: transparent;
+
   }
 
+  .hero-right img{
+    max-width: 500px;
+  }
+
+  /* Hero Card */
   .hero-card {
     border-radius: 15px;
     overflow: hidden;
-    background-color: transparent;
+    background-color: transparent !important;
     box-shadow: none;
-    img {
-      width: 80%;
-      height: auto;
-      object-fit: cover;
-    }
   }
 }
 
+/* Mobile Styles */
 @media screen and (max-width: 500px) {
   .hero {
-    padding: 20px 20px;
-    min-height: 75vh;
+    padding: 20px;
+    min-height: auto;
     align-items: center;
-    width: 100%;
   }
-  .hero-left {
-    animation: fadeInUp 1.5s ease-in-out;
-    flex-grow: 1;
-  }
+
+  .hero-left,
   .hero-right {
     animation: fadeInUp 1.5s ease-in-out;
   }
+
+  /* Gradient Text on Mobile */
   .gradient-text {
     font-size: 4rem !important;
   }
+
+  /* CTA Buttons on Mobile */
   .cta-buttons {
-    display: flex;
     flex-direction: column;
-    flex-grow: 1;
     align-items: center;
     gap: 10px;
   }
 
-  .custom-btn-outline,.custom-btn {
+  .custom-btn,
+  .custom-btn-outline {
     width: 100%;
     padding: 10px 20px;
     font-size: 1rem;
@@ -144,6 +155,7 @@
   }
 }
 
+/* Keyframe Animations */
 @keyframes fadeInDown {
   from {
     opacity: 0;
