@@ -6,115 +6,23 @@
       Explore the powerful features designed to enhance your learning, teaching, and administrative experience on Learnix.
   </p>
 
-  <!-- Students Section -->
-  <div class="row mb-5">
-      <div class="col-md-6">
-          <h2 class="text-primary mb-4" style="font-family: 'Pacifico', cursive;">For Students</h2>
-          <ul class="list-unstyled">
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Enroll in a wide range of courses
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Sign in to access your profile
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Track your progress with ease
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Upload and manage your profile picture
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Write and display blogs
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Subscribe to email updates
-              </li>
-          </ul>
-      </div>
-      <div class="col-md-6">
-          <img src="https://via.placeholder.com/600x400" class="img-fluid rounded shadow" alt="Students" />
-      </div>
-  </div>
+  <!-- Loop through each category of features -->
+  <div *ngFor="let category of featureCategories" class="row mb-5">
+    <!-- Category Left Section -->
+    <div class="col-md-6">
+      <h2 class="text-primary mb-4" style="font-family: 'Pacifico', cursive;">{{ category.title }}</h2>
+      <p class="text-muted mb-4" style="font-family: 'Lora', serif;">{{ category.description }}</p>
+      <ul class="list-unstyled">
+        <li *ngFor="let feature of category.features" class="mb-3" style="font-family: 'Kanit', sans-serif;">
+          <i class="fas fa-check-circle text-success"></i> {{ feature }}
+        </li>
+      </ul>
+    </div>
 
-  <!-- Admin Section -->
-  <div class="row mb-5">
-      <div class="col-md-6">
-          <h2 class="text-primary mb-4" style="font-family: 'Oswald', sans-serif;">For Admins</h2>
-          <ul class="list-unstyled">
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Edit homepage data and layout
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Manage user statistics and activity
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Respond and manage user inquiries and course issues
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Send custom emails to subscribed users
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Manage subscriptions and email lists
-              </li>
-          </ul>
-      </div>
-      <div class="col-md-6">
-          <img src="https://via.placeholder.com/600x400" class="img-fluid rounded shadow" alt="Admin" />
-      </div>
-  </div>
-
-  <!-- Tutors Section -->
-  <div class="row mb-5">
-      <div class="col-md-6">
-          <h2 class="text-primary mb-4" style="font-family: 'Dancing Script', cursive;">For Tutors</h2>
-          <ul class="list-unstyled">
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Upload and manage courses
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Set your course pricing
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Share courses with a wider audience
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Manage your own profile and course images
-              </li>
-          </ul>
-      </div>
-      <div class="col-md-6">
-          <img src="https://via.placeholder.com/600x400" class="img-fluid rounded shadow" alt="Tutors" />
-      </div>
-  </div>
-
-  <!-- Done Features Section -->
-  <div class="row mb-5">
-      <div class="col-12">
-          <h2 class="text-primary mb-4" style="font-family: 'Jersey', sans-serif;">Done Features</h2>
-          <ul class="list-unstyled">
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Write and display blogs
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Subscribed user list management
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Sharable courses
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Admin can send custom emails to everyone on the email list
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> OTP for sign-in and password recovery
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Profile editing features
-              </li>
-              <li class="mb-3" style="font-family: 'Kanit', sans-serif;">
-                  <i class="fas fa-check-circle text-success"></i> Editable homepage stats, testimonials, data, and social links
-              </li>
-          </ul>
-      </div>
+    <!-- Category Right Section: Image -->
+    <div class="col-md-6">
+      <img [src]="category.imageUrl" class="img-fluid rounded shadow" [alt]="category.title" />
+    </div>
   </div>
 
   <!-- Footer Section -->

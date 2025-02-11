@@ -1,8 +1,7 @@
 .container {
   max-width: 900px;
-  background-color: #0a417dac;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: var(--border-radius);
+  padding: var(--padding);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -11,7 +10,6 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  color: white;
 }
 
 h2 {
@@ -21,7 +19,6 @@ h2 {
 
 p.lead {
   font-size: 1.1rem;
-  color: #ffffff;
   line-height: 1.7;
   font-family: 'Roboto', sans-serif;
 }
@@ -29,12 +26,10 @@ p.lead {
 h4 {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  color: #ffffff;
   margin-top: 1.5rem;
 }
 
 p {
-  color: #ffffff;
   margin-bottom: 1rem;
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;

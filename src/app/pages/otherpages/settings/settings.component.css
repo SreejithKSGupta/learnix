@@ -1,8 +1,9 @@
+/* Settings Page Layout */
 .settings-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  padding: 24px;
+  padding: 32px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -13,10 +14,43 @@
   }
 }
 
-.settings-card, .preview-card {
-  height: fit-content;
+/* Settings and Preview Cards */
+.settings-card,
+.preview-card {
+  background-color: var(--surface-color, #ffffff);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin: 20px;
 }
 
+.settings-card {
+  border: 1px solid #e0e0e0;
+}
+
+.preview-card {
+  border: 1px solid #e0e0e0;
+}
+
+/* Card Header Styling */
+mat-card-header {
+  color: var(--text-color);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-text-color, #333);
+}
+
+mat-card-subtitle {
+  font-size: 1rem;
+  color: var(--secondary-text-color, #666);
+}
+
+/* Form Layout */
 .settings-form {
   display: flex;
   flex-direction: column;
@@ -33,51 +67,191 @@
   width: 100%;
 }
 
+/* Toggle switch styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Slider Styling */
+mat-slider {
+  width: 100%;
+  margin-top: 8px;
+}
+
+mat-slider .mat-slider-thumb {
+  background-color: var(--primary-color, #007bff);
+}
+
+mat-slider .mat-slider-track {
+  background-color: #dcdcdc;
+}
+
+/* Preview Section */
 .preview-content {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
+/* Preview Sections */
 .preview-section {
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  padding: var(--padding);
+  padding: 16px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 8px;
+  background-color: var(--surface-color, #ffffff);
 }
 
-.button-row {
+.preview-section h3 {
+  font-size: 1.25rem;
+  color: var(--primary-text-color, #333);
+  margin-bottom: 12px;
+}
+
+.button-row,
+.cards-row {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .cards-row {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  display: grid;
 }
 
 .sample-card {
   background-color: var(--surface-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.3s ease;
 }
 
+.sample-card:hover {
+  transform: scale(1.05);
+}
+
+/* Buttons & Input Fields */
+button {
+  min-width: 120px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field .mat-form-field-label {
+  font-size: 1rem;
+  color: var(--label-text-color, #333);
+}
+
+mat-form-field input,
+mat-form-field mat-select {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+/* Checkbox Styles */
+mat-checkbox {
+  margin-left: 8px;
+  font-size: 1rem;
+}
+
+/* Progress Bar */
+mat-progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 16px;
+}
+
+mat-progress-spinner {
+  width: 40px;
+  height: 40px;
+  margin-top: 16px;
+}
+
+/* Typography */
+h3 {
+  color: var(--primary-text-color, #333);
+}
+
+label {
+  font-size: 1rem;
+  color: var(--primary-text-color, #333);
+}
+
+/* Form Element Spacing */
 .form-elements-preview {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.progress-row {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .settings-page {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
 
-mat-progress-bar {
-  flex-grow: 1;
-}
+  .settings-card,
+  .preview-card {
+    padding: 16px;
+  }
 
-h3 {
-  margin-top: 0;
-  color: var(--text-color);
+  .form-row {
+    flex-direction: column;
+  }
+
+  .preview-section {
+    padding: 12px;
+  }
+
+  .button-row {
+    justify-content: center;
+  }
 }

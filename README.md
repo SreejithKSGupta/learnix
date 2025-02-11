@@ -36,6 +36,7 @@
 - SEO optimizations
 - messages should show in user dashboard from other users too
 - removing/changing courses does not immediately reflect
+- complete feature page
 
 ## pushing to github
 - ng build --base-href "https://sreejithksgupta.github.io/learnix/"
