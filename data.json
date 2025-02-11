@@ -18,21 +18,6 @@
       "id": "3"
     },
     {
-      "courseName": "Machine Learning with TensorFlow",
-      "tutor": "ambika",
-      "duration": "12",
-      "description": "Master machine learning fundamentals and build models using TensorFlow, covering neural networks, deep learning, and more.",
-      "importantTechnologiesUsed": [
-        "TensorFlow",
-        "Keras"
-      ],
-      "courseFee": "300",
-      "credits": "3",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737976327/ulrfii5tejlgx04ra3xm.png",
-      "id": "4",
-      "disabled": "true"
-    },
-    {
       "courseName": "Full Stack Web Development",
       "tutor": "Sreejith ks gupta",
       "duration": "12",
@@ -1598,6 +1583,18 @@
           "id": "7726",
           "expiry": 1744445878642,
           "date": 1739261878642,
+          "completion": 0
+        },
+        {
+          "id": "3",
+          "expiry": 1744454894403,
+          "date": 1739270894403,
+          "completion": 0
+        },
+        {
+          "id": "4",
+          "expiry": 1744454903118,
+          "date": 1739270903118,
           "completion": 0
         }
       ],

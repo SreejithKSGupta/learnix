@@ -1,6 +1,5 @@
 <mat-card class="course-card">
   <mat-card-header class="position-relative">
-
     <img mat-card-image [src]="course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp'" alt="{{ course.courseName }}" class="course-image">
     <div class="course-info-overlay">
       <mat-card-title class="course-title">{{ course.courseName }}</mat-card-title>
@@ -14,21 +13,21 @@
         <mat-icon>access_time</mat-icon>
         <strong>Duration:</strong> <span>{{ course.duration }} hours</span>
       </div>
-      <div class="info-item">
+      <div class="info-item" >
         <mat-icon>attach_money</mat-icon>
         <strong>Fee:</strong> <span>{{ course.courseFee | currency }}</span>
       </div>
-      <div class="info-item">
+      <div class="info-item" *ngIf="user.userType == 'student'">
         <mat-icon>calendar_today</mat-icon>
-        <strong>Joined:</strong> <span>{{ getUserCourseDetail(course.id!, 'date') | date }}</span>
+        <strong>Joined:</strong> <span>{{ getUserCourseDetail('date') | date }}</span>
       </div>
-      <div class="info-item">
+      <div class="info-item" *ngIf="user.userType == 'student'">
         <mat-icon>alarm</mat-icon>
-        <strong>Expiry:</strong> <span [ngClass]="isclassover(course.id!)? 'over':'notover'">{{ getUserCourseDetail(course.id!, 'expiry') | date }}</span>
+        <strong>Expiry:</strong> <span [ngClass]="isclassover(course.id!)? 'over':'notover'">{{ getUserCourseDetail('expiry') | date }}</span>
       </div>
-      <div class="info-item">
+      <div class="info-item" *ngIf="user.userType == 'student'">
         <mat-icon>star_rate</mat-icon>
-        <strong>completion:</strong> <span>{{ getUserCourseDetail(course.id!, 'completion') }}</span>
+        <strong>Completion:</strong> <span>{{ getUserCourseDetail('completion') }}</span>
       </div>
       <div class="info-item">
         <mat-icon>people</mat-icon>
@@ -38,14 +37,18 @@
         <mat-icon>star_rate</mat-icon>
         <strong>Rating:</strong> <span>{{ course.totalStars || 0 }} / 5</span>
       </div>
-
     </div>
-
   </mat-card-content>
 
   <mat-card-actions class="d-flex justify-content-center">
-    <button mat-flat-button color="warn" (click)="removeCourse(course.id!)">
+    <button *ngIf="user.userType == 'student'" mat-flat-button color="warn" (click)="removeCourse(course.id!)">
       <mat-icon>delete</mat-icon> unenroll
+    </button>
+    <button *ngIf="user.userType == 'tutor'" mat-flat-button color="warn" (click)="deleteCourse(course.id!)">
+      <mat-icon>delete</mat-icon> remove
+    </button>
+    <button mat-flat-button color="warn" (click)="gotocourse(course.id!)">
+      view <mat-icon>arrow_forward</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>

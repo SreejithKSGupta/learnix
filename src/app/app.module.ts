@@ -51,7 +51,7 @@ import { TutordashboardComponent } from './pages/profile/tutordashboard/tutordas
 import { ParticlesbgComponent } from './components/particlesbg/particlesbg.component';
 import { NgxParticlesModule } from '@tsparticles/angular';
 import { CountUpModule } from 'ngx-countup';
-import { QuillModule } from 'ngx-quill'; // Import QuillModule
+import { QuillModule } from 'ngx-quill';
 import { CoursePageCourseCardComponent } from './components/course-page-course-card/course-page-course-card.component';
 import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-editor.component';
 import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.component';

@@ -25,6 +25,11 @@
           "options": {
             "outputPath": "dist/learnix",
             "index": "src/index.html",
+            "allowedCommonJsDependencies": [
+              "file-saver",
+              "sweetalert2",
+              "quill-delta"
+            ],
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -39,7 +44,8 @@
             ],
             "styles": [
               "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.snow.css",              "@angular/material/prebuilt-themes/azure-blue.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "./node_modules/ngx-lightbox/lightbox.css"
