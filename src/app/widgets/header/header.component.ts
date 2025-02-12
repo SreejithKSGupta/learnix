@@ -21,7 +21,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   title = 'Learnix';
-  logo = '/learnixtplogo.webp';
+  logo = 'https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp';
   logordash: string = 'Login';
   user$: Observable<User | null>;
   userSubscription!: Subscription;

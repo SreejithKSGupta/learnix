@@ -3024,6 +3024,10 @@
       {
         "name": "Privacy",
         "url": "/privacy"
+      },
+      {
+        "name": "Features",
+        "url": "/features"
       }
     ],
     "socials": [
