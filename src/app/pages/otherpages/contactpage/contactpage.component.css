@@ -1,6 +1,10 @@
 .container {
-    max-width: 800px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 100px auto;
+  background-color: var(--surface-color);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 

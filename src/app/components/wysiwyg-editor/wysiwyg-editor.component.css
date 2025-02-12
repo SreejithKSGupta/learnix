@@ -1,6 +1,12 @@
 quill-editor{
   width: 100%;
   margin:20px auto;
+  color: var(--text-color);
+}
+
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{
+  color: white!important;
+
 }
 
 img {

@@ -24,9 +24,6 @@
   width: 100%;
 }
 
-mat-card-actions {
-  background-color: #f8f9fa;
-}
 
 mat-card-actions .mat-flat-button {
   width: 150px;
@@ -36,11 +33,12 @@ mat-card-actions .mat-flat-button {
 
 mat-chip {
   margin: 2px;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
 }
 
 .info-item {
   display: flex;
+  color: var(--text-color) !important;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -53,19 +51,17 @@ mat-chip {
 }
 
 .info-item:hover {
-  background-color: #f1f1f1;
-}
+backdrop-filter: brightness(0.9);}
 
 .info-item strong {
   font-weight: 600;
-  color: #343a40;
   width: 50%;
 }
 
 .info-item span,.interest-chips{
   width: 50%;
-  color: #000000;
   font-style: italic;
+  color: var(--text-color)!important;
 }
 
 .coursegrid {
@@ -96,5 +92,6 @@ mat-chip {
 
 .mat-card-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  font-weight: bold;
 }

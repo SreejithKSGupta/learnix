@@ -1,15 +1,13 @@
-/* course-card.component.scss */
 :host {
   display: block;
 }
 
 .course-card {
   transition: all 0.3s ease;
-  background-color: rgba(8, 8, 8, 0.735);
   backdrop-filter: blur(10px);
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  color: white;
+  color: var(--text-color);
 
   &:hover {
     transform: translateY(-2px);
@@ -44,7 +42,7 @@
 
 .mat-mdc-card-content {
   flex-grow: 1;
-  color: white!important;
+  color: var(--text-color)!important;
 }
 
 .mat-mdc-card-actions {

@@ -1,4 +1,4 @@
-<h1 class="text-3xl font-bold  title mb-2">Blogs</h1>
+<h2 class="text-3xl font-bold  title mb-2">Blogs</h2>
 
 <!-- Search and Filter Panel -->
 <div class="search-filter-container mat-elevation-z2">
@@ -43,12 +43,12 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <button mat-stroked-button
+    <!-- <button mat-flat-button
             color="warn"
             *ngIf="searchQuery || selectedFilter"
             (click)="clearFilters()">
       Clear Filters
-    </button>
+    </button> -->
   </div>
 </div>
 
@@ -79,24 +79,20 @@
         <div class="blog-meta">
           <span><mat-icon>person</mat-icon> {{ blog.author }}</span>
           <span><mat-icon>date_range</mat-icon> {{ blog.date | date:'mediumDate' }}</span>
+          <span><mat-icon>topic</mat-icon>{{ blog.topic }} </span>
         </div>
       </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
-      <div class="topic-chip">
-        <mat-chip-listbox>
-          <mat-chip color="primary" selected>{{ blog.topic }}</mat-chip>
-        </mat-chip-listbox>
-      </div>
       <p class="blog-description">{{ blog.description }}</p>
     </mat-card-content>
 
-    <mat-card-actions align="end">
-      <button mat-button color="primary" (click)="onReadMore(blog.id)">
+    <mat-card-actions>
+      <button mat-flat-button color="primary" (click)="onReadMore(blog.id)">
         <mat-icon>read_more</mat-icon> Read More
       </button>
-      <button mat-button color="accent" (click)="onShare(blog.id)">
+      <button mat-flat-button color="accent" (click)="onShare(blog.id)">
         <mat-icon>share</mat-icon> Share
       </button>
     </mat-card-actions>

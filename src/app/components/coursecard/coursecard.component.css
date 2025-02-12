@@ -50,11 +50,11 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--border-raidus);
 }
 
 .course-details {
-  padding: 16px;
+  padding: var(--padding);
 }
 
 .info-item {
@@ -70,15 +70,12 @@
 
 .info-item strong {
   font-weight: 600;
-  color: #333;
 }
 
-.info-item span {
-  color: #555;
-}
+
 
 mat-card-actions {
-  padding: 12px;
+  padding: var(--padding);
   border-top: 1px solid #ddd;
 }
 
@@ -96,9 +93,6 @@ button:hover {
   opacity: 0.85;
 }
 
-button[mat-flat-button] {
-  width: 48%;
-}
 
 button[mat-flat-button]:first-child {
   background-color: #f44336;

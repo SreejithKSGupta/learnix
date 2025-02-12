@@ -2,24 +2,14 @@
   max-width: 1280px;
 }
 
-h1 {
-  color: #ffffff;
-  text-align: center;
-}
-
 .mat-form-field {
-  background: white;
-  border-radius: 8px;
-  padding: 4px;
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+  color: var(--text-color)!important;
+  background-color: var(--surface-color) !important;
 
-  mat-icon {
-    color: #555;
-  }
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #2c222200;
-}
 
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
@@ -36,70 +26,64 @@ h1 {
   }
 }
 
-/* Loading Spinner */
 .flex.justify-center {
   min-height: 150px;
 }
 
-
-/* No Results Message */
-.text-center {
-  color: #ffffff;
-}
-
-/* Course Cards */
 .app-course-page-course-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
   border-radius: 10px;
+  color: var(--text-color)!important ;
   overflow: hidden;
-  background: white;
-
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 }
 
-/* Pagination */
 mat-paginator {
-  background-color: rgba(0, 0, 0, 0.744) !important ;
-  padding: 10px;
-  margin:  10px;
-  border-radius: 10px;
+  padding: var(--padding);
+  margin:  var(--padding);
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
   backdrop-filter: blur(10px);
-  color: white!important;
+  color: var(--text-color)!important ;
+  color: var(--text-color);
+
 }
 
 .mat-paginator-range-label {
   font-weight: bold;
+  color: var(--text-color)!important ;
+
 }
 
 
 .summarytxt{
-  color: wheat !important;
   text-align: center;
+  color: var(--text-color)!important ;
+
 
 }
 
 .searchbox {
-  background: rgba(255, 255, 255, 0.807);
-  padding: 1rem;
+  padding: calc(20px + var(--padding));
   backdrop-filter: blur(10px);
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   gap: 0;
 }
 
 .searchbox mat-form-field {
   flex: 1;
   margin: 0;
+  color: var(--text-color)!important ;
+  background-color: var(--surface-color) !important;
+
 }
 
-.searchbox mat-form-field:not(:first-child) {
-  border-left: 2px solid #ddd;
-  padding-left: 1rem;
-}
 

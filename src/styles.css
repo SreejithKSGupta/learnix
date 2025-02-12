@@ -13,6 +13,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color:var(--background-color);
+  font-size: 120%;
 }
 
 h2 {
@@ -40,11 +41,13 @@ h2 {
   --padding: 16px;
   --transparency: 1;
   --headingcolor: rgb(255, 255, 255);
+  --mdc-chip-label-text-color:var(var(--text-color))
+  --mat-sys-on-surface-variant:var(--text-color)
 }
 
 /* Light theme */
 .light-theme {
-  --background-color: #ffffff;
+  --background-color: #e5e5e5;
   --text-color: #000000;
   --surface-color: #ffffff;
   --hover-color: rgba(0, 0, 0, 0.04);
@@ -70,6 +73,9 @@ h2 {
   --mdc-filled-button-container-color: var(--primary-color) !important;
   --mdc-filled-button-label-text-color: white !important;
 }
+
+
+
 
 .mat-mdc-button.mat-accent,
 .mat-mdc-raised-button.mat-accent,
@@ -146,4 +152,12 @@ h2 {
 .mat-mdc-slider .mdc-slider__thumb-knob {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
+}
+
+
+.mat-mdc-flat-button,.mat-mdc-unelevated-button , .mat-mdc-button-touch-target{
+  min-width: 120px !important;
+  font-weight: bold !important;
+  transition: 1000ms;
+  transform: scale(1.02);
 }

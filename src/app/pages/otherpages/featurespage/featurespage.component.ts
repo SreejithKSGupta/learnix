@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./featurespage.component.css']
 })
 export class FeaturespageComponent {
-  // Define the feature categories and corresponding features
   featureCategories = [
     {
       title: 'For Students',
