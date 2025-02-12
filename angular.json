@@ -47,8 +47,7 @@
               "node_modules/quill/dist/quill.snow.css",
               "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-              "./node_modules/ngx-lightbox/lightbox.css"
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",

@@ -3,7 +3,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataService } from './services/data.service';
 import { Userservice } from './services/user.service';
-import { LightboxModule } from 'ngx-lightbox';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './widgets/header/header.component';
 import { FooterComponent } from './widgets/footer/footer.component';
@@ -108,7 +107,6 @@ import { SettingsComponent } from './pages/otherpages/settings/settings.componen
     MaterialModule,
     StoredModule,
     ServicesModule,
-    LightboxModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
