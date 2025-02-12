@@ -156,7 +156,6 @@ h2 {
 
 
 .mat-mdc-flat-button,.mat-mdc-unelevated-button , .mat-mdc-button-touch-target{
-  min-width: 120px !important;
   font-weight: bold !important;
   transition: 1000ms;
   transform: scale(1.02);

@@ -128,9 +128,6 @@ mat-toolbar.scrolled {
   line-height: 40px;
 }
 
-.mat-mdc-flat-button, .mat-mdc-unelevated-button, .mat-mdc-button-touch-target {
-  min-width: none;
-}
 
 .user-button {
   padding: 0 16px !important;
