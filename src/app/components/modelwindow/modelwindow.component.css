@@ -1,16 +1,6 @@
-/* course-details-dialog.component.scss */
 :host {
   display: block;
 }
-
-/* ::ng-deep .dark-themed-dialog {
-  .mat-mdc-dialog-container {
-    background: var(--surface-color)!important;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color:var(--text-color);
-  }
-} */
 
 .mat-mdc-dialog-container .mat-mdc-dialog-title {
   color: var(--text-color);
@@ -19,19 +9,15 @@
 .course-details-dialog {
   max-width: 800px;
   background: var(--surface-color);
-  color: var(--text-color)!important;
+  color: var(--text-color) !important;
   .close-btn {
     position: absolute;
     top: 1rem;
     right: 1rem;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--surface-color);
     backdrop-filter: blur(4px);
-    color: white;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
+    color: var(--text-color);
   }
 
   .course-banner {
@@ -45,25 +31,22 @@
     left: 0;
     right: 0;
     height: 100%;
-
   }
 
   mat-dialog-title {
     color: var(--text-color);
     font-size: 1.75rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .mat-mdc-dialog-container .mat-mdc-dialog-title {
-    background-color: #00be09d5 !important ;
     backdrop-filter: blur(10px) !important;
     font-size: 1.75rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   mat-dialog-content {
-    background: rgba(18, 18, 18, 0.95);
-    color: #fff;
+    color: var(--text-color);
 
     .text-muted {
       color: rgba(255, 255, 255, 0.6) !important;
@@ -71,17 +54,15 @@
 
     .course-description {
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.87);
+      color: var(--text-color);
     }
   }
 
   mat-dialog-actions {
-    background: rgba(18, 18, 18, 0.95);
     border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .enrolled-alert {
-    background: rgba(76, 175, 80, 0.1);
     border: 1px solid rgba(76, 175, 80, 0.3);
     color: #81c784;
     padding: 1rem;
@@ -89,15 +70,9 @@
   }
 
   mat-chip {
-    background: rgba(0, 0, 0, 0.1) !important;
-    color: rgb(255, 255, 255) !important;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.15) !important;
-    }
+    color: var(--text-color);
   }
 }
-
 
 @media (max-width: 768px) {
   .course-details-dialog {

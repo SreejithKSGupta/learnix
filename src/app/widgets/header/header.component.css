@@ -44,8 +44,10 @@ mat-toolbar {
   display: none;
 }
 
-.mat-mdc-button .mat-mdc-button-touch-target{
-  width: 10px !important;
+.mat-mdc-flat-button,.mat-mdc-unelevated-button , .mat-mdc-button-touch-target{
+  min-width: 10px !important;
+  font-weight: bold !important;
+  transition: 1000ms;
 }
 
 .mat-mdc-button {
