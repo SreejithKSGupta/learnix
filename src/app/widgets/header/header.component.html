@@ -1,14 +1,28 @@
-<mat-toolbar color="primary">
-  <!-- Logo and Title -->
+<mat-toolbar [class.scrolled]="isScrolled">
+  <!-- Logo Section -->
   <div class="logobox" [routerLink]="['/']">
     <img [src]="logo" alt="Logo" class="logo" />
     <span class="title">{{ title }}</span>
   </div>
 
-  <!-- Spacer between the logo and navigation buttons -->
-  <span class="spacer"></span>
+  <div class="menubar">
+  <!-- Search Bar -->
+  <!-- <div class="search-container" [class.open]="searchOpen">
+    <form (submit)="onSearch($event)">
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          #searchInput
+          matInput
+          [(ngModel)]="searchQuery"
+          name="search"
+          placeholder="Search courses, blogs..."
+          (blur)="searchOpen = false"
+        />
+      </mat-form-field>
+    </form>
+  </div> -->
 
-  <!-- Navigation Links (Desktop) -->
   <div class="desknav">
     <div *ngFor="let link of navLinks">
       <button
@@ -16,59 +30,139 @@
         [matMenuTriggerFor]="link.submenu ? menu : null"
         [routerLink]="link.submenu ? null : link.path"
         routerLinkActive="active"
+        [matTooltip]="link.tooltip"
       >
-        {{ link.label }}
+        <span>{{ link.label }}</span>
       </button>
-
-      <mat-menu #menu="matMenu">
+      <mat-menu #menu="matMenu" class="custom-menu">
         <div *ngIf="link.submenu">
           <button
             mat-menu-item
             *ngFor="let subLink of link.submenu"
             [routerLink]="subLink.path"
           >
-            {{ subLink.label }}
+            <span>{{ subLink.label }}</span>
           </button>
         </div>
       </mat-menu>
     </div>
+  </div>
 
-    <!-- User button (Login/Dashboard) -->
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn">
+      <mat-icon [matBadge]="getNotificationCount()" [matBadgeHidden]="!getNotificationCount()" matBadgeColor="warn">
+        notifications
+      </mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="toggleTheme()">
+       <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
     <button
       mat-button
+      class="user-button"
       *ngIf="user$ | async as user"
       [routerLink]="user.id ? '/dashboard' : '/signin'"
     >
-      {{ user.id ? 'Dashboard' : 'Login' }}
+      <mat-icon>{{ user.id ? 'account_circle' : 'login' }}</mat-icon>
+      <span>{{ user.id ? 'Dashboard' : 'Login' }}</span>
+    </button>
+
+    <button mat-icon-button class="mobile-menu-button" (click)="toggleDrawer($event)">
+      <mat-icon>menu</mat-icon>
     </button>
   </div>
-
-  <!-- Mobile Menu Button -->
-  <button mat-icon-button class="mobile-menu-button" (click)="toggleDrawer()">
-    <mat-icon>menu</mat-icon>
-  </button>
+</div>
 </mat-toolbar>
 
-<!-- Mobile Drawer (on smaller screens) -->
-<!-- <mat-drawer-container class="drawer-container">
-  <mat-drawer #drawer mode="push" position="end">
-    <div class="mobile-menu">
-      <div *ngFor="let link of navLinks">
-        <button mat-button [matMenuTriggerFor]="link.submenu ? mobileMenu : null" [routerLink]="link.submenu ? null : link.path" (click)="closeDrawer()">
-          {{ link.label }}
-        </button>
+<!-- Notifications Menu -->
+<mat-menu #notificationsMenu="matMenu" class="notifications-menu">
+  <div class="notifications-header">
+    <h3>Notifications</h3>
+    <button mat-button color="primary">Mark all as read</button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="notifications-list" *ngIf="notifications.length; else noNotifications">
+    <button mat-menu-item *ngFor="let notification of notifications">
+      <mat-icon [color]="notification.read ? 'default' : 'accent'">
+        {{ notification.icon || 'notifications' }}
+      </mat-icon>
+      <span>{{ notification.message }}</span>
+    </button>
+  </div>
+  <ng-template #noNotifications>
+    <div class="no-notifications">
+      <mat-icon>notifications_off</mat-icon>
+      <p>No new notifications</p>
+    </div>
+  </ng-template>
+</mat-menu>
+<div style="padding-top: 10vh;"></div>
+<!-- Mobile Drawer -->
+<mat-drawer-container class="drawer-container" [class.drawer-open]="isDrawerOpen">
+  <mat-drawer #drawer mode="over" position="end" (click)="$event.stopPropagation()">
+    <div class="mobile-menu drawer-content " >
+      <!-- Mobile Search -->
+      <!-- <div class="mobile-search">
+        <mat-form-field appearance="outline">
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput placeholder="Search..." [(ngModel)]="searchQuery" name="mobileSearch">
+        </mat-form-field>
+      </div> -->
 
+      <!-- Mobile Navigation -->
+      <div *ngFor="let link of navLinks">
+        <button
+          mat-button
+          [matMenuTriggerFor]="link.submenu ? mobileMenu : null"
+          [routerLink]="link.submenu ? null : link.path"
+          (click)="link.submenu ? null : closeDrawer()"
+        >
+          <mat-icon>{{ link.icon }}</mat-icon>
+          <span>{{ link.label }}</span>
+        </button>
         <mat-menu #mobileMenu="matMenu">
           <div *ngIf="link.submenu">
-            <button mat-menu-item *ngFor="let subLink of link.submenu" [routerLink]="subLink.path" (click)="closeDrawer()">
-              {{ subLink.label }}
+            <button
+              mat-menu-item
+              *ngFor="let subLink of link.submenu"
+              [routerLink]="subLink.path"
+              (click)="closeDrawer()"
+            >
+              <mat-icon>{{ subLink.icon }}</mat-icon>
+              <span>{{ subLink.label }}</span>
             </button>
           </div>
         </mat-menu>
       </div>
-      <button mat-button [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'" (click)="closeDrawer()">
-        {{ logordash }}
-      </button>
+
+
+
+
+      <!-- Mobile User Actions -->
+      <mat-divider></mat-divider>
+      <div class="mobile-user-actions">
+        <button mat-button [matMenuTriggerFor]="notificationsMenu" >
+          <mat-icon [matBadge]="getNotificationCount()" >notifications</mat-icon>
+          <span>Notifications</span>
+        </button>
+        <button mat-button (click)="toggleTheme()">
+          <mat-icon>dark_mode</mat-icon>
+          <span>Toggle Theme</span>
+        </button>
+        <button
+          mat-button
+          [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'"
+          (click)="closeDrawer()"
+        >
+          <mat-icon>{{ logordash === 'Dashboard' ? 'account_circle' : 'login' }}</mat-icon>
+          <span>{{ logordash }}</span>
+        </button>
+
+
+      </div>
     </div>
   </mat-drawer>
-</mat-drawer-container> -->
+</mat-drawer-container>

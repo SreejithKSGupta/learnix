@@ -1,6 +1,6 @@
-/* Global styles for the toolbar */
+/* Main Toolbar */
 mat-toolbar {
-  background: #011734;
+  background: rgba(1, 23, 52, 0.98);
   backdrop-filter: blur(10px);
   z-index: 100;
   display: flex;
@@ -8,51 +8,192 @@ mat-toolbar {
   justify-content: space-between;
   color: white;
   height: 10vh;
+  padding: 0 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease;
+}
+
+mat-toolbar.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .logobox {
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+  min-width: 160px;
+}
+
+.logobox:hover {
+  opacity: 0.9;
 }
 
 .title {
-  font-size: 1.5em;
-  font-weight: bold;
-  font-family: "Pacifico", "Courier New", Courier, monospace;
-  margin-right: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 12px;
+  letter-spacing: 0.5px;
+  color: white;
 }
 
 .logo {
-  height: 40px;
-  margin-right: 20px;
+  height: 36px;
+  width: auto;
 }
 
-/* Navigation Links */
+/* Search Bar */
+.search-container {
+  flex: 0 1 400px;
+  margin: 0 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.search-container.open {
+  flex: 1 1 auto;
+}
+
+.search-container mat-form-field {
+  width: 100%;
+  font-size: 14px;
+}
+
+.search-container .mat-mdc-form-field {
+  width: 100%;
+}
+
+.search-container .mat-mdc-text-field-wrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 0 16px;
+}
+
+.search-container input {
+  color: white;
+}
+
+.menubar{
+  display: flex;
+  flex-direction: row;
+}
+
+/* Navigation */
 .desknav {
   display: flex;
-  width: 30vw;
   align-items: center;
-  font-size: 2rem;
+  gap: 8px;
+  margin: 0 16px;
 }
 
-.mat-menu-item {
-  border-radius: 10px;
+.desknav button {
+  padding: 0 16px;
+  height: 40px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  color: white !important;
 }
 
+.desknav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.desknav mat-icon {
+  margin-right: 8px;
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.action-buttons button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+}
+
+.action-buttons .mat-icon-button {
+  line-height: 40px;
+}
+
+.user-button {
+  padding: 0 16px !important;
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.1);
+  min-width: auto !important;
+  width: auto !important;
+}
+
+.user-button mat-icon {
+  margin-right: 8px;
+}
+
+/* Notifications */
+.notifications-menu {
+  max-width: 360px;
+  max-height: 480px;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.notifications-header h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.notifications-list {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.no-notifications {
+  padding: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Mobile Menu */
 .mobile-menu-button {
   display: none;
 }
 
-.mat-mdc-flat-button,.mat-mdc-unelevated-button , .mat-mdc-button-touch-target{
-  min-width: 10px !important;
-  font-weight: bold !important;
-  transition: 1000ms;
+.drawer-container {
+  height: 100vh;
+  width: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 99;
 }
 
-.mat-mdc-button {
+.drawer-container.drawer-open {
+  display: block;
+}
+
+.mat-drawer {
+  background-color: rgba(1, 23, 52, 0.98) !important;
+  backdrop-filter: blur(10px);
   color: white !important;
-  font-size: 1.2rem !important;
+  width: 280px;
 }
 
 .mobile-menu {
@@ -61,37 +202,91 @@ mat-toolbar {
 
 .mobile-menu button {
   width: 100%;
-  margin: 4px;
+  justify-content: flex-start;
+  padding: 12px;
+  margin: 4px 0;
+  border-radius: 8px;
+  color: white;
 }
 
-.drawer-container {
-  height: 100vh;
-  position: absolute;
-  background-color: transparent;
+.mobile-menu mat-icon {
+  margin-right: 16px;
+}
+
+.mobile-search {
+  margin-bottom: 16px;
+}
+
+.mobile-search mat-form-field {
   width: 100%;
 }
 
-.mat-drawer {
-  background-color: rgba(5, 31, 54, 0.631) !important;
-  backdrop-filter: blur(10px);
-  color: white !important;
-  position: absolute;
-  top: 0;
+.mobile-user-actions {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Active Link Styles */
+/* Active States */
 .active {
-  font-weight: bold !important;
-  color: var(--primary-color) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  font-weight: 500 !important;
 }
 
-/* Media Queries for Mobile */
+/* Custom Menu Styles */
+.custom-menu {
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .search-container {
+    flex: 0 1 300px;
+  }
+
+  /* .desknav button span {
+    display: none;
+  }
+
+  .desknav mat-icon {
+    margin-right: 0;
+  } */
+}
+
 @media (max-width: 768px) {
   .desknav {
+    display: none;
+  }
+
+  .search-container {
     display: none;
   }
 
   .mobile-menu-button {
     display: block;
   }
+
+  .action-buttons button:not(.mobile-menu-button) {
+    display: none;
+  }
+}
+
+/* Utility Classes */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.drawer-open .mat-drawer {
+  animation: fadeIn 0.3s ease;
 }

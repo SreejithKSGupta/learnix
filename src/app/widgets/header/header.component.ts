@@ -1,13 +1,21 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  HostListener,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, fromEvent } from 'rxjs';
+import { distinctUntilChanged, throttleTime } from 'rxjs/operators';
 import { User } from '../../interfaces/users';
 import { selectUserState } from '../../store/selectors/user.selector';
 import { MatDrawer } from '@angular/material/sidenav';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
-  standalone:false,
+  standalone: false,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
@@ -17,77 +25,147 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logordash: string = 'Login';
   user$: Observable<User | null>;
   userSubscription!: Subscription;
+  scrollSubscription!: Subscription;
+  isDrawerOpen = false;
+  isScrolled = false;
+  searchOpen = false;
+  searchQuery = '';
+  isDarkMode: boolean | undefined;
+  notifications: any[] = [];
+
   @ViewChild('drawer') drawer!: MatDrawer;
+  @ViewChild('searchInput') searchInput: any;
+
   navLinks = [
-    { path: '/home', label: 'Home', tooltip: 'Go to Home' },
+    {
+      path: '/home',
+      label: 'Home',
+      tooltip: 'Go to Home',
+      icon: 'home',
+    },
     {
       path: '/courses',
       label: 'Courses',
       tooltip: 'Explore Courses',
+      icon: 'school',
       // submenu: [
-      //   { path: '/courses/advanced', label: 'Advanced Courses', tooltip: 'Explore Advanced Courses' },
-      //   { path: '/courses/beginner', label: 'Beginner Courses', tooltip: 'Explore Beginner Courses' },
-      //   { path: '/courses/professional', label: 'Professional Courses', tooltip: 'Explore Professional Courses' },
-      // ],
+      //   { path: '/courses/all', label: 'All Courses', icon: 'list' },
+      //   { path: '/courses/featured', label: 'Featured', icon: 'star' },
+      //   { path: '/courses/my-learning', label: 'My Learning', icon: 'local_library' },
+      // ]
     },
     {
       path: '/blogs',
       label: 'Blogs',
       tooltip: 'Read Blogs',
+      icon: 'article',
       // submenu: [
-      //   { path: '/blogs/tutorials', label: 'Tutorials', tooltip: 'Read Tutorials' },
-      //   { path: '/blogs/updates', label: 'Updates', tooltip: 'Read Updates' },
-      //   { path: '/blogs/interviews', label: 'Interviews', tooltip: 'Read Interviews' },
-      // ],
+      //   { path: '/blogs/latest', label: 'Latest Posts', icon: 'new_releases' },
+      //   { path: '/blogs/trending', label: 'Trending', icon: 'trending_up' },
+      //   { path: '/blogs/bookmarks', label: 'Bookmarks', icon: 'bookmarks' },
+      // ]
     },
     {
       path: '#',
-      label: 'Others',
-      tooltip: 'others',
+      label: 'More',
+      tooltip: 'More',
+      icon: 'library_books',
       submenu: [
-        { path: '/faq', label: 'FAQ', tooltip: 'FAQs' },
-        { path: '/about', label: 'About', tooltip: 'About' },
-        { path: '/privacy', label: 'Privacy', tooltip: 'Privacy Policy' },
-        { path: '/contact', label: 'Contact', tooltip: 'Contact Us' },
-        { path: '/addcourse', label: 'Add Course', tooltip: 'Add Course' },
-        { path: '/add-blog', label: 'Add Blog', tooltip: 'Add Blog' },
+        { path: '/faq', label: 'FAQ', tooltip: 'FAQs', icon: 'help' },
+        { path: '/about', label: 'About', tooltip: 'About', icon: 'support' },
+        {
+          path: '/privacy',
+          label: 'Privacy',
+          tooltip: 'Privacy Policy',
+          icon: 'description',
+        },
+        {
+          path: '/contact',
+          label: 'Contact',
+          tooltip: 'Contact Us',
+          icon: 'people',
+        },
+        {
+          path: '/addcourse',
+          label: 'Add Course',
+          tooltip: 'Add Course',
+          icon: 'description',
+        },
+        {
+          path: '/add-blog',
+          label: 'Add Blog',
+          tooltip: 'Add Blog',
+          icon: 'description',
+        },
       ],
     },
-
   ];
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private themeService: ThemeService) {
     this.user$ = this.store.select(selectUserState);
   }
 
   ngOnInit() {
+    // User subscription
     this.userSubscription = this.user$.subscribe((user) => {
-      this.logordash = user!.id ? 'Dashboard' : 'Login';
+      this.logordash = user?.id ? 'Dashboard' : 'Login';
     });
+
+    // Scroll behavior
+    this.scrollSubscription = fromEvent(window, 'scroll')
+      .pipe(throttleTime(100), distinctUntilChanged())
+      .subscribe(() => {
+        this.isScrolled = window.scrollY > 50;
+      });
+      this.themeService.getSettings().subscribe((settings) => {
+        this.isDarkMode = settings.isDarkMode;
+      });
   }
 
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    this.userSubscription?.unsubscribe();
+    this.scrollSubscription?.unsubscribe();
   }
 
-  toggleDrawer() {
-    this.drawer.toggle();
-    console.log("drawyer toggleS");
+  // Close drawer when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (
+      this.isDrawerOpen &&
+      !target.closest('.drawer-content') &&
+      !target.closest('.mobile-menu-button')
+    ) {
+      this.closeDrawer();
+    }
+  }
 
-    // display none or block for .drawer-container
-    // const drawerContainer = document.querySelector('.drawer-container') as HTMLElement;
-    // if (drawerContainer) {
-    //       drawerContainer.style.display = drawerContainer.style.display === "flex" ? "block" : "none";
-    // }
+  toggleDrawer(event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.isDrawerOpen = !this.isDrawerOpen;
+    this.drawer.toggle();
   }
 
   closeDrawer() {
+    this.isDrawerOpen = false;
     this.drawer.close();
-    console.log("drawyer close");
+  }
 
-    // const drawerContainer = document.querySelector('.drawer-container') as HTMLElement;
-    // if (drawerContainer) {
-    //       drawerContainer.style.display = "flex";
-    // }
+  onSearch(event: Event) {
+    event.preventDefault();
+    if (this.searchQuery.trim()) {
+      console.log('Searching for:', this.searchQuery);
+    }
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+    this.isDarkMode = !this.isDarkMode;
+  }
+
+  getNotificationCount() {
+    return this.notifications.filter((n) => !n.read).length;
   }
 }

@@ -69,7 +69,17 @@ export class ThemeService {
     return { lighter, darker };
   }
 
-  private applyTheme(settings: ThemeSettings): void {
+
+  toggleTheme(): void {
+    const currentSettings = this.themeSettings.value;
+    const newSettings = { ...currentSettings, isDarkMode: !currentSettings.isDarkMode };
+    this.themeSettings.next(newSettings);
+    this.saveSettings(newSettings);
+    this.applyTheme(newSettings);
+  }
+
+
+   applyTheme(settings: ThemeSettings): void {
     const root = document.documentElement;
 
     // Apply dark/light mode
