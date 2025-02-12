@@ -37,6 +37,7 @@
     "emailjs-com": "^3.2.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.7.1",
+    "json-server": "^1.0.0-beta.3",
     "ng2-charts": "^8.0.0",
     "ngx-countup": "^13.2.0",
     "ngx-quill": "^27.0.0",
