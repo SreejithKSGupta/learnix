@@ -70,7 +70,13 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "sourceMap": false,
+              "optimization": true,
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": true
+
             },
             "development": {
               "optimization": false,

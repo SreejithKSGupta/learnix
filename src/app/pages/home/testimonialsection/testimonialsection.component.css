@@ -63,6 +63,10 @@
   color: var(--primary-color);
   font-weight: bolder;
   font-size: 3rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .testimonial-button:hover {
   backdrop-filter: none !important;

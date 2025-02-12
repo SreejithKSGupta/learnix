@@ -43,7 +43,6 @@ export class CoursePageCourseCardComponent {
       data:course,
       width: '900px',
       maxWidth: '800px',
-        panelClass: 'dark-themed-dialog'
     });
   }
 

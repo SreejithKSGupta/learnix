@@ -1,7 +1,11 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { Course } from '../../interfaces/course';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Userservice } from '../../services/user.service';
 import { OtherServices } from '../../services/otherservices.service';
@@ -15,52 +19,50 @@ import { selectUserState } from '../../store/selectors/user.selector';
   styleUrls: ['./modelwindow.component.css'],
 })
 export class ModelwindowComponent {
-    isauthenticated: boolean = false;
-    courses: Course[] = [];
-    signeduser: User | undefined;
-    subscriptionStatuses: { [courseId: string]: boolean } = {};
-    user$: any;
+  isauthenticated: boolean = false;
+  courses: Course[] = [];
+  signeduser: User | undefined;
+  subscriptionStatuses: { [courseId: string]: boolean } = {};
+  user$: any;
   constructor(
     public dialogRef: MatDialogRef<ModelwindowComponent>,
     public router: Router,
-        private userservice: Userservice,
-        private store: Store,
-        private otherServices: OtherServices,
+    private userservice: Userservice,
+    private store: Store,
+    private otherServices: OtherServices,
     @Inject(MAT_DIALOG_DATA)
-    public course: Course,
-
+    public course: Course
   ) {
     console.log(this.course);
-
   }
 
   ngOnInit(): void {
-      this.user$ = this.store.select(selectUserState);
+    this.user$ = this.store.select(selectUserState);
 
-      this.user$.subscribe((user: User | undefined) => {
-        if (user) {
-          this.signeduser = user;
-        }
-      });
-    }
+    this.user$.subscribe((user: User | undefined) => {
+      if (user) {
+        this.signeduser = user;
+      }
+    });
+  }
 
   closeDialog(): void {
     this.dialogRef.close();
   }
 
-
   editCourse() {
     this.dialogRef.close();
     this.otherServices
-    .showalert('confirm', 'Editing Blog?')
-    .subscribe((result) => {
-      if (result == 'yes') {
-        console.log('editing course', this.course.id);
-        this.router.navigate(['/addcourse'], { queryParams: { id: this.course.id } });
-      }
-    });
+      .showalert('confirm', 'Editing Blog?')
+      .subscribe((result) => {
+        if (result == 'yes') {
+          console.log('editing course', this.course.id);
+          this.router.navigate(['/addcourse'], {
+            queryParams: { id: this.course.id },
+          });
+        }
+      });
   }
-
 
   isUserEnrolledToCourse(courseId: string): void {
     if (!this.signeduser || !this.signeduser.courses) {
@@ -90,9 +92,9 @@ export class ModelwindowComponent {
     }
   }
 
-  ReadMore(id:String){
+  ReadMore(id: String) {
+    console.log('courseid: ', id);
     this.dialogRef.close();
-       this.router.navigate(['/course', id]);
-
+    this.router.navigate(['/course', id]);
   }
 }

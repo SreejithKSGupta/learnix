@@ -1562,12 +1562,6 @@
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
       "courses": [
         {
-          "id": "5",
-          "expiry": 174782703,
-          "date": 1738176782703,
-          "completion": 0
-        },
-        {
           "id": "5b8c",
           "expiry": 1743360784396,
           "date": 1738176784396,
@@ -1586,15 +1580,15 @@
           "completion": 0
         },
         {
-          "id": "3",
-          "expiry": 1744454894403,
-          "date": 1739270894403,
-          "completion": 0
-        },
-        {
           "id": "4",
           "expiry": 1744454903118,
           "date": 1739270903118,
+          "completion": 0
+        },
+        {
+          "id": "5",
+          "expiry": 1744532267219,
+          "date": 1739348267219,
           "completion": 0
         }
       ],
@@ -2851,6 +2845,37 @@
       "description": "How to use AI to optimize our learning patterns",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739259465/fmyd6pt4exveui7hglyi.webp",
       "date": "2025-02-11T07:37:47.816Z"
+    },
+    {
+      "id": "2d3b",
+      "title": "How E-learning is revolutionising India",
+      "author": "Sreejith KS",
+      "post": "CEO",
+      "topic": "Discussion",
+      "content": {
+        "ops": [
+          {
+            "insert": {
+              "image": {
+                "alt": null,
+                "url": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739349569/itvzp1cdohgmfnlkiuy8.webp"
+              }
+            }
+          },
+          {
+            "insert": "\n\nthis is a very good blog"
+          },
+          {
+            "attributes": {
+              "header": 1
+            },
+            "insert": "\n"
+          }
+        ]
+      },
+      "description": "how platforms like Learnix are changing the Indian education landscape.",
+      "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739349725/uwyaxt6rbzxooqpuuoyp.webp",
+      "date": "2025-02-12T08:42:08.717Z"
     }
   ],
   "particlesconfig": {

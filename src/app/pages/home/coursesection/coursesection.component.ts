@@ -56,7 +56,7 @@ export class CoursesectionComponent implements OnInit {
 
   fetchCourses(): void {
     this.dataService.getcourses().subscribe((courses) => {
-      this.courses = courses.sort((a: { subscribers: number; }, b: { subscribers: number; }) => b.subscribers - a.subscribers).slice(0, 4);
+      this.courses = courses.sort((a: { subscribers: number; }, b: { subscribers: number; }) => b.subscribers - a.subscribers).slice(0, 3);
       this.filteredCourses = [...this.courses];
       this.courses.forEach((course) => {
         this.isUserEnrolledToCourse(course.id!);
@@ -66,13 +66,7 @@ export class CoursesectionComponent implements OnInit {
 
   openCourseDetails(course: Course): void {
     this.dialog.open(ModelwindowComponent, {
-      data: {
-        course,
-        isEnrolled: this.subscriptionStatuses[course.id!],
-        isTutor: this.userrole === 'tutor',
-        enroll: this.enrollToCourse.bind(this),
-        editCourse: this.editcourseitem.bind(this),
-      },
+      data: course,
       width: '400px',
     });
   }

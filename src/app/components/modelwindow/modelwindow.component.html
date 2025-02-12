@@ -13,13 +13,14 @@
       onerror="this.src='assets/gallery/designer.webp'"
     >
     <div class="banner-overlay"></div>
-    <h2 mat-dialog-title class="position-absolute bottom-0 start-0 w-100 p-4 m-0">
-      {{ course.courseName }}
-    </h2>
+
   </div>
 
   <!-- Content Section -->
   <mat-dialog-content class="px-4 py-3">
+    <h2 mat-dialog-title>
+      {{ course.courseName }}
+    </h2>
     <!-- Tutor and Key Metrics Row -->
     <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
       <div class="d-flex align-items-center mb-2 mb-md-0">
@@ -75,7 +76,7 @@
   <!-- Actions Footer -->
   <mat-dialog-actions align="end" class="px-4 py-3 border-top">
     <button
-      mat-button
+      mat-flat-button
       color="primary"
       (click)="ReadMore(course.id!)"
       class="me-auto"
