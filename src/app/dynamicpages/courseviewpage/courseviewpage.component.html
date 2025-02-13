@@ -1,4 +1,4 @@
-<mat-card class="course-details-card" *ngIf="course$ | async as course">
+<mat-card class="course-details-card" *ngIf="course">
   <mat-card-header class="position-relative">
     <img
       mat-card-image
@@ -40,18 +40,10 @@
     </div>
   </mat-card-content>
 
-  <mat-card-actions>
-    <h4>Comments ({{ course.comments?.length || 0 }})</h4>
-    <div class="comments-section" *ngIf="course.comments?.length">
-      <div class="comment" *ngFor="let comment of course.comments">
-        <mat-icon>account_circle</mat-icon>
-        <div>
-          <strong>{{ comment.userType }}: {{ comment.senderId }}</strong>
-          <p>{{ comment.message }}</p>
-          <small>Urgency: {{ comment.urgency }}</small>
-        </div>
-      </div>
-    </div>
-    <p *ngIf="!course.comments?.length">No comments yet. Be the first to comment!</p>
+  <mat-card-actions class="pt-3 mt-3">
+    <app-commentbox
+      [comments]="course.comments"
+      (addComment)="onAddComment($event)"
+    ></app-commentbox>
   </mat-card-actions>
 </mat-card>

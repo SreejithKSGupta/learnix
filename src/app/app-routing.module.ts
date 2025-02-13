@@ -28,7 +28,7 @@ export const router: Routes = [
   { path: 'course/:id', component: CourseviewpageComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  {path:  'signin', component: SigninComponent},
+  { path: 'signin', component: SigninComponent },
   { path: 'addcourse', component: AddcourseComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'blogs', component: BlogsComponent },
@@ -36,17 +36,15 @@ export const router: Routes = [
   { path: 'about', component: AboutpageComponent },
   { path: 'privacy', component: PrivacypageComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path:  'forgot-password', component: ForgotpasswordComponent},
-  { path:'adminipanel',component:AdmindashboardComponent},
-  {path:'features',component: FeaturespageComponent},
+  { path: 'forgot-password', component: ForgotpasswordComponent },
+  { path: 'adminipanel', component: AdmindashboardComponent },
+  { path: 'features', component: FeaturespageComponent },
   { path: 'add-blog', component: BlogAddComponent },
   { path: '**', component: N404pageComponent },
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(router)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

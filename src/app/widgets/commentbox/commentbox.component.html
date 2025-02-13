@@ -1,0 +1,46 @@
+<div id="newcommentbox" *ngIf="user$ | async as user">
+  <div class="userdetails">
+    <mat-icon>account_circle</mat-icon>
+    <span>{{ user.userType }}: {{ user.name }}</span>
+  </div>
+
+  <mat-form-field>
+    <mat-label>New Comment</mat-label>
+    <textarea matInput [(ngModel)]="newComment.message" name="message"></textarea>
+    <mat-error *ngIf="newComment.message.length > 255">Comment must be 255 characters or less</mat-error>
+  </mat-form-field>
+
+  <!-- Urgency Selection -->
+  <mat-form-field>
+    <mat-label>Urgency</mat-label>
+    <mat-select [(ngModel)]="newComment.urgency">
+      <mat-option value="Low">Low</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="High">High</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Submit Button -->
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="submitComment()"
+    [disabled]="!newComment.message || newComment.message.length > 255"
+  >
+    Submit
+  </button>
+</div>
+
+<!-- Display Existing Comments -->
+<div class="comments-section" *ngIf="comments?.length">
+  <div class="comment" *ngFor="let comment of comments">
+    <mat-icon>account_circle</mat-icon>
+    <div>
+      <strong>{{ comment.userType }}: {{ comment.senderId }}</strong>
+      <p>{{ comment.message }}</p>
+      <small>Urgency: {{ comment.urgency }}</small>
+    </div>
+  </div>
+</div>
+
+<p *ngIf="!comments?.length">No comments yet. Be the first to comment!</p>

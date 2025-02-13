@@ -66,6 +66,10 @@
   overflow: hidden;
 }
 
+button {
+  width: 40%;
+}
+
 /* Card Content and Actions */
 mat-card-content {
   flex-grow: 1;

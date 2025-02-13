@@ -1,10 +1,11 @@
+import { Blog } from './../../interfaces/blog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BlogService, Blog } from '../../services/blog.service';
+import { BlogService } from '../../services/blog.service';
+
 import { OtherServices } from '../../services/otherservices.service';
 import { PageEvent } from '@angular/material/paginator';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
-import { MatChipsModule } from '@angular/material/chips';
 @Component({
   selector: 'app-blogs',
   standalone: false,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { Course } from '../interfaces/course';
 
 @Injectable({
   providedIn: 'root',
@@ -55,6 +56,9 @@ export class DataService {
       })
     );
   }
-
+  addcomment(coursedata:Course, comment: Comment): Observable<Course> {
+    let courseurll = `${this.courseurl}/${coursedata.id}`;
+    return this.http.put<Course>(courseurll, coursedata);
+}
 
 }

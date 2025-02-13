@@ -1,18 +1,10 @@
+import { Comment } from './../interfaces/comment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Blog } from '../interfaces/blog';
 
-export interface Blog {
-  id?: number;
-  title: string;
-  author: string;
-  content: string;
-  imageURL: string;
-  date: string;
-  post:string;
-  description:any;
-  topic:string;
-}
+
 
 @Injectable({
   providedIn: 'root',
@@ -35,10 +27,18 @@ export class BlogService {
   }
 
   updateBlog(id: number, blog: Blog): Observable<Blog> {
-    return this.http.put<Blog>(`${this.apiUrl}/${id}`, blog);
+    return this.http.post<Blog>(`${this.apiUrl}/${id}`, blog);
   }
 
   deleteBlog(id: number): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  addcomment(blogdata:Blog, comment: Comment): Observable<Blog> {
+      let blogurl = `${this.apiUrl}/${blogdata.id}`;
+      return this.http.put<Blog>(blogurl, blogdata);
+  }
+
 }

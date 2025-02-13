@@ -5,12 +5,12 @@ import {
   ViewChild,
   HostListener,
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable, Subscription, fromEvent } from 'rxjs';
+import { MatDrawer } from '@angular/material/sidenav';
 import { distinctUntilChanged, throttleTime } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { User } from '../../interfaces/users';
 import { selectUserState } from '../../store/selectors/user.selector';
-import { MatDrawer } from '@angular/material/sidenav';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
@@ -19,6 +19,7 @@ import { ThemeService } from '../../services/theme.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
+
 export class HeaderComponent implements OnInit, OnDestroy {
   title = 'Learnix';
   logo = 'https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp';

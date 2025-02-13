@@ -1,4 +1,4 @@
-<div class="blog-container">
+<div class="blog-container" *ngIf="blogData">
   <!-- Blog Header Section -->
   <header class="blog-header">
     <h1 id="blogtitle">{{ blogData.title }}</h1>
@@ -22,22 +22,14 @@
     <quill-view [content]="blogData.content" format="object" theme="snow"></quill-view>
   </section>
 
+
+  <!-- Comments Section -->
+
   <mat-card-actions class="pt-3 mt-3">
-    <h4>Comments ({{ blogData.comments?.length || 0 }})</h4>
-    <div class="comments-section" *ngIf="blogData.comments?.length">
-      <div class="comment" *ngFor="let comment of blogData.comments">
-        <mat-icon>account_circle</mat-icon>
-        <div>
-          <strong>{{ comment.userType }}: {{ comment.senderId }}</strong>
-          <p>{{ comment.message }}</p>
-          <small>Urgency: {{ comment.urgency }}</small>
-        </div>
-      </div>
-    </div>
-    <p *ngIf="!blogData.comments?.length">No comments yet. Be the first to comment!</p>
+    <app-commentbox
+      [comments]="blogData.comments"
+      (addComment)="onAddComment($event)"
+    ></app-commentbox>
   </mat-card-actions>
 
-  <!-- Sidebar (optional, for related posts or additional information) -->
-  <!-- <aside class="blog-sidebar">
-  </aside> -->
 </div>
