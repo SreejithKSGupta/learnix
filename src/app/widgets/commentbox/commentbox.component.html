@@ -1,4 +1,5 @@
 <div id="newcommentbox" *ngIf="user$ | async as user">
+  <div *ngIf="user.id">
   <div class="userdetails">
     <mat-icon>account_circle</mat-icon>
     <span>{{ user.userType }}: {{ user.name }}</span>
@@ -30,7 +31,7 @@
     Submit
   </button>
 </div>
-
+</div>
 <!-- Display Existing Comments -->
 <div class="comments-section" *ngIf="comments?.length">
   <div class="comment" *ngFor="let comment of comments">

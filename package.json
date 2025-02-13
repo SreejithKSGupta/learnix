@@ -30,6 +30,7 @@
     "@tsparticles/angular": "^3.0.0",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/slim": "^3.8.1",
+    "angular-cli-ghpages": "^2.0.3",
     "bootstrap": "5.3.3",
     "browser-image-compression": "^2.0.2",
     "chart.js": "^4.4.7",
