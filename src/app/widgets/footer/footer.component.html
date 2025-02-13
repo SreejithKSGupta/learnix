@@ -2,7 +2,7 @@
   <div class="footer-content">
     <!-- Company Info Section -->
     <div class="footer-section company-info">
-      <h5 class="section-title">Address</h5>
+      <h3 class="section-title">Address</h3>
       <div class="logo-container" *ngIf="address">
         <img src="https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp" [alt]="footertitle" class="footer-logo">
         <h4 class="company-name">{{ footertitle }}</h4>
@@ -26,7 +26,7 @@
 
     <!-- Quick Links Section -->
     <div class="footer-section quick-links">
-      <h5 class="section-title">Quick Links</h5>
+      <h3 class="section-title">Quick Links</h3>
       <nav class="links-grid">
         <a *ngFor="let page of pages; trackBy: trackByFn"
            [routerLink]="page.url"
@@ -41,7 +41,7 @@
     <div class="footer-section">
       <!-- Newsletter -->
       <div class="newsletter-container">
-        <h5 class="section-title">Stay Updated</h5>
+        <h3 class="section-title">Stay Updated</h3>
         <p class="newsletter-desc">Subscribe to our newsletter for the latest updates and exclusive content.</p>
         <form [formGroup]="newsletterForm" (ngSubmit)="subscribeToNewsletter()" class="newsletter-form">
           <div class="input-container">
@@ -73,7 +73,7 @@
 
       <!-- Social Links -->
       <div class="social-container">
-        <h5 class="section-title">Connect With Us</h5>
+        <h3 class="section-title">Connect With Us</h3>
         <div class="social-links">
           <a *ngFor="let link of socialLinks; trackBy: trackByFn"
              [href]="link.url"

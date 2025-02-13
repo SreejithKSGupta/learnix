@@ -71,7 +71,7 @@
                 }
               ],
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "optimization": true,
               "namedChunks": true,
               "aot": true,

@@ -50,13 +50,13 @@
 
   <!-- Action Buttons -->
   <div class="action-buttons">
-    <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn">
+    <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn" title="Notifications">
       <mat-icon [matBadge]="getNotificationCount()" [matBadgeHidden]="!getNotificationCount()" matBadgeColor="warn">
         notifications
       </mat-icon>
     </button>
 
-    <button mat-icon-button (click)="toggleTheme()">
+    <button mat-icon-button (click)="toggleTheme()" title="Toggle Dark/Light Mode">
        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
 
@@ -145,11 +145,11 @@
       <!-- Mobile User Actions -->
       <mat-divider></mat-divider>
       <div class="mobile-user-actions">
-        <button mat-button [matMenuTriggerFor]="notificationsMenu" >
+        <button mat-button [matMenuTriggerFor]="notificationsMenu" title="Notifications" >
           <mat-icon [matBadge]="getNotificationCount()" >notifications</mat-icon>
           <span>Notifications</span>
         </button>
-        <button mat-button (click)="toggleTheme()">
+        <button mat-button (click)="toggleTheme()" title="Toggle Theme">
           <mat-icon>dark_mode</mat-icon>
           <span>Toggle Theme</span>
         </button>
