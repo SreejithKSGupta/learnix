@@ -12,7 +12,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color:var(--background-color);
+  background-color: var(--background-color);
   font-size: 120%;
 }
 
@@ -26,12 +26,11 @@ h2 {
   color: var(--h2-color);
 }
 
-/* styles.css */
+/* Default theme variables */
 :root {
-  /* Default theme variables */
-  --primary-color: #531301;
+  --primary-color: #0084ff;
   --h2-color: #191919;
-  --buttoncolor:rgb(22, 72, 190);
+  --buttoncolor: rgb(22, 72, 190);
   --primary-lighter: #d1c4e9;
   --primary-darker: #512da8;
   --secondary-color: #ffd740;
@@ -41,13 +40,13 @@ h2 {
   --padding: 16px;
   --transparency: 1;
   --headingcolor: rgb(255, 255, 255);
-  --mdc-chip-label-text-color:var(var(--text-color))
-  --mat-sys-on-surface-variant:var(--text-color)
+  --mdc-chip-label-text-color: var(var(--text-color));
+  --mat-sys-on-surface-variant: var(--text-color);
 }
 
 /* Light theme */
 .light-theme {
-  --background-color: #e5e5e5;
+  --background-color: #fcfcfc;
   --text-color: #000000;
   --surface-color: #ffffff;
   --hover-color: rgba(0, 0, 0, 0.04);
@@ -57,9 +56,9 @@ h2 {
 
 /* Dark theme */
 .dark-theme {
-  --background-color: #1b1b1b;
+  --background-color: #3f3e3e;
   --text-color: #ffffff;
-  --surface-color: #424242;
+  --surface-color: #242424;
   --hover-color: rgba(255, 255, 255, 0.08);
   --border-color: #484848;
   --h2-color: #f7f7f7;
@@ -74,9 +73,7 @@ h2 {
   --mdc-filled-button-label-text-color: white !important;
 }
 
-
-
-
+/* Accent button color */
 .mat-mdc-button.mat-accent,
 .mat-mdc-raised-button.mat-accent,
 .mat-mdc-fab.mat-accent,
@@ -154,9 +151,72 @@ h2 {
   border-color: var(--primary-color) !important;
 }
 
-
-.mat-mdc-flat-button,.mat-mdc-unelevated-button , .mat-mdc-button-touch-target{
+/* Flat button, elevated button, touch target */
+.mat-mdc-flat-button, .mat-mdc-unelevated-button, .mat-mdc-button-touch-target {
   font-weight: bold !important;
   transition: 1000ms;
   transform: scale(1.02);
+}
+
+/* Dialog styles */
+.mat-mdc-dialog-container {
+  background-color: var(--surface-color) !important;
+  color: var(--text-color) !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--padding) !important;
+}
+
+.mat-mdc-dialog-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+  color: var(--primary-color) !important;
+}
+
+.mat-mdc-dialog-content {
+  color: var(--text-color) !important;
+}
+
+.mat-mdc-dialog-actions .mat-mdc-button {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border-radius: var(--border-radius) !important;
+}
+
+.mat-mdc-dialog-actions .mat-mdc-button:hover {
+  background-color: var(--primary-darker) !important;
+}
+
+/* Snackbar styles */
+.mat-mdc-snackbar {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.mat-mdc-snackbar-action {
+  color: white !important;
+}
+
+.mat-mdc-snackbar.mat-accent {
+  background-color: var(--secondary-color) !important;
+}
+
+/* Tooltip styles */
+.mat-mdc-tooltip {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* Bottom sheet styles */
+.mat-mdc-bottom-sheet-container {
+  background-color: var(--surface-color) !important;
+  color: var(--text-color) !important;
+}
+
+.mat-mdc-bottom-sheet-content {
+  color: var(--text-color) !important;
+}
+
+.mat-mdc-bottom-sheet-footer {
+  background-color: var(--surface-color) !important;
+  color: var(--text-color) !important;
 }

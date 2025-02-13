@@ -1,4 +1,4 @@
-<h2 class="text-3xl font-bold  title mb-2">Blogs</h2>
+<h2 class="text-3xl font-bold  title ">Blogs</h2>
 
 <!-- Search and Filter Panel -->
 <div class="search-filter-container mat-elevation-z2">
@@ -64,41 +64,10 @@
 </div>
 
     <!-- Results Summary -->
-    <div class="mb-4 summarytxt">
+    <div class="summarytxt">
       Showing {{ displayedBlogs.length }} of {{ totalBlogs }} Blogs
     </div>
-
-<!-- Blog Grid -->
-<div class="blog-grid" *ngIf="!isLoading && filteredBlogs.length > 0">
-  <mat-card class="blog-card mat-elevation-z4" *ngFor="let blog of displayedBlogs">
-    <img mat-card-image [src]="blog.imageURL" [alt]="blog.title" class="blog-image">
-
-    <mat-card-header>
-      <mat-card-title class="blog-title">{{ blog.title }}</mat-card-title>
-      <mat-card-subtitle>
-        <div class="blog-meta">
-          <span><mat-icon>person</mat-icon> {{ blog.author }}</span>
-          <span><mat-icon>date_range</mat-icon> {{ blog.date | date:'mediumDate' }}</span>
-          <span><mat-icon>topic</mat-icon>{{ blog.topic }} </span>
-        </div>
-      </mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-      <p class="blog-description">{{ blog.description }}</p>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-flat-button color="primary" (click)="onReadMore(blog.id)">
-        <mat-icon>read_more</mat-icon> Read More
-      </button>
-      <button mat-flat-button color="accent" (click)="onShare(blog.id)">
-        <mat-icon>share</mat-icon> Share
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-
+<app-blogCard [isLoading]="isLoading" [filteredBlogs]="filteredBlogs" [displayedBlogs]="displayedBlogs"></app-blogCard>
 <!-- Pagination -->
 <mat-paginator *ngIf="filteredBlogs.length > 0"
                [length]="totalBlogs"

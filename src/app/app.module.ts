@@ -56,6 +56,7 @@ import { WysiwygEditorComponent } from './components/wysiwyg-editor/wysiwyg-edit
 import { BlogviewpageComponent } from './dynamicpages/blogviewpage/blogviewpage.component';
 import { CourseviewpageComponent } from './dynamicpages/courseviewpage/courseviewpage.component';
 import { SettingsComponent } from './pages/otherpages/settings/settings.component';
+import { BlogCardComponent } from './components/blogCard/blogCard.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { SettingsComponent } from './pages/otherpages/settings/settings.componen
     BlogviewpageComponent,
     CourseviewpageComponent,
     SettingsComponent,
+    BlogCardComponent,
   ],
   imports: [
     BrowserModule,

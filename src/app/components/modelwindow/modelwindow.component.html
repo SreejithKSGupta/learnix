@@ -4,110 +4,102 @@
     <mat-icon>close</mat-icon>
   </button>
 
-  <!-- Header with Course Image Banner -->
-  <div class="position-relative">
+  <!-- Header Section with Banner -->
+  <div class="banner-container">
     <img
       [src]="course.imageUrl"
       [alt]="course.courseName"
-      class="w-100 course-banner"
+      class="course-banner"
       onerror="this.src='assets/gallery/designer.webp'"
     >
     <div class="banner-overlay"></div>
-
   </div>
 
   <!-- Content Section -->
-  <mat-dialog-content class="px-4 py-3">
-    <h2 mat-dialog-title>
-      {{ course.courseName }}
-    </h2>
-    <!-- Tutor and Key Metrics Row -->
-    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-      <div class="d-flex align-items-center mb-2 mb-md-0">
-        <mat-icon class="text-info me-2">person</mat-icon>
-        <span>
-          <small class="text-muted d-block">Instructor</small>
+  <mat-dialog-content class="dialog-content">
+    <!-- Course Name -->
+    <h2 mat-dialog-title>{{ course.courseName }}</h2>
+
+    <!-- Instructor and Key Metrics Section -->
+    <div class="course-info d-flex justify-content-between align-items-center flex-wrap">
+      <div class="metric-item">
+        <mat-icon class="icon">person</mat-icon>
           <strong>{{ course.tutor }}</strong>
-        </span>
       </div>
-      <div class="d-flex gap-4">
-        <div class="d-flex align-items-center">
-          <mat-icon class="text-secondary me-2">schedule</mat-icon>
-          <span>
-            <small class="text-muted d-block">Duration</small>
+      <div class="course-metrics">
+        <div class="metric-item">
+          <mat-icon class="icon">schedule</mat-icon>
             <strong>{{ course.duration }}</strong>
-          </span>
         </div>
-        <div class="d-flex align-items-center">
-          <mat-icon class="text-success me-2">attach_money</mat-icon>
-          <span>
-            <small class="text-muted d-block">Course Fee</small>
+        <div class="metric-item">
+          <mat-icon class="icon">attach_money</mat-icon>
             <strong>${{ course.courseFee }}</strong>
-          </span>
         </div>
       </div>
     </div>
 
     <!-- Course Description -->
-    <div class="mb-4">
-      <h3 class="h6 text-uppercase mb-3">About This Course</h3>
-      <p class="course-description mb-3">{{ course.description }}</p>
+    <div class="course-description-section mb-1">
+      <h3 class="section-title">About This Course</h3>
+      <p class="course-description">{{ course.description }}</p>
     </div>
 
     <!-- Technologies Section -->
-    <div class="mb-4">
-      <h3 class="h6 text-uppercase mb-3">Technologies Covered</h3>
-      <div class="d-flex flex-wrap gap-2">
-        <mat-chip-listbox>
-          <mat-chip *ngFor="let tech of course.importantTechnologiesUsed">
-            {{ tech }}
-          </mat-chip>
-        </mat-chip-listbox>
-      </div>
+    <div class="technologies-section mb-1">
+      <h3 class="section-title">Technologies Covered</h3>
+      <mat-chip-listbox class="technologies-chiplist">
+        <mat-chip *ngFor="let tech of course.importantTechnologiesUsed">
+          {{ tech }}
+        </mat-chip>
+      </mat-chip-listbox>
     </div>
 
-    <!-- Enrollment Status -->
-    <div *ngIf="subscriptionStatuses[course.id!]" class="enrolled-alert d-flex align-items-center mb-3">
-      <mat-icon class="me-2">check_circle</mat-icon>
+    <!-- Enrollment Status Alert -->
+    <div *ngIf="subscriptionStatuses[course.id!]" class="enrolled-alert d-flex align-items-center">
+      <mat-icon class="icon">check_circle</mat-icon>
       You are enrolled in this course
     </div>
   </mat-dialog-content>
 
-  <!-- Actions Footer -->
-  <mat-dialog-actions align="end" class="px-4 py-3 border-top">
+  <!-- Footer Actions -->
+  <mat-dialog-actions class="footer-actions">
     <button
       mat-flat-button
       color="primary"
       (click)="ReadMore(course.id!)"
-      class="me-auto"
+      class="action-button"
     >
       Read More
       <mat-icon class="ms-1">arrow_forward</mat-icon>
     </button>
+
     <button
       mat-flat-button
       *ngIf="signeduser && signeduser.userType === 'tutor' && signeduser.name === course.tutor!"
       color="primary"
       (click)="editCourse()"
+      class="action-button"
     >
       <mat-icon class="me-2">edit</mat-icon>
       Edit Course
     </button>
+
     <button
       mat-flat-button
       color="accent"
       *ngIf="signeduser && signeduser.userType === 'student' && !subscriptionStatuses[course.id!]"
       (click)="enrollToCourse()"
-      class="px-4"
+      class="action-button enroll-button"
     >
       <mat-icon class="me-2">school</mat-icon>
       Enroll Now
     </button>
+
     <button
       mat-flat-button
       disabled
       *ngIf="subscriptionStatuses[course.id!]"
-      class="px-4"
+      class="action-button enrolled-button"
     >
       <mat-icon class="me-2">check</mat-icon>
       Enrolled
