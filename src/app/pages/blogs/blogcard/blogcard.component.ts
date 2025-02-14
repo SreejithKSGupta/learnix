@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { BlogService, Blog } from '../../../services/blog.service';
+import { BlogService } from '../../../services/blog.service';
 import { QuillModule } from 'ngx-quill';
 @Component({
   selector: 'app-blogcard',
@@ -10,7 +10,7 @@ import { QuillModule } from 'ngx-quill';
   styleUrl: './blogcard.component.css'
 })
 export class BlogcardComponent {
-  blogs: Blog[] = [];
+  blogs: any[] = [];
 
   constructor(private blogService: BlogService) {}
 

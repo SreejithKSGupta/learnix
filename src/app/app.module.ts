@@ -58,6 +58,7 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
 import { SettingsComponent } from './pages/otherpages/settings/settings.component';
 import { BlogCardComponent } from './components/blogCard/blogCard.component';
 import { CommentboxComponent } from './widgets/commentbox/commentbox.component';
+import { BlogpostsComponent } from './pages/home/blogposts/blogposts.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { CommentboxComponent } from './widgets/commentbox/commentbox.component';
     SettingsComponent,
     BlogCardComponent,
     CommentboxComponent,
+    BlogpostsComponent,
   ],
   imports: [
     BrowserModule,
