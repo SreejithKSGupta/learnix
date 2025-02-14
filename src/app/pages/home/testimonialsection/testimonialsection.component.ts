@@ -9,6 +9,11 @@ import { Subscription, interval } from 'rxjs'; // Import interval
   styleUrls: ['./testimonialsection.component.css'],
 })
 export class TestimonialsectionComponent implements OnInit, OnDestroy {
+pauseAutoplay() {
+   if (this.autoplaySubscription) {
+      this.autoplaySubscription.unsubscribe();
+    }
+}
   testimonials: any[] = [];
   currentIndex = 0;
   private autoplaySubscription: Subscription | undefined;

@@ -1,7 +1,7 @@
-<div class="testimonial-container">
+<div class="testimonial-container" (mouseenter)="pauseAutoplay()" (mouseleave)="startAutoplay()">
   <div class="testimonial-slider" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
     <div *ngFor="let testimonial of testimonials" class="testimonial-slide">
-      <mat-card class="testimonial-card">
+      <div class="testimonial-card">
         <div class="testimonial-content">
           <div class="testimonial-author">
             <span class="testimonial-name">{{ testimonial.name }}</span>
@@ -9,15 +9,15 @@
           </div>
           <p class="testimonial-text">{{ testimonial.Test }}</p>
         </div>
-      </mat-card>
+      </div>
     </div>
   </div>
 
   <div class="testimonial-controls">
-    <button mat-icon-button class="testimonial-button prev" title="previous testimonial" (click)="prevTestimonial()">
+    <button mat-icon-button class="testimonial-button prev" title="Previous Testimonial" (click)="prevTestimonial()">
       <mat-icon>chevron_left</mat-icon>
     </button>
-    <button mat-icon-button class="testimonial-button next" title="next testimonial" (click)="nextTestimonial()">
+    <button mat-icon-button class="testimonial-button next" title="Next Testimonial" (click)="nextTestimonial()">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>

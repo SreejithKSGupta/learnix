@@ -1,9 +1,10 @@
 .testimonial-container {
   position: relative;
-  max-width: 800px;
-  margin: 20px auto;
+  width:clamp(200px, 96vw, 900px);
+  margin: var(--padding) auto;
   overflow: hidden;
-  padding: var(--padding);
+  padding: 10px var(--padding);
+  border-radius: var(--border-radius);
 }
 
 .testimonial-slider {
@@ -13,16 +14,19 @@
 
 .testimonial-slide {
   min-width: 100%;
-  padding: 0 10px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
 .testimonial-card {
-  background: #022374a4;
   border: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: var(--padding);
-  border-radius: var(--border-radius);
+  padding: 40px;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out;
+  background-color: var(--surface-color);
+
 }
 
 .testimonial-content {
@@ -42,11 +46,14 @@
 
 .testimonial-position {
   font-size: 1rem;
+  color: var(--text-color);
 }
 
 .testimonial-text {
   font-size: 1.5rem;
   line-height: 1.6;
+  padding: var(--padding);
+  color: var(--text-color);
 }
 
 .testimonial-controls {
@@ -57,25 +64,32 @@
   transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
+  z-index: 10;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .testimonial-button {
+  background-color: var(--secondary-color);
+  border: none;
   color: var(--primary-color);
-  font-weight: bolder;
-  font-size: 3rem !important;
+  font-weight: bold;
+  font-size: 2rem;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
-.testimonial-button:hover {
-  backdrop-filter: none !important;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.testimonial-button:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
 
 @media (max-width: 768px) {
   .testimonial-name {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   .testimonial-position {
@@ -83,21 +97,24 @@
   }
 
   .testimonial-text {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 
   .testimonial-card {
     padding: 15px;
   }
+
+  .testimonial-button {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 576px) {
   .testimonial-controls {
-    padding: 0 5px;
+    padding: 0 10px;
   }
 
   .testimonial-button {
-    width: 35px;
-    height: 35px;
+    font-size: 1.2rem;
   }
 }
