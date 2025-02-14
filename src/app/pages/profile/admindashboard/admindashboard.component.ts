@@ -1,10 +1,11 @@
+import { Comment } from './../../../interfaces/comment';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Course } from '../../../interfaces/course';
 import { Userservice } from '../../../services/user.service';
 import { DataService } from '../../../services/data.service';
 import { OtherServices } from '../../../services/otherservices.service';
-import { Message, User } from '../../../interfaces/users';
+import {  User } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 import { AdmindataService } from '../../../services/admindata.service';
 import { forkJoin, Observable } from 'rxjs';
@@ -26,6 +27,7 @@ export class AdmindashboardComponent implements OnInit {
   emailMessage: string = '';
   statistics: any;
   user$: Observable<User | null>;
+  user!:User;
 
   constructor(
     private userservice: Userservice,
@@ -36,6 +38,10 @@ export class AdmindashboardComponent implements OnInit {
     private store: Store
   ) {
     this.user$ = this.store.select(selectUserState);
+    this.user$.subscribe((user) => {
+    this.user = user!;
+    });
+
   }
 
   ngOnInit(): void {
@@ -186,20 +192,24 @@ export class AdmindashboardComponent implements OnInit {
     });
   }
 
-  replyToMessage(id: string): void {
-    let messagedata: Message = {
+  replyToMessage(oldmsg:any): void {
+    this.userservice.getuserbyid(oldmsg.id).subscribe(
+      (res)=>{
+
+    let messagedata: Comment = {
       id: String(Date.now()),
-      senderId: '',
-      userType: 'admin',
+      senderId:this.user.id,
+      senderName: this.user.name,
+      senderType: this.user.userType,
+      recieverType: res.userType,
+      recieverName: res.name,
+      recieverId:res.id,
       message: '',
       urgency: 'Low',
+      timestamp: new Date(),
+      status: 'pending'
     };
 
-    this.user$.subscribe((user) => {
-      if (user?.id) {
-        messagedata.senderId = user.id;
-      }
-    });
 
     const dialogRef = this.dialog.open(MessagereplyComponent, {
       width: '250px',
@@ -211,7 +221,7 @@ export class AdmindashboardComponent implements OnInit {
         messagedata.message = result.message;
         messagedata.urgency = result.urgency;
 
-        this.otherServices.replytomail(id, messagedata).subscribe({
+        this.otherServices.replytomail(oldmsg.id, messagedata).subscribe({
           next: () => {
             this.otherServices.showalert('success', 'Reply sent successfully.');
           },
@@ -221,5 +231,8 @@ export class AdmindashboardComponent implements OnInit {
         });
       }
     });
+      }
+    )
+
   }
 }

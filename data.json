@@ -1,208 +1,29 @@
 {
   "courses": [
     {
-      "courseName": "Data Science with python and Google cloud",
+      "id": "1739516686067",
+      "courseName": "Introduction to python",
       "tutor": "ambika",
-      "duration": "10",
-      "description": "Explore data science concepts and techniques using R, including data manipulation, visualization, and machine learning.",
-      "importantTechnologiesUsed": [
-        "R",
-        "ggplot2",
-        "dplyr",
-        "python",
-        "google cloud"
-      ],
-      "courseFee": "250",
-      "credits": "3",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737978418/yw2bpfiqnu8jbkwacglg.jpg",
-      "id": "3",
-      "comments": []
-    },
-    {
-      "courseName": "Full Stack Web Development",
-      "tutor": "Sreejith ks gupta",
-      "duration": "12",
-      "description": "Learn to build full-stack web applications using Node.js, Express, and MongoDB, along with front-end technologies.",
-      "importantTechnologiesUsed": [
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "React",
-        "JavaScript"
-      ],
-      "courseFee": "350",
-      "credits": "3",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp",
-      "id": "5",
-      "comments": []
-    },
-    {
-      "id": "5b8c",
-      "courseName": "new html course 2",
-      "tutor": "Sreejith KS",
-      "duration": "5",
-      "description": "this is a good course",
-      "importantTechnologiesUsed": [
-        "html",
-        "css",
-        "js",
-        "node"
-      ],
-      "courseFee": "766",
-      "credits": "5",
-      "comments": []
-    },
-    {
-      "id": "1c67",
-      "courseName": "svelte basics course",
-      "tutor": "sreejith ksw",
+      "tutorid": "1738358839686",
       "duration": 5,
-      "description": "this is a course from jan 27",
-      "importantTechnologiesUsed": [
-        "html"
-      ],
-      "courseFee": 5,
-      "credits": 5,
-      "imageUrl": "",
-      "comments": []
-    },
-    {
-      "id": "98f0",
-      "courseName": "kbkjkjbkj",
-      "tutor": "kjbkjb",
-      "duration": 9,
-      "description": "good course",
-      "importantTechnologiesUsed": [
-        "html"
-      ],
-      "courseFee": 5,
-      "credits": 5,
-      "imageUrl": "",
-      "disabled": "true",
-      "comments": []
-    },
-    {
-      "courseName": "Python  101 introduction to basics",
-      "tutor": "ambika",
-      "duration": 8,
-      "description": "A zero to hero journey in python in just 10 weeks, master the most sought after technology in the field no.",
+      "description": "An introductory course to the python programming language, which will cover the basics of python, up to the concept of OOPs, and then dive into some hands-on with Django and Collab.",
       "importantTechnologiesUsed": [
         "python",
+        "tkinder",
         "django",
-        "flask",
-        "google collab"
+        "google collab",
+        "vs code"
       ],
-      "courseFee": 100,
-      "credits": 3,
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738864889/aig5kprmyto0yikpw46a.webp",
-      "content": {
-        "ops": [
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#cccccc"
-            },
-            "insert": " "
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#d4d4d4"
-            },
-            "insert": "?"
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#cccccc"
-            },
-            "insert": " "
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#569cd6"
-            },
-            "insert": "this"
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#cccccc"
-            },
-            "insert": "."
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#9cdcfe"
-            },
-            "insert": "dataService"
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#cccccc"
-            },
-            "insert": "."
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#dcdcaa"
-            },
-            "insert": "updateCourse"
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#cccccc"
-            },
-            "insert": "("
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#4fc1ff"
-            },
-            "insert": "courseData"
-          },
-          {
-            "attributes": {
-              "background": "#1f1f1f",
-              "color": "#cccccc"
-            },
-            "insert": ")"
-          },
-          {
-            "insert": "\n\n"
-          }
-        ]
-      },
-      "id": "7726",
-      "comments": []
-    },
-    {
-      "courseName": "Python  101 introduction to basics",
-      "tutor": "ambika",
-      "duration": 8,
-      "description": "A zero to hero journey in python in just 10 weeks, master the most sought after technology in the field no.",
-      "importantTechnologiesUsed": [
-        "python",
-        "django",
-        "flask",
-        "google collab"
-      ],
-      "courseFee": 100,
-      "credits": 3,
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738864999/di7hyv1jjztfyrm3tmu3.webp",
+      "courseFee": 500,
+      "credits": 5,
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739516685/bl6vx6w32xxhcbu3rr1d.webp",
       "content": {
         "ops": [
           {
             "attributes": {
               "bold": true
             },
-            "insert": "Course Title: Python 101: Introduction to Programming Basics"
+            "insert": "Python Programming for Beginners"
           },
           {
             "attributes": {
@@ -214,109 +35,10 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Course Description:"
+            "insert": "Course Duration:"
           },
           {
-            "attributes": {
-              "header": 3
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "This 10-week course is designed for beginners to Python programming and is ideal for anyone looking to learn how to code or for those looking to refresh their knowledge of the language. Throughout the course, you will learn the basics of Python programming, including syntax, control structures, data structures, functions, and libraries. You will work on practical projects, coding exercises, and quizzes to reinforce your learning.\nBy the end of this course, you'll have a solid foundation in Python, enabling you to solve programming problems and continue exploring more advanced topics like web development, data science, or machine learning.\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Key Learning Outcomes:"
-          },
-          {
-            "attributes": {
-              "header": 3
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Learn Python syntax and data types"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Understand how to work with variables, strings, and numbers"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Gain proficiency in control structures like loops and conditionals"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Learn how to use functions and modules"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Understand basic data structures like lists, tuples, dictionaries, and sets"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Practice error handling and debugging in Python"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Develop small projects and coding exercises to apply your skills"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Course Outline:"
-          },
-          {
-            "attributes": {
-              "header": 3
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Week 1: Introduction to Python and Setting Up"
+            "insert": " 5 Weeks"
           },
           {
             "attributes": {
@@ -328,26 +50,28 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Topics Covered:"
+            "insert": "Week 1: Introduction to Python"
           },
           {
             "attributes": {
-              "list": "bullet"
+              "header": 3
             },
             "insert": "\n"
           },
           {
+            "attributes": {
+              "bold": true
+            },
             "insert": "Overview of Python"
           },
           {
             "attributes": {
-              "indent": 1,
               "list": "bullet"
             },
             "insert": "\n"
           },
           {
-            "insert": "Installing Python and setting up your environment"
+            "insert": "What is Python?"
           },
           {
             "attributes": {
@@ -357,7 +81,7 @@
             "insert": "\n"
           },
           {
-            "insert": "Introduction to Python IDEs (e.g., PyCharm, VSCode)"
+            "insert": "Python's uses in various fields (web development, data science, automation, etc.)"
           },
           {
             "attributes": {
@@ -367,16 +91,161 @@
             "insert": "\n"
           },
           {
-            "insert": "Writing your first Python program ("
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Setting Up Python"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Installing Python and setting up the development environment (IDEs like VS Code or PyCharm)"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Introduction to Jupyter Notebooks"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Basic Syntax and Structure"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Writing your first Python program"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Comments, indentation, and whitespace"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Data Types"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Numbers (integers and floats)"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Strings"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Lists, Tuples, and Dictionaries"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Week 2: Control Structures and Functions"
+          },
+          {
+            "attributes": {
+              "header": 3
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Conditional Statements"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
           },
           {
             "attributes": {
               "code": true
             },
-            "insert": "Hello, World!"
+            "insert": "if"
           },
           {
-            "insert": ")"
+            "insert": ", "
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "else"
+          },
+          {
+            "insert": ", and "
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "elif"
+          },
+          {
+            "insert": " conditions"
           },
           {
             "attributes": {
@@ -386,45 +255,7 @@
             "insert": "\n"
           },
           {
-            "insert": "Python syntax and basic commands"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://docs.python.org/3/"
-            },
-            "insert": "Official Python Documentation"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://www.python.org/downloads/"
-            },
-            "insert": "Python Installation Guide"
+            "insert": "Nested conditions and logical operators"
           },
           {
             "attributes": {
@@ -437,19 +268,7 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Week 2: Variables, Data Types, and Operators"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
+            "insert": "Loops"
           },
           {
             "attributes": {
@@ -458,37 +277,22 @@
             "insert": "\n"
           },
           {
-            "insert": "Variables and assignment"
+            "attributes": {
+              "code": true
+            },
+            "insert": "for"
+          },
+          {
+            "insert": " loop and "
           },
           {
             "attributes": {
-              "indent": 1,
-              "list": "bullet"
+              "code": true
             },
-            "insert": "\n"
+            "insert": "while"
           },
           {
-            "insert": "Python data types (int, float, string, boolean)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Operators (arithmetic, comparison, logical)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Typecasting"
+            "insert": " loop"
           },
           {
             "attributes": {
@@ -499,21 +303,30 @@
           },
           {
             "attributes": {
-              "bold": true
+              "code": true
             },
-            "insert": "Resources:"
+            "insert": "break"
+          },
+          {
+            "insert": ", "
           },
           {
             "attributes": {
-              "list": "bullet"
+              "code": true
             },
-            "insert": "\n"
+            "insert": "continue"
+          },
+          {
+            "insert": ", and "
           },
           {
             "attributes": {
-              "link": "https://www.w3schools.com/python/python_datatypes.asp"
+              "code": true
             },
-            "insert": "Python Data Types"
+            "insert": "else"
+          },
+          {
+            "insert": " in loops"
           },
           {
             "attributes": {
@@ -526,11 +339,70 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Week 3: Control Flow - Conditionals and Loops"
+            "insert": "Functions"
           },
           {
             "attributes": {
-              "header": 4
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Defining functions with "
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "def"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Function arguments and return values"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Default arguments and variable-length arguments"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": {
+              "image": {
+                "alt": null,
+                "url": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739516668/cnrtv3xpjicfym1azvaz.webp"
+              }
+            }
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Week 3: Working with Data Structures"
+          },
+          {
+            "attributes": {
+              "header": 3
             },
             "insert": "\n"
           },
@@ -538,7 +410,7 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Topics Covered:"
+            "insert": "Lists"
           },
           {
             "attributes": {
@@ -547,238 +419,7 @@
             "insert": "\n"
           },
           {
-            "insert": "If, elif, else statements"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "While loops"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "For loops"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Break and continue statements"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Nested loops and conditionals"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://realpython.com/python-while-loop/"
-            },
-            "insert": "Python Loops & Conditionals"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Week 4: Functions and Modules"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Function definition and syntax"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Arguments and return values"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Local vs global variables"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Importing Python modules"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Using built-in functions"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://www.learnpython.org/en/Functions"
-            },
-            "insert": "Functions in Python"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://docs.python.org/3/tutorial/modules.html"
-            },
-            "insert": "Python Modules"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Week 5: Data Structures - Lists and Tuples"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Introduction to lists and list operations"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Indexing, slicing, and iterating through lists"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Introduction to tuples and tuple operations"
+            "insert": "Creating, accessing, and modifying lists"
           },
           {
             "attributes": {
@@ -801,7 +442,7 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Resources:"
+            "insert": "Dictionaries"
           },
           {
             "attributes": {
@@ -810,10 +451,7 @@
             "insert": "\n"
           },
           {
-            "attributes": {
-              "link": "https://www.w3schools.com/python/python_lists.asp"
-            },
-            "insert": "Python Lists"
+            "insert": "Creating and accessing dictionaries"
           },
           {
             "attributes": {
@@ -823,10 +461,7 @@
             "insert": "\n"
           },
           {
-            "attributes": {
-              "link": "https://www.w3schools.com/python/python_tuples.asp"
-            },
-            "insert": "Python Tuples"
+            "insert": "Iterating over dictionaries"
           },
           {
             "attributes": {
@@ -839,42 +474,10 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Week 6: Data Structures - Dictionaries and Sets"
+            "insert": "Sets"
           },
           {
             "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Introduction to dictionaries and dictionary operations"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Accessing and updating dictionary items"
-          },
-          {
-            "attributes": {
-              "indent": 1,
               "list": "bullet"
             },
             "insert": "\n"
@@ -890,7 +493,19 @@
             "insert": "\n"
           },
           {
-            "insert": "Set and dictionary comprehensions"
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Tuples"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Working with immutable sequences"
           },
           {
             "attributes": {
@@ -903,36 +518,13 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Resources:"
+            "insert": "Practice:"
+          },
+          {
+            "insert": " Simple projects using lists, dictionaries, and loops"
           },
           {
             "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://www.w3schools.com/python/python_dictionaries.asp"
-            },
-            "insert": "Python Dictionaries"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://www.w3schools.com/python/python_sets.asp"
-            },
-            "insert": "Python Sets"
-          },
-          {
-            "attributes": {
-              "indent": 1,
               "list": "bullet"
             },
             "insert": "\n"
@@ -941,458 +533,7 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Week 7: String Manipulation"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "String slicing and indexing"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "String methods (e.g., "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "upper()"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "lower()"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "replace()"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "split()"
-          },
-          {
-            "insert": ", etc.)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "String formatting with "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "f-strings"
-          },
-          {
-            "insert": " and "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": ".format()"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Working with regular expressions in Python"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://www.w3schools.com/python/python_strings.asp"
-            },
-            "insert": "Python Strings"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://docs.python.org/3/library/re.html"
-            },
-            "insert": "Regex in Python"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Week 8: File Handling"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Opening and reading files"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Writing to files"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Working with CSV files"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Using context managers with "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "with"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://realpython.com/read-write-files-python/"
-            },
-            "insert": "Python File Handling"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Week 9: Error Handling and Debugging"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Introduction to error handling (try-except blocks)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Types of exceptions"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Raising exceptions"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Using debugging tools (e.g., "
-          },
-          {
-            "attributes": {
-              "code": true
-            },
-            "insert": "pdb"
-          },
-          {
-            "insert": ", VSCode Debugger)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://realpython.com/python-exceptions/"
-            },
-            "insert": "Python Exception Handling"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://docs.python.org/3/library/pdb.html"
-            },
-            "insert": "Python Debugging with pdb"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Week 10: Project and Review"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Topics Covered:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Review of course content"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Final project: Build a simple Python project (e.g., a calculator, a to-do list app, or a text-based game)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "How to continue learning Python (e.g., working with APIs, web frameworks like Flask/Django, or data science libraries)"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Resources:"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://www.upwork.com/resources/python-project-ideas/"
-            },
-            "insert": "Python Project Ideas"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "link": "https://github.com/python"
-            },
-            "insert": "Free Python Projects on GitHub"
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Additional Important Details to Include:"
+            "insert": "Week 4: File Handling and Error Handling"
           },
           {
             "attributes": {
@@ -1404,10 +545,7 @@
             "attributes": {
               "bold": true
             },
-            "insert": "Prerequisites:"
-          },
-          {
-            "insert": " No prior programming experience required."
+            "insert": "File Handling"
           },
           {
             "attributes": {
@@ -1416,61 +554,17 @@
             "insert": "\n"
           },
           {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Tools Needed:"
-          },
-          {
-            "insert": " Python 3.x, text editor or IDE (e.g., VSCode, PyCharm)."
+            "insert": "Reading from and writing to files (text files, CSV)"
           },
           {
             "attributes": {
+              "indent": 1,
               "list": "bullet"
             },
             "insert": "\n"
           },
           {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Quizzes/Assignments:"
-          },
-          {
-            "insert": " Regular quizzes and assignments to test knowledge."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Final Project:"
-          },
-          {
-            "insert": " Hands-on final project to apply what you've learned."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Links to Additional Resources:"
-          },
-          {
-            "attributes": {
-              "link": "https://www.python.org/about/gettingstarted/"
-            },
-            "insert": "Python for Beginners"
+            "insert": "Working with file paths"
           },
           {
             "attributes": {
@@ -1481,9 +575,49 @@
           },
           {
             "attributes": {
-              "link": "https://realpython.com/"
+              "bold": true
             },
-            "insert": "Real Python"
+            "insert": "Error Handling"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "try"
+          },
+          {
+            "insert": ", "
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "except"
+          },
+          {
+            "insert": ", and "
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "finally"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Raising exceptions and handling specific exceptions"
           },
           {
             "attributes": {
@@ -1494,67 +628,198 @@
           },
           {
             "attributes": {
-              "link": "https://www.w3schools.com/python/"
+              "bold": true
             },
-            "insert": "W3Schools Python Tutorial"
+            "insert": "Practice:"
+          },
+          {
+            "insert": " Creating a file-based program (e.g., reading a file, processing data, and writing results)"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Week 5: Introduction to Object-Oriented Programming (OOP)"
+          },
+          {
+            "attributes": {
+              "header": 3
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Classes and Objects"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Understanding classes and objects"
           },
           {
             "attributes": {
               "indent": 1,
               "list": "bullet"
             },
+            "insert": "\n"
+          },
+          {
+            "insert": "Creating classes and initializing objects with "
+          },
+          {
+            "attributes": {
+              "code": true
+            },
+            "insert": "__init__"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Attributes and Methods"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Instance variables and methods"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Class variables and methods"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Inheritance"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Introduction to inheritance and overriding methods"
+          },
+          {
+            "attributes": {
+              "indent": 1,
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Practice:"
+          },
+          {
+            "insert": " Build a simple OOP-based project (e.g., a class to manage books or students)"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Final Project (Optional)"
+          },
+          {
+            "attributes": {
+              "header": 3
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Develop a small Python project incorporating the learned concepts: file handling, OOP, and data structures. Example: A contact book or a simple inventory system."
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": {
+              "image": {
+                "alt": null,
+                "url": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739516658/fbv8wikn35vhxfifeoew.webp"
+              }
+            }
+          },
+          {
             "insert": "\n"
           }
         ]
       },
-      "id": "4227",
+      "totalStars": 0,
+      "feedback": [],
       "comments": [
         {
-          "id": "1739448500678",
-          "userType": "tutor",
-          "userName": "ambika",
-          "senderId": "1738358839686",
-          "message": "this is a new comment",
+          "id": "1739516747936",
+          "senderId": "1737636349897",
+          "senderName": "Anjithja J",
+          "senderType": "admin",
+          "recieverType": "",
+          "recieverName": "",
+          "recieverId": "",
+          "message": "great blog",
           "urgency": "Low",
-          "timestamp": "2025-02-13T12:08:20.678Z",
-          "status": "approved"
-        },
-        {
-          "id": "1739448688583",
-          "userType": "tutor",
-          "userName": "ambika",
-          "senderId": "1738358839686",
-          "message": "this is another new comment",
-          "urgency": "Low",
-          "timestamp": "2025-02-13T12:11:28.583Z",
-          "status": "approved"
-        },
-        {
-          "id": "1739448703147",
-          "userType": "tutor",
-          "userName": "ambika",
-          "senderId": "1738358839686",
-          "message": "this is for showing keshav",
-          "urgency": "Low",
-          "timestamp": "2025-02-13T12:11:43.147Z",
+          "timestamp": "2025-02-14T07:05:47.936Z",
           "status": "approved"
         }
-      ]
+      ],
+      "disabled": false,
+      "dateCreated": "2025-02-14T07:04:46.067Z",
+      "dateUpdated": "2025-02-14T07:04:46.067Z",
+      "isApproved": false,
+      "isRejected": false,
+      "rejectionReason": ""
     }
   ],
   "users": [
-    {
-      "id": "1737635287945",
-      "name": "Emily Johnson",
-      "userType": "student",
-      "gender": "female",
-      "email": "emilyjohnson@example.com",
-      "areaOfInterest": [
-        "machine learning"
-      ],
-      "experience": "2",
-      "password": "EmilyJohnson*3456"
-    },
     {
       "id": "1737636349897",
       "name": "Anjithja J",
@@ -1565,7 +830,10 @@
         "cloud computing"
       ],
       "experience": "4",
-      "password": "Anju*5559"
+      "password": "Anju*5559",
+      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738358838/b0zoq7rns2ozm3v9eycz.jpg",
+      "courses": [],
+      "messages": []
     },
     {
       "id": "1738358839686",
@@ -1630,22 +898,6 @@
           "completion": 0
         }
       ],
-      "messages": []
-    },
-    {
-      "id": "1739221050077",
-      "disabled": false,
-      "name": "amma",
-      "userType": "student",
-      "gender": "male",
-      "email": "ammukutti@gmail.com",
-      "areaOfInterest": [
-        "coding"
-      ],
-      "experience": 5,
-      "password": "Ammu@5559",
-      "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739221051/mqekjteh8au8cqduiydo.webp",
-      "courses": [],
       "messages": []
     }
   ],

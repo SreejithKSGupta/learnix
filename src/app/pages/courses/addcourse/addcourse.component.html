@@ -17,11 +17,6 @@
       <p><strong>Type:</strong> {{ selectedFile.type }}</p>
     </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Author</mat-label>
-      <input matInput formControlName="author" type="text" />
-      <mat-error *ngIf="hasError('author')">Author name should contain only letters and be at least 3 characters long.</mat-error>
-    </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Duration (weeks)</mat-label>

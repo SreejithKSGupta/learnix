@@ -41,14 +41,18 @@ export class CommentboxComponent {
     }
 
     const comment :Comment = {
-      id:Date.now().toString(),
-      userType: this.user!.userType,
-      userName: this.user!.name,
+      id: Date.now().toString(),
       senderId: this.user!.id,
+      senderName:  this.user!.name,
+      senderType:  this.user!.userType,
+      recieverType:"",
+      recieverName:"",
+      recieverId:'',
       message: this.newComment.message,
       urgency: this.newComment.urgency,
       timestamp: new Date(),
-      status: 'approved'
+      status: 'approved',
+
     };
 
     this.addComment.emit(comment);

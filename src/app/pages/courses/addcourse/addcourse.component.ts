@@ -7,6 +7,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatChipEditedEvent } from '@angular/material/chips';
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 import { OtherServices } from '../../../services/otherservices.service';
+import { Store } from '@ngrx/store';
+import { selectUserState } from '../../../store/selectors/user.selector';
+import { User } from '../../../interfaces/users';
 
 @Component({
   selector: 'app-addcourse',
@@ -23,9 +26,11 @@ export class AddcourseComponent implements OnInit {
   updatableid: any;
   selectedFile: File | null = null;
   richtext:any;
-  currentcourseId:any;
+  currentcourse:Course|undefined;
+  currentuser!:User;
   constructor(
     private fb: FormBuilder,
+    private store:Store,
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute,
@@ -36,6 +41,15 @@ export class AddcourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+   // check for user type, id not tutor, go to 404 page with error code 21
+   this.store.select(selectUserState).subscribe((userState) => {
+    this.currentuser = userState;
+    if(this.currentuser.userType !== 'tutor'){
+      this.router.navigate(['/404'], { queryParams: { errorCode: 403 } });
+    }
+  });
+
     this.route.queryParams.subscribe((params) => {
       const courseId = params['id'];
       if (courseId) {
@@ -44,12 +58,12 @@ export class AddcourseComponent implements OnInit {
         this.populateForm(courseId);
       }
     });
+
   }
 
   createForm() {
     this.angForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[A-Za-z][A-Za-z0-9 ]*$')]],
-      author: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[A-Za-z ]*$')]],
       duration: ['', [Validators.required, Validators.min(4), Validators.max(12), Validators.pattern('^[0-9]*$')]],
       credits: ['', [Validators.required, Validators.min(1), Validators.max(5), Validators.pattern('^[0-9]*$')]],
       coursefee: ['', [Validators.required, Validators.min(0), Validators.max(5000), Validators.pattern('^[0-9]*$')]],
@@ -61,10 +75,9 @@ export class AddcourseComponent implements OnInit {
   populateForm(courseId: string): void {
     this.dataService.getcoursebyid(courseId).subscribe(
       (course) => {
-        this.currentcourseId = course.id;
+        this.currentcourse= course;
         this.angForm.patchValue({
           name: course.courseName,
-          author: course.tutor,
           duration: course.duration,
           credits: course.credits,
           coursefee: course.courseFee,
@@ -151,7 +164,8 @@ export class AddcourseComponent implements OnInit {
   submitForm(imageUrl?: string) {
     const courseData: Course = {
       courseName: this.angForm.value.name,
-      tutor: this.angForm.value.author,
+      tutor: this.currentuser.name,
+      tutorid: this.currentuser.id,
       duration: this.angForm.value.duration,
       description: this.angForm.value.description,
       importantTechnologiesUsed: this.angForm.value.importantTechnologiesUsed,
@@ -159,10 +173,19 @@ export class AddcourseComponent implements OnInit {
       credits: this.angForm.value.credits,
       imageUrl: imageUrl || null,
       content: this.richtext,
-    };
+      id: this.isEditMode ? this.currentcourse?.id ?? Date.now().toString() : Date.now().toString(),
+      totalStars: this.isEditMode ? this.currentcourse?.totalStars ?? 0 : 0,
+      feedback: this.isEditMode ? this.currentcourse?.feedback ?? [] : [],
+      comments: this.isEditMode ? this.currentcourse?.comments ?? [] : [],
+      disabled: this.isEditMode ? this.currentcourse?.disabled ?? false : false,
+      dateCreated: this.isEditMode ? this.currentcourse?.dateCreated ??  new Date() : new Date(),
+      dateUpdated: this.isEditMode ? this.currentcourse?.dateUpdated ??  new Date() : new Date(),
+      isApproved: this.isEditMode ? this.currentcourse?.isApproved ?? false : false,
+      isRejected: this.isEditMode ? this.currentcourse?.isRejected ?? false : false,
+      rejectionReason : this.isEditMode ? this.currentcourse?.rejectionReason ?? '' : '',};
 
     const submit$ = this.isEditMode
-      ? this.dataService.updateCourse(courseData,this.currentcourseId)
+      ? this.dataService.updateCourse(courseData,this.currentcourse!.id)
       : this.dataService.addcourse(courseData);
 
     submit$.subscribe(

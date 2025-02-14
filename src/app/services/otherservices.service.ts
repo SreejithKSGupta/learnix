@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { EmailService } from './email.service';
-import { Message } from '../interfaces/users';
+import { Comment } from '../interfaces/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -133,7 +133,7 @@ export class OtherServices {
     });
   }
 
-  replytomail(UserId: String, message: Message): Observable<any> {
+  replytomail(UserId: String, message: Comment): Observable<any> {
     let emailMessage = `${message.message} with urgence ${message.urgency}`;
     this.emailservice
       .sendEmail(

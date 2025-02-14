@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 20px auto;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: var(--surface-color);
   backdrop-filter: blur(10px);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -11,12 +11,12 @@
 .blog-form-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #3c3c3c;
 }
 
 .mat-form-field {
   width: 100%;
   margin-bottom: 16px;
+  background-color: var(--background-color);
 }
 
 .mat-form-field .mat-label {

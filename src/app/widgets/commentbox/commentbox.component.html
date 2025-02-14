@@ -37,7 +37,7 @@
   <div class="comment" *ngFor="let comment of comments">
     <mat-icon>account_circle</mat-icon>
     <div>
-      <strong>{{ comment.userType }}: {{ comment.senderId }}</strong>
+      <strong>{{ comment.recieverType }}: {{ comment.senderId }}</strong>
       <p>{{ comment.message }}</p>
       <small>Urgency: {{ comment.urgency }}</small>
     </div>
