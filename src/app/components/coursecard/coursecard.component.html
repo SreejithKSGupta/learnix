@@ -1,4 +1,4 @@
-<mat-card class="course-card">
+<mat-card class="course-card" [class]="course.disabled? 'disabled' : ''">
   <mat-card-header class="position-relative">
     <img mat-card-image [src]="course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp'" alt="{{ course.courseName }}" class="course-image">
     <div class="course-info-overlay">
@@ -40,7 +40,7 @@
     </div>
   </mat-card-content>
 
-  <mat-card-actions class="d-flex justify-content-center">
+  <mat-card-actions *ngIf="!course.disabled" class="d-flex justify-content-center">
     <button *ngIf="user.userType == 'student'" mat-flat-button color="warn" (click)="removeCourse(course.id!)">
       <mat-icon>delete</mat-icon> unenroll
     </button>
@@ -51,4 +51,5 @@
       view <mat-icon>arrow_forward</mat-icon>
     </button>
   </mat-card-actions>
+  <div mat-button class="course-disabled" disabled="true" *ngIf="course.disabled"> Course Disabled </div>
 </mat-card>

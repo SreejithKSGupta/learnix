@@ -2,9 +2,14 @@
   <h2>My Enrolled Courses</h2>
   <div class="coursegrid">
     <div *ngFor="let course of courses" class="coursebox">
-      <app-coursecard [course]="course" [user]="user$ | async">
+      <app-coursecard [course]="course" *ngIf="!course.disabled" [user]="user$ | async">
       </app-coursecard>
     </div>
+    <div *ngFor="let course of courses" class="coursebox">
+      <app-coursecard [course]="course" *ngIf="course.disabled" [user]="user$ | async">
+      </app-coursecard>
+    </div>
+
     <div *ngFor="let errorcourse of errorcourses">
       <mat-card>
         <mat-card-header>

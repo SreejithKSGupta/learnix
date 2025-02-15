@@ -1,11 +1,17 @@
 .course-card {
   width: 320px;
-  border-radius: 12px;
+  border-radius: var(--border-raidus);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   margin: 16px 0;
   background-color: #edededcf;
   backdrop-filter: blur(10);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.disabled{
+  user-select: none;
+  pointer-events: none;
+  filter: grayscale(10);
 }
 
 .course-card:hover {
@@ -111,4 +117,12 @@ button[mat-flat-button]:last-child {
 .notover{
   color: green !important;
 
+}
+
+.course-disabled{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+  margin-top: 20px;
 }
