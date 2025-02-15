@@ -1,45 +1,75 @@
-
 .container {
-  max-width: 900px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--text-color);
+
 }
 
+.container > div{
+  background-color: var(--surface-color);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  margin: var(--padding);
+}
 
-
-h2 {
+h2, h3 {
   font-family: 'Poppins', sans-serif;
-  user-select: none;
+  font-weight: 600;
+  color: var(--text-color);
 }
-
 
 p.lead {
   font-size: 1.1rem;
   line-height: 1.7;
   font-family: 'Roboto', sans-serif;
-  color: var(--text-color);
 }
 
-.frosted-card {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  margin: 10px;
+.mission-section, .why-choose, .cta-section {
+  padding: 30px 0;
 }
 
-.frosted-inner-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
-  border: none;
+.mission-section img {
+  max-width: 100%;
   border-radius: 8px;
 }
 
+.card {
+  border-radius: 8px;
+  backdrop-filter: brightness(0.9);
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666;
+}
+
 .btn-primary {
-  background-color: var(--buttoncolor);
-  color:white
+  background-color: #007bff;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-   backdrop-filter: brightness(0.9);
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
@@ -47,29 +77,37 @@ p.lead {
     padding: 20px;
   }
 
-  h1 {
+  h2 {
     font-size: 2.5rem;
   }
 
-  h2 {
-    font-size: 1.8rem;
+  h3 {
+    font-size: 2rem;
   }
 
   p.lead {
     font-size: 1rem;
   }
+
+  .card {
+    padding: 15px;
+  }
 }
 
 @media (max-width: 576px) {
-  h1 {
+  h2 {
     font-size: 2rem;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  h3 {
+    font-size: 1.8rem;
   }
 
   p.lead {
     font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 10px;
   }
 }

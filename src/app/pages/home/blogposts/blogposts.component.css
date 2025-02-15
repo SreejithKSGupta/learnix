@@ -1,4 +1,4 @@
-#blogsection {
+.blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px;
@@ -6,12 +6,11 @@
   width: clamp(300px, 80vw, 1400px);
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
 }
 
 
 @media (max-width: 768px) {
-  #blogsection {
+ .blog-grid {
       padding: 20px;
   }
 }

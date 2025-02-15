@@ -1,7 +1,4 @@
-
-<!-- Blog Grid -->
-<div class="blog-grid" *ngIf="!isLoading && filteredBlogs.length > 0">
-  <mat-card class="blog-card mat-elevation-z4" *ngFor="let blog of displayedBlogs">
+  <mat-card class="blog-card mat-elevation-z4">
     <img mat-card-image [src]="blog.imageURL" [alt]="blog.title" class="blog-image">
 
     <mat-card-header>
@@ -28,4 +25,3 @@
       </button>
     </mat-card-actions>
   </mat-card>
-</div>

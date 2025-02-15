@@ -1,7 +1,7 @@
 <div class="container mt-5">
-  <mat-card class="p-4 shadow-lg frosted-card">
+  <mat-card class="p-4 shadow-lg privacybox">
     <h2 class="text-center mb-4 text-primary">{{ privacyPolicy.title }}</h2>
-    <p class="lead text-muted">{{ privacyPolicy.introduction }}</p>
+    <p class="lead ">{{ privacyPolicy.introduction }}</p>
 
     <div *ngFor="let section of privacyPolicy.sections">
       <h4 class="fw-bold">{{ section.title }}</h4>

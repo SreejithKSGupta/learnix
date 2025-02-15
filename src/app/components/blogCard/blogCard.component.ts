@@ -11,9 +11,7 @@ import { OtherServices } from '../../services/otherservices.service';
     styleUrls: ['./blogCard.component.css']
 })
 export class BlogCardComponent {
-    @Input() isLoading: any
-    @Input() filteredBlogs: any
-    @Input() displayedBlogs: any
+    @Input() blog:any;
     constructor (
       private router : Router,
       private otherservices: OtherServices

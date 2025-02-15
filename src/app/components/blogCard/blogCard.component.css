@@ -1,14 +1,5 @@
-/* Blog Grid Styling */
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 2rem;
-}
-
 .blog-card {
   height: 100%;
-  /* width: clamp(250px, 80%, 350px); */
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

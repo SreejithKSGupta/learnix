@@ -67,7 +67,14 @@
     <div class="summarytxt">
       Showing {{ displayedBlogs.length }} of {{ totalBlogs }} Blogs
     </div>
-<app-blogCard [isLoading]="isLoading" [filteredBlogs]="filteredBlogs" [displayedBlogs]="displayedBlogs"></app-blogCard>
+<div class="blog-grid" *ngIf="!isLoading && filteredBlogs.length > 0">
+      <!-- Courses Grid -->
+
+          <app-blogCard
+            [blog]="blog"
+            *ngFor="let blog of displayedBlogs"
+          ></app-blogCard>
+      </div>
 <!-- Pagination -->
 <mat-paginator *ngIf="filteredBlogs.length > 0"
                [length]="totalBlogs"
