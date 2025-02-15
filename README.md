@@ -9,7 +9,7 @@
 
 
 ## priority order
-- complete poreference page
+- complete preference page
 - messages should show in user dashboard from other users too, and in notifications
 - complete feature page
 

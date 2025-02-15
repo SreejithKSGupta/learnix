@@ -48,6 +48,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // if user$ is not null then redirect to home page
+    this.user$.subscribe((user) => {
+      if (user) {
+        this.router.navigate(['/dashboard']);
+      }
+    });
+
     this.firstFormGroup = this._formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

@@ -20,6 +20,7 @@ import { selectUserState } from '../../../store/selectors/user.selector';
 export class StudentdashboardComponent {
   courses: Course[] = [];
   user$: Observable<User | null>;
+  errorcourses: any = [];
 
   constructor(
     private router: Router,
@@ -43,9 +44,28 @@ export class StudentdashboardComponent {
   }
   private loadUserCourses(userCourses: { id: string }[] = []): void {
     userCourses.forEach((courseItem) => {
-      this.dataservice.getcoursebyid(courseItem.id).subscribe((course) => {
-        this.courses.push(course);
+      this.dataservice.getcoursebyid(courseItem.id).subscribe({
+        next: (course) => {
+          this.courses.push(course);
+        },
+        error: () => {
+          this.errorcourses.push(courseItem.id);
+          console.log(this.errorcourses);
+        }
       });
     });
+
+  }
+
+  remove404course(id:String){
+     this.errorcourses = this.errorcourses.filter((courseId: string) => courseId !== id);
+     let userid = ''
+     this.user$.subscribe((user) => {
+      if (user) {
+        userid = user.id;
+      }
+    });
+
+    this.userservice.removeFromCourse(userid,id).subscribe();
   }
 }

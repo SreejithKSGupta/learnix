@@ -868,36 +868,6 @@
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
       "courses": [
         {
-          "id": "5b8c",
-          "expiry": 1743360784396,
-          "date": 1738176784396,
-          "completion": 0
-        },
-        {
-          "id": "4227",
-          "expiry": 1744445868711,
-          "date": 1739261868711,
-          "completion": 0
-        },
-        {
-          "id": "7726",
-          "expiry": 1744445878642,
-          "date": 1739261878642,
-          "completion": 0
-        },
-        {
-          "id": "4",
-          "expiry": 1744454903118,
-          "date": 1739270903118,
-          "completion": 0
-        },
-        {
-          "id": "5",
-          "expiry": 1744532267219,
-          "date": 1739348267219,
-          "completion": 0
-        },
-        {
           "id": "1739516686067",
           "expiry": 1744782315410,
           "date": 1739598315410,

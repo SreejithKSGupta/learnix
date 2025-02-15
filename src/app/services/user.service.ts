@@ -207,4 +207,24 @@ export class Userservice {
       })
     );
   }
+
+
+  removeuserfromcourse(userID: string, courseID: String): Observable<any> {
+      return this.getuserbyid(userID).pipe(
+        switchMap((user) => {
+          const url = `${this.userurl}/${userID}`;
+          const courseIndex = user.courses.findIndex(
+            (course: UserCourse) => course.id === courseID
+            );
+            if (courseIndex !== -1) {
+              user.courses.splice(courseIndex, 1);
+            } else {
+              console.error(
+                `Course with ID ${courseID} not found in user's courses.`
+                );
+            }
+            return this.http.put<any>(url, user);
+            })
+            );
+  }
 }

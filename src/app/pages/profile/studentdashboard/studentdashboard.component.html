@@ -1,11 +1,26 @@
 <div class="enrolled-courses mt-4">
-  <h2>My Enrolled Courses </h2>
+  <h2>My Enrolled Courses</h2>
   <div class="coursegrid">
     <div *ngFor="let course of courses" class="coursebox">
-      <app-coursecard
-        [course]="course"
-        [user]="(user$ | async)">
+      <app-coursecard [course]="course" [user]="user$ | async">
       </app-coursecard>
+    </div>
+    <div *ngFor="let errorcourse of errorcourses">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Not available</mat-card-title>
+          <mat-card-subtitle>Course not found</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Course with course id {{ errorcourse }} not found.
+        </mat-card-content>
+        <mat-card-actions align="start">
+          <button mat-flat-button class="btn-danger" (click)="remove404course(errorcourse)">
+            Remove course
+          </button>
+        </mat-card-actions>
+        <mat-card-footer> You cannot interact with this course </mat-card-footer>
+      </mat-card>
     </div>
   </div>
 </div>
