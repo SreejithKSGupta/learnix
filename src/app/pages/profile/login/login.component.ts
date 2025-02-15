@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { User } from '../../../interfaces/users';
 import { Userservice } from '../../../services/user.service';
+import { EmailService } from './../../../services/email.service';
 
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
 import { ActivatedRoute } from '@angular/router';
@@ -26,6 +27,10 @@ export class LoginComponent implements OnInit {
   user$: Observable<User | null>;
   iseditmode:Boolean|undefined;
   currentuserdata!:User;
+  showsignin=false;
+  otpSent = false;
+  optshow=false;
+  otp: string = '';
 
 
   constructor(
@@ -35,7 +40,8 @@ export class LoginComponent implements OnInit {
     private cloudinaryService: CloudinarymanagerService,
     private route: ActivatedRoute,
     private store: Store,
-    private otherservices:OtherServices
+    private otherservices:OtherServices,
+    private emailservice:EmailService
 
   ) {
         this.user$ = this.store.select(selectUserState);
@@ -59,9 +65,12 @@ export class LoginComponent implements OnInit {
       {
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
+        otp: ['', Validators.required],
       },
       { validators: this.passwordMatchValidator }
     );
+
+    this.optshow=true;
 
     this.signupForm = this._formBuilder.group({
       firstFormGroup: this.firstFormGroup,
@@ -70,8 +79,6 @@ export class LoginComponent implements OnInit {
     });
     this.route.queryParams.subscribe((params) => {
       const userId = params['id'];
-      console.log(userId);
-
       if (userId) {
         this.iseditmode = true;
         this.userservice.getuserbyid(userId).subscribe((user) => {
@@ -137,7 +144,10 @@ export class LoginComponent implements OnInit {
       this.otherservices.showalert('error', 'Please fill all required fields correctly');
       return;
     }
-
+     if(this.otp != this.thirdFormGroup.get('otp')?.value){
+      alert("OTP is not valid");
+      return;
+     }
     try {
       // Create user object from form data, safely handling undefined currentuserdata
       const user: User = {
@@ -252,4 +262,44 @@ export class LoginComponent implements OnInit {
   get isStudent(): boolean {
     return this.firstFormGroup.get('userType')?.value === 'student';
   }
+
+    // Send OTP when button clicked
+    sendOtp() {
+      console.log("calling otp fn");
+      console.log(this.firstFormGroup.get('email')?.value);
+
+
+      if (this.firstFormGroup.get('email')?.valid) {
+        const email = this.firstFormGroup.get('email')?.value;
+        this.otp = Math.floor(1000 + Math.random() * 9000).toString();
+         console.log("Sending otp = ",this.otp);
+
+        // Send OTP email to the user
+        this.emailservice
+          .sendEmail(
+            'otp',
+            email,
+            'Sreejith KS',
+            'Learner',
+            'Learnix replied',
+            `Your OTP is ${this.otp}. Please do not share it with anyone.`
+          )
+          .then(() => {
+            this.otherservices
+              .showalert('success', 'OTP sent to your email successfully')
+              .subscribe();
+              this.showsignin = true;
+              this.optshow = false;
+              this.otpSent = true;
+          })
+          .catch(() => {
+            this.otherservices
+              .showalert('error', 'Unable to send OTP at the moment')
+              .subscribe();
+              this.optshow = true;
+              this.otpSent = false;
+          });
+      }
+    }
+
 }

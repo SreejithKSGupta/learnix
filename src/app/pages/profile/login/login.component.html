@@ -173,13 +173,42 @@
             >
           </mat-form-field>
 
+              <!-- Send OTP Button -->
+        <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        class="full-width"
+        *ngIf="!showsignin && !otpSent"
+        (click)="sendOtp()"
+      >
+        {{ 'Send OTP' }}
+      </button>
+
+        <mat-form-field appearance="fill" *ngIf="otpSent" class="full-width">
+          <mat-label>OTP</mat-label>
+          <input
+            matInput
+            formControlName="otp"
+            type="text"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="signupForm.get('otp')?.hasError('required')">
+            OTP is required.
+          </mat-error>
+          <mat-error *ngIf="signupForm.get('otp')?.hasError('pattern')">
+            OTP must be a 4-digit number.
+          </mat-error>
+        </mat-form-field>
+
+
           <div class="step-buttons">
             <button mat-button matStepperPrevious>Back</button>
             <button
               mat-button
               matStepperNext
               type="submit"
-              [disabled]="!thirdFormGroup.valid"
+              [disabled]="!thirdFormGroup.valid && otpSent"
             >
               Complete
             </button>
