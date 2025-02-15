@@ -1,3 +1,5 @@
+import { OtherServices } from './../../../services/otherservices.service';
+import { EmailService } from './../../../services/email.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,30 +17,29 @@ export class ForgotpasswordComponent implements OnInit {
   otpForm: FormGroup;
   passwordResetForm: FormGroup;
 
-  currentStep: number = 1;  // Track the current step (1 = Email, 2 = OTP, 3 = Password Reset)
+  currentStep: number = 1;
 
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  user: any = null;  // Will store the user object after email verification
-  otp: string = '1234';  // The fixed OTP for this implementation
+  user: any = null;
+  otp: string = '';
 
   constructor(
     private fb: FormBuilder,
     private userService: Userservice,
-    private router: Router
+    private router: Router,
+    private emailService: EmailService,
+    private otherService: OtherServices
   ) {
-    // Email Input Form
     this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
 
-    // OTP Verification Form
     this.otpForm = this.fb.group({
-      otp: ['', [Validators.required, Validators.pattern('1234')]]  // Only '1234' is valid
+          otp: ['', [Validators.required, Validators.pattern(/^\d{4}$/)]]
     });
 
-    // Password Reset Form
     this.passwordResetForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
@@ -49,7 +50,6 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Validator to check if both new password and confirm password match
   passwordMatchValidator(formGroup: FormGroup) {
     if (formGroup.get('newPassword')?.value !== formGroup.get('confirmPassword')?.value) {
       return { mismatch: true };
@@ -57,7 +57,6 @@ export class ForgotpasswordComponent implements OnInit {
     return null;
   }
 
-  // Step 1: Email Input
   onEmailSubmit(): void {
     const { email } = this.forgotPasswordForm.value;
 
@@ -66,9 +65,28 @@ export class ForgotpasswordComponent implements OnInit {
         this.user = users.find((u: any) => u.email === email);
 
         if (this.user) {
-          this.currentStep = 2;  // Show OTP input
+          this.currentStep = 2;
           this.errorMessage = null;
           this.successMessage = null;
+          this.otp = Math.floor(1000 + Math.random() * 9000).toString();
+          console.log(this.otp);
+          this.emailService
+      .sendEmail(
+        'otp',
+        'sreejithksgupta2255@gmail.com',
+        'Sreejith KS',
+        'Learner',
+        'Learnix replied',
+        ` Your OTP is ${this.otp}, please do not share it with anyone. if you did not request this, please ignore this email. `
+      )
+      .then((response) => {
+        this.otherService.showalert('success', 'OTP sent to your email succesfully').subscribe((result) => {});
+      })
+      .catch((error) => {
+        this.otherService.showalert('info', 'Unble to send otp at the moment').subscribe((result) => {});
+      });
+
+
         } else {
           this.errorMessage = 'No account found with that email address.';
           this.successMessage = null;
@@ -82,12 +100,11 @@ export class ForgotpasswordComponent implements OnInit {
     );
   }
 
-  // Step 2: OTP Verification
   onOtpSubmit(): void {
     const { otp } = this.otpForm.value;
 
     if (otp === this.otp) {
-      this.currentStep = 3;  // Show password reset input
+      this.currentStep = 3;
       this.errorMessage = null;
       this.successMessage = null;
     } else {
@@ -96,12 +113,10 @@ export class ForgotpasswordComponent implements OnInit {
     }
   }
 
-  // Step 3: Password Reset
   onPasswordResetSubmit(): void {
     if (this.passwordResetForm.valid) {
       const { newPassword } = this.passwordResetForm.value;
 
-      // Update the user password in the data
       this.user.password = newPassword;
       console.log('Updating user:', this.user);
 

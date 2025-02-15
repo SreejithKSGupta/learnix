@@ -7,19 +7,24 @@
       <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="form-group">
           <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Name or Email</mat-label>
+            <mat-label>Email</mat-label>
             <input
               matInput
-              formControlName="nameOrEmail"
-              type="text"
+              formControlName="email"
+              type="email"
+              (ngModelChange)="onEmailChange()"
               autocomplete="username"
               spellcheck="false"
             />
-            <mat-error *ngIf="signinForm.get('nameOrEmail')?.hasError('required')">
-              Name or Email is required.
+            <mat-error *ngIf="signinForm.get('email')?.hasError('required')">
+              Email is required.
+            </mat-error>
+            <mat-error *ngIf="signinForm.get('email')?.hasError('email')">
+              Please enter a valid email address.
             </mat-error>
           </mat-form-field>
         </div>
+
         <div class="form-group">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Password</mat-label>
@@ -37,19 +42,50 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <button mat-flat-button color="primary" type="submit" class="full-width">
-          Sign In
+
+
+
+        <!-- Send OTP Button -->
+        <button
+          mat-flat-button
+          color="primary"
+          type="button"
+          class="full-width"
+          *ngIf="!showsignin && !otpSent"
+          [disabled]="!optshow || loading"
+          (click)="sendOtp()"
+        >
+          {{ loading ? 'Sending OTP...' : 'Send OTP' }}
         </button>
+
+        <div class="form-group" *ngIf="otpSent">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>OTP</mat-label>
+            <input
+              matInput
+              formControlName="otp"
+              type="text"
+              autocomplete="off"
+            />
+            <mat-error *ngIf="signinForm.get('otp')?.hasError('required')">
+              OTP is required.
+            </mat-error>
+            <mat-error *ngIf="signinForm.get('otp')?.hasError('pattern')">
+              OTP must be a 4-digit number.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Submit Button -->
+        <button mat-flat-button color="accent" type="submit" class="full-width" [disabled]="loading" *ngIf="showsignin">
+          {{ loading ? 'Verifying...' : 'Sign In' }}
+        </button>
+
+        <!-- Error Message -->
         <div *ngIf="errorMessage" class="error-message mt-2">
           {{ errorMessage }}
         </div>
       </form>
     </mat-card-content>
-    <mat-card-actions class="text-center">
-      <div class="button-group">
-        <button mat-button [routerLink]="'/forgot-password'">Forgot Password?</button>
-        <button mat-button [routerLink]="'/login'">New User</button>
-      </div>
-    </mat-card-actions>
   </mat-card>
 </div>

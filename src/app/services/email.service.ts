@@ -28,8 +28,12 @@ export class EmailService {
       subject: subject,
       message: message
     };
+   if (emailtype === 'otp') {
+      console.log("Email is an otp.");
+     return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
-    // if (emailtype === 'subscription') {
+    }
+    // else if (emailtype === 'subscription') {
     //   console.log("Email is a subscription.");
     //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 

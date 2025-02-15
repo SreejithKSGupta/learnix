@@ -21,7 +21,8 @@ import { CourseviewpageComponent } from './dynamicpages/courseviewpage/coursevie
 import { SettingsComponent } from './pages/otherpages/settings/settings.component';
 
 export const router: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
+  {path:'home',component:HomeComponent},
   { path: 'settings', component: SettingsComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'blog/:id', component: BlogviewpageComponent },

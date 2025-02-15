@@ -98,6 +98,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
           tooltip: 'Add Blog',
           icon: 'description',
         },
+        {
+          path: '/settings',
+          label: 'Preferences',
+          tooltip: 'Preferences',
+          icon: 'preferences',
+        },
+        {
+          path: '/features',
+          label: 'Features',
+          tooltip: 'Features',
+          icon: 'features',
+        },
       ],
     },
   ];
