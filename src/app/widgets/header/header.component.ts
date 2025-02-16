@@ -169,7 +169,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onSearch(event: Event) {
     event.preventDefault();
     if (this.searchQuery.trim()) {
-      console.log('Searching for:', this.searchQuery);
     }
   }
 

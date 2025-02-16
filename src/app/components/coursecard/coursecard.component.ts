@@ -43,9 +43,7 @@ export class CourseCardComponent implements OnChanges {
   }
 
   removeCourse(courseID: string) {
-    console.log('removecourse');
     this.userservice.removeFromCourse(this.user.id, courseID).subscribe((res) => {
-      alert('Successfully removed from course');
       // Dynamically remove the course from the user's course list
       this.user.courses = this.user.courses.filter((course: { id: string }) => course.id !== courseID);
       window.location.reload();
@@ -53,7 +51,6 @@ export class CourseCardComponent implements OnChanges {
   }
 
   gotocourse(id: String) {
-    console.log('gotocourse');
     this.router.navigate(['/course', id]);
   }
 
@@ -64,7 +61,6 @@ export class CourseCardComponent implements OnChanges {
 
   deleteCourse(courseId: string) {
     this.dataservice.removecourse(courseId).subscribe((res: any) => {
-      alert('Successfully deleted course');
       window.location.reload();
     });
   }

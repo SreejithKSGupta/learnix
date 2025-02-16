@@ -73,13 +73,12 @@ export class ContactUsComponent implements OnInit {
     // Use the service to send data to the backend
     this.otherServices.submitContactForm(message).subscribe({
       next: (response) => {
-        console.log('Form submitted successfully:', response);
         // Show success message or redirect
         this.contactForm.reset();
         this.router.navigate(['/']);
       },
       error: (error) => {
-        console.error('Error submitting form:', error);
+        alert('Error submitting form:');
         // Show error message
       }
     });

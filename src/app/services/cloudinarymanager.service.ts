@@ -49,11 +49,9 @@ export class CloudinarymanagerService {
       this.compressImage(file).then((compressedFile) => {
 
         const url = `https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`;
-        console.log(`Cloudinary uploading file ${file.name} to ${url}`);
 
         const formData = new FormData();
         formData.append('file', compressedFile);
-        console.log()
         formData.append('upload_preset', this.uploadPreset);
 
         this.http.post<any>(url, formData).pipe(

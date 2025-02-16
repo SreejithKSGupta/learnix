@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { Comment } from '../../interfaces/comment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-courseviewpage',
@@ -24,16 +25,21 @@ export class CourseviewpageComponent {
   }
 
 
-  constructor(private router: Router, private data: DataService) {}
+  constructor(private router: Router, private data: DataService,private titleService: Title) {}
   ngOnInit(): void {
     this.course$=this.data.getcoursebyid(this.router.url.split('/')[2])
-    this.course$.subscribe((data:any) => {
-      this.course = data;
-    })
+    this.course$.subscribe({
+      next: (data: any) => {
+        this.course = data;
+        this.titleService.setTitle(data.courseName);
+      },
+      error: (error: any) => {
+        this.router.navigate(['/404'], { queryParams: { errorCode: 413 } });
+      }
+    });
   }
 
   onAddComment(newComment:any) {
-    console.log('New Comment:', newComment);
 
 
     this.course!.comments!.push(newComment);

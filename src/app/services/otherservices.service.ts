@@ -37,7 +37,6 @@ export class OtherServices {
         emailMessage
       )
       .then((response) => {
-        console.log('Email sent successfully:', response);
       })
       .catch((error) => {
         console.error('Error sending email:', error);
@@ -49,8 +48,7 @@ export class OtherServices {
       .post<any>(this.courseurl, contactData)
       .pipe(catchError(this.handleError('submitContactForm')))
       .subscribe(
-        (res) => console.log('Form submitted successfully:', res),
-        (err) => console.error('Error submitting form:', err)
+
       );
 
     return new Observable<any>();
@@ -154,12 +152,11 @@ export class OtherServices {
       const url = `${this.userurl}/${UserId}`;
       return this.http.get<any>(url).pipe(
         switchMap((user) => {
-          console.log(user);
+          (user);
           if (!user.messages) {
             user.messages = [];
           }
           user.messages.push(message);
-          console.log(user.Message, UserId);
           return this.http.put<any>(url, user);
         })
       );

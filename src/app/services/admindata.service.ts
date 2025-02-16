@@ -59,7 +59,6 @@ export class AdmindataService {
 
   sendBulkEmail(message: string, subscribers: any[]): Observable<any> {
     const emails = subscribers.map(subscriber => subscriber.emailid);
-    console.log(emails, message);
     emails.forEach(email=>{
       this.emailservice.sendEmail(
        'messagereply',

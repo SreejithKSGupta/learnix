@@ -19,7 +19,6 @@ export class DataService {
   }
 
   addcourse(item: any): Observable<any> {
-    console.log(item);
 
     return this.http.post<any>(this.courseurl, item);
   }
@@ -39,7 +38,6 @@ export class DataService {
   }
 
   updateCourse(courseData: any, id:string) {
-    console.log(courseData);
     const url = `${this.courseurl}/${id}`;
     return this.http.put<any>(url, courseData);
   }

@@ -56,8 +56,6 @@ export class BlogpostsComponent implements OnInit {
   fetchBlogs(): void {
     this.blogservice.getBlogs().subscribe((Blogs) => {
       this.blogs = Blogs.slice(0,3);
-      console.log(this.blogs);
-
     });
   }
 }

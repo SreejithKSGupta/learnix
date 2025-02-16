@@ -182,7 +182,6 @@ export class LoginComponent implements OnInit {
       if (!this.iseditmode) {
          this.userservice.checkIfUserExists(user).subscribe(async res=>{
           if (res) {
-            console.log('User already exists',res);
             this.router.navigate(['/signin']);
             this.otherservices.showalert('error', 'User already exists').subscribe(() => {
             });
@@ -215,12 +214,10 @@ export class LoginComponent implements OnInit {
               // Update existing user
               this.userservice.updateuser(user).pipe(
                 tap((res) => {
-                  console.log('User updated successfully:', res);
                   this.otherservices.showalert('success', 'Profile updated successfully');
                   this.router.navigate(['/dashboard']);
                 }),
                 catchError((error) => {
-                  console.error('Update failed:', error);
                   this.otherservices.showalert('error', 'Failed to update profile');
                   return throwError(() => error);
                 })
@@ -229,7 +226,6 @@ export class LoginComponent implements OnInit {
               // Add new user
               this.userservice.addUser(user).pipe(
                 tap((res) => {
-                  console.log('User created successfully:', res);
                   this.userservice.signin(user);
                   this.otherservices.showalert('success', 'Sign-up successful! Welcome to our platform');
                 }),
@@ -260,7 +256,6 @@ export class LoginComponent implements OnInit {
 
 
   navigateToProfile() {
-    console.log('Navigating to profile page...');
     this.router.navigate(['/dashboard']);
   }
 
@@ -273,14 +268,9 @@ export class LoginComponent implements OnInit {
 
     // Send OTP when button clicked
     sendOtp() {
-      console.log("calling otp fn");
-      console.log(this.firstFormGroup.get('email')?.value);
-
-
       if (this.firstFormGroup.get('email')?.valid) {
         const email = this.firstFormGroup.get('email')?.value;
         this.otp = Math.floor(1000 + Math.random() * 9000).toString();
-         console.log("Sending otp = ",this.otp);
 
         // Send OTP email to the user
         this.emailservice

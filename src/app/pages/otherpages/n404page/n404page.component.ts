@@ -13,6 +13,8 @@ export class N404pageComponent implements OnInit {
     '18': 'The requested course is not found',
     '21': 'Knock, knock.. FBI , Identify yourself',
     '401': 'Unauthorized access',
+    '413': 'requested course not found',
+    "423": 'The requested Blog is not found',
     '403': 'Forbidden access',
     '5558': 'Be careful, curiosity kills the cat',
     '5559': 'Found it, didn\'t you? a proverb says....',

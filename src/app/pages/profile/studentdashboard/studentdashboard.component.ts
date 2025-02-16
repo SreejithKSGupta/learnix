@@ -50,7 +50,6 @@ export class StudentdashboardComponent {
         },
         error: () => {
           this.errorcourses.push(courseItem.id);
-          console.log(this.errorcourses);
         }
       });
     });

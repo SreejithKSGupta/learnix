@@ -72,7 +72,6 @@ export class Userservice {
         this.otherservices
           .showalert('success', 'Welcome to Learnix')
           .subscribe(res=>{
-            console.log(res);
           });
 
         localStorage.setItem('users', JSON.stringify(newUser.id));

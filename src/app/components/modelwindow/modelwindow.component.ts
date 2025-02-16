@@ -33,7 +33,6 @@ export class ModelwindowComponent {
     @Inject(MAT_DIALOG_DATA)
     public course: Course
   ) {
-    console.log(this.course);
   }
 
   ngOnInit(): void {
@@ -56,7 +55,6 @@ export class ModelwindowComponent {
       .showalert('confirm', 'Editing Blog?')
       .subscribe((result) => {
         if (result == 'yes') {
-          console.log('editing course', this.course.id);
           this.router.navigate(['/addcourse'], {
             queryParams: { id: this.course.id },
           });
@@ -93,7 +91,6 @@ export class ModelwindowComponent {
   }
 
   ReadMore(id: String) {
-    console.log('courseid: ', id);
     this.dialogRef.close();
     this.router.navigate(['/course', id]);
   }

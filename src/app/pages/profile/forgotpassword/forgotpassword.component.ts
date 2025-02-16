@@ -69,7 +69,6 @@ export class ForgotpasswordComponent implements OnInit {
           this.errorMessage = null;
           this.successMessage = null;
           this.otp = Math.floor(1000 + Math.random() * 9000).toString();
-          console.log(this.otp);
           this.emailService
       .sendEmail(
         'otp',
@@ -93,7 +92,6 @@ export class ForgotpasswordComponent implements OnInit {
         }
       },
       (error) => {
-        console.error('Error fetching users:', error);
         this.errorMessage = 'An error occurred while processing your request. Please try again.';
         this.successMessage = null;
       }
@@ -118,11 +116,9 @@ export class ForgotpasswordComponent implements OnInit {
       const { newPassword } = this.passwordResetForm.value;
 
       this.user.password = newPassword;
-      console.log('Updating user:', this.user);
 
       this.userService.updateuser(this.user).subscribe(
         (response) => {
-          console.log('User updated:', response);
           this.successMessage = 'Your password has been successfully updated.';
           this.errorMessage = null;
           this.currentStep = 1;
@@ -132,7 +128,6 @@ export class ForgotpasswordComponent implements OnInit {
           this.router.navigate(['/signin']);
         },
         (error) => {
-          console.error('Error updating user:', error);
           this.errorMessage = 'An error occurred while resetting your password. Please try again.';
           this.successMessage = null;
         }

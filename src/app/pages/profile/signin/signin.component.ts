@@ -97,7 +97,6 @@ export class SigninComponent implements OnInit {
         );
         if (user && otp === this.otp) {
           this.userService.signin(user);
-          console.log("login successfull for user", user);
 
           this.router.navigate(['/dashboard']);
         } else {

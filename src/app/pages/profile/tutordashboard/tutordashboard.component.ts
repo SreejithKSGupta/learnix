@@ -40,7 +40,6 @@ export class TutordashboardComponent {
         error: (err) => console.error('Error fetching user data:', err),
       })
     ).subscribe(res=>{
-      console.log(res);
       this.loadUserCourses(res!.name);
 
 
@@ -56,7 +55,6 @@ private loadUserCourses(username: string): void {
       }
     });
   });
-  console.log(this.courses);
 
 }
 }

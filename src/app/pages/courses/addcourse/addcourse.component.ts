@@ -86,7 +86,6 @@ export class AddcourseComponent implements OnInit {
         });
       },
       (error) => {
-        console.error('Error fetching course:', error);
         this.router.navigate(['/404'], { queryParams: { errorCode: '18' } });
       }
     );
@@ -94,7 +93,6 @@ export class AddcourseComponent implements OnInit {
 
   onFileSelected(file: File | null): void {
     this.selectedFile = file;
-    console.log('File received:', file);
   }
 
   hasError(controlName: string): boolean {
@@ -146,7 +144,6 @@ export class AddcourseComponent implements OnInit {
               this.submitForm(url);
             },
             (error: any) => {
-              console.error('Error uploading image:', error);
               this.otherServices.showalert('info', 'Image upload failed. Try again!').subscribe();
             }
           );
@@ -194,7 +191,6 @@ export class AddcourseComponent implements OnInit {
         this.router.navigate(['/courses']);
       },
       (error) => {
-        console.error(`Failed to ${this.isEditMode ? 'update' : 'add'} course:`, error);
         alert(`Failed to ${this.isEditMode ? 'update' : 'add'} course. Please try again.`);
       }
     );

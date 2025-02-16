@@ -29,25 +29,20 @@ export class EmailService {
       message: message
     };
    if (emailtype === 'otp') {
-      console.log("Email is an otp.");
      return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     }
     // else if (emailtype === 'subscription') {
-    //   console.log("Email is a subscription.");
     //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     // } else if (emailtype === 'contactmessage') {
 
-    //   console.log("Email is a contact message.");
     //   // return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
 
     // } else if (emailtype === 'messagereply') {
-    //   console.log("emailisa messagereply");
 
     //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
     // } else if (emailtype === 'othermsg') {
-    //   console.log("emailisa othermessage");
 
     //   return emailjs.send(this.serviceId, this.templateId, templateParams, this.userId);
     // }else {

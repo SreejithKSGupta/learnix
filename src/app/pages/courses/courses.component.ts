@@ -82,9 +82,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
       return;
     }
 
-    console.log(user.userType);
-
-
     if (!['tutor', 'student', 'admin' ,undefined].includes(user.userType)) {
       this.router.navigate(['/n404'], { queryParams: { errorCode: '21' } });
       return;
@@ -114,7 +111,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.applyFilters(this.filterState$.value);
       }
     } catch (error) {
-      console.error('Error fetching courses:', error);
       // Handle error appropriately
     } finally {
       this.loading = false;

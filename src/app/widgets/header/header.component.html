@@ -51,7 +51,7 @@
   <!-- Action Buttons -->
   <div class="action-buttons">
     <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn" title="Notifications">
-      <mat-icon [matBadge]="getNotificationCount()" [matBadgeHidden]="!getNotificationCount()" matBadgeColor="warn">
+      <mat-icon [matBadge]="getNotificationCount()" aria-hidden="false" [matBadgeHidden]="!getNotificationCount()" matBadgeColor="warn">
         notifications
       </mat-icon>
     </button>
@@ -146,7 +146,7 @@
       <mat-divider></mat-divider>
       <div class="mobile-user-actions">
         <button mat-button [matMenuTriggerFor]="notificationsMenu" title="Notifications" >
-          <mat-icon [matBadge]="getNotificationCount()" >notifications</mat-icon>
+          <mat-icon [matBadge]="getNotificationCount()" aria-hidden="false">notifications</mat-icon>
           <span>Notifications</span>
         </button>
         <button mat-button (click)="toggleTheme()" title="Toggle Theme">

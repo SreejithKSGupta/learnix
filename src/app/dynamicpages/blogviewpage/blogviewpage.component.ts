@@ -17,20 +17,21 @@ export class BlogviewpageComponent {
   ngOnInit(){
     const url = this.router.url.split('/')
     const blogId = url[url.length - 1]
-    this.blogService.getBlogById(blogId as unknown as number).subscribe((data:any) => {
+    this.blogService.getBlogById(blogId as unknown as number).subscribe({
+      next:(data:any) => {
       this.blogData = data;
+    },
+    error:(err) => {
+      this.router.navigate(['/404'], { queryParams: { errorCode: 423 } });
+
+    }
     })
 
   }
 
   onAddComment(newComment: Comment) {
-    console.log('New Comment:', newComment);
-    console.log(this.blogData);
-
-
     this.blogData.comments.push(newComment);
     this.blogService.addcomment(this.blogData,newComment).subscribe((data:any) => {
-      console.log(data);
     })
 
   }
