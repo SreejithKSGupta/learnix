@@ -67,4 +67,12 @@ export class StudentdashboardComponent {
 
     this.userservice.removeFromCourse(userid,id).subscribe();
   }
+
+  deleteMessage(message:any){
+     console.log(message);
+     
+  }
+  replytomsg(message:any){
+    console.log(message);
+  }
 }

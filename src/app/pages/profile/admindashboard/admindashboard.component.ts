@@ -5,7 +5,7 @@ import { Course } from '../../../interfaces/course';
 import { Userservice } from '../../../services/user.service';
 import { DataService } from '../../../services/data.service';
 import { OtherServices } from '../../../services/otherservices.service';
-import {  User } from '../../../interfaces/users';
+import { User } from '../../../interfaces/users';
 import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 import { AdmindataService } from '../../../services/admindata.service';
 import { forkJoin, Observable } from 'rxjs';
@@ -27,7 +27,7 @@ export class AdmindashboardComponent implements OnInit {
   emailMessage: string = '';
   statistics: any;
   user$: Observable<User | null>;
-  user!:User;
+  user!: User;
 
   constructor(
     private userservice: Userservice,
@@ -39,9 +39,8 @@ export class AdmindashboardComponent implements OnInit {
   ) {
     this.user$ = this.store.select(selectUserState);
     this.user$.subscribe((user) => {
-    this.user = user!;
+      this.user = user!;
     });
-
   }
 
   ngOnInit(): void {
@@ -60,7 +59,13 @@ export class AdmindashboardComponent implements OnInit {
   }
 
   updateStatistics(): void {
-    if (!this.allusers || !this.allcourses || !this.allsubscribers || !this.allcontacts) return;
+    if (
+      !this.allusers ||
+      !this.allcourses ||
+      !this.allsubscribers ||
+      !this.allcontacts
+    )
+      return;
 
     this.statistics = {
       users: {
@@ -108,129 +113,165 @@ export class AdmindashboardComponent implements OnInit {
   }
 
   deleteSubscriber(subscriber: any): void {
-    this.otherServices.showalert('confirm', 'Delete Subscriber?').subscribe((res) => {
-      if (res === 'yes') {
-        this.adminservice.deleteSubscriber(subscriber).subscribe({
-          next: () => {
-            this.allsubscribers = this.allsubscribers.filter((sub) => sub.id !== subscriber.id);
-            this.otherServices.showalert('success', 'Subscriber deleted successfully.');
-          },
-          error: () => {
-            this.otherServices.showalert('info', 'Error deleting subscriber.');
-          },
-        });
-      }
-    });
+    this.otherServices
+      .showalert('confirm', 'Delete Subscriber?')
+      .subscribe((res) => {
+        if (res === 'yes') {
+          this.adminservice.deleteSubscriber(subscriber).subscribe({
+            next: () => {
+              this.allsubscribers = this.allsubscribers.filter(
+                (sub) => sub.id !== subscriber.id
+              );
+              this.otherServices.showalert(
+                'success',
+                'Subscriber deleted successfully.'
+              );
+            },
+            error: () => {
+              this.otherServices.showalert(
+                'info',
+                'Error deleting subscriber.'
+              );
+            },
+          });
+        }
+      });
   }
 
   sendEmailToAll(): void {
     if (!this.emailMessage.trim()) {
-      this.otherServices.showalert('info', 'Please enter a message before sending.');
+      this.otherServices.showalert(
+        'info',
+        'Please enter a message before sending.'
+      );
       return;
     }
 
-    this.adminservice.sendBulkEmail(this.emailMessage, this.allsubscribers).subscribe({
-      next: () => {
-        this.otherServices.showalert('success', 'Email sent to all subscribers!');
-        this.emailMessage = '';
-      },
-      error: () => {
-        this.otherServices.showalert('info', 'Error sending email.');
-      },
-    });
+    this.adminservice
+      .sendBulkEmail(this.emailMessage, this.allsubscribers)
+      .subscribe({
+        next: () => {
+          this.otherServices.showalert(
+            'success',
+            'Email sent to all subscribers!'
+          );
+          this.emailMessage = '';
+        },
+        error: () => {
+          this.otherServices.showalert('info', 'Error sending email.');
+        },
+      });
   }
 
   deleteContactMessage(id: string): void {
-    this.otherServices.showalert('confirm', 'Delete this message?').subscribe((res) => {
-      if (res === 'confirmed') {
-        this.otherServices.deleteContactMessage(id).subscribe({
-          next: () => {
-            this.allcontacts = this.allcontacts.filter((msg) => msg.id !== id);
-            this.otherServices.showalert('success', 'Message deleted successfully.');
-          },
-          error: () => {
-            this.otherServices.showalert('info', 'Error deleting message.');
-          },
-        });
-      }
-    });
+
+    this.otherServices
+      .showalert('confirm', 'Delete this message?')
+      .subscribe((res) => {
+        if (res === 'yes') {
+          this.otherServices.deleteContactMessage(id).subscribe({
+            next: () => {
+              this.allcontacts = this.allcontacts.filter(
+                (msg) => msg.id !== id
+              );
+              this.otherServices.showalert(
+                'success',
+                'Message deleted successfully.'
+              );
+            },
+            error: () => {
+              this.otherServices.showalert('info', 'Error deleting message.');
+            },
+          });
+        }
+      });
   }
 
   disableUser(id: string): void {
-    this.otherServices.showalert('confirm', 'Disable this user?').subscribe((res) => {
-      if (res === 'confirmed') {
-        this.userservice.disableUser(id).subscribe({
-          next: () => {
-            const user = this.allusers.find((u) => u.id === id);
-            if (user) user.disabled = true;
-            this.otherServices.showalert('success', 'User disabled successfully.');
-          },
-          error: () => {
-            this.otherServices.showalert('info', 'Error disabling user.');
-          },
-        });
-      }
-    });
+    this.otherServices
+      .showalert('confirm', 'Disable this user?')
+      .subscribe((res) => {
+        if (res === 'confirmed') {
+          this.userservice.disableUser(id).subscribe({
+            next: () => {
+              const user = this.allusers.find((u) => u.id === id);
+              if (user) user.disabled = true;
+              this.otherServices.showalert(
+                'success',
+                'User disabled successfully.'
+              );
+            },
+            error: () => {
+              this.otherServices.showalert('info', 'Error disabling user.');
+            },
+          });
+        }
+      });
   }
 
   disableCourse(id: string): void {
-    this.otherServices.showalert('confirm', 'Disable this course?').subscribe((res) => {
-      if (res === 'confirmed') {
-        this.dataservice.disableCourse(id).subscribe({
-          next: () => {
-            const course = this.allcourses.find((c) => c.id === id);
-            if (course) course.disabled = true;
-            this.otherServices.showalert('success', 'Course disabled successfully.');
-          },
-          error: () => {
-            this.otherServices.showalert('info', 'Error disabling course.');
-          },
-        });
-      }
-    });
+    this.otherServices
+      .showalert('confirm', 'Disable this course?')
+      .subscribe((res) => {
+        if (res === 'confirmed') {
+          this.dataservice.disableCourse(id).subscribe({
+            next: () => {
+              const course = this.allcourses.find((c) => c.id === id);
+              if (course) course.disabled = true;
+              this.otherServices.showalert(
+                'success',
+                'Course disabled successfully.'
+              );
+            },
+            error: () => {
+              this.otherServices.showalert('info', 'Error disabling course.');
+            },
+          });
+        }
+      });
   }
 
-  replyToMessage(oldmsg:any): void {
-    this.userservice.getuserbyid(oldmsg.id).subscribe(
-      (res)=>{
+  replyToMessage(oldmsg: any): void {
+    this.userservice.getuserbyid(oldmsg.senderID).subscribe((res) => {
+      let messagedata: Comment = {
+        id: String(Date.now()),
+        senderId: this.user.id,
+        senderName: this.user.name,
+        senderType: this.user.userType,
+        recieverType: res.userType,
+        recieverName: res.name,
+        recieverId: res.id,
+        message: '',
+        timestamp: new Date(),
+        urgency: 'Low',
+        status: 'pending',
+      };
 
-    let messagedata: Comment = {
-      id: String(Date.now()),
-      senderId:this.user.id,
-      senderName: this.user.name,
-      senderType: this.user.userType,
-      recieverType: res.userType,
-      recieverName: res.name,
-      recieverId:res.id,
-      message: '',
-      urgency: 'Low',
-      timestamp: new Date(),
-      status: 'pending'
-    };
+      
 
+      const dialogRef = this.dialog.open(MessagereplyComponent, {
+        width: '250px',
+        data: { message: messagedata.message, urgency: messagedata.urgency },
+      });
 
-    const dialogRef = this.dialog.open(MessagereplyComponent, {
-      width: '250px',
-      data: { message: messagedata.message, urgency: messagedata.urgency },
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          messagedata.message = result.message;
+          messagedata.urgency = result.urgency;
+
+          this.otherServices.replytomail(oldmsg.senderID, messagedata).subscribe({
+            next: () => {
+              this.otherServices.showalert(
+                'success',
+                'Reply sent successfully.'
+              );
+            },
+            error: () => {
+              this.otherServices.showalert('info', 'Error sending reply.');
+            },
+          });
+        }
+      });
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        messagedata.message = result.message;
-        messagedata.urgency = result.urgency;
-
-        this.otherServices.replytomail(oldmsg.id, messagedata).subscribe({
-          next: () => {
-            this.otherServices.showalert('success', 'Reply sent successfully.');
-          },
-          error: () => {
-            this.otherServices.showalert('info', 'Error sending reply.');
-          },
-        });
-      }
-    });
-      }
-    )
-
   }
 }

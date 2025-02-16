@@ -61,13 +61,13 @@ export class CloudinarymanagerService {
             observer.error(error);
             return [];
           })
-        ).subscribe(
-          (url) => {
+        ).subscribe({
+          next: (url) => {
             observer.next(url);
             observer.complete();
           },
-          (error) => observer.error(error)
-        );
+          error: (error) => observer.error(error)
+        });
       }).catch((error) => {
         console.error('Image compression failed:', error);
         observer.error(error);

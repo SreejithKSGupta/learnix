@@ -1,16 +1,104 @@
 .enrolled-courses {
   width: 100vw;
-
 }
 
-.coursegrid{
-  width:100vw;
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+.grid {
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.coursebox{
-  width: 320px;
+
+
+mat-card {
+  border-radius: var(--border-radius, 8px);
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+mat-card:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-header {
+  background-color: var(--card-header-bg, var(--surface-color, #f8f9fa));
+  padding: 15px;
+  border-bottom: 1px solid var(--card-border-color, var(--border-color, #ddd));
+}
+
+mat-card-title {
+  font-weight: 500;
+  color: var(--card-title-color, var(--text-color, #000));
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Card Subtitle (Sender Type) */
+mat-card-subtitle {
+  font-size: 14px;
+color: var(--text-color);
+  margin-top: 4px;
+}
+
+/* Card Content Styling */
+mat-card-content {
+  padding: 15px;
+  color: var(--card-content-color, var(--text-color, #212529));
+}
+
+/* Small Timestamp */
+p.small {
+  font-size: 12px;
+  color: var(--timestamp-color, var(--border-color, #adb5bd));
+}
+
+/* Urgency Badges */
+.badge {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 50px;
+}
+
+.badge.bg-danger {
+  background-color: var(--badge-danger-bg, #dc3545);
+}
+
+.badge.bg-warning {
+  background-color: var(--badge-warning-bg, #ffc107);
+  color: var(--badge-warning-color, #212529);
+}
+
+.badge.bg-success {
+  background-color: var(--badge-success-bg, #28a745);
+}
+
+/* Button Styling */
+mat-flat-button {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+mat-flat-button .mat-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Button Colors */
+mat-flat-button[color="warn"] {
+  background-color: var(--buttoncolor, #f44336);
+  color: white;
+}
+
+mat-flat-button[color="primary"] {
+  background-color: var(--primary-color, #007bff);
+  color: white;
+}
+
+mat-flat-button[color="warn"]:hover,
+mat-flat-button[color="primary"]:hover {
+  filter: brightness(1.1);
 }
