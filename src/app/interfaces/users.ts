@@ -11,7 +11,7 @@ export interface User {
   areaOfInterest: ("coding" | "sports" | "arts")[];
   experience: number;
   password: string;
-  imageUrl?: string;
+  imageUrl: string;
   courses?: UserCourse[];
   messages?: Comment[];
 }

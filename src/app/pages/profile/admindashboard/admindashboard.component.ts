@@ -238,6 +238,7 @@ export class AdmindashboardComponent implements OnInit {
         senderId: this.user.id,
         senderName: this.user.name,
         senderType: this.user.userType,
+        senderImg: this.user.imageUrl,
         recieverType: res.userType,
         recieverName: res.name,
         recieverId: res.id,
@@ -247,7 +248,7 @@ export class AdmindashboardComponent implements OnInit {
         status: 'pending',
       };
 
-      
+
 
       const dialogRef = this.dialog.open(MessagereplyComponent, {
         width: '250px',
@@ -274,4 +275,5 @@ export class AdmindashboardComponent implements OnInit {
       });
     });
   }
+
 }

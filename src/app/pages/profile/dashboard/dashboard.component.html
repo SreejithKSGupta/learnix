@@ -46,6 +46,58 @@
 
     </div>
 
+
+<div class=" mt-4">
+  <h2> Comments</h2>
+<div class=" grid" >
+  <div *ngFor="let message of user.messages" class="mb-3">
+    <mat-card class="shadow-sm" *ngIf="!message.deleted">
+      <mat-card-header class="d-flex align-items-center">
+        <mat-card-title class="d-flex align-items-center">
+          <mat-icon class="me-2">person</mat-icon>
+          {{ message.senderName }}
+        </mat-card-title>
+        <mat-card-subtitle class="text-light">
+          {{ message.senderType }}
+        </mat-card-subtitle>
+        <mat-card-subtitle class="text-light">
+          {{ message.timestamp }}
+        </mat-card-subtitle>
+       <div class="d-flex align-items-center">
+        {{message.read? 'Read' : 'Unread' }}
+        <mat-icon *ngIf="message.read" class="me-2">check_circle</mat-icon>
+        <mat-icon *ngIf="!message.read" class="me-2">cancel</mat-icon>
+
+
+       </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ message.message }}</p>
+        <p class="small text-secondary">{{ message.timestamp }}</p>
+
+        <span *ngIf="message.urgency === 'High'" class="badge bg-danger">High</span>
+        <span *ngIf="message.urgency === 'Medium'" class="badge bg-warning text-dark">Medium</span>
+        <span *ngIf="message.urgency === 'Low'" class="badge bg-success">Low</span>
+      </mat-card-content>
+
+      <mat-card-actions class="d-flex justify-content-between align-items-center">
+        <button mat-flat-button color="warn" (click)="deleteMessage(message)">
+          <mat-icon>delete</mat-icon> Delete
+        </button>
+        <button mat-flat-button color="warn" (click)="markasread(message)">
+          <mat-icon>done</mat-icon> mark as read
+        </button>
+        <button mat-flat-button color="primary" (click)="replyToMsg(message)">
+          <mat-icon>reply</mat-icon> reply
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+</div>
+
+
   </div>
 </div>
 

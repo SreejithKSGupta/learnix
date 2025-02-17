@@ -1,3 +1,4 @@
+import { Comment } from './../../../interfaces/comment';
 import { OtherServices } from './../../../services/otherservices.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,6 +11,8 @@ import { User } from '../../../interfaces/users';
 import { managerUserChange } from '../../../store/actions/user.action';
 import { selectUserState } from '../../../store/selectors/user.selector';
 import { CloudinarymanagerService } from '../../../services/cloudinarymanager.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
 
 @Component({
   selector: 'app-tutordashboard',
@@ -21,13 +24,14 @@ import { CloudinarymanagerService } from '../../../services/cloudinarymanager.se
 export class TutordashboardComponent {
   courses: Course[] = [];
   user$: Observable<User | null>;
-
+  user!:User;
   constructor(
     private router: Router,
     private userservice: Userservice,
     private dataservice: DataService,
     private store: Store,
-    private otherServices: OtherServices
+    private otherServices: OtherServices,
+    private dialog :MatDialog,
   ) {
     this.user$ = this.store.select(selectUserState);
   }
@@ -57,4 +61,5 @@ private loadUserCourses(username: string): void {
   });
 
 }
+
 }

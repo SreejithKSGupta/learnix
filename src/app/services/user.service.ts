@@ -1,3 +1,4 @@
+import { Comment } from './../interfaces/comment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -5,7 +6,6 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { UserCourse } from '../interfaces/users';
 import { DataService } from './data.service';
 import { EmailService } from './email.service';
-
 import { Store } from '@ngrx/store';
 import { managerUserChange } from '../store/actions/user.action';
 import { selectUserState } from '../store/selectors/user.selector';
@@ -41,7 +41,6 @@ export class Userservice {
   getusers(): Observable<any> {
     return this.http.get(this.userurl).pipe(map((res) => res));
   }
-
 
   checkIfUserExists(item: any): Observable<boolean> {
     return this.http.get<any[]>(this.userurl).pipe(
@@ -226,4 +225,46 @@ export class Userservice {
             })
             );
   }
+
+  removemessagefromuser(userID: string, messageID: string): Observable<any> {
+    return this.getuserbyid(userID).pipe(
+      switchMap((user) => {
+        const url = `${this.userurl}/${userID}`;
+        const messageIndex = user.messages.findIndex(
+          (message: Comment) => message.id === messageID
+        );
+
+        if (messageIndex !== -1) {
+          user.messages[messageIndex].deleted = true;
+          console.log('Message disabled:', user.messages[messageIndex]);
+        } else {
+          console.error(`Message with ID ${messageID} not found in user's messages.`);
+        }
+          return this.http.put<any>(url, user);
+      })
+    );
+  }
+
+  markasread(userID: string, messageID: string): Observable<any> {
+    return this.getuserbyid(userID).pipe(
+      switchMap((user) => {
+        const url = `${this.userurl}/${userID}`;
+        const messageIndex = user.messages.findIndex(
+          (message: Comment) => message.id === messageID
+        );
+
+        if (messageIndex !== -1) {
+          user.messages[messageIndex].read = true;
+          console.log('Message marked as read:', user.messages[messageIndex]);
+        } else {
+          console.error(`Message with ID ${messageID} not found in user's messages.`);
+        }
+          return this.http.put<any>(url, user);
+      })
+    );
+  }
+
+  replytomessage(userID: string,message:Comment){
+  }
+
 }

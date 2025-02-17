@@ -45,6 +45,7 @@ export class CommentboxComponent {
       senderId: this.user!.id,
       senderName:  this.user!.name,
       senderType:  this.user!.userType,
+      senderImg:this.user!.imageUrl,
       recieverType:"",
       recieverName:"",
       recieverId:'',
