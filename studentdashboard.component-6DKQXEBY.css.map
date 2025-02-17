@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/profile/studentdashboard/studentdashboard.component.css"],
-  "sourcesContent": [".enrolled-courses {\n  width: 100vw;\n\n}\n\n.coursegrid{\n  width:100vw;\n  display:flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: space-evenly;\n}\n\n.coursebox{\n  width: 320px;\n}\n"],
-  "mappings": "AAAA,CAAC,iBACC,MAAO,KAET,CAEA,CAAC,WACC,MAAM,MACN,QAAQ,KACR,eAAgB,IAChB,UAAW,KACX,gBAAiB,YACnB,CAEA,CAAC,UACC,MAAO,KACT",
-  "names": []
-}
