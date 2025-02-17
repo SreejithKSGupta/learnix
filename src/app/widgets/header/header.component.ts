@@ -1,3 +1,4 @@
+import { Comment } from './../../interfaces/comment';
 import {
   Component,
   OnInit,
@@ -12,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { User } from '../../interfaces/users';
 import { selectUserState } from '../../store/selectors/user.selector';
 import { ThemeService } from '../../services/theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -32,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   searchOpen = false;
   searchQuery = '';
   isDarkMode: boolean | undefined;
-  notifications: any[] = [];
+  unreadnotifications: Comment[]| undefined;
 
   @ViewChild('drawer') drawer!: MatDrawer;
   @ViewChild('searchInput') searchInput: any;
@@ -114,7 +116,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(private store: Store, private themeService: ThemeService) {
+  constructor(private store: Store, private themeService: ThemeService,private router: Router) {
     this.user$ = this.store.select(selectUserState);
   }
 
@@ -122,6 +124,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // User subscription
     this.userSubscription = this.user$.subscribe((user) => {
       this.logordash = user?.id ? 'Dashboard' : 'Login';
+      this.unreadnotifications = user?.id ? user?.messages?.filter((msg) => !msg.read) : [];
     });
 
     // Scroll behavior
@@ -177,7 +180,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isDarkMode = !this.isDarkMode;
   }
 
-  getNotificationCount() {
-    return this.notifications.filter((n) => !n.read).length;
-  }
+  gotomsg(message:Comment){
+    //http://localhost:4200/dashboard#231739704803558
+    this.router.navigate(['/dashboard'], { fragment: message.id });
+
+    }
+
 }

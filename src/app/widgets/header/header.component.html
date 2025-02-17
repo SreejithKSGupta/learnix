@@ -49,9 +49,9 @@
   </div>
 
   <!-- Action Buttons -->
-  <div class="action-buttons">
+  <div class="action-buttons" *ngIf="user$ | async as user">
     <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn" title="Notifications">
-      <mat-icon [matBadge]="getNotificationCount()" aria-hidden="false" [matBadgeHidden]="!getNotificationCount()" matBadgeColor="warn">
+      <mat-icon [matBadge]="unreadnotifications?.length? unreadnotifications?.length : 0" aria-hidden="false" [matBadgeHidden]="unreadnotifications?.length === 0" matBadgeColor="warn">
         notifications
       </mat-icon>
     </button>
@@ -63,7 +63,6 @@
     <button
       mat-button
       class="user-button"
-      *ngIf="user$ | async as user"
       [routerLink]="user.id ? '/dashboard' : '/signin'"
     >
       <img *ngIf="user.id" style="width:30px; border-radius:50%; padding-right: 5px;" src="{{ user.imageUrl }}" alt="user profile">
@@ -85,11 +84,16 @@
     <button mat-button color="primary">Mark all as read</button>
   </div>
   <mat-divider></mat-divider>
-  <div class="notifications-list" *ngIf="notifications.length; else noNotifications">
-    <button mat-menu-item *ngFor="let notification of notifications">
+
+  <div class="notifications-list" *ngIf="(user$ | async)?.messages?.length; else noNotifications">
+    <button mat-menu-item *ngFor="let notification of (user$ | async)?.messages" (click)="gotomsg(notification)" >
       <mat-icon [color]="notification.read ? 'default' : 'accent'">
-        {{ notification.icon || 'notifications' }}
+
+        {{ notification.senderImg || 'notifications' }}
       </mat-icon>
+      {{ notification.read ? 'notifications' : 'notifications_active' }}
+      <span>{{notification.timestamp | date: 'longDate'}}</span>
+      <span>{{notification.senderName}}</span>
       <span>{{ notification.message }}</span>
     </button>
   </div>
@@ -146,7 +150,7 @@
       <mat-divider></mat-divider>
       <div class="mobile-user-actions">
         <button mat-button [matMenuTriggerFor]="notificationsMenu" title="Notifications" >
-          <mat-icon [matBadge]="getNotificationCount()" aria-hidden="false">notifications</mat-icon>
+          <mat-icon [matBadge]="5" aria-hidden="false">notifications</mat-icon>
           <span>Notifications</span>
         </button>
         <button mat-button (click)="toggleTheme()" title="Toggle Theme">

@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.user$.subscribe(res=>{
       this.user=res!;
     })
@@ -42,7 +43,29 @@ export class DashboardComponent implements OnInit {
     if(!suerid){
       this.router.navigate(['/signin']);
     }
+    this.scrollifhash();
   }
+
+  scrollifhash() {
+    setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        console.log(hash);
+
+        // Remove the '#' from the hash value before using it with getElementById
+        const elementId = hash.replace('#', '');
+
+        const element = document.getElementById(elementId);
+
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          console.error(`Element with ID ${elementId} not found.`);
+        }
+      }
+    }, 1000);
+  }
+
 
   logout(): void {
     this.otherServices.showalert('confirm', 'Do you really want to Logout?').subscribe((result) => {

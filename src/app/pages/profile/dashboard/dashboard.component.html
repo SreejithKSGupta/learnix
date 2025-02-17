@@ -51,7 +51,7 @@
   <h2> Comments</h2>
 <div class=" grid" >
   <div *ngFor="let message of user.messages" class="mb-3">
-    <mat-card class="shadow-sm" *ngIf="!message.deleted">
+    <mat-card class="shadow-sm" *ngIf="!message.deleted" id="{{message.id}}">
       <mat-card-header class="d-flex align-items-center">
         <mat-card-title class="d-flex align-items-center">
           <mat-icon class="me-2">person</mat-icon>
