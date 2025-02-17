@@ -6775,8 +6775,8 @@
     {
       "id": "1738176746899",
       "disabled": "false",
-      "name": "Sreejith KS pro max",
-      "userType": "student",
+      "name": "Sreejith KS",
+      "userType": "tutor",
       "gender": "male",
       "email": "sreejithksgupta2255@gmail.com",
       "areaOfInterest": [
@@ -6787,27 +6787,15 @@
       "imageUrl": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
       "courses": [
         {
-          "id": "1739814240020",
-          "expiry": 1745002986545,
-          "date": 1739818986545,
+          "id": "1739815096537",
+          "expiry": 1745007893418,
+          "date": 1739823893418,
           "completion": 0
         },
         {
           "id": "1739816006756",
-          "expiry": 1745002994005,
-          "date": 1739818994005,
-          "completion": 0
-        },
-        {
-          "id": "1739816797295",
-          "expiry": 1745003002064,
-          "date": 1739819002064,
-          "completion": 0
-        },
-        {
-          "id": "1739815096537",
-          "expiry": 1745006556312,
-          "date": 1739822556312,
+          "expiry": 1745007896641,
+          "date": 1739823896641,
           "completion": 0
         }
       ],
@@ -11344,6 +11332,23 @@
       "description": "As the world continues to evolve technologically, the evolution of mobile networks is one of the most exciting areas of progress. After the groundbreaking success of 5G, the next frontier is already in development: 6G. Although still in the early stages of research and conceptualization, 6G is set to redefine how we connect, communicate, and interact with the digital world. In this blog, we’ll explore what 6G is, how it differs from 5G, and what it could mean for industries, individuals, and society at large.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739818576/nmoaxl8qbfdxxueswiqh.webp",
       "date": "2025-02-17T18:56:18.359Z"
+    },
+    {
+      "id": "d5cf",
+      "title": "why planned obscolescence is bad",
+      "author": "Sreejith KS",
+      "post": "CEO",
+      "topic": "Discussion",
+      "content": {
+        "ops": [
+          {
+            "insert": "smample blog\n"
+          }
+        ]
+      },
+      "description": "discussion about sdomething",
+      "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739824282/ef7lawsknjjseuvmvzlu.webp",
+      "date": "2025-02-17T20:31:33.747Z"
     }
   ],
   "particlesconfig": {

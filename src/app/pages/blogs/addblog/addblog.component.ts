@@ -22,12 +22,12 @@ export class BlogAddComponent {
 
   constructor(private fb: FormBuilder, private blogService: BlogService,private otherServices:OtherServices, private cloudinaryservices:CloudinarymanagerService, private router:Router, private store:Store) {
     this.blogForm = this.fb.group({
-      title: ['How E-learning is revolutionising India', Validators.required],
-      author: ['Sreejith KS', Validators.required],
-      post: ['CEO', Validators.required],
-      topic: ['Discussion', Validators.required],
-      content: ['this is the content of the blog', Validators.required],
-      description:['how platforms like Learnix are changing the Indian education landscape.',Validators.required],
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      post: ['', Validators.required],
+      topic: ['', Validators.required],
+      content: ['', Validators.required],
+      description:['',Validators.required],
       imageURL: ['', Validators.required]
     });
   }
@@ -68,6 +68,7 @@ export class BlogAddComponent {
         if(result=='yes'){
           this.blogService.addBlog(newBlog).subscribe(() => {
             this.blogForm.reset();});
+            this.router.navigate(['/blogs']);
         }
        })
 

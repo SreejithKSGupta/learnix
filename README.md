@@ -21,9 +21,8 @@
 - sitemap.txt
 
 ## bugs
-- remove default values from blog, redirect after submititng
-- enrolled courses are still shown as not enrolled
-
+- edit profile not working
+- edit blogs option not present
 
 ### optional
 - github secrets

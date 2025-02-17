@@ -1,17 +1,16 @@
 <div class="course-details-dialog">
   <!-- Close Button -->
-  <button mat-icon-button class="close-btn" (click)="closeDialog()">
+  <button mat-icon-button class="close-btn" (click)="closeDialog()" aria-label="Close Dialog">
     <mat-icon>close</mat-icon>
   </button>
 
   <!-- Header Section with Banner -->
   <div class="banner-container">
     <img
-      [src]="course.imageUrl"
+      [src]="course.imageUrl || 'assets/gallery/designer.webp'"
       [alt]="course.courseName"
       class="course-banner"
-      onerror="this.src='assets/gallery/designer.webp'"
-      alt="course icon"
+      aria-label="Course Banner"
     >
     <div class="banner-overlay"></div>
   </div>
@@ -25,16 +24,16 @@
     <div class="course-info d-flex justify-content-between align-items-center flex-wrap">
       <div class="metric-item">
         <mat-icon class="icon">person</mat-icon>
-          <strong>{{ course.tutor }}</strong>
+        <strong>{{ course.tutor }}</strong>
       </div>
       <div class="course-metrics">
         <div class="metric-item">
           <mat-icon class="icon">schedule</mat-icon>
-            <strong>{{ course.duration }}</strong>
+          <strong>{{ course.duration }}</strong>
         </div>
         <div class="metric-item">
           <mat-icon class="icon">attach_money</mat-icon>
-            <strong>${{ course.courseFee }}</strong>
+          <strong>${{ course.courseFee }}</strong>
         </div>
       </div>
     </div>
@@ -56,7 +55,7 @@
     </div>
 
     <!-- Enrollment Status Alert -->
-    <div *ngIf="subscriptionStatuses[course.id!]" class="enrolled-alert d-flex align-items-center">
+    <div *ngIf="subscriptionStatuses[course.id]" class="enrolled-alert d-flex align-items-center">
       <mat-icon class="icon">check_circle</mat-icon>
       You are enrolled in this course
     </div>
@@ -64,19 +63,14 @@
 
   <!-- Footer Actions -->
   <mat-dialog-actions class="footer-actions">
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="ReadMore(course.id!)"
-      class="action-button"
-    >
+    <button mat-flat-button color="primary" (click)="readMore(course.id)" class="action-button">
       Read More
       <mat-icon class="ms-1">arrow_forward</mat-icon>
     </button>
 
     <button
       mat-flat-button
-      *ngIf="signeduser && signeduser.userType === 'tutor' && signeduser.name === course.tutor!"
+      *ngIf="signedUser?.userType === 'tutor' && signedUser?.name === course.tutor"
       color="primary"
       (click)="editCourse()"
       class="action-button"
@@ -88,7 +82,7 @@
     <button
       mat-flat-button
       color="accent"
-      *ngIf="signeduser && signeduser.userType === 'student' && !subscriptionStatuses[course.id!]"
+      *ngIf="signedUser?.userType === 'student' && !subscriptionStatuses[course.id]"
       (click)="enrollToCourse()"
       class="action-button enroll-button"
     >
@@ -99,7 +93,7 @@
     <button
       mat-flat-button
       disabled
-      *ngIf="subscriptionStatuses[course.id!]"
+      *ngIf="subscriptionStatuses[course.id]"
       class="action-button enrolled-button"
     >
       <mat-icon class="me-2">check</mat-icon>
