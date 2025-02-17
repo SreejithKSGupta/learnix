@@ -1,6 +1,6 @@
-// theme.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import CryptoJS from 'crypto-js';
 
 export interface ThemeSettings {
   isDarkMode: boolean;
@@ -18,12 +18,13 @@ export interface ThemeSettings {
 })
 export class ThemeService {
   private readonly STORAGE_KEY = 'app-theme-settings';
+  private readonly ENCRYPTION_KEY = 'my-secret-key-123';
 
-   defaultSettings: ThemeSettings = {
+  defaultSettings: ThemeSettings = {
     isDarkMode: false,
     primaryColor: '#673ab7',
     secondaryColor: '#ffd740',
-    borderRadius: '4px',
+    borderRadius: '14px',
     padding: '16px',
     transparency: 1,
     showparticles: false,
@@ -39,28 +40,40 @@ export class ThemeService {
     });
   }
 
+  private encryptData(data: ThemeSettings): string {
+    return CryptoJS.AES.encrypt(JSON.stringify(data), this.ENCRYPTION_KEY).toString();
+  }
+
+  private decryptData(ciphertext: string): ThemeSettings {
+    try {
+      const bytes = CryptoJS.AES.decrypt(ciphertext, this.ENCRYPTION_KEY);
+      return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    } catch (error) {
+      console.error('Decryption failed, using default settings.', error);
+      return this.defaultSettings;
+    }
+  }
+
   private loadSettings(): ThemeSettings {
-    const saved = localStorage.getItem(this.STORAGE_KEY);
-    return saved ? JSON.parse(saved) : this.defaultSettings;
+    const encrypted = localStorage.getItem(this.STORAGE_KEY);
+    return encrypted ? this.decryptData(encrypted) : this.defaultSettings;
   }
 
   private saveSettings(settings: ThemeSettings): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(settings));
+    const encrypted = this.encryptData(settings);
+    localStorage.setItem(this.STORAGE_KEY, encrypted);
   }
 
   private generateColorVariations(color: string): { lighter: string; darker: string } {
-    // Convert hex to RGB
     const r = parseInt(color.slice(1, 3), 16);
     const g = parseInt(color.slice(3, 5), 16);
     const b = parseInt(color.slice(5, 7), 16);
 
-    // Generate lighter color (mix with white)
     const lighter = `#${[r, g, b].map(c => {
       const lighter = Math.round(c + (255 - c) * 0.3);
       return lighter.toString(16).padStart(2, '0');
     }).join('')}`;
 
-    // Generate darker color (reduce brightness)
     const darker = `#${[r, g, b].map(c => {
       const darker = Math.round(c * 0.8);
       return darker.toString(16).padStart(2, '0');
@@ -68,7 +81,6 @@ export class ThemeService {
 
     return { lighter, darker };
   }
-
 
   toggleTheme(): void {
     const currentSettings = this.themeSettings.value;
@@ -78,11 +90,9 @@ export class ThemeService {
     this.applyTheme(newSettings);
   }
 
-
-   applyTheme(settings: ThemeSettings): void {
+  applyTheme(settings: ThemeSettings): void {
     const root = document.documentElement;
 
-    // Apply dark/light mode
     if (settings.isDarkMode) {
       document.body.classList.add('dark-theme');
       document.body.classList.remove('light-theme');
@@ -91,21 +101,17 @@ export class ThemeService {
       document.body.classList.remove('dark-theme');
     }
 
-    // Generate color variations
     const primaryVariations = this.generateColorVariations(settings.primaryColor);
     const secondaryVariations = this.generateColorVariations(settings.secondaryColor);
 
-    // Apply primary colors
     root.style.setProperty('--primary-color', settings.primaryColor);
     root.style.setProperty('--primary-lighter', primaryVariations.lighter);
     root.style.setProperty('--primary-darker', primaryVariations.darker);
 
-    // Apply secondary colors
     root.style.setProperty('--secondary-color', settings.secondaryColor);
     root.style.setProperty('--secondary-lighter', secondaryVariations.lighter);
     root.style.setProperty('--secondary-darker', secondaryVariations.darker);
 
-    // Apply other theme properties
     root.style.setProperty('--border-radius', `${settings.borderRadius}px`);
     root.style.setProperty('--padding', `${settings.padding}px`);
     root.style.setProperty('--transparency', settings.transparency.toString());
