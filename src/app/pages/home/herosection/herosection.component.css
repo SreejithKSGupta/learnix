@@ -1,8 +1,10 @@
+/* Hero Section */
 .hero {
   min-height: 90vh;
   padding: 3rem 2rem;
   background: #011734;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -10,7 +12,8 @@
   .hero-title {
     font-size: 3rem;
     font-family: "Jersey", "Courier New", Courier, monospace;
-    animation: fadeInDown 1s ease-in-out;
+    /* animation: fadeInDown 1s ease-in-out; */
+    min-height: 2.5rem;
   }
 
   /* Gradient Text */
@@ -31,7 +34,7 @@
     margin-top: 1rem;
     text-align: left;
     font-family: "Oswald", "Courier New", Courier, monospace;
-    animation: fadeInUp 1.2s ease-in-out;
+    /* animation: fadeInUp 1.2s ease-in-out; */
     color: white;
   }
 
@@ -73,20 +76,19 @@
     .custom-btn {
       background: #ce0064;
       color: white;
-
     }
+
     .custom-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(255, 0, 122, 0.4);
     }
 
-      /* Custom Outline Button */
-      .custom-btn-outline {
-        background: transparent;
-        border: 2px solid #ff007a;
-        color: #ff007a;
-
-      }
+    /* Custom Outline Button */
+    .custom-btn-outline {
+      background: transparent;
+      border: 2px solid #ff007a;
+      color: #ff007a;
+    }
 
   .custom-btn-outline:hover {
     background: #ff007b9d;
@@ -96,18 +98,23 @@
   }
 
   /* Hero Right Section */
-  .hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* .hero-right {
+    position: relative;
+    width: 300px;
+    height: 300px;
     animation: fadeInRight 1.5s ease-in-out;
     background-color: transparent;
-
+    overflow: hidden;
   }
 
-  .hero-right img{
-    max-width: 500px;
-  }
+  .hero-right img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  } */
 
   /* Hero Card */
   .hero-card {
@@ -119,17 +126,17 @@
 }
 
 /* Mobile Styles */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .hero {
     padding: 20px;
     min-height: auto;
     align-items: center;
   }
 
-  .hero-left,
+  /* .hero-left,
   .hero-right {
     animation: fadeInUp 1.5s ease-in-out;
-  }
+  } */
 
   /* Gradient Text on Mobile */
   .gradient-text {
@@ -156,7 +163,7 @@
 }
 
 /* Keyframe Animations */
-@keyframes fadeInDown {
+/* @keyframes fadeInDown {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -198,4 +205,5 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
+} */
+
