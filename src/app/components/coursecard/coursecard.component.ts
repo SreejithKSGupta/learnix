@@ -10,7 +10,7 @@ import { Userservice } from '../../services/user.service';
   templateUrl: './coursecard.component.html',
   styleUrls: ['./coursecard.component.css'],
 })
-export class CourseCardComponent implements OnChanges {
+export class CourseCardComponent{
   @Input() course!: Course;
   @Input() user!: any;
 
@@ -18,36 +18,16 @@ export class CourseCardComponent implements OnChanges {
 
   constructor(private userservice: Userservice, private router: Router,private dataservice : DataService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['user'] && this.user) {
-      this.cacheCourseDetails();
-    }
-  }
 
-  // Cache the course details for the current course
-  cacheCourseDetails() {
-    if (this.user?.courses && this.course?.id) {
-      const userCourse = this.user.courses.find((course: { id: string }) => course.id === this.course.id);
-      if (userCourse) {
-        this.courseDetails = {
-          date: userCourse.date,
-          expiry: userCourse.expiry,
-          completion: userCourse.completion,
-        };
-      }
-    }
-  }
 
   getUserCourseDetail(detail: string): any {
     return this.courseDetails[detail] || null;
   }
 
   removeCourse(courseID: string) {
-    this.userservice.removeFromCourse(this.user.id, courseID).subscribe((res) => {
-      // Dynamically remove the course from the user's course list
-      this.user.courses = this.user.courses.filter((course: { id: string }) => course.id !== courseID);
-      window.location.reload();
-    });
+    this.userservice.removeFromCourse(this.user.id, courseID).subscribe();
+    window.location.reload();
+
   }
 
   gotocourse(id: String) {

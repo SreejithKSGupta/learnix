@@ -4,12 +4,15 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   margin: 16px 0;
   background-color: #edededcf;
+  -webkit-backdrop-filter: blur(10);
   backdrop-filter: blur(10);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .disabled{
+  -webkit-user-select: none;
   user-select: none;
+
   pointer-events: none;
   filter: grayscale(10);
 }

@@ -20,7 +20,9 @@
 - robots.txt
 - sitemap.txt
 
-
+## bugs
+- remove default values from blog, redirect after submititng
+- enrolled courses are still shown as not enrolled
 
 
 ### optional

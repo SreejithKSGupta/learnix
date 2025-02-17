@@ -1,4 +1,3 @@
-import { Comment } from './../interfaces/comment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -10,6 +9,8 @@ import { Store } from '@ngrx/store';
 import { managerUserChange } from '../store/actions/user.action';
 import { selectUserState } from '../store/selectors/user.selector';
 import { OtherServices } from './otherservices.service';
+import { Comment } from './../interfaces/comment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +18,7 @@ export class Userservice {
   private authStateSubject = new BehaviorSubject<boolean>(false);
   public authState$ = this.authStateSubject.asObservable();
   user$!: Observable<any>;
-  userurl = 'http://localhost:3000/users';
+  private userurl = 'http://localhost:3000/users';
 
   constructor(
     private http: HttpClient,
@@ -28,7 +29,6 @@ export class Userservice {
   ) {}
 
   checkauthentication(): void {
-
     const savedUser = JSON.parse(localStorage.getItem('users') || 'null');
     if (savedUser) {
       this.authStateSubject.next(true);
@@ -39,8 +39,19 @@ export class Userservice {
   }
 
   getusers(): Observable<any> {
-    return this.http.get(this.userurl).pipe(map((res) => res));
+    return this.http.get(this.userurl);
   }
+
+  private updateUserData(userID: string, updateFn: (user: any) => void): Observable<any> {
+    return this.getuserbyid(userID).pipe(
+      switchMap((user) => {
+        updateFn(user);
+        this.store.dispatch(managerUserChange({ user }));
+        return this.http.put<any>(`${this.userurl}/${userID}`, user);
+      })
+    );
+  }
+
 
   checkIfUserExists(item: any): Observable<boolean> {
     return this.http.get<any[]>(this.userurl).pipe(
@@ -58,240 +69,92 @@ export class Userservice {
 
   addUser(item: any): Observable<any> {
     return this.http.post<any>(this.userurl, item).pipe(
-      tap((newUser: { id: any }) => {
-        this.emailservice.sendEmail(
-          'othermsg',
-          item.email,
-          item.name,
-          'Learnix',
-          'welcome to Learnix',
-          'Welcome to Learnix. We hope you have an excellent learning journey with us.'
-        );
-
-        this.otherservices
-          .showalert('success', 'Welcome to Learnix')
-          .subscribe(res=>{
-          });
-
+      tap((newUser) => {
+        this.sendUserEmail(item.email, item.name, 'Welcome to Learnix', 'We hope you have an excellent learning journey with us.');
+        this.showSuccessAlert('Welcome to Learnix');
         localStorage.setItem('users', JSON.stringify(newUser.id));
       })
     );
   }
 
-  getuserbyid(id: String): Observable<any> {
-    const url = `${this.userurl}/${id}`;
-    return this.http.get<any>(url);
+  getuserbyid(id: string): Observable<any> {
+    return this.http.get<any>(`${this.userurl}/${id}`);
   }
 
   updateuser(userData: any): Observable<any> {
-    const url = `${this.userurl}/${userData.id}`;
-    const updatedUser = { ...userData };
-
-    this.otherservices
-      .showalert('success', 'Updated profile')
-      .subscribe((result) => {});
-    return this.http.put(url, updatedUser);
+    this.showSuccessAlert('Updated profile');
+    return this.http.put(`${this.userurl}/${userData.id}`, userData);
   }
 
-  signout() {
+  signout(): void {
     this.authStateSubject.next(false);
     this.store.dispatch(managerUserChange({ user: null }));
     localStorage.removeItem('users');
-    this.otherservices
-      .showalert('success', 'Signed out Succesfully')
-      .subscribe((result) => {});
+    this.showSuccessAlert('Signed out Successfully');
   }
 
-  signin(user: any) {
+  signin(user: any): void {
     this.authStateSubject.next(true);
     this.store.dispatch(managerUserChange({ user }));
-    // Save user to localStorage to persist authentication across reloads
     localStorage.setItem('users', JSON.stringify(user.id));
-
-    this.emailservice.sendEmail(
-      'othermsg',
-      user.email,
-      user.name,
-      'Learnix',
-      'Signed in to Learnix',
-      'You just signed in to Learnix. If it was not you, please contact us immediately.'
-    );
-    this.otherservices
-      .showalert('success', 'Signed in Succesfully')
-      .subscribe((result) => {});
+    this.sendUserEmail(user.email, user.name, 'Signed in to Learnix', 'If this was not you, please contact us immediately.');
+    this.showSuccessAlert('Signed in Successfully');
   }
 
-  enrollToCourse(UserId: String, courseData: UserCourse): Observable<any> {
-    return this.getuserbyid(UserId).pipe(
-      switchMap((user) => {
-        this.dataservice
-          .getcoursebyid(courseData.id as string)
-          .subscribe((cdata) => {
-            this.emailservice.sendEmail(
-              'othermsg',
-              user.email,
-              user.name,
-              'Learnix',
-              `Enrolled to ${cdata.courseName}`,
-              `You just enrolled in the course ${cdata.courseName}, Happy learning!`
-            );
-            this.otherservices
-              .showalert('success', 'Enrolled to Course')
-              .subscribe((result) => {});
-          });
-
-        const url = `${this.userurl}/${UserId}`;
-        return this.http.get<any>(url).pipe(
-          switchMap((user) => {
-            user.courses.push(courseData);
-            return this.http.put<any>(url, user);
-          })
-        );
-      })
-    );
+  enrollToCourse(UserId: string, courseData: UserCourse): Observable<any> {
+    return this.updateUserData(UserId, (user) => {
+      user.courses.push(courseData);
+      this.dataservice.getcoursebyid(courseData.id as string).subscribe((cdata) => {
+        this.sendUserEmail(user.email, user.name, `Enrolled to ${cdata.courseName}`, 'Happy learning!');
+        this.showSuccessAlert('Enrolled to Course');
+      });
+    });
   }
 
-  disableUser(id: String): Observable<any> {
-    return this.getuserbyid(id).pipe(
-      switchMap((user) => {
-        this.emailservice.sendEmail(
-          'othermsg',
-          user.email,
-          user.name,
-          'Learnix',
-          'Message from Learnix',
-          'Your account has been removed from Learnix due to policy violations.'
-        );
-        user.disabled = 'true';
-        const url = `${this.userurl}/${id}`;
-        return this.http.put<any>(url, user);
-      }),
-      catchError((error) => {
-        console.error('Error disabling user:', error);
-        return of(null);
-      })
-    );
+  disableUser(id: string): Observable<any> {
+    return this.updateUserData(id, (user) => {
+      this.sendUserEmail(user.email, user.name, 'Message from Learnix', 'Your account has been removed due to policy violations.');
+      user.disabled = true;
+    }).pipe(catchError((error) => {
+      console.error('Error disabling user:', error);
+      return of(null);
+    }));
   }
 
-  removeFromCourse(userID: string, courseID: String): Observable<any> {
-    return this.getuserbyid(userID).pipe(
-      switchMap((user) => {
-        this.dataservice
-          .getcoursebyid(courseID as string)
-          .subscribe((cdata) => {
-            this.emailservice.sendEmail(
-              'othermsg',
-              user.email,
-              user.name,
-              'Learnix',
-              `Unenrolled from ${cdata.courseName}`,
-              `You just unenrolled from the course ${cdata.courseName}, Let us upskill together.`
-            );
-          });
-
-        const url = `${this.userurl}/${userID}`;
-        const courseIndex = user.courses.findIndex(
-          (course: UserCourse) => course.id === courseID
-        );
-        if (courseIndex !== -1) {
-          user.courses.splice(courseIndex, 1);
-        } else {
-          console.error(
-            `Course with ID ${courseID} not found in user's courses.`
-          );
-        }
-
-        return this.http.put<any>(url, user);
-      })
-    );
-  }
-
-
-  removeuserfromcourse(userID: string, courseID: String): Observable<any> {
-      return this.getuserbyid(userID).pipe(
-        switchMap((user) => {
-          const url = `${this.userurl}/${userID}`;
-          const courseIndex = user.courses.findIndex(
-            (course: UserCourse) => course.id === courseID
-            );
-            if (courseIndex !== -1) {
-              user.courses.splice(courseIndex, 1);
-            } else {
-              console.error(
-                `Course with ID ${courseID} not found in user's courses.`
-                );
-            }
-            return this.http.put<any>(url, user);
-            })
-            );
+  removeFromCourse(userID: string, courseID: string): Observable<any> {
+    return this.updateUserData(userID, (user) => {
+      user.courses = user.courses.filter((course: UserCourse) => course.id !== courseID);
+      this.dataservice.getcoursebyid(courseID).subscribe((cdata) => {
+        this.sendUserEmail(user.email, user.name, `Unenrolled from ${cdata.courseName}`, 'Let us upskill together.');
+      });
+    });
   }
 
   removemessagefromuser(userID: string, messageID: string): Observable<any> {
-    return this.getuserbyid(userID).pipe(
-      switchMap((user) => {
-        const url = `${this.userurl}/${userID}`;
-        const messageIndex = user.messages.findIndex(
-          (message: Comment) => message.id === messageID
-        );
-
-        if (messageIndex !== -1) {
-          user.messages[messageIndex].deleted = true;
-          console.log('Message disabled:', user.messages[messageIndex]);
-        } else {
-          console.error(`Message with ID ${messageID} not found in user's messages.`);
-        }
-          return this.http.put<any>(url, user);
-      })
-    );
+    return this.updateUserData(userID, (user) => {
+      const message = user.messages.find((msg: Comment) => msg.id === messageID);
+      if (message) message.deleted = true;
+    });
   }
 
   markasread(userID: string, messageID: string): Observable<any> {
-    console.log("markinging one msg as read");
-
-    return this.getuserbyid(userID).pipe(
-      switchMap((user) => {
-        const url = `${this.userurl}/${userID}`;
-        const messageIndex = user.messages.findIndex(
-          (message: Comment) => message.id === messageID
-        );
-
-        if (messageIndex !== -1) {
-          user.messages[messageIndex].read = true;
-          console.log('Message marked as read:', user.messages[messageIndex]);
-        } else {
-          console.error(`Message with ID ${messageID} not found in user's messages.`);
-        }
-          return this.http.put<any>(url, user);
-      })
-    );
+    return this.updateUserData(userID, (user) => {
+      const message = user.messages.find((msg: Comment) => msg.id === messageID);
+      if (message) message.read = true;
+    });
   }
-
-
-
 
   markallmsgsasread(userID: string): Observable<any> {
-    console.log("marking all msgs as read");
-
-    return this.getuserbyid(userID).pipe(
-
-      switchMap((user) => {
-        const url = `${this.userurl}/${userID}`;
-        console.log(user);
-
-        if (user.messages && user.messages.length > 0) {
-          console.log("messages are there");
-
-          user.messages.forEach((message: Comment) => {
-            message.read = true;
-          });
-          console.log('All messages marked as read for user:', userID);
-        } else {
-          console.error(`No messages found for user with ID ${userID}.`);
-        }
-
-        return this.http.put<any>(url, user);
-      })
-    );
+    return this.updateUserData(userID, (user) => {
+      if (user.messages?.length) user.messages.forEach((msg: Comment) => (msg.read = true));
+    });
   }
 
+  private sendUserEmail(email: string, name: string, subject: string, message: string): void {
+    this.emailservice.sendEmail('othermsg', email, name, 'Learnix', subject, message);
+  }
+
+  private showSuccessAlert(message: string): void {
+    this.otherservices.showalert('success', message).subscribe();
+  }
 }

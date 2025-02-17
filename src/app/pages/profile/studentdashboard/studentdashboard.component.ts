@@ -1,38 +1,29 @@
-import { Comment } from './../../../interfaces/comment';
-import { OtherServices } from './../../../services/otherservices.service';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, take, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Userservice } from '../../../services/user.service';
 import { DataService } from '../../../services/data.service';
 import { Course } from '../../../interfaces/course';
 import { User } from '../../../interfaces/users';
-import { MatDialog } from '@angular/material/dialog';
-import { managerUserChange } from '../../../store/actions/user.action';
 import { selectUserState } from '../../../store/selectors/user.selector';
-import { MessagereplyComponent } from '../../../components/messagereply/messagereply.component';
+import { tap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-studentdashboard',
-  standalone: false,
-
+  standalone:false,
   templateUrl: './studentdashboard.component.html',
-  styleUrl: './studentdashboard.component.css',
+  styleUrls: ['./studentdashboard.component.css'],
 })
-export class StudentdashboardComponent {
+export class StudentdashboardComponent implements OnInit {
   courses: Course[] = [];
+  errorcourses: string[] = [];
   user$: Observable<User | null>;
-  errorcourses: any = [];
-  user!: User;
+  private indexMap = new Map<number, number>();
 
   constructor(
-    private router: Router,
     private userservice: Userservice,
     private dataservice: DataService,
-    private store: Store,
-    private otherServices: OtherServices,
-    public dialog: MatDialog,
-
+    private store: Store
   ) {
     this.user$ = this.store.select(selectUserState);
   }
@@ -40,44 +31,41 @@ export class StudentdashboardComponent {
   ngOnInit(): void {
     this.user$
       .pipe(
-        tap({
-          next: (userData) => {
-            this.user = userData!;
-            console.log(this.user.messages);
-
-            this.loadUserCourses(userData!.courses);
-          },
-          error: (err) => console.error('Error fetching user data:', err),
+        tap((user) => {
+          if (user?.courses) {
+            this.loadUserCourses(user.courses);
+          }
         })
       )
       .subscribe();
   }
-  private loadUserCourses(userCourses: { id: string }[] = []): void {
-    userCourses.forEach((courseItem) => {
-      this.dataservice.getcoursebyid(courseItem.id).subscribe({
-        next: (course) => {
-          this.courses.push(course);
-        },
-        error: () => {
-          this.errorcourses.push(courseItem.id);
-        },
+
+  private loadUserCourses(userCourses: { id: string }[]): void {
+    userCourses.forEach(({ id }) => {
+      this.dataservice.getcoursebyid(id).subscribe({
+        next: (course) => this.courses.push(course),
+        error: () => this.errorcourses.push(id),
       });
     });
   }
 
-  remove404course(id: String) {
-    this.errorcourses = this.errorcourses.filter(
-      (courseId: string) => courseId !== id
-    );
-    let userid = '';
-    this.user$.subscribe((user) => {
-      if (user) {
-        userid = user.id;
-      }
-    });
+  remove404course(id: string) {
+    this.errorcourses = this.errorcourses.filter((courseId) => courseId !== id);
 
-    this.userservice.removeFromCourse(userid, id).subscribe();
+    this.user$.pipe(tap((user) => {
+      if (user) {
+        this.userservice.removeFromCourse(user.id, id).subscribe();
+      }
+    })).subscribe();
   }
 
-
+  trackByCourseId(index: number, course: any): number {
+    const key = JSON.stringify(course) as unknown as number;
+    if (this.indexMap.has(key)) {
+      return this.indexMap.get(key)!;
+    } else {
+      this.indexMap.set(key, index);
+      return index;
+    }
+  }
 }

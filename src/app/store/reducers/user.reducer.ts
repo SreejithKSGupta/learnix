@@ -7,7 +7,7 @@ export const initialState: User = {} as User;
 export const userReducer = createReducer(
   initialState,
   on(managerUserChange, (state, { user }) => {
-    // console.log( "user: ",user);
+    console.log( "user changed globally",user);
 
     return { ...(state || {}), ...(user || {}) };
   })

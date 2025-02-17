@@ -1,5 +1,5 @@
-<mat-card class="course-card" [class]="course.disabled? 'disabled' : ''">
-  <mat-card-header class="position-relative">
+<mat-card class="course-card" >
+  <mat-card-header class="position-relative" [class]="course.disabled? 'disabled' : ''">
     <img mat-card-image [src]="course.imageUrl ? course.imageUrl : 'assets/gallery/designer.webp'" alt="{{ course.courseName }}" class="course-image">
     <div class="course-info-overlay">
       <mat-card-title class="course-title">{{ course.courseName }}</mat-card-title>
@@ -7,7 +7,7 @@
     </div>
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content [class]="course.disabled? 'disabled' : ''">
     <div class="course-details">
       <div class="info-item">
         <mat-icon>access_time</mat-icon>
@@ -51,5 +51,8 @@
       view <mat-icon>arrow_forward</mat-icon>
     </button>
   </mat-card-actions>
+  <button *ngIf="course.disabled" mat-flat-button color="warn" (click)="removeCourse(course.id!)">
+    <mat-icon>delete</mat-icon> unenroll
+  </button>
   <div mat-button class="course-disabled" disabled="true" *ngIf="course.disabled"> Course Disabled </div>
 </mat-card>

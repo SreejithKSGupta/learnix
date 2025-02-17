@@ -107,7 +107,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
     try {
       const courses = await this.dataService.getcourses().toPromise();
       if (courses) {
-        this.courses = courses;
+       let fcourses = courses.filter((course:any)=>!course.disabled)
+        this.courses = fcourses;
         this.applyFilters(this.filterState$.value);
       }
     } catch (error) {

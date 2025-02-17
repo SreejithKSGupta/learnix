@@ -22,7 +22,6 @@
 /* Search Box Styling */
 .searchbox {
   margin: var(--padding);
-  backdrop-filter: blur(10px);
   border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
@@ -67,6 +66,13 @@
   box-sizing: border-box;
 } */
 
+.gridbox {
+  width: clamp(300px,90vw,1200px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+   gap: 20px;
+  margin-top: 20px;
+}
 /* Card Hover Effect (Optional) */
 .app-course-page-course-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -97,7 +103,6 @@ mat-paginator {
   border-radius: var(--border-radius);
   padding: var(--padding);
   margin-top: 1rem;
-  backdrop-filter: blur(10px);
   color: var(--text-color);
 }
 
