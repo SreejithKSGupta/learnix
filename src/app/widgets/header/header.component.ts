@@ -14,6 +14,7 @@ import { User } from '../../interfaces/users';
 import { selectUserState } from '../../store/selectors/user.selector';
 import { ThemeService } from '../../services/theme.service';
 import { Router } from '@angular/router';
+import { Userservice } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -21,10 +22,10 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-
 export class HeaderComponent implements OnInit, OnDestroy {
   title = 'Learnix';
-  logo = 'https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp';
+  logo =
+    'https://res.cloudinary.com/dhrye1aew/image/upload/v1737975952/zzmfodapfta2x4yeqzxs.webp';
   logordash: string = 'Login';
   user$: Observable<User | null>;
   userSubscription!: Subscription;
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   searchOpen = false;
   searchQuery = '';
   isDarkMode: boolean | undefined;
-  unreadnotifications: Comment[]| undefined;
+  unreadnotifications: Comment[] | undefined;
 
   @ViewChild('drawer') drawer!: MatDrawer;
   @ViewChild('searchInput') searchInput: any;
@@ -116,7 +117,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(private store: Store, private themeService: ThemeService,private router: Router) {
+  constructor(
+    private store: Store,
+    private themeService: ThemeService,
+    private router: Router,
+    private userservie : Userservice
+  ) {
     this.user$ = this.store.select(selectUserState);
   }
 
@@ -124,7 +130,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // User subscription
     this.userSubscription = this.user$.subscribe((user) => {
       this.logordash = user?.id ? 'Dashboard' : 'Login';
-      this.unreadnotifications = user?.id ? user?.messages?.filter((msg) => !msg.read) : [];
+      this.unreadnotifications = user?.id
+        ? user?.messages?.filter((msg) => !msg.read)
+        : [];
     });
 
     // Scroll behavior
@@ -133,9 +141,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.isScrolled = window.scrollY > 50;
       });
-      this.themeService.getSettings().subscribe((settings) => {
-        this.isDarkMode = settings.isDarkMode;
-      });
+    this.themeService.getSettings().subscribe((settings) => {
+      this.isDarkMode = settings.isDarkMode;
+    });
   }
 
   ngOnDestroy() {
@@ -180,10 +188,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isDarkMode = !this.isDarkMode;
   }
 
-  gotomsg(message:Comment){
+  gotomsg(message: Comment) {
     //http://localhost:4200/dashboard#231739704803558
     this.router.navigate(['/dashboard'], { fragment: message.id });
+  }
 
-    }
+  markallasRead() {
 
+    this.userservie.markallmsgsasread()
+
+  }
 }

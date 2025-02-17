@@ -50,7 +50,7 @@
 
   <!-- Action Buttons -->
   <div class="action-buttons" *ngIf="user$ | async as user">
-    <button mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn" title="Notifications">
+    <button type="button" mat-icon-button [matMenuTriggerFor]="notificationsMenu" class="notification-btn" title="Notifications">
       <mat-icon [matBadge]="unreadnotifications?.length? unreadnotifications?.length : 0" aria-hidden="false" [matBadgeHidden]="unreadnotifications?.length === 0" matBadgeColor="warn">
         notifications
       </mat-icon>
@@ -63,9 +63,10 @@
     <button
       mat-button
       class="user-button"
+      type="button"
       [routerLink]="user.id ? '/dashboard' : '/signin'"
     >
-      <img *ngIf="user.id" style="width:30px; border-radius:50%; padding-right: 5px;" src="{{ user.imageUrl }}" alt="user profile">
+      <img *ngIf="user.id" class="logo" src="{{ user.imageUrl }}" alt="user profile">
       <mat-icon *ngIf="!user.id">login</mat-icon>
       <span>{{ user.id ? 'Dashboard' : 'Login' }}</span>
     </button>
@@ -81,7 +82,9 @@
 <mat-menu #notificationsMenu="matMenu" class="notifications-menu">
   <div class="notifications-header">
     <h3>Notifications</h3>
-    <button mat-button color="primary">Mark all as read</button>
+    <button mat-button color="primary" (click)="markallasRead()" >Mark all
+
+        as read</button>
   </div>
   <mat-divider></mat-divider>
 
@@ -104,7 +107,7 @@
     </div>
   </ng-template>
 </mat-menu>
-<div style="padding-top: 10vh;"></div>
+<div class="header-padding"></div>
 <!-- Mobile Drawer -->
 <mat-drawer-container class="drawer-container" [class.drawer-open]="isDrawerOpen">
   <mat-drawer #drawer mode="over" position="end" (click)="$event.stopPropagation()">
@@ -162,7 +165,7 @@
           [routerLink]="logordash === 'Dashboard' ? '/dashboard' : '/login'"
           (click)="closeDrawer()"
           *ngIf="user$ | async as user"        >
-        <img *ngIf="(user$ | async)?.id" style="width:30px; border-radius:50%; padding-right: 5px;" src="{{ (user$ | async)?.imageUrl }}" alt="user profile">
+        <img *ngIf="(user$ | async)?.id"  class="logo" src="{{ (user$ | async)?.imageUrl }}" alt="user profile">
         <mat-icon *ngIf="!(user$ | async)?.id">login</mat-icon>
           <span>{{ logordash }}</span>
         </button>

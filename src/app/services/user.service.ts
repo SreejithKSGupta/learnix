@@ -267,4 +267,11 @@ export class Userservice {
   replytomessage(userID: string,message:Comment){
   }
 
+
+  markallmsgsasread(){
+    // get the user, mark all the messages as done, and update the user.
+
+
+  }
+
 }
