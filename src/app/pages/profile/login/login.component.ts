@@ -48,13 +48,25 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    // if user$ is not null then redirect to home page
-    this.user$.subscribe((user) => {
-      if (user) {
-        this.router.navigate(['/dashboard']);
+    this.route.queryParams.subscribe((params) => {
+      const userId = params['id'];
+      if (userId) {
+        this.iseditmode = true;
+        this.userservice.getuserbyid(userId).subscribe((user) => {
+          this.currentuserdata=user;
+          this.populateForm(user);
+        });
+      }
+      else {
+        this.user$.subscribe((user) => {
+          if (user) {
+            this.router.navigate(['/dashboard']);
+          }
+        });
       }
     });
+
+
 
     this.firstFormGroup = this._formBuilder.group({
       name: ['', Validators.required],

@@ -21,7 +21,6 @@
 - sitemap.txt
 
 ## bugs
-- edit profile not working
 - edit blogs option not present
 
 ### optional

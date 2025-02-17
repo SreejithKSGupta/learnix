@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
 import { Userservice } from '../../../services/user.service';
-import { DataService } from '../../../services/data.service';
 import { Course } from '../../../interfaces/course';
 import { User } from '../../../interfaces/users';
 import { selectUserState } from '../../../store/selectors/user.selector';
@@ -26,7 +25,6 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private userservice: Userservice,
-    private dataservice: DataService,
     private store: Store,
     private otherServices: OtherServices,
     private dialog :MatDialog,
