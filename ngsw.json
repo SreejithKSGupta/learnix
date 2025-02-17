@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1739832329587,
+  "timestamp": 1739833960946,
   "index": "https://sreejithksgupta.github.io/learnix/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "https://sreejithksgupta.github.io/learnix/chunk-EHQWWS5Z.js",
         "https://sreejithksgupta.github.io/learnix/favicon.ico",
         "https://sreejithksgupta.github.io/learnix/index.html",
-        "https://sreejithksgupta.github.io/learnix/main-FEUQC2QJ.js",
+        "https://sreejithksgupta.github.io/learnix/main-XTUD5TS5.js",
         "https://sreejithksgupta.github.io/learnix/manifest.webmanifest",
         "https://sreejithksgupta.github.io/learnix/polyfills-Q763KACN.js",
         "https://sreejithksgupta.github.io/learnix/quill-IB73HUPV.js",
@@ -92,9 +92,9 @@
     "https://sreejithksgupta.github.io/learnix/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "https://sreejithksgupta.github.io/learnix/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "https://sreejithksgupta.github.io/learnix/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "https://sreejithksgupta.github.io/learnix/index.html": "6e2db9ff0578db18b72a78beee32ebdc936624e0",
+    "https://sreejithksgupta.github.io/learnix/index.html": "ef9c938040cdee0233db37434873b7c8fadce721",
     "https://sreejithksgupta.github.io/learnix/learnixtplogo.webp": "0a879b9529116c311a984589039b561dd65bc896",
-    "https://sreejithksgupta.github.io/learnix/main-FEUQC2QJ.js": "539fba0271908e85d43b93aac0124863b2c62086",
+    "https://sreejithksgupta.github.io/learnix/main-XTUD5TS5.js": "212fa513af5a2bf5e2b85fb3fa55489d8677b212",
     "https://sreejithksgupta.github.io/learnix/manifest.webmanifest": "e27d3a94e8ab0e5e2137f8f7531ea0fef50665bc",
     "https://sreejithksgupta.github.io/learnix/polyfills-Q763KACN.js": "e2a9f135443e4bc6115449a6098604d881bf5931",
     "https://sreejithksgupta.github.io/learnix/quill-IB73HUPV.js": "464c6195b293f4a3a0c94c0ddc2139b657c4f252",
