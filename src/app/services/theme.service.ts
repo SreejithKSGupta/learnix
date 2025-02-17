@@ -19,7 +19,7 @@ export interface ThemeSettings {
 export class ThemeService {
   private readonly STORAGE_KEY = 'app-theme-settings';
 
-  private defaultSettings: ThemeSettings = {
+   defaultSettings: ThemeSettings = {
     isDarkMode: false,
     primaryColor: '#673ab7',
     secondaryColor: '#ffd740',

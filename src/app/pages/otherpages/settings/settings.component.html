@@ -1,150 +1,133 @@
 <div class="settings-page">
-  <!-- Settings Panel -->
-  <mat-card class="settings-card">
-    <mat-card-header>
-      <mat-card-title>Theme Settings</mat-card-title>
-      <mat-card-subtitle>Customize your application appearance</mat-card-subtitle>
-    </mat-card-header>
+  <!-- Theme Settings -->
+  <div class="card settings-card">
+    <div class="card-header">
+      <h5 class="card-title">Theme Settings</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Customize your application appearance</h6>
+    </div>
 
-    <mat-card-content>
+    <div class="card-body">
       <form [formGroup]="settingsForm" class="settings-form">
-
+        <hr>
 
         <!-- Dark Mode Toggle -->
-        <div class="form-group">
-          <label class="switch">
-            <input type="checkbox" formControlName="isDarkMode">
-            <span class="slider round"></span>
-          </label>
-          <span class="toggle-label">Dark Mode</span>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="darkMode" [formControlName]="'isDarkMode'">
+          <label class="form-check-label" for="darkMode">Dark Mode</label>
         </div>
 
-        <div class="form-group">
-          <label class="switch">
-            <input type="checkbox" formControlName="showparticles">
-            <span class="slider round"></span>
-          </label>
-          <span class="toggle-label">show particles</span>
+        <!-- Particle Effect Toggle -->
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="showParticles" [formControlName]="'showparticles'">
+          <label class="form-check-label" for="showParticles">Show Particles</label>
         </div>
+
+        <hr>
 
         <!-- Color Pickers -->
         <div class="form-row">
-          <mat-form-field appearance="fill">
-            <mat-label>Primary Color</mat-label>
-            <input matInput type="color" formControlName="primaryColor">
-          </mat-form-field>
+          <div class="form-group col-6">
+            <label for="primaryColor">Primary Color</label>
+            <input type="color" class="form-control" id="primaryColor" title="change primary color" [formControlName]="'primaryColor'">
+          </div>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Secondary Color</mat-label>
-            <input matInput type="color" formControlName="secondaryColor">
-          </mat-form-field>
+          <div class="form-group col-6">
+            <label for="secondaryColor">Secondary Color</label>
+            <input type="color" class="form-control" id="secondaryColor" title="change secondary color" [formControlName]="'secondaryColor'">
+          </div>
         </div>
+
+        <hr>
 
         <!-- Sliders -->
-        <div class="form-row">
-          <label>Border Radius: {{settingsForm.get('borderRadius')?.value}}px</label>
-          <mat-slider min="0" max="24" step="1" class="full-width">
-            <input matSliderThumb formControlName="borderRadius">
-          </mat-slider>
+        <div class="form-group">
+          <label for="borderRadius">Border Radius: {{ settingsForm.get('borderRadius')?.value }}px</label>
+          <input type="range" class="form-control-range" id="borderRadius" min="0" max="24" step="1" [formControlName]="'borderRadius'">
         </div>
 
-        <div class="form-row">
-          <label>Padding: {{settingsForm.get('padding')?.value}}px</label>
-          <mat-slider min="0" max="32" step="1" class="full-width">
-            <input matSliderThumb formControlName="padding">
-          </mat-slider>
+        <div class="form-group">
+          <label for="padding">Padding: {{ settingsForm.get('padding')?.value }}px</label>
+          <input type="range" class="form-control-range" id="padding" min="0" max="32" step="1" [formControlName]="'padding'">
         </div>
 
-        <div class="form-row">
-          <label>Transparency: {{settingsForm.get('transparency')?.value}}</label>
-          <mat-slider min="0" max="1" step="0.1" class="full-width">
-            <input matSliderThumb formControlName="transparency">
-          </mat-slider>
+        <div class="form-group">
+          <label for="transparency">Transparency: {{ settingsForm.get('transparency')?.value }}</label>
+          <input type="range" class="form-control-range" id="transparency" min="0" max="1" step="0.1" [formControlName]="'transparency'">
+        </div>
+
+        <hr>
+
+        <!-- Reset Button -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-danger" (click)="resetThemeSettings()">Reset to Default</button>
         </div>
       </form>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 
-  <!-- Preview Section -->
-  <mat-card class="preview-card">
-    <mat-card-header>
-      <mat-card-title>Theme Preview</mat-card-title>
-      <mat-card-subtitle>See your changes in real-time</mat-card-subtitle>
-    </mat-card-header>
+  <!-- User Preferences -->
+  <div class="card settings-card">
+    <div class="card-header">
+      <h5 class="card-title">Notification & Preferences</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Manage notifications and usability settings</h6>
+    </div>
 
-    <mat-card-content class="preview-content">
-      <!-- Buttons Preview -->
-      <div class="preview-section">
-        <h3>Buttons</h3>
-        <div class="button-row">
-          <button mat-raised-button color="primary">Primary</button>
-          <button mat-raised-button color="accent">Accent</button>
-          <button mat-stroked-button>Stroked</button>
-          <button mat-flat-button color="warn">Warn</button>
+    <div class="card-body">
+      <form [formGroup]="userChoicesForm" class="settings-form">
+        <hr>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="receiveEnrollmentNotifications" [formControlName]="'receiveEnrollmentNotifications'">
+          <label class="form-check-label" for="receiveEnrollmentNotifications">Enrollment Notifications</label>
         </div>
-      </div>
 
-      <!-- Cards Preview -->
-      <div class="preview-section">
-        <h3>Cards</h3>
-        <div class="cards-row">
-          <mat-card class="sample-card">
-            <mat-card-header>
-              <mat-card-title>Sample Card 1</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p>This is a sample card to preview theme changes.</p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
-          </mat-card>
-
-          <mat-card class="sample-card">
-            <mat-card-header>
-              <mat-card-title>Sample Card 2</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p>Another sample card with different content.</p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button color="primary">ACTION</button>
-            </mat-card-actions>
-          </mat-card>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="receiveNewsletter" [formControlName]="'receiveNewsletter'">
+          <label class="form-check-label" for="receiveNewsletter">Newsletter Subscription</label>
         </div>
-      </div>
 
-      <!-- Form Elements Preview -->
-      <div class="preview-section">
-        <h3>Form Elements</h3>
-        <div class="form-elements-preview">
-          <mat-form-field appearance="outline">
-            <mat-label>Sample Input</mat-label>
-            <input matInput placeholder="Type something...">
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Select Option</mat-label>
-            <mat-select>
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2">Option 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-checkbox color="primary">Sample Checkbox</mat-checkbox>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="receiveContactMessages" [formControlName]="'receiveContactMessages'">
+          <label class="form-check-label" for="receiveContactMessages">Contact Messages</label>
         </div>
-      </div>
 
-      <!-- Progress Indicators -->
-      <div class="preview-section">
-        <h3>Progress Indicators</h3>
-        <div class="progress-row">
-          <mat-progress-bar mode="determinate" value="40" color="primary"></mat-progress-bar>
-          <mat-progress-spinner diameter="40" mode="indeterminate" color="accent">
-          </mat-progress-spinner>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="receiveMessageReplies" [formControlName]="'receiveMessageReplies'">
+          <label class="form-check-label" for="receiveMessageReplies">Message Replies</label>
         </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="receiveOtherMessages" [formControlName]="'receiveOtherMessages'">
+          <label class="form-check-label" for="receiveOtherMessages">Other Messages</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="reduceAnimations" [formControlName]="'reduceAnimations'">
+          <label class="form-check-label" for="reduceAnimations">Reduce Animations</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="receiveRecommendations" [formControlName]="'receiveRecommendations'">
+          <label class="form-check-label" for="receiveRecommendations">Receive Recommendations</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="enableEmailNotifications" [formControlName]="'enableEmailNotifications'">
+          <label class="form-check-label" for="enableEmailNotifications">Email Notifications</label>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="enablePushNotifications" [formControlName]="'enablePushNotifications'">
+          <label class="form-check-label" for="enablePushNotifications">Push Notifications</label>
+        </div>
+
+        <hr>
+
+        <!-- Reset Button -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-danger" (click)="resetUserPreferences()">Reset to Default</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
