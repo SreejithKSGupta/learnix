@@ -1,3 +1,6 @@
+<div class="header-padding"></div>
+
+<!-- main Drawer -->
 <mat-toolbar [class.scrolled]="isScrolled">
   <!-- Logo Section -->
   <div class="logobox" [routerLink]="['/']">
@@ -78,36 +81,6 @@
 </div>
 </mat-toolbar>
 
-<!-- Notifications Menu -->
-<mat-menu #notificationsMenu="matMenu" class="notifications-menu">
-  <div class="notifications-header">
-    <h3>Notifications</h3>
-    <button mat-button color="primary" (click)="markallasRead()" >Mark all
-
-        as read</button>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="notifications-list" *ngIf="(user$ | async)?.messages?.length; else noNotifications">
-    <button mat-menu-item *ngFor="let notification of (user$ | async)?.messages" (click)="gotomsg(notification)" >
-      <mat-icon [color]="notification.read ? 'default' : 'accent'">
-
-        {{ notification.senderImg || 'notifications' }}
-      </mat-icon>
-      {{ notification.read ? 'notifications' : 'notifications_active' }}
-      <span>{{notification.timestamp | date: 'longDate'}}</span>
-      <span>{{notification.senderName}}</span>
-      <span>{{ notification.message }}</span>
-    </button>
-  </div>
-  <ng-template #noNotifications>
-    <div class="no-notifications">
-      <mat-icon>notifications_off</mat-icon>
-      <p>No new notifications</p>
-    </div>
-  </ng-template>
-</mat-menu>
-<div class="header-padding"></div>
 <!-- Mobile Drawer -->
 <mat-drawer-container class="drawer-container" [class.drawer-open]="isDrawerOpen">
   <mat-drawer #drawer mode="over" position="end" (click)="$event.stopPropagation()">
@@ -175,3 +148,33 @@
     </div>
   </mat-drawer>
 </mat-drawer-container>
+
+<!-- Notifications Menu -->
+<mat-menu #notificationsMenu="matMenu" class="notifications-menu">
+  <div class="notifications-header">
+    <h3>Notifications</h3>
+    <button mat-button color="primary"  *ngIf="user$ | async as user" (click)="markallasRead(user.id)" >Mark all as read</button>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="notifications-list" *ngIf="(user$ | async)?.messages?.length; else noNotifications">
+    <button mat-menu-item *ngFor="let notification of (user$ | async)?.messages" (click)="gotomsg(notification)" >
+      <mat-icon [color]="notification.read ? 'default' : 'accent'">
+
+        {{ notification.senderImg || 'notifications' }}
+      </mat-icon>
+      <mat-icon>      {{ notification.read ? 'notifications' : 'notifications_active' }}
+      </mat-icon>
+      <span>{{notification.timestamp | date: 'longDate'}}</span>
+      <span>{{notification.senderName}}</span>
+      <span>{{ notification.message }}</span>
+
+    </button>
+  </div>
+  <ng-template #noNotifications>
+    <div class="no-notifications">
+      <mat-icon>notifications_off</mat-icon>
+      <p>No new notifications</p>
+    </div>
+  </ng-template>
+</mat-menu>

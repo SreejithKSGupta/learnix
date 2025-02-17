@@ -246,6 +246,8 @@ export class Userservice {
   }
 
   markasread(userID: string, messageID: string): Observable<any> {
+    console.log("markinging one msg as read");
+
     return this.getuserbyid(userID).pipe(
       switchMap((user) => {
         const url = `${this.userurl}/${userID}`;
@@ -264,14 +266,32 @@ export class Userservice {
     );
   }
 
-  replytomessage(userID: string,message:Comment){
-  }
 
 
-  markallmsgsasread(){
-    // get the user, mark all the messages as done, and update the user.
 
+  markallmsgsasread(userID: string): Observable<any> {
+    console.log("marking all msgs as read");
 
+    return this.getuserbyid(userID).pipe(
+
+      switchMap((user) => {
+        const url = `${this.userurl}/${userID}`;
+        console.log(user);
+
+        if (user.messages && user.messages.length > 0) {
+          console.log("messages are there");
+
+          user.messages.forEach((message: Comment) => {
+            message.read = true;
+          });
+          console.log('All messages marked as read for user:', userID);
+        } else {
+          console.error(`No messages found for user with ID ${userID}.`);
+        }
+
+        return this.http.put<any>(url, user);
+      })
+    );
   }
 
 }

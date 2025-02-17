@@ -193,9 +193,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/dashboard'], { fragment: message.id });
   }
 
-  markallasRead() {
+  markallasRead(userid:string) {
 
-    this.userservie.markallmsgsasread()
+    this.userservie.markallmsgsasread(userid).subscribe();
 
   }
 }
