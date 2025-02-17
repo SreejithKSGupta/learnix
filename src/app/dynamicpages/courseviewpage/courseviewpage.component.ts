@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
-import { Comment } from '../../interfaces/comment';
-import { Title } from '@angular/platform-browser';
+import { Title,Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-courseviewpage',
@@ -25,8 +24,10 @@ export class CourseviewpageComponent {
   }
 
 
-  constructor(private router: Router, private data: DataService,private titleService: Title) {}
+  constructor(private router: Router, private data: DataService,private titleService: Title,private metaService: Meta) {}
   ngOnInit(): void {
+
+
     this.course$=this.data.getcoursebyid(this.router.url.split('/')[2])
     this.course$.subscribe({
       next: (data: any) => {
@@ -37,6 +38,11 @@ export class CourseviewpageComponent {
         this.router.navigate(['/404'], { queryParams: { errorCode: 413 } });
       }
     });
+
+    this.titleService.setTitle(this.course?.courseName!);
+    this.metaService.updateTag({ name: 'description', content: this.course?.description! });
+    this.metaService.updateTag({ name: 'keywords', content:` ${this.course?.tutor!},${this.course?.importantTechnologiesUsed}`});
+
   }
 
   onAddComment(newComment:any) {

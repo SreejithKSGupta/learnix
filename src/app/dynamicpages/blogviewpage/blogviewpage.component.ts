@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 import { Comment } from '../../interfaces/comment';
+import { Title,Meta } from '@angular/platform-browser';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Comment } from '../../interfaces/comment';
   styleUrl: './blogviewpage.component.css'
 })
 export class BlogviewpageComponent {
-  constructor(private router:Router, private blogService:BlogService ){}
+  constructor(private router:Router, private blogService:BlogService,private titleService: Title,private metaService: Meta ){}
   blogData:any;
 
   ngOnInit(){
@@ -26,6 +27,11 @@ export class BlogviewpageComponent {
 
     }
     })
+
+    this.titleService.setTitle(this.blogData?.courseName!);
+    this.metaService.updateTag({ name: 'description', content: this.blogData?.description! });
+    this.metaService.updateTag({ name: 'keywords', content:` ${this.blogData?.author},${this.blogData?.topic}`});
+
 
   }
 

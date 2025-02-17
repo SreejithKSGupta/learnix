@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /dashboard/
+Allow: /courses/
+Allow: /blogs/
+Allow: /home/
+Allow: /about/
+Allow: /privacy/
+Allow: /contact/
+Allow: /features/
+
+
+Sitemap: https://sreejithksgupta.github.io/learnix/sitemap.xml
