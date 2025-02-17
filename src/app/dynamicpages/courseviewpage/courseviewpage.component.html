@@ -1,49 +1,67 @@
-<mat-card class="course-details-card" *ngIf="course">
-  <mat-card-header class="position-relative">
+<div class="blog-container" *ngIf="course">
+  <!-- Feature Image -->
+  <div class="blog-header">
     <img
-      mat-card-image
       [src]="course.imageUrl ? course.imageUrl : 'assets/default-course.jpg'"
       alt="{{ course.courseName }}"
-      class="course-image"
+      class="blog-feature-image"
     />
-    <div class="course-info-overlay">
-      <mat-card-title class="course-title">{{ course.courseName }}</mat-card-title>
-      <mat-card-subtitle class="course-author">By {{ course.tutor }}</mat-card-subtitle>
+    <div class="overlay">
+      <h1 class="blog-title">{{ course.courseName }}</h1>
+      <p class="blog-author">By {{ course.tutor }}</p>
     </div>
-  </mat-card-header>
+  </div>
 
-  <mat-card-content>
-    <div class="course-meta">
-      <div class="meta-item">
-        <mat-icon>event</mat-icon>
-        <strong>Duration:</strong> <span>{{ course.duration }} weeks</span>
-      </div>
-      <div class="meta-item">
-        <mat-icon>category</mat-icon>
-        <strong>Technologies Used:</strong> <span>{{ course.importantTechnologiesUsed.join(', ') }}</span>
-      </div>
-      <div class="meta-item">
-        <mat-icon>attach_money</mat-icon>
-        <strong>Fee:</strong> <span>{{ course.courseFee | currency }}</span>
-      </div>
-      <div class="meta-item">
-        <mat-icon>star</mat-icon>
-        <strong>Average Rating:</strong> <span>{{ (course.totalStars||0) / (course.comments.length || 1) }}</span>
-      </div>
+<!-- Course Details Section -->
+<div class="course-details">
+  <div class="detail-item">
+    <mat-icon class="detail-icon">event</mat-icon>
+    <div>
+      <strong>Duration</strong>
+      <span>{{ course.duration }} weeks</span>
     </div>
+  </div>
 
-    <div class="course-description">
-      <p>{{ course.description }}</p>
+  <div class="detail-item">
+    <mat-icon class="detail-icon">category</mat-icon>
+    <div>
+      <strong>Technologies</strong>
+      <span>{{ course.importantTechnologiesUsed.join(', ') }}</span>
     </div>
-    <div class="blog-content">
-      <quill-view [content]="course.content" format="object" theme="snow"></quill-view>
-    </div>
-  </mat-card-content>
+  </div>
 
-  <mat-card-actions class="pt-3 mt-3">
-    <app-commentbox
-      [comments]="course.comments"
-      (addComment)="onAddComment($event)"
-    ></app-commentbox>
-  </mat-card-actions>
-</mat-card>
+  <div class="detail-item">
+    <mat-icon class="detail-icon">attach_money</mat-icon>
+    <div>
+      <strong>Course Fee</strong>
+      <span>{{ course.courseFee | currency }}</span>
+    </div>
+  </div>
+
+  <div class="detail-item">
+    <mat-icon class="detail-icon">people</mat-icon>
+    <div>
+      <strong>Enrolled</strong>
+      <span>{{ course.numberOfEnrolledPeople || 0 }}</span>
+    </div>
+  </div>
+
+  <div class="detail-item">
+    <mat-icon class="detail-icon">star</mat-icon>
+    <div>
+      <strong>Avg. Rating</strong>
+      <span>{{ (course.totalStars || 0) / (course.comments.length || 1) | number:'1.1-1' }}</span>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Blog Content -->
+  <div class="blog-content">
+    <p class="blog-description">{{ course.description }}</p>
+    <quill-view [content]="course.content" format="object" theme="snow"></quill-view>
+  </div>
+
+  <!-- Comment Section -->
+  <app-commentbox [comments]="course.comments" (addComment)="onAddComment($event)"></app-commentbox>
+</div>

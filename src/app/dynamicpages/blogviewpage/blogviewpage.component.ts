@@ -38,6 +38,8 @@ export class BlogviewpageComponent {
   onAddComment(newComment: Comment) {
     this.blogData.comments.push(newComment);
     this.blogService.addcomment(this.blogData,newComment).subscribe((data:any) => {
+      console.log(data);
+
     })
 
   }

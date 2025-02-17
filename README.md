@@ -11,10 +11,7 @@
 ## priority order
 - complete preference page
 - complete feature page
-- better UI for comment box
 - lazy loading?
-- better UI for course details page
-- better UI for blog details page
 
 ## bugs
 - edit blogs option not present

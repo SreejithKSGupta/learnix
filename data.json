@@ -3196,7 +3196,22 @@
       },
       "totalStars": 0,
       "feedback": [],
-      "comments": [],
+      "comments": [
+        {
+          "id": "1739826570837",
+          "senderId": "1738176746899",
+          "senderName": "Sreejith KS pro max",
+          "senderType": "student",
+          "senderImg": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
+          "recieverType": "",
+          "recieverName": "",
+          "recieverId": "",
+          "message": "hello",
+          "urgency": "Low",
+          "timestamp": "2025-02-17T21:09:30.837Z",
+          "status": "approved"
+        }
+      ],
       "disabled": false,
       "dateCreated": "2025-02-17T18:13:26.756Z",
       "dateUpdated": "2025-02-17T18:13:26.756Z",
@@ -6875,17 +6890,6 @@
   ],
   "blogs": [
     {
-      "id": "3b39",
-      "title": "How E-learning is revolutionising India",
-      "author": "Sreejith KS",
-      "post": "CEO",
-      "topic": "Discussion",
-      "content": "this is the content of the blog",
-      "description": "how platforms like Learnix are changing the Indian education landscape.",
-      "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738231331/qwjq3h6a6y8b5b7ezlbt.jpg",
-      "date": "2025-01-30T10:02:13.676Z"
-    },
-    {
       "id": "af92",
       "title": "Your Child should have time to live, not just study",
       "author": "Anjitha J",
@@ -6895,7 +6899,22 @@
       "description": "children should go to school and learn things to have a better life, but should that be on the expense of the lack of childhood?",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738233324/n5ansytzd8zqwc8744ns.webp",
       "date": "2025-01-30T10:35:26.318Z",
-      "comments": []
+      "comments": [
+        {
+          "id": "1739826102493",
+          "senderId": "1738176746899",
+          "senderName": "Sreejith KS pro max",
+          "senderType": "student",
+          "senderImg": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
+          "recieverType": "",
+          "recieverName": "",
+          "recieverId": "",
+          "message": "this is a new comment",
+          "urgency": "Low",
+          "timestamp": "2025-02-17T21:01:42.493Z",
+          "status": "approved"
+        }
+      ]
     },
     {
       "id": "1cc5",
@@ -6907,7 +6926,22 @@
       "description": "how platforms like Learnix are changing the Indian education landscape.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1738354258/o5ogbk7qwat0e21ixkba.jpg",
       "date": "2025-01-31T20:11:07.392Z",
-      "comments": []
+      "comments": [
+        {
+          "id": "1739828170036",
+          "senderId": "1738176746899",
+          "senderName": "Sreejith KS pro max",
+          "senderType": "student",
+          "senderImg": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
+          "recieverType": "",
+          "recieverName": "",
+          "recieverId": "",
+          "message": "as",
+          "urgency": "Low",
+          "timestamp": "2025-02-17T21:36:10.036Z",
+          "status": "approved"
+        }
+      ]
     },
     {
       "id": "1e97",
@@ -8024,7 +8058,22 @@
       "description": "How to use AI to optimize our learning patterns",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739259465/fmyd6pt4exveui7hglyi.webp",
       "date": "2025-02-11T07:37:47.816Z",
-      "comments": []
+      "comments": [
+        {
+          "id": "1739828306997",
+          "senderId": "1738176746899",
+          "senderName": "Sreejith KS pro max",
+          "senderType": "student",
+          "senderImg": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739210871/cop6g9jspoe7jlwdnf6n.webp",
+          "recieverType": "",
+          "recieverName": "",
+          "recieverId": "",
+          "message": "this is a comment",
+          "urgency": "Low",
+          "timestamp": "2025-02-17T21:38:26.997Z",
+          "status": "approved"
+        }
+      ]
     },
     {
       "id": "2d3b",
@@ -8078,955 +8127,6 @@
           "status": "approved"
         }
       ]
-    },
-    {
-      "id": "5540",
-      "title": "Introduction to UI/UX",
-      "author": "Sreejith KS",
-      "post": "CEO",
-      "topic": "Discussion",
-      "content": {
-        "ops": [
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "1. Why Learn UI/UX Design?"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n✅ "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "In-Demand Skill:"
-          },
-          {
-            "insert": " UI/UX designers are highly sought after in tech, product, and design industries.\n✅ "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "User-Centered Approach:"
-          },
-          {
-            "insert": " Learn to design with the "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "user"
-          },
-          {
-            "insert": " in mind for more engaging, functional experiences.\n✅ "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Creativity & Problem Solving:"
-          },
-          {
-            "insert": " Combine design, psychology, and technology to create impactful user experiences.\n✅ "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Job Opportunities:"
-          },
-          {
-            "insert": " Grow in roles like "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "UI Designer"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "UX Researcher"
-          },
-          {
-            "insert": ", and "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Product Designer"
-          },
-          {
-            "insert": ".\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "2. Core Concepts of UI/UX Design"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "🔹 UI Design (User Interface Design)"
-          },
-          {
-            "attributes": {
-              "header": 2
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\nUI is about the "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "visual elements"
-          },
-          {
-            "insert": " that users interact with, such as buttons, icons, color schemes, and fonts. A well-designed UI ensures that the interface is "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "intuitive"
-          },
-          {
-            "insert": " and "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "appealing"
-          },
-          {
-            "insert": ".\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Key UI Elements:"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Buttons:"
-          },
-          {
-            "insert": " Actionable items like \"Submit\" or \"Next\"."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Icons:"
-          },
-          {
-            "insert": " Small graphical elements that represent actions or content."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Typography:"
-          },
-          {
-            "insert": " Font style, size, and spacing."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Colors:"
-          },
-          {
-            "insert": " Harmonious color schemes to guide users' attention."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "🔹 UX Design (User Experience Design)"
-          },
-          {
-            "attributes": {
-              "header": 2
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\nUX focuses on how users feel when interacting with a product, ensuring that it is "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "easy to use"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "efficient"
-          },
-          {
-            "insert": ", and "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "enjoyable"
-          },
-          {
-            "insert": ".\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Key UX Principles:"
-          },
-          {
-            "attributes": {
-              "header": 4
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Usability:"
-          },
-          {
-            "insert": " How easy it is for users to accomplish tasks."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Accessibility:"
-          },
-          {
-            "insert": " Designing for all users, including those with disabilities."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Interaction Design:"
-          },
-          {
-            "insert": " The interaction between the user and the system, like gestures or clicks."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Information Architecture:"
-          },
-          {
-            "insert": " Organizing and structuring content in an intuitive way."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "3. The UI/UX Design Process"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Research:"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Understand the user needs, pain points, and goals."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Tools: Surveys, interviews, and user testing."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Wireframing & Prototyping:"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Create low-fidelity wireframes to map out the design structure."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Develop interactive prototypes to simulate the final product."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Design:"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Focus on visual design elements like layout, color, and typography."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Use tools like "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Figma"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Sketch"
-          },
-          {
-            "insert": ", or "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Adobe XD"
-          },
-          {
-            "insert": "."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Testing & Iteration:"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Conduct usability testing to gather feedback and improve the design."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Iterate on the design based on user input and performance."
-          },
-          {
-            "attributes": {
-              "indent": 1,
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "4. Tools for UI/UX Designers"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "🔹 Design Tools:"
-          },
-          {
-            "attributes": {
-              "header": 2
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Figma:"
-          },
-          {
-            "insert": " Collaborative design tool for creating UI designs and prototypes."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Sketch:"
-          },
-          {
-            "insert": " A vector-based design tool used for UI/UX design."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Adobe XD:"
-          },
-          {
-            "insert": " Used for creating wireframes, prototypes, and design systems."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "InVision:"
-          },
-          {
-            "insert": " Prototyping and collaboration tool."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "🔹 User Research Tools:"
-          },
-          {
-            "attributes": {
-              "header": 2
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Lookback.io:"
-          },
-          {
-            "insert": " Real-time user research and testing tool."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Optimal Workshop:"
-          },
-          {
-            "insert": " Used for usability testing, card sorting, and site mapping."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "5. Best Practices in UI/UX Design"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Consistency:"
-          },
-          {
-            "insert": " Use consistent elements like buttons, colors, and typography."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Simplicity:"
-          },
-          {
-            "insert": " Keep the design clean and uncluttered."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Mobile-First Design:"
-          },
-          {
-            "insert": " Ensure the design is responsive and looks good on all devices."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Feedback:"
-          },
-          {
-            "insert": " Provide immediate feedback to user actions (e.g., button states)."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "User-Centric:"
-          },
-          {
-            "insert": " Prioritize user needs and pain points at every step."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "6. Real-World Applications of UI/UX Design"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n📌 "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Web and Mobile Apps"
-          },
-          {
-            "insert": " – Design interfaces for both websites and apps to improve user engagement."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "📌 "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "E-commerce Platforms"
-          },
-          {
-            "insert": " – Create user-friendly and visually appealing online stores."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "📌 "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Corporate Websites"
-          },
-          {
-            "insert": " – Enhance business websites with sleek designs and improved user experience."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "📌 "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Software & Tools"
-          },
-          {
-            "insert": " – Improve usability and interaction within software applications."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "7. Summary"
-          },
-          {
-            "attributes": {
-              "header": 1
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "UI Design:"
-          },
-          {
-            "insert": " Focuses on visual elements, layout, and interactivity."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "UX Design:"
-          },
-          {
-            "insert": " Focuses on user needs, usability, and overall experience."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Research & Testing:"
-          },
-          {
-            "insert": " Critical to ensuring the design meets user expectations."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Tools & Techniques:"
-          },
-          {
-            "insert": " Familiarize yourself with Figma, Sketch, Adobe XD, and more."
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\nBy learning "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "UI/UX design"
-          },
-          {
-            "insert": ", you can create "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "user-friendly"
-          },
-          {
-            "insert": ", "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "engaging"
-          },
-          {
-            "insert": " products that offer seamless and satisfying user experiences.\n"
-          }
-        ]
-      },
-      "description": "UI/UX design is the process of enhancing user satisfaction by improving the usability, accessibility, and enjoyment provided in the interaction between the user and the product. UI (User Interface) focuses on the visual layout, while UX (User Experience) focuses on the overall feel and interaction.",
-      "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739817527/qkkkxbccaqvhkeuuze4b.webp",
-      "date": "2025-02-17T18:38:50.598Z"
     },
     {
       "id": "d488",
@@ -9975,7 +9075,8 @@
       },
       "description": "UI/UX design is the process of enhancing user satisfaction by improving the usability, accessibility, and enjoyment provided in the interaction between the user and the product. UI (User Interface) focuses on the visual layout, while UX (User Experience) focuses on the overall feel and interaction.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739817702/githr8yunvnin1dssff4.webp",
-      "date": "2025-02-17T18:41:43.931Z"
+      "date": "2025-02-17T18:41:43.931Z",
+      "comments": []
     },
     {
       "id": "49a4",
@@ -9992,7 +9093,8 @@
       },
       "description": "UI/UX design is the process of enhancing user satisfaction by improving the usability, accessibility, and enjoyment provided in the interaction between the user and the product. UI (User Interface) focuses on the visual layout, while UX (User Experience) focuses on the overall feel and interaction.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739817788/erm3hcbmpmdy1sq42c3p.webp",
-      "date": "2025-02-17T18:43:22.847Z"
+      "date": "2025-02-17T18:43:22.847Z",
+      "comments": []
     },
     {
       "id": "996c",
@@ -10390,7 +9492,8 @@
       },
       "description": "Artificial Intelligence (AI) has rapidly evolved from a niche academic field to a global phenomenon, shaping industries, transforming the way we live, and driving innovation in ways previously imagined only in science fiction. AI technologies are now an integral part of our daily lives, from personal assistants like Siri and Alexa to advanced algorithms transforming healthcare, finance, and even creative industries.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739818191/pqgckrtjj1d6bck72wbh.webp",
-      "date": "2025-02-17T18:49:52.553Z"
+      "date": "2025-02-17T18:49:52.553Z",
+      "comments": []
     },
     {
       "id": "29ca",
@@ -11331,7 +10434,8 @@
       },
       "description": "As the world continues to evolve technologically, the evolution of mobile networks is one of the most exciting areas of progress. After the groundbreaking success of 5G, the next frontier is already in development: 6G. Although still in the early stages of research and conceptualization, 6G is set to redefine how we connect, communicate, and interact with the digital world. In this blog, we’ll explore what 6G is, how it differs from 5G, and what it could mean for industries, individuals, and society at large.",
       "imageURL": "https://res.cloudinary.com/dhrye1aew/image/upload/v1739818576/nmoaxl8qbfdxxueswiqh.webp",
-      "date": "2025-02-17T18:56:18.359Z"
+      "date": "2025-02-17T18:56:18.359Z",
+      "comments": []
     }
   ],
   "particlesconfig": {

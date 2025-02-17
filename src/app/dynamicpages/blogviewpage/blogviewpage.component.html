@@ -1,35 +1,24 @@
 <div class="blog-container" *ngIf="blogData">
-  <!-- Blog Header Section -->
   <header class="blog-header">
     <h1 id="blogtitle">{{ blogData.title }}</h1>
     <div class="blog-meta">
       <span class="author-info">
-        <!-- <img class="author-image" [src]="blogData.authorImage" alt="{{ blogData.author }}" /> -->
         <span class="author-name">{{ blogData.author }}</span>
       </span>
       <span class="publish-date">{{ blogData.date | date: 'longDate' }}</span>
     </div>
   </header>
 
-  <!-- Blog Image Section -->
   <section class="blog-image-container">
     <img [src]="blogData.imageURL" alt="{{ blogData.title }}" class="blog-image" />
   </section>
 
-  <!-- Blog Content Section -->
   <section class="blog-content">
     <p class="blog-description">{{ blogData.description }}</p>
     <quill-view [content]="blogData.content" format="object" theme="snow"></quill-view>
   </section>
 
-
-  <!-- Comments Section -->
-
   <mat-card-actions class="pt-3 mt-3">
-    <app-commentbox
-      [comments]="blogData.comments"
-      (addComment)="onAddComment($event)"
-    ></app-commentbox>
+    <app-commentbox [comments]="blogData.comments" (addComment)="onAddComment($event)"></app-commentbox>
   </mat-card-actions>
-
 </div>

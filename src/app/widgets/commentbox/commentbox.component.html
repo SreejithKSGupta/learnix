@@ -1,47 +1,51 @@
-<div id="newcommentbox" *ngIf="user$ | async as user">
-  <div *ngIf="user.id">
-  <div class="userdetails">
-    <mat-icon>account_circle</mat-icon>
-    <span>{{ user.userType }}: {{ user.name }}</span>
-  </div>
+<div class="comment-box">
+  <!-- New Comment Form -->
+  <div *ngIf="user$ | async as user" class="new-comment">
+    <div class="user-info">
+      <img [src]="user.imageUrl || 'assets/default-avatar.png'" alt="User Avatar" class="avatar" />
+      <span>{{ user.name }} ({{ user.userType }})</span>
+    </div>
 
-  <mat-form-field>
-    <mat-label>New Comment</mat-label>
-    <textarea matInput [(ngModel)]="newComment.message" name="message"></textarea>
-    <mat-error *ngIf="newComment.message.length > 255">Comment must be 255 characters or less</mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Write a comment...</mat-label>
+      <textarea title="Add comment" matInput [(ngModel)]="newComment.message" rows="3"></textarea>
+      <mat-error *ngIf="validateComment()">Max 255 characters allowed</mat-error>
+    </mat-form-field>
 
-  <!-- Urgency Selection -->
-  <mat-form-field>
-    <mat-label>Urgency</mat-label>
-    <mat-select [(ngModel)]="newComment.urgency">
-      <mat-option value="Low">Low</mat-option>
-      <mat-option value="Medium">Medium</mat-option>
-      <mat-option value="High">High</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <div class="comment-actions">
+      <mat-form-field appearance="outline">
+        <mat-label>Urgency</mat-label>
+        <mat-select [(ngModel)]="newComment.urgency">
+          <mat-option value="Low">Low</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="High">High</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <!-- Submit Button -->
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="submitComment()"
-    [disabled]="!newComment.message || newComment.message.length > 255"
-  >
-    Submit
-  </button>
-</div>
-</div>
-<!-- Display Existing Comments -->
-<div class="comments-section" *ngIf="comments?.length">
-  <div class="comment" *ngFor="let comment of comments">
-    <mat-icon>account_circle</mat-icon>
-    <div>
-      <strong>{{ comment.recieverType }}: {{ comment.senderId }}</strong>
-      <p>{{ comment.message }}</p>
-      <small>Urgency: {{ comment.urgency }}</small>
+      <button mat-flat-button color="primary" (click)="submitComment()"
+        [disabled]="!newComment.message || validateComment()">Post</button>
     </div>
   </div>
-</div>
 
-<p *ngIf="!comments?.length">No comments yet. Be the first to comment!</p>
+  <!-- Comment List -->
+  <div *ngIf="comments?.length; else noComments" class="comments-list">
+    <div *ngFor="let comment of comments" class="comment-card">
+      <img [src]="comment.senderImg || 'assets/default-avatar.png'" alt="User Avatar" class="avatar" />
+      <div class="comment-content">
+        <div class="comment-header">
+          <span class="comment-user">{{ comment.senderName }}</span>
+          <small class="comment-time">{{ comment.timestamp | date:'short' }}</small>
+        </div>
+        <p class="comment-message">{{ comment.message }}</p>
+        <span class="comment-urgency" [ngClass]="comment.urgency.toLowerCase()">
+          {{ comment.urgency }} Urgency
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Comments Message -->
+  <ng-template #noComments>
+    <p class="no-comments">No comments yet. Be the first to comment!</p>
+  </ng-template>
+</div>
