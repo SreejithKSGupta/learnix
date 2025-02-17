@@ -59,6 +59,7 @@ import { SettingsComponent } from './pages/otherpages/settings/settings.componen
 import { BlogCardComponent } from './components/blogCard/blogCard.component';
 import { CommentboxComponent } from './widgets/commentbox/commentbox.component';
 import { BlogpostsComponent } from './pages/home/blogposts/blogposts.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,12 @@ import { BlogpostsComponent } from './pages/home/blogposts/blogposts.component';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     DataService,

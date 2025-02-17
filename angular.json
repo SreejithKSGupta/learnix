@@ -75,7 +75,8 @@
               "optimization": true,
               "namedChunks": true,
               "aot": true,
-              "extractLicenses": true
+              "extractLicenses": true,
+              "serviceWorker": "ngsw-config.json"
 
             },
             "development": {

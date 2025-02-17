@@ -9,16 +9,15 @@
 
 
 ## priority order
-- complete preference page
 - complete feature page
-- lazy loading?
+- lazy loading
+
 
 ## bugs
 - edit blogs option not present
 
 ### optional
 - github secrets
-- SEO optimizationss
 
 ## pushing to github
 - ng build --base-href "https://sreejithksgupta.github.io/learnix/"
