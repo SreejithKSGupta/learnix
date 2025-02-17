@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/profile/tutordashboard/tutordashboard.component.css"],
+  "sourcesContent": [".enrolled-courses {\r\n  width: 100vw;\r\n\r\n}\r\n\r\n.coursegrid{\r\n  width:100vw;\r\n  display:flex;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  justify-content: space-evenly;\r\n}\r\n\r\n.coursebox{\r\n  width: 320px;\r\n}\r\n"],
+  "mappings": "AAAA,CAAC,iBACC,MAAO,KAET,CAEA,CAAC,WACC,MAAM,MACN,QAAQ,KACR,eAAgB,IAChB,UAAW,KACX,gBAAiB,YACnB,CAEA,CAAC,UACC,MAAO,KACT",
+  "names": []
+}

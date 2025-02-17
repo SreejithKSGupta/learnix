@@ -1,0 +1,125 @@
+{
+  "configVersion": 1,
+  "timestamp": 1739832329587,
+  "index": "https://sreejithksgupta.github.io/learnix/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://sreejithksgupta.github.io/learnix/chunk-EHQWWS5Z.js",
+        "https://sreejithksgupta.github.io/learnix/favicon.ico",
+        "https://sreejithksgupta.github.io/learnix/index.html",
+        "https://sreejithksgupta.github.io/learnix/main-FEUQC2QJ.js",
+        "https://sreejithksgupta.github.io/learnix/manifest.webmanifest",
+        "https://sreejithksgupta.github.io/learnix/polyfills-Q763KACN.js",
+        "https://sreejithksgupta.github.io/learnix/quill-IB73HUPV.js",
+        "https://sreejithksgupta.github.io/learnix/scripts-OYUF3O7H.js",
+        "https://sreejithksgupta.github.io/learnix/styles-U4IDT2EM.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://sreejithksgupta.github.io/learnix/assets/404.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/aunty.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/boy1.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/class.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/designer.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/download.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/girl2.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/hero.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/heroimg.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/image.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/logo.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/gallery/team1.webp",
+        "https://sreejithksgupta.github.io/learnix/assets/icons/facebook.svg",
+        "https://sreejithksgupta.github.io/learnix/assets/icons/instagram.svg",
+        "https://sreejithksgupta.github.io/learnix/assets/icons/linkedin.svg",
+        "https://sreejithksgupta.github.io/learnix/assets/icons/twitter.svg",
+        "https://sreejithksgupta.github.io/learnix/assets/learnixtplogo.webp",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-128x128.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-144x144.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-152x152.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-192x192.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-384x384.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-512x512.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-72x72.png",
+        "https://sreejithksgupta.github.io/learnix/icons/icon-96x96.png",
+        "https://sreejithksgupta.github.io/learnix/learnixtplogo.webp",
+        "https://sreejithksgupta.github.io/learnix/res/hero.svg",
+        "https://sreejithksgupta.github.io/learnix/res/heroimgpersonwithlap.webp"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://sreejithksgupta.github.io/learnix/assets/404.webp": "39186d5b2acdc50bf9acdb26c01612ef37f8bbd9",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/aunty.webp": "1009edb972075f70a93fbf13e2a19a330ac06d7c",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/boy1.webp": "5952742d3ce0d13fe07f7bc9c98407518ce700c0",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/class.webp": "510ce449812f01dc97ec477c31832a82425d2012",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/designer.webp": "289cbaa9de653a1dabb3c08faf915ebc8e4c7603",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/download.webp": "fc15b85d26686601c58ec3bfe0b65f1a43697cf8",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/girl2.webp": "8a2384f633a42301141a685472c778d7bc97c0fd",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/hero.webp": "e4b44c736972737f91f546e22e1906b0a4bb4f2a",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/heroimg.webp": "5c7ec8b5e9be30716a0953bb94506ca6f64fecdb",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/image.webp": "310a99f52b3e41443a58e70b2935ab8e4b70f53b",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/logo.webp": "a6f8b316aa6170b3f98faf22e67410c06f59d685",
+    "https://sreejithksgupta.github.io/learnix/assets/gallery/team1.webp": "5419c0c96f80fd6e16842eb9a3538d033cbe4e40",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/facebook.svg": "d6895a66f1ac9010d6dafe5763725e38f7b38bbb",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/instagram.svg": "ab3b8e99d043eaecb621620ab256f55fb7ea522e",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/linkedin.svg": "7957b8efc3ca0daf9bb34bb0a4ee6e9ae9e557c9",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/twitter.svg": "6c1e02e6ba5b8a689e69e8108964f137f95db581",
+    "https://sreejithksgupta.github.io/learnix/assets/learnixtplogo.webp": "0a879b9529116c311a984589039b561dd65bc896",
+    "https://sreejithksgupta.github.io/learnix/chunk-EHQWWS5Z.js": "11131f0a088f7d62fa10f7df73732290c8a2f317",
+    "https://sreejithksgupta.github.io/learnix/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "https://sreejithksgupta.github.io/learnix/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "https://sreejithksgupta.github.io/learnix/index.html": "6e2db9ff0578db18b72a78beee32ebdc936624e0",
+    "https://sreejithksgupta.github.io/learnix/learnixtplogo.webp": "0a879b9529116c311a984589039b561dd65bc896",
+    "https://sreejithksgupta.github.io/learnix/main-FEUQC2QJ.js": "539fba0271908e85d43b93aac0124863b2c62086",
+    "https://sreejithksgupta.github.io/learnix/manifest.webmanifest": "e27d3a94e8ab0e5e2137f8f7531ea0fef50665bc",
+    "https://sreejithksgupta.github.io/learnix/polyfills-Q763KACN.js": "e2a9f135443e4bc6115449a6098604d881bf5931",
+    "https://sreejithksgupta.github.io/learnix/quill-IB73HUPV.js": "464c6195b293f4a3a0c94c0ddc2139b657c4f252",
+    "https://sreejithksgupta.github.io/learnix/res/hero.svg": "9330430a972a988f1d0003a953a9c199f2a5e224",
+    "https://sreejithksgupta.github.io/learnix/res/heroimgpersonwithlap.webp": "303eea05ab887e3c6b6c7f3293816b3fd0162d89",
+    "https://sreejithksgupta.github.io/learnix/scripts-OYUF3O7H.js": "769a85dd2997f76803259831fd25bbcd8037b177",
+    "https://sreejithksgupta.github.io/learnix/styles-U4IDT2EM.css": "ab7f6392f64f49791294e6f7736723370513f8e6"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
