@@ -1,7 +1,7 @@
 .testimonial-container {
   position: relative;
   width:clamp(200px, 96vw, 900px);
-  margin: var(--padding) auto;
+  margin: auto auto;
   overflow: hidden;
   padding: 10px var(--padding);
   border-radius: var(--border-radius);

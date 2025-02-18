@@ -4,9 +4,6 @@
 
 ### tried and refused
 - implement SSR?
-- caching images and json, then revalidate
-
-
 
 ## priority order
 - complete feature page
