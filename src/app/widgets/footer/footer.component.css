@@ -1,8 +1,9 @@
 .footer-wrapper {
   background: linear-gradient(to bottom, #011734, #001020);
   color: #ffffff;
-  padding-top: 2rem;
+  padding-top: 3rem; /* Increased top padding for better spacing */
   font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
 
 .footer-content {
@@ -14,7 +15,6 @@
   gap: 3rem;
 }
 
-/* Company Info Section */
 .company-info {
   display: flex;
   flex-direction: column;
@@ -24,6 +24,7 @@
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content: center; /* Centered the logo for mobile view */
   gap: 1rem;
 }
 
@@ -39,7 +40,7 @@
 }
 
 .company-name {
-  font-size: 1.5rem;
+  font-size: 1.75rem; /* Larger font size */
   font-weight: 600;
   margin: 0;
   color: #ffffff;
@@ -81,7 +82,6 @@
   height: 18px;
 }
 
-/* Quick Links Section */
 .quick-links {
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Increased font size */
   font-weight: 600;
   text-align: center;
   margin: 0;
@@ -116,7 +116,6 @@
   transform: translateX(5px);
 }
 
-/* Newsletter & Social Section */
 .newsletter-social {
   display: flex;
   flex-direction: column;
@@ -137,29 +136,27 @@
 
 .newsletter-form {
   width: 100%;
-  color: white !important;
 }
 
 .input-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
 }
 
 .mat-form-field {
   width: 100%;
   color: white !important;
-
 }
- .mdc-text-field__input  {
+
+.mdc-text-field__input {
   color: white !important;
 }
 
-
 .subscribe-button {
   display: flex;
+  justify-content: center;
+  margin: 5px;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
@@ -172,7 +169,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Social Links */
 .social-container {
   display: flex;
   flex-direction: column;
@@ -181,6 +177,7 @@
 
 .social-links {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -212,11 +209,10 @@
   filter: brightness(1.4);
 }
 
-/* Footer Bottom */
 .footer-bottom {
   margin-top: 2rem;
-  padding: 0.5rem 0;
-  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem 0; /* Increased padding */
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .footer-bottom .container {
@@ -251,7 +247,6 @@
   color: #ffffff;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
@@ -270,6 +265,18 @@
   .social-links {
     justify-content: center;
   }
+
+  .footer-wrapper {
+    padding-top: 2rem;
+  }
+
+  .company-name {
+    font-size: 1.5rem; /* Reduced for mobile */
+  }
+
+  .section-title {
+    font-size: 1.5rem; /* Adjusted for smaller screens */
+  }
 }
 
 @media (max-width: 480px) {
@@ -278,7 +285,7 @@
   }
 
   .section-title {
-    text-align: center;
+    font-size: 1.25rem;
   }
 
   .logo-container {
@@ -304,5 +311,23 @@
   .bottom-links {
     flex-direction: column;
     gap: 0.75rem;
+  }
+
+  /* .social-links {
+    flex-direction: column;
+    gap: 1rem;
+  } */
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  .subscribe-button {
+    width: 100%;
+    justify-content: center;
   }
 }
