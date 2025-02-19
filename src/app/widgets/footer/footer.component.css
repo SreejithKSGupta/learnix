@@ -3,7 +3,6 @@
   color: #ffffff;
   padding-top: 3rem; /* Increased top padding for better spacing */
   font-family: 'Roboto', sans-serif;
-  text-align: center;
 }
 
 .footer-content {
@@ -255,7 +254,6 @@
 
   .footer-bottom .container {
     flex-direction: column;
-    text-align: center;
   }
 
   .bottom-links {
@@ -288,25 +286,7 @@
     font-size: 1.25rem;
   }
 
-  .logo-container {
-    justify-content: center;
-  }
 
-  .address-info {
-    text-align: center;
-  }
-
-  .contact-info {
-    align-items: center;
-  }
-
-  .links-grid {
-    text-align: center;
-  }
-
-  .newsletter-desc {
-    text-align: center;
-  }
 
   .bottom-links {
     flex-direction: column;

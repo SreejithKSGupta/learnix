@@ -25,15 +25,19 @@
 
 .blog-meta {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
   color: var(--text-color);
   margin-bottom: 1rem;
+  font-size: 70%;
 }
 
 .blog-meta span {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  width: 30%;
+  overflow: hidden;
 }
 
 .blog-meta mat-icon {

@@ -1,34 +1,40 @@
-<div class="container-fluid bg-light pt-5 pb-5">
-  <h1 class="text-center text-primary display-4 fw-bold mb-4" style="font-family: 'Anton', sans-serif;">
-      Key Features of Learnix
-  </h1>
-  <p class="text-center text-muted mb-5" style="font-family: 'Lora', serif;">
+<div class="container-fluid bg-light py-5">
+  <header class="text-center mb-5">
+    <h1 class="display-4 text-primary fw-bold">Key Features of Learnix</h1>
+    <p class="text-muted mb-5" style="font-family: 'Lora', serif;">
       Explore the powerful features designed to enhance your learning, teaching, and administrative experience on Learnix.
-  </p>
+    </p>
+  </header>
 
-  <!-- Loop through each category of features -->
-  <div *ngFor="let category of featureCategories" class="row mb-5">
-    <!-- Category Left Section -->
-    <div class="col-md-6">
-      <h2 class="text-primary mb-4" style="font-family: 'Pacifico', cursive;">{{ category.title }}</h2>
-      <p class="text-muted mb-4" style="font-family: 'Lora', serif;">{{ category.description }}</p>
-      <ul class="list-unstyled">
-        <li *ngFor="let feature of category.features" class="mb-3" style="font-family: 'Kanit', sans-serif;">
-          <i class="fas fa-check-circle text-success"></i> {{ feature }}
-        </li>
-      </ul>
-    </div>
+  <!-- Loop through feature categories -->
+  <section *ngFor="let category of featureCategories" class="row mb-5">
+    <article class="col-md-6">
+      <mat-card class="feature-card">
+        <mat-card-header>
+          <mat-card-title class="text-primary" style="font-family: 'Pacifico', cursive;">{{ category.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="text-muted" style="font-family: 'Lora', serif;">{{ category.description }}</p>
+          <mat-list>
+            <mat-list-item *ngFor="let feature of category.features">
+              <mat-icon matListIcon class="text-success">check_circle</mat-icon>
+              {{ feature }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </article>
 
-    <!-- Category Right Section: Image -->
-    <div class="col-md-6">
-      <img [src]="category.imageUrl" class="img-fluid rounded shadow" [alt]="category.title" />
-    </div>
-  </div>
+    <article class="col-md-6">
+      <img alt="iamge" [src]="category.imageUrl" class="img-fluid rounded shadow" [alt]="category.title" />
+    </article>
+  </section>
 
   <!-- Footer Section -->
-  <div class="text-center mt-5">
-      <p class="text-muted" style="font-family: 'Lora', serif;">
-          Designed to make learning, teaching, and administration seamless. Join us today to explore the full potential of Learnix!
-      </p>
-  </div>
+  <footer class="text-center mt-5">
+    <p class="text-muted" style="font-family: 'Lora', serif;">
+      Designed to make learning, teaching, and administration seamless. Join us today to explore the full potential of Learnix!
+    </p>
+    <button mat-flat-button color="primary" routerLink="/login">Get Started</button>
+  </footer>
 </div>

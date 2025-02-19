@@ -105,6 +105,9 @@
 .hero-right {
   position: relative;
   height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   animation: fadeInRight 1.5s ease-in-out;
 }
 

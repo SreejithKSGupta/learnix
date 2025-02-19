@@ -1,5 +1,5 @@
   <mat-card class="blog-card mat-elevation-z4">
-    <img mat-card-image [src]="blog.imageURL" [alt]="blog.title" class="blog-image">
+    <img alt="blog title" mat-card-image [src]="blog.imageURL" [alt]="blog.title" class="blog-image">
 
     <mat-card-header>
       <mat-card-title class="blog-title">{{ blog.title }}</mat-card-title>
@@ -18,7 +18,7 @@
 
     <mat-card-actions>
       <button mat-flat-button color="primary" (click)="onReadMore(blog.id)">
-        <mat-icon>read_more</mat-icon> Read More
+        <mat-icon>read_more</mat-icon> Read
       </button>
       <button mat-flat-button color="accent" (click)="onShare(blog.id)">
         <mat-icon>share</mat-icon> Share
