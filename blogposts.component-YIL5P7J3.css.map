@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/home/blogposts/blogposts.component.css"],
+  "sourcesContent": [".blog-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  gap: 30px;\n  padding: 20px;\n  width: clamp(300px, 90vw, 1200px);\n  margin:  var(--padding) auto;\n}\n\n\n@media (max-width: 768px) {\n .blog-grid {\n      padding: 20px;\n  }\n}\n"],
+  "mappings": "AAAA,CAAC,UACC,QAAS,KACT,sBAAuB,OAAO,SAAS,CAAE,OAAO,KAAK,CAAE,MACvD,IAAK,KAHP,QAIW,KACT,MAAO,MAAM,KAAK,CAAE,IAAI,CAAE,QAC1B,OAAS,IAAI,WAAW,IAC1B,CAGA,OAAO,CAAC,SAAS,EAAE,OAClB,CAXA,UAAD,QAYe,IACb,CACF",
+  "names": []
+}

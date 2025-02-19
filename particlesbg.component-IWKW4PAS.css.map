@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/particlesbg/particlesbg.component.css"],
+  "sourcesContent": ["\nngx-particles {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  z-index: -1 !important; /* Keeps it in the background */\n}\n"],
+  "mappings": "AACA,cACE,SAAU,SACV,MAAO,KACP,OAAQ,KACR,IAAK,EACL,KAAM,EACN,QAAS,YACX",
+  "names": []
+}

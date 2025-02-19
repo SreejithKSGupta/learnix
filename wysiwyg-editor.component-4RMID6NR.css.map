@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/wysiwyg-editor/wysiwyg-editor.component.css"],
+  "sourcesContent": ["quill-editor{\n  width: 100%;\n  margin:20px auto;\n  color: var(--text-color);\n}\n\n.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{\n  color: white!important;\n\n}\n\nimg {\n  max-height: 200px !important;\n}\n"],
+  "mappings": "AAAA,aACE,MAAO,KADT,OAES,KAAK,KACZ,MAAO,IAAI,aACb,CAEA,CAAC,OAAO,CAAC,WAAW,OAAQ,CAA3B,QAAoC,CAA5B,WAAwC,OAC/C,MAAO,cAET,CAEA,IACE,WAAY,eACd",
+  "names": []
+}

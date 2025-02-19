@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/home/home.component.css"],
+  "sourcesContent": ["#body {\n    font-family: Arial, sans-serif;\n    z-index: 5;\n  }\n\n  .navbar {\n    margin-bottom: 20px;\n  }\n\n  .jumbotron {\n    background-color: #f8f9fa;\n    padding: 2rem 1rem;\n  }\n\n  h2 {\n    margin-top: 20px;\n  }\n"],
+  "mappings": "AAAA,CAAC,KACG,YAAa,KAAK,CAAE,WACpB,QAAS,CACX,CAEA,CAAC,OACC,cAAe,IACjB,CAEA,CAAC,UACC,iBAAkB,QAVtB,QAWa,KAAK,IAChB,CAEA,GACE,WAAY,IACd",
+  "names": []
+}

@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1739833960946,
+  "timestamp": 1739953633691,
   "index": "https://sreejithksgupta.github.io/learnix/index.html",
   "assetGroups": [
     {
@@ -14,12 +14,12 @@
         "https://sreejithksgupta.github.io/learnix/chunk-EHQWWS5Z.js",
         "https://sreejithksgupta.github.io/learnix/favicon.ico",
         "https://sreejithksgupta.github.io/learnix/index.html",
-        "https://sreejithksgupta.github.io/learnix/main-XTUD5TS5.js",
+        "https://sreejithksgupta.github.io/learnix/main-SEZMH2TU.js",
         "https://sreejithksgupta.github.io/learnix/manifest.webmanifest",
         "https://sreejithksgupta.github.io/learnix/polyfills-Q763KACN.js",
         "https://sreejithksgupta.github.io/learnix/quill-IB73HUPV.js",
         "https://sreejithksgupta.github.io/learnix/scripts-OYUF3O7H.js",
-        "https://sreejithksgupta.github.io/learnix/styles-U4IDT2EM.css"
+        "https://sreejithksgupta.github.io/learnix/styles-EMHYNBFX.css"
       ],
       "patterns": []
     },
@@ -77,10 +77,10 @@
     "https://sreejithksgupta.github.io/learnix/assets/gallery/image.webp": "310a99f52b3e41443a58e70b2935ab8e4b70f53b",
     "https://sreejithksgupta.github.io/learnix/assets/gallery/logo.webp": "a6f8b316aa6170b3f98faf22e67410c06f59d685",
     "https://sreejithksgupta.github.io/learnix/assets/gallery/team1.webp": "5419c0c96f80fd6e16842eb9a3538d033cbe4e40",
-    "https://sreejithksgupta.github.io/learnix/assets/icons/facebook.svg": "d6895a66f1ac9010d6dafe5763725e38f7b38bbb",
-    "https://sreejithksgupta.github.io/learnix/assets/icons/instagram.svg": "ab3b8e99d043eaecb621620ab256f55fb7ea522e",
-    "https://sreejithksgupta.github.io/learnix/assets/icons/linkedin.svg": "7957b8efc3ca0daf9bb34bb0a4ee6e9ae9e557c9",
-    "https://sreejithksgupta.github.io/learnix/assets/icons/twitter.svg": "6c1e02e6ba5b8a689e69e8108964f137f95db581",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/facebook.svg": "c911e0b281c9d57820cc0e010524a27fb6892ee9",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/instagram.svg": "577c222b9d6d2c334d47f91f06ae0a25f82441ce",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/linkedin.svg": "576189699f36b0256d8b92ee6a35f5388961f977",
+    "https://sreejithksgupta.github.io/learnix/assets/icons/twitter.svg": "9d145a76c81dab6ccb3a4a988c6f2902cdf2c428",
     "https://sreejithksgupta.github.io/learnix/assets/learnixtplogo.webp": "0a879b9529116c311a984589039b561dd65bc896",
     "https://sreejithksgupta.github.io/learnix/chunk-EHQWWS5Z.js": "11131f0a088f7d62fa10f7df73732290c8a2f317",
     "https://sreejithksgupta.github.io/learnix/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
@@ -92,16 +92,16 @@
     "https://sreejithksgupta.github.io/learnix/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "https://sreejithksgupta.github.io/learnix/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "https://sreejithksgupta.github.io/learnix/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "https://sreejithksgupta.github.io/learnix/index.html": "ef9c938040cdee0233db37434873b7c8fadce721",
+    "https://sreejithksgupta.github.io/learnix/index.html": "6bd11af807453ff1ced557bbf228bb1882e4cf94",
     "https://sreejithksgupta.github.io/learnix/learnixtplogo.webp": "0a879b9529116c311a984589039b561dd65bc896",
-    "https://sreejithksgupta.github.io/learnix/main-XTUD5TS5.js": "212fa513af5a2bf5e2b85fb3fa55489d8677b212",
-    "https://sreejithksgupta.github.io/learnix/manifest.webmanifest": "e27d3a94e8ab0e5e2137f8f7531ea0fef50665bc",
+    "https://sreejithksgupta.github.io/learnix/main-SEZMH2TU.js": "b986b87c1cd1b40fae48fe3f8cdb85cfe6b4d273",
+    "https://sreejithksgupta.github.io/learnix/manifest.webmanifest": "9209d5df2205430843546785684e24c09b85814a",
     "https://sreejithksgupta.github.io/learnix/polyfills-Q763KACN.js": "e2a9f135443e4bc6115449a6098604d881bf5931",
     "https://sreejithksgupta.github.io/learnix/quill-IB73HUPV.js": "464c6195b293f4a3a0c94c0ddc2139b657c4f252",
-    "https://sreejithksgupta.github.io/learnix/res/hero.svg": "9330430a972a988f1d0003a953a9c199f2a5e224",
+    "https://sreejithksgupta.github.io/learnix/res/hero.svg": "ac12d2170a45358626f77f61bb8af7846204e7dc",
     "https://sreejithksgupta.github.io/learnix/res/heroimgpersonwithlap.webp": "303eea05ab887e3c6b6c7f3293816b3fd0162d89",
     "https://sreejithksgupta.github.io/learnix/scripts-OYUF3O7H.js": "769a85dd2997f76803259831fd25bbcd8037b177",
-    "https://sreejithksgupta.github.io/learnix/styles-U4IDT2EM.css": "ab7f6392f64f49791294e6f7736723370513f8e6"
+    "https://sreejithksgupta.github.io/learnix/styles-EMHYNBFX.css": "d44573e44eacc809c39d5a2f0877b7e66a27677b"
   },
   "navigationUrls": [
     {

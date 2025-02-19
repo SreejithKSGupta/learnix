@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/otherpages/featurespage/featurespage.component.css"],
+  "sourcesContent": ["h2{\n  font-family: 'Pacifico', cursive;\n}\n"],
+  "mappings": "AAAA,GACE,YAAa,QAAU,CAAE,OAC3B",
+  "names": []
+}
